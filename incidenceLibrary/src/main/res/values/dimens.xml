@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <dimen name="activity_horizontal_margin_negative">-20dp</dimen>
+    <dimen name="activity_horizontal_margin">20dp</dimen>
+    <dimen name="activity_horizontal_margin_medium">10dp</dimen>
+    <dimen name="activity_horizontal_margin_low">5dp</dimen>
+    <dimen name="activity_horizontal_margin_double">40dp</dimen>
+    <dimen name="activity_horizontal_margin_triple">60dp</dimen>
+    <dimen name="activity_horizontal_margin_quadruple">80dp</dimen>
+    <dimen name="activity_vertical_margin">20dp</dimen>
+    <dimen name="activity_vertical_margin_low">5dp</dimen>
+    <dimen name="activity_vertical_margin_middle">10dp</dimen>
+    <dimen name="activity_vertical_margin_double">40dp</dimen>
+    <dimen name="activity_vertical_margin_triple">60dp</dimen>
+    <dimen name="activity_vertical_margin_quadruple">80dp</dimen>
+
+    <dimen name="toolbar_text_size">20sp</dimen>
+    <dimen name="toolbar_text_subtitle_size">12sp</dimen>
+
+    <dimen name="roundedFields">12dp</dimen>
+    <dimen name="roundedRegisterForm">30dp</dimen>
+
+    <dimen name="default_elevation">3dp</dimen>
+
+    <dimen name="margin_normal">24dp</dimen>
+    <dimen name="margin_normal_medium">12dp</dimen>
+    <dimen name="margin_normal_double">48dp</dimen>
+    <dimen name="margin_normal_triple">72dp</dimen>
+    <dimen name="button_height">64dp</dimen>
+    <dimen name="textfield_height">64dp</dimen>
+    <dimen name="margin_field">16dp</dimen>
+
+</resources>

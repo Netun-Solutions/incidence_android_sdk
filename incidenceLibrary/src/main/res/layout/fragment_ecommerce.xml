@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:clickable="true"
+    android:background="@color/incidence100"
+    android:id="@+id/layoutRootEcommerce">
+
+    <es.incidence.core.utils.view.INavigation
+        android:id="@+id/inavigation"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <es.incidence.core.utils.view.IButton
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/button_height"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="@dimen/activity_vertical_margin_double"
+        android:id="@+id/btn"
+        app:topTitle="@string/empty"
+        android:layout_marginLeft="@dimen/margin_normal"
+        android:layout_marginRight="@dimen/margin_normal"/>
+
+    <!--<es.incidence.core.utils.view.ICirclePageIndicator
+        android:id="@+id/circlePageIndicator"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="30dp"
+        android:background="@android:color/transparent"
+        app:strokeColor="@android:color/transparent"
+        app:strokeWidth="0dp"
+        app:pageColor="@color/gray"
+        app:fillColor="@color/incidence500"
+        app:centered="true"
+        app:radius="4dp"
+        android:layout_marginLeft="7.5dp"
+        android:layout_above="@+id/btn" />-->
+    <View android:id="@+id/circlePageIndicator"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:padding="30dp"
+        android:layout_above="@+id/btn"></View>
+
+    <androidx.viewpager.widget.ViewPager
+        android:layout_above="@+id/circlePageIndicator"
+        android:layout_below="@+id/inavigation"
+        android:id="@+id/view_pager"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        />
+    <!--
+    />
+    android:paddingLeft="@dimen/margin_normal"
+        android:paddingRight="@dimen/margin_normal"
+    android:clipToPadding="false"/> -->
+
+</RelativeLayout>

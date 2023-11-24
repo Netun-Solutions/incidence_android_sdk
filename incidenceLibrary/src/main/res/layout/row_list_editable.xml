@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:id="@+id/layoutRoot"
+    android:clickable="true">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/layoutRow"
+        android:layout_marginLeft="@dimen/margin_normal"
+        android:layout_marginRight="@dimen/margin_normal">
+
+        <es.incidence.core.utils.view.IField
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/field" />
+
+        <es.incidence.core.utils.view.IDropField
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/dropfield"
+            android:visibility="gone"/>
+
+    </RelativeLayout>
+
+</RelativeLayout>

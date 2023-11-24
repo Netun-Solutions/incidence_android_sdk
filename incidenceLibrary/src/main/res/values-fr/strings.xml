@@ -1,0 +1,622 @@
+<resources>
+    <string name="required_location_permission_text">Veuillez fournir l\'accès à l\'autorisation de localisation pour que cette fonctionnalité fonctionne.</string>
+    <string name="required_location_ok_text">D\'accord</string>
+    <string name="required_location_cancel_text">Annuler</string>
+
+    <string name="mapbox_access_token">pk.eyJ1IjoiaW5jaWRlbmNlIiwiYSI6ImNrcGVkZ2N0cTFxN3QycGxseDByeHB4MTIifQ.r6JVDWZcx5zmzqqShAhbIA</string>
+
+    <string name="app_name">IncidenceAPP</string>
+    <string name="nombre_app">IncidenceAPP</string>
+
+    <string name="welcome_slide_1_title">Crea una cuenta</string>
+    <string name="welcome_slide_1_subtitle">Añade tus datos personales, los datos de tu vehículo y tu seguro</string>
+    <string name="welcome_slide_2_title">Sincroniza tu baliza</string>
+    <string name="welcome_slide_2_subtitle">Activa tu localización y vincula tu baliza Help Flash u otros dispositivos compatibles</string>
+    <string name="welcome_slide_3_title">Reporta incidencias</string>
+    <string name="welcome_slide_3_subtitle">Recibe asistencia en carretera en caso de avería o llamaremos a emergencias en caso de accidente</string>
+    <string name="next">Siguiente</string>
+    <string name="create_account">Crear cuenta</string>
+    <string name="create_one_account">Crear una cuenta</string>
+    <string name="create_new_account">Crear nueva cuenta</string>
+    <string name="create_account_step1">Datos personales</string>
+    <string name="create_account_step2">Vehículo y seguro</string>
+    <string name="create_account_step3">Sincronización con baliza</string>
+    <string name="already_have_account">¿Ya tienes una cuenta?</string>
+    <string name="already_not_have_account">¿Aún no tienes una cuenta?</string>
+    <string name="sign_in">Iniciar sesión</string>
+    <string name="sign_out">Cerrar sesión</string>
+    <string name="sign_out_message">¿Quieres cerrar sesión?</string>
+    <string name="sign_out_on_device">¿Quieres cerrar sesión en %1s?</string>
+    <string name="delete_account">Eliminar cuenta</string>
+    <string name="delete_account_message">¿Quieres eliminar tu cuenta?\nSi eliminas tu cuenta, se borrará toda tu información de nuestra base de datos.</string>
+    <string name="my_data">Mis datos</string>
+    <string name="active_sessions">Sesiones activas</string>
+    <string name="notifications">Notificaciones</string>
+    <string name="help">Ayuda</string>
+    <string name="continuar">Continuar</string>
+    <string name="acepto">Acepto</string>
+    <string name="sign_in_phone">Iniciar sesión con teléfono</string>
+    <string name="sign_in_email">Iniciar sesión con correo electrónico</string>
+    <string name="sign_in_phone_change">Iniciar con teléfono</string>
+    <string name="sign_in_email_change">Iniciar con correo electrónico</string>
+    <string name="hola_nombre">¡Hola, %1s!</string>
+    <string name="hola">¡Hola!</string>
+
+    <string name="name_surname_title">Añade tu nombre y apellidos</string>
+    <string name="name_surname">Nombre y Apellidos</string>
+    <string name="phone_title">Te enviaremos un mensaje de texto para verificar tu número</string>
+    <string name="email_title">Te enviaremos un correo electrónico para verificar tu cuenta</string>
+    <string name="phone">Teléfono</string>
+    <string name="mobile_phone">Teléfono móvil</string>
+    <string name="nif_title">Añade tu documento de identidad</string>
+    <string name="nif">DNI</string>
+    <string name="nie">NIE</string>
+    <string name="cif">CIF</string>
+    <string name="nif_doc_identity">Documento de identidad</string>
+    <string name="email_title_signup">Por último, añade tu correo electrónico para completar tu perfil</string>
+    <string name="email">Correo electrónico</string>
+
+    <string name="privacy">Política de privacidad</string>
+    <string name="terms_description"><![CDATA[<h1>Política de Privacidad de Datos Personales</h1>
+
+<p>En cumplimiento de la normativa vigente en materia de protección de datos, Reglamento (UE) 2016/679 del Parlamento Europeo y del Consejo de 27 de abril de 2016 (GDPR), Ley Orgánica de Protección de Datos y Garantía de Derechos Digitales (LOPDGDD, Ley 3/2018 de 5 de diciembre), le informamos de la Política de Privacidad de Datos Personales, en lo que se refiere al tratamiento de los datos personales de la misma.</p>
+
+<h2>Responsable del tratamiento de los datos personales</h2>
+
+<p>El responsable del tratamiento es la persona jurídica que determina los fines y medios del tratamiento de datos personales. En otras palabras, el responsable decide cómo y con qué finalidades se tratan los datos personales.</p>
+
+<p>A los efectos de la presente Política de Protección de Datos, el responsable del tratamiento de los datos personales es:</p>
+
+<ul>
+    <li>Identidad de la sociedad: Netun Solutions, S.L. (NIF número B27830512)</li>
+    <li>Domicilio social: Calle Colon, N.º 12, 3º. Código postal 36201. Vigo (Pontevedra)</li>
+    <li>Teléfono de contacto: 919 912 366</li>
+    <li>Responsable en Protección de Datos: Jorge Juan Costas Otero</li>
+    <li>Correo electrónico de contacto: info@incidenceapp.com / info@incidence.eu</li>
+</ul>
+
+<h2>¿Qué datos personales tratamos y cómo los protegemos?</h2>
+
+<p>Un dato personal es toda información sobre una persona física identificada o identificable.</p>
+
+<p>Para las finalidades establecidas en esta Política de Privacidad, el responsable recaba y trata los datos personales que se explican en cada tipo de tratamiento, y que dependerán de los diferentes servicios que solicite o la relación contractual que mantenga con nuestra entidad.</p>
+
+<p>Nuestra organización se compromete a tratar con total confidencialidad y a aplicar las medidas de seguridad adecuadas, de tipo físico, técnico y organizativo, para la protección de sus datos personales.</p>
+
+<p>Usted garantiza y responde, en cualquier caso, de la veracidad, exactitud, vigencia y autenticidad de los datos personales proporcionados y se compromete a mantenerlos debidamente actualizados.</p>
+
+<h2>Tratamiento de datos de la Aplicación móvil Incidence</h2>
+
+<h3>¿Qué tipo de datos personales tratamos?</h3>
+<ul>
+    <li>Datos identificativos: nombre y apellidos, teléfono móvil, dirección de correo electrónico, documento de identidad, matrícula y seguro del vehículo .</li>
+    <li>Datos de geolocalización en caso de accidente y asistencia en carretera.</li>
+</ul>
+
+<h3>¿Con qué finalidad tratamos sus datos personales?</h3>
+
+<p>Los datos personales facilitados por usted al registrarse, y los datos de geolocalización tratados en la aplicación móvil Incidence, se van a utilizar para informar a su compañía de seguros y/o al servicio de emergencias de una avería o un accidente sufrido en su vehículo, así como de su geolocalización para el envío de asistencia en carretera.</p>
+
+<p>Al abrir la app, en función de que usted indique:</p>
+
+<h4>Avería</h4>
+<p>Se comunicarán sus datos personales incluidos los de geolocalización, a su compañía de seguros, siempre que esta se encuentre adherida al servicio Incidence app, con objeto de que se puedan prestar la asistencia en carretera adecuada. Es posible que su compañía de seguros le solicite más datos para prestarle la asistencia en carretera. Actualmente, las compañías de seguros adheridas son:</p>
+<p><a href="https://www.axa.es/acerca-axa/enlaces-informacion-legal" target="_blank">AXA SEGUROS GENERALES, S.A.</a> DE SEGUROS Y REASEGUROS con CIF A-60917978. </p>
+<p><a href="https://www.reale.es/es/aviso-legal" target="_blank">REALE SEGUROS GENERALES. S.A.</a> con CIF A-78520293. </p>
+
+<h4>Accidente</h4>
+<p>Se comunicarán sus datos personales incluidos los de geolocalización, a una empresa especializada, que actuará como encargada de tratamiento, nuestros servicios, con objeto de ponerle en contacto con los servicios públicos de emergencia del territorio en que se encuentre (112).</p>
+<p>Nuestra organización se compromete a tratar con total confidencialidad y a aplicar las medidas de seguridad adecuadas, de tipo físico, técnico y organizativo, para la protección de sus datos personales. Concretamente, sus datos están cifrados tanto en su almacenamiento como en su comunicación, para conservar la confidencialidad.</p>
+<p>Los datos personales se conservarán mientras el interesado no solicite la cancelación. Si decide cancelar sus datos personales, estos serán eliminados de nuestra base de datos y no podrá usar nuestra aplicación.</p>
+
+<h3>¿Cuál es la legitimación para el tratamiento de sus datos?</h3>
+<ul>
+    <li>La base legal para el tratamiento de sus datos es el consentimiento expreso que usted ha prestado al instalar la app en su dispositivo móvil (Android o iOS).</li>
+    <li>Además, la ejecución de su contrato de seguro de automóvil con su compañía aseguradora también legitima la comunicación de sus datos personales incluidos los de geolocalización a la misma en caso de avería, para prestarle asistencia en carretera.</li>
+</ul>
+
+<h3>¿A qué destinatarios se comunicarán sus datos?</h3>
+<ul>
+    <li>Sus datos personales no serán comunicados a terceros excepto, salvo que nos comunique a través de la aplicación móvil el acaecimiento de su avería o accidente en carretera.</li>
+    <li>Asimismo, se comunicarán a una empresa especializada los datos anteriores, para la solicitud del servicio de emergencias que corresponda a través del número de emergencias 112 en todo el territorio nacional.</li>
+    <li>Además, sus datos personales serán comunicados a encargados de tratamiento como prestadores de servicios tecnológicos a los efectos del mantenimiento y desarrollo de la app.</li>
+    <li>No se cederán sus datos personales a otras entidades, salvo obligación legal. Le informamos que tampoco se van a realizar transferencias internacionales de datos.</li>
+</ul>
+
+<h3>¿Durante cuánto tiempo conservaremos sus datos una vez se dé de baja de la aplicación móvil Incidence app?</h3>
+
+<p>NETUN SOLUTIONS, S.L. conservará sus datos por un período de 2 años en caso de haber solicitado el servicio de asistencia en carretera, a contar desde la fecha del servicio, de acuerdo con el plazo aplicable para la prescripción de acciones derivadas de la normativa de contrato de seguro.</p>
+Todo ello sin perjuicio de que dicho plazo pueda ampliarse, cuando usted así lo autorice expresamente o existan tratamientos particulares derivados de la relación contractual que sigan vigentes con posterioridad a dicho plazo.</p>
+
+<p><strong>De conformidad con la normativa aplicable en materia de protección de datos, Usted tiene una serie de derechos en relación con el tratamiento de sus datos personales. El ejercicio de estos derechos será gratuito para usted, excepto en los casos en que se formulen solicitudes manifiestamente infundadas o excesivas, especialmente por repetitivas.</strong></p>
+<p>Atenderemos a la mayor brevedad el ejercicio de sus derechos y en todo caso dentro del plazo de 1 mes.</strong></p>
+
+<p>Estos derechos son los siguientes:</p>
+
+<h4>Derecho de información</h4>
+<p>Usted tiene derecho a ser informado de manera concisa, transparente, inteligible y de fácil acceso, con un lenguaje claro y sencillo, sobre la utilización y tratamiento de sus datos personales.</p>
+
+<h4>Derecho de acceso</h4>
+<p>Usted tiene derecho a solicitarnos en cualquier momento que le confirmemos si estamos tratando sus datos personales, a que le facilitemos acceso a los mismos y a la información sobre su tratamiento y a obtener una copia de dichos datos. La copia de sus datos personales que le facilitemos será gratuita si bien la solicitud de copias adicionales podrá estar sujeta al cobro de una cantidad razonable basada en los costes administrativos. Por nuestra parte, podremos pedirle que acredite su identidad o requerirle más información que sea necesaria para gestionar su solicitud.</p>
+
+<h4>Derecho de rectificación</h4>
+<p>Usted tiene derecho a solicitar la rectificación de los datos personales inexactos, no actualizados o incompletos que le conciernan. También podrá solicitar que se completen los datos personales que sean incompletos, inclusive mediante una declaración adicional.</p>
+
+<h4>Derecho de supresión</h4>
+<p>Usted tiene derecho a solicitar la supresión de sus datos personales cuando, entre otros motivos, los datos ya no sean necesarios para los fines para los que fueran recogidos. No obstante, este derecho no es absoluto, de manera que nuestra organización podrá seguir manteniéndolos debidamente bloqueados en los supuestos previstos por la normativa aplicable.</p>
+
+<h4>Derecho a limitar el tratamiento</h4>
+<p>Usted tiene derecho a solicitar que limitemos el tratamiento de sus datos personales lo que significa que podremos seguir almacenándolos, pero no seguir tratándolos si se cumple alguna de las siguientes condiciones:</p>
+
+<ul>
+    <li>Que Usted impugne la exactitud de los datos, durante un plazo que permita al responsable verificar la exactitud de los mismos</li>
+    <li>El tratamiento sea ilícito y Usted se oponga a la supresión de los datos y solicite en su lugar la limitación de su uso</li>
+    <li>Nuestra entidad ya no necesite los datos para los fines del tratamiento, pero Usted los necesite para la formulación, el ejercicio o la defensa de reclamaciones</li>
+    <li>Usted se haya opuesto al tratamiento, mientras se verifica si los motivos legítimos de nuestra entidad prevalecen sobre los suyos</li>
+</ul>
+
+<h4>Derecho a la portabilidad de los datos</h4>
+<p>Usted tiene derecho a que sus datos sean transmitidos a otro responsable del tratamiento en un formato estructurado, de uso común y lectura mecánica. Este derecho se aplica cuando el tratamiento de sus datos personales esté basado en el consentimiento o en la ejecución de un contrato y dicho tratamiento se efectúe por medios automatizados.</p>
+
+<h4>Derecho de oposición</h4>
+<p>Este derecho le permite oponerse al tratamiento de sus datos personales, incluida la elaboración de perfiles. No podremos atender a su derecho únicamente cuando tratemos sus datos en el caso de que acreditemos motivos legítimos para el tratamiento o para la formulación, el ejercicio o la defensa de reclamaciones.</p>
+
+<h4>Derecho a no someterse a decisiones automatizadas, incluidos perfiles</h4>
+<p>Este derecho le permite no ser objeto de una decisión basada únicamente en el tratamiento automatizado, incluida la elaboración de perfiles, que produzcan -dichas decisiones- efectos jurídicos o le afecten de modo similar. Salvo que dicha decisión sea necesaria para la celebración o ejecución de un contrato, esté autorizada por una ley o se base en el consentimiento.</p>
+
+<h4>Derecho a retirar el consentimiento</h4>
+<p>En los casos en los que hayamos obtenido su consentimiento para el tratamiento de sus datos personales en relación con determinadas actividades (por ejemplo, con el fin de enviarle comunicaciones comerciales), podrá retirarlo en cualquier momento. De esta forma, dejaremos de realizar esa actividad concreta para la que había consentido previamente, salvo que exista otra razón que justifique la continuidad del tratamiento de sus datos con estos fines, en cuyo caso, le notificaremos dicha situación.</p>
+
+<h4>Derecho a presentar una reclamación ante una autoridad de control</h4>
+<p>Usted tiene derecho a presentar una reclamación ante la <a href="https://www.agpd.es/" target="_blank">Agencia Española de Protección de Datos</a>, C/ Jorge Juan, 6, 28001 Madrid, 901 100 099 – 912 663 517, o en la dirección electrónica de <a href="https://sedeagpd.gob.es/sede-electronica-web/vistas/formQuejasSugerencias/seleccionarQuejaSugerencia.jsf" target="_blank">este enlace</a>. </p>
+<p>Podrá ejercitar los derechos antes indicados, enviándonos una comunicación a la dirección física o a la dirección electrónica indicadas arriba, acompañando un documento acreditativo de su identidad y proporcionando los detalles necesarios para procesar su solicitud.</p>
+<p>Los interesados pueden obtener información adicional sobre sus derechos en la página web de la <a href="https://www.agpd.es/" target="_blank">Agencia Española de Protección de Datos</a>. </p>
+
+
+
+
+<h2>Condiciones generales de uso y nivel de servicio (SLA) de las aplicaciones para dispositivos móviles (app) Incidence</h2>
+
+<h3>Responsable de la prestación del servicio de la app  Incidence</h3>
+<p>El presente acuerdo establece los términos y condiciones a las que NETUN SOLUTIONS; S.L., con NIF número B27830512, y domicilio social en Vigo, calle Colón, N.º 12, 3º. código postal 36201, está sujeto en el ámbito de la prestación del servicio como titular de la aplicación móvil Incidence (en adelante app o aplicación)</p>
+<p>Incidence es una marca registrada por NETUN SOLUTIONS; S.L.</p>
+<p>Puede contactar con nosotros en la dirección electrónica: info@incidenceapp.com /info@incidence.eu o en el teléfono de contacto: 919 912 366.</p>
+
+<h3>Condiciones de utilización de la app Incidence</h3>
+<p>Todos los usuarios de las app Incidence deben leer, conocer y aceptar expresamente las siguientes condiciones de uso.</p>
+<p>Si no está de acuerdo con las condiciones de uso de la app establecidas en este documento, que tiene naturaleza normativa, no debe continuar utilizando la aplicación móvil, ni navegando ni accediendo a los contenidos de la misma.</p>
+<p>En todo caso, el hecho de acceder a esta aplicación desarrollada para su uso en dispositivos móviles supone la aceptación de las condiciones de uso aquí expuestas.</p>
+
+<h3>Descripción del servicio que proporciona la app</h3>
+<p>La app Incidence permite al usuario, una vez registrado, que se pueda proceder al envío de sus datos identificativos: nombre y apellido, teléfono móvil, dirección de correo electrónico; así como los datos de su vehículo, tales como matrícula y datos de geolocalización, para informar a su compañía de seguros y/o al servicio de emergencias de una avería o un accidente sufrido en su vehículo.</p>
+<p>Al abrir la app Incidence, usted podrá comunicar las siguientes incidencias:</p>
+
+<h4>Avería</h4>
+
+<p>Se comunicarán sus datos personales incluidos los de geolocalización, a su compañía de seguros, siempre que esta se encuentre adherida al servicio Incidence, con objeto de que se le pueda prestar la asistencia en carretera adecuada. Es posible que su compañía de seguros le solicite más datos para prestarle la asistencia en carretera. Actualmente las compañías de seguros adheridas son:</p>
+<p><a href="https://www.axa.es/acerca-axa/enlaces-informacion-legal" target="_blank">AXA SEGUROS GENERALES, S.A.</a> DE SEGUROS Y REASEGUROS con CIF A-60917978. </p>
+<p><a href="https://www.reale.es/es/aviso-legal" target="_blank">REALE SEGUROS GENERALES. S.A.</a> con CIF A-78520293. </p>
+
+
+<h4>Accidente</h4>
+
+<p>Se comunicarán sus datos personales incluidos los de geolocalización, a los servicios de emergencia, con objeto de que se le pueda prestar la asistencia en carretera adecuada. Se comunicarán sus datos personales incluidos los de geolocalización, a su compañía de seguros, siempre que esta se encuentre adherida al servicio Incidence, para la gestión de la asistencia. Es posible que su compañía de seguros le solicite más datos para prestarle la tramitación del siniestro.</p>
+
+<h3>Coste del servicio</h3>
+
+<p>El uso de esta app es gratuito, sin que se realice ningún cargo adicional por su utilización, sin perjuicio de que el coste por el acceso a la red de internet para poder utilizar la app y así conectarse con los servidores deben ser abonados por el usuario de la app, al que se le cargarán por su proveedor de servicios de internet (ISP) los datos que se consuman como consecuencia de la utilización de la red de telecomunicaciones al enviar sus datos.</p>
+<p>En todo caso, NETUN SOLUTIONS; S.L.. se reserva la facultad de establecer unas tarifas por uso de la aplicación cuya aceptación será voluntaria y que será notificada previamente a su implantación. En cualquier caso, dichas tarifas no afectarán a los clientes de aquellas compañías con las que estén vigentes acuerdos de adhesión, actualmente:</p>
+<p>AXA SEGUROS GENERALES, S.A. DE SEGUROS Y REASEGUROS con CIF A-60917978. </p>
+<p>REALE SEGUROS GENERALES. S.A. con CIF A-78520293. </p>
+
+<h3>Disponibilidad</h3>
+
+<p>La app Incidence estará disponible los 365 días del año, las 24 horas al día.</p>
+<p>Sin perjuicio de lo dicho anteriormente, NETUN SOLUTIONS; S.L.,  no garantiza ningún grado de disponibilidad, por lo que es posible que el servicio no se preste de forma temporal, sin que en ningún caso puedan derivarse responsabilidades para NETUN SOLUTIONS; S.L., </p>
+<p>Tampoco nos responsabilizamos de la configuración que pueda realizar en su terminal móvil para el acceso a internet, ni de las incompatibilidades que puedan surgir con otras app.</p>
+
+<h3>Continuidad</h3>
+
+<p>NETUN SOLUTIONS; S.L.  garantiza a sus usuarios el restablecimiento de los servicios a la mayor brevedad en caso de que dejen de funcionar, sin que en ningún caso se pueda garantizar un plazo específico de resolución de la incidencia.</p>
+<p>En todo caso,  NETUN SOLUTIONS; S.L.,  procederá, en la medida de sus posibilidades, comunicar a los usuarios posibles picos relativos al uso de recursos que puedan implicar un mal funcionamiento del servicio.</p>
+<p>El servicio prestado por la app Incidence es de carácter gratuito y, en consecuencia, no existe compromiso alguno por parte de NETUN SOLUTIONS; S.L. en el mantenimiento continuado del servicio, reservándose la facultad de suspenderlo o finalizarlo, parcial o totalmente, así como modificar los contenidos en cualquier momento, sin que dé lugar a ningún tipo de indemnización por cualquier perjuicio que se pueda irrogar, ya que no es un servicio profesional y no es apto para su uso industrial.</p>
+
+<h3>Nivel de servicio y gestión de incidentes</h3>
+
+<p>La prestación del servicio puede estar sujeta a incidentes que pueden comprometer el mantenimiento de unos niveles de servicio adecuados.</p>
+<p>En este sentido y para evitar que estos incidentes impacten en la menor medida posible en la prestación del servicio, se establecen unos criterios de priorización de incidentes que permitan ofrecer unos tiempos de respuesta y resolución correctos. Estos criterios de priorización quedan recogidos en 2 tipos: Normal y Críticos.</p>
+
+<ul>
+    <li>Normales: Incidentes que no implican la detención total del servicio o que no comprometen la seguridad del mismo en cualquiera de sus parámetros. Estos tratarán de resolverse en 72 horas.</li>
+    <li>Críticos: Incidentes que implican la detención total del servicio o que pueden comprometer la seguridad del mismo. Estos tratarán de resolverse en 48 horas.</li>
+</ul>
+
+<p>En cualquier caso, no es posible garantizar un tiempo máximo de resolución.
+<p>Usted podrá ponerse en contacto con el responsable del servicio en cualquier momento en la dirección indicada al principio del presente SLA.</p>
+<p>En ningún caso la app Incidence garantiza un nivel mínimo de servicio, ni usted podrá exigir indemnización alguna por la falta de servicio de la aplicación, ya que su continuidad no está garantizada.</p>
+
+
+<h3>Seguimiento del servicio</h3>
+
+<p>Todas las tareas descritas en el presente acuerdo dispondrán de una monitorización que permita un seguimiento en tiempo real por parte de la empresa del grado de cumplimiento de los niveles de servicio. En ningún caso NETUN SOLUTIONS; S.L.,  estará obligado a facilitar esta información al usuario.</p>
+
+<h3>Legalidad y cumplimiento</h3>
+
+<p>Los usuarios de la  app Incidence se comprometen a no aceptar ni estimular prácticas que violen la legislación española o de la Unión Europea.</p>
+<p>Por otro lado, se comprometen a cumplir toda la normativa en materia de propiedad intelectual, protección de datos, ciberseguridad y demás sobre la protección de los derechos fundamentales de las personas. El usuario reconoce que  NETUN SOLUTIONS; S.L.,  es el único titular de los derechos de propiedad intelectual e industrial sobre los gráficos, textos, planos, botones y, con carácter general, toda la información contenida en las páginas o sitio web a las que acceda y que la reproducción, carga, presentación, ejecución, transmisión, almacenamiento, traducción, adaptación, arreglo o distribución, ya sea total, ya sea parcial, realizadas sin el consentimiento y autorización expresa de NETUN SOLUTIONS; S.L.,  constituye una infracción de los derechos de propiedad intelectual e industrial.</p>
+<p>El usuario se compromete a utilizar el servicio de buena fe, de forma diligente y adecuada, sin incurrir en actividades que puedan ser consideradas ilícitas o ilegales, que infrinjan los derechos de NETUN SOLUTIONS; S.L.,  o de terceros, cumpliendo en todo momento con las reglas de buen comportamiento en la red y con las políticas de uso aceptables de las redes frecuentadas, no haciendo uso fraudulento de la información ni de los contenidos existentes en ella. Asimismo, el Usuario se compromete expresamente a no llevar a cabo ninguna conducta tendente a deteriorar o sobrecargar el servicio y, especialmente a evitar:</p>
+<ul>
+    <li>Destruir, alterar, inutilizar o, de cualquier otra forma, dañar los datos, programas o documentos electrónicos del prestador de servicios o de terceros. Obstaculizar el acceso de otros Usuarios a Internet, así como realizar acciones que dañen, interrumpan o generen errores en el sistema de acceso.</li>
+    <li>El envío masivo de comunicaciones comerciales por correo electrónico u otro medio de comunicación electrónica equivalente a destinatarios que no hayan solicitado expresamente su remisión.</li>
+    <li>Intentar acceder, eliminar, copiar o modificar los mensajes de correo electrónico de otros usuarios.</li>
+    <li>Introducir programas, malware o cualquier otro dispositivo que cause o sea susceptible de causar cualquier tipo de alteración o perjuicio en los sistemas informáticos del prestador de servicios o de terceros, sin perjuicio de la responsabilidad penal que se pueda derivar por dichos comportamientos.</li>
+</ul>
+
+<h3>Relativas a la seguridad</h3>
+
+<p>El usuario se compromete a no compartir su cuenta con ninguna otra persona. La identificación y autenticación de cada cuenta es confidencial e intransferible, recayendo toda la responsabilidad sobre el titular de la cuenta.</p>
+<p>El usuario se compromete a utilizar una contraseña segura y desconocida para otras personas. Las contraseñas deberán contener caracteres especiales, letras y números y tener una longitud suficiente (mínimo 6 caracteres). Además, se deberá renovar periódicamente.</p>
+<p>El usuario se compromete a no violar las medidas de seguridad existentes, así como a no acceder a los recursos, sistemas o información a la que no tengan autorización para acceder. Concretamente se abstendrán de atacar (malware, ramsonware, etc) o tratar de modificar la app Incidence.</p>
+<p>El usuario deberá informar a los servicios de soporte de la app Incidence de cualquier evento que implique un fallo en la seguridad de los sistemas o de cualquier otro riesgo potencial, de conformidad con lo establecido en el Reglamento General de Protección de Datos en lo relativo a la notificación de violaciones de seguridad (arts. 33 y 34).</p>
+<p>El usuario deberá proporcionar a NETUN SOLUTIONS; S.L. la identificación del terminal o terminales desde los cuales está accediendo.</p>
+
+<h3>Relativas a la utilización</h3>
+
+<p>El usuario se compromete a utilizar la app Incidence únicamente para el propósito para el que ha sido diseñada, esto es, para avisar a su compañía de seguros, así como, en su caso, a los servicios de emergencias o de asistencia en caso de accidente o avería, respectivamente. En ningún caso se podrá utilizar la app Incidence para finalidades diferentes a las autorizadas, ni para actividades que sean contrarias al ordenamiento jurídico o al orden público, en especial aquellas que puedan ser constitutivas de infracción administrativa, o ilícito penal.</p>
+<p>No se utilizará la app Incidence de cualquier modo que pueda ofender a otros usuarios, o causar perjuicio en los bienes o derechos de otras personas, físicas o jurídicas, o de la compañía.</p>
+
+
+<h3>Exención de responsabilidad</h3>
+
+<p>El usuario acepta expresamente la exención de responsabilidad de Incidence, producto de la compañía NETUN SOLUTIONS; S.L., así como de su personal, en caso de que puedan sufrir cualquier pérdida como resultado de la utilización de la app, concretamente cualquier pérdida que pueda afectar a la confidencialidad, integridad o disponibilidad de los datos.</p>
+<p>El usuario permitirá a los operadores de la app el acceso a la información generada en la app y la monitorización de las actividades que realicen con el fin de mantener el funcionamiento de los recursos utilizados, y detectar mejoras susceptibles de aplicar.</p>
+<p>El usuario acepta que la app no estará siempre disponible para mi utilización del modo esperado y renuncia a exigir cualquier responsabilidad sobre la compañía titular de la app en caso de encontrarse afectado por la disponibilidad o cualquier otro aspecto que reduzca la funcionalidad de la app, siendo plenamente consciente de que es una app gratuita y por ende no se pueden exigir responsabilidades.</p>
+<p>El usuario acepta expresamente que Incidence no se responsabiliza por los daños y perjuicios de toda naturaleza que puedan deberse a la presencia de malware o a la presencia de otros elementos dañinos en los contenidos de la app que puedan producir alteraciones en el terminal del usuario o de terceros o en sus archivos y documentos electrónicos.</p>
+<p>Será responsabilidad del usuario mantener en todo momento actualizada la app, debiendo instalar siempre la última versión de software disponible así como la última versión del sistema operativo del terminal, así como otros parches o actualizaciones de seguridad que se recomiende instalar.</p>
+
+<h3>Responsabilidad y sanciones</h3>
+
+<p>Cuando se demuestre un uso incorrecto o no aceptable con respecto a lo especificado en este documento,  Incidence  procederá a la interrupción del servicio prestado, dependiendo de la gravedad y reiteración del incidente, o la suspensión temporal del servicio (o la retirada indefinida del mismo).</p>
+<p>Las responsabilidades que pudieran derivarse de la incorrecta utilización de los recursos por el usuario serán asumidas por el propio usuario.</p>
+<p>El Usuario responderá por los daños y perjuicios que pudiera ocasionar a NETUN SOLUTIONS; S.L.   por el incumplimiento e inobservancia de las presentes condiciones de uso del servicio cuando hubiere mediado dolo, culpa o negligencia.</p>
+<p>NETUN SOLUTIONS; S.L.  dispondrá los medios necesarios para permitir la consulta de estas normas de forma fácil.</p>
+
+
+<h3>Ley aplicable y jurisdicción competente</h3>
+
+<p>Para cualquier controversia o cuestión que pudiera derivarse de la aplicación, ejecución e interpretación de estas condiciones de servicio, las partes aplicarán los principios de la buena fe y se regirán por la normativa española.</p>
+<p>En caso de resolución judicial de conflictos, será competente el Tribunal en el que tuviera el domicilio el usuario, siempre y cuando éste tuviera la consideración de consumidor y este en territorio español.</p>
+
+
+
+]]></string>
+    <string name="terms_check1">Acepto las condiciones de uso y política de privacidad</string>
+    <string name="terms_check2">Autorizo el envío de información para la comunicación de mejoras en la aplicación, nuevos productos y servicios desarrollados por INCIDENCE CLOUD, S.L.</string>
+
+    <string name="sms_introduce">Introduce el código que has recibido en un SMS</string>
+    <string name="sms_introduce_email">Introduce el código que has recibido en un e-mail</string>
+    <string name="sms_resend">Enviar código de nuevo</string>
+    <string name="sms_caducity_time">El código caducará en %1s</string>
+    <string name="sms_validate">Validar código</string>
+    <string name="sms_code_timed_out">El código ha caducado</string>
+
+    <string name="dni">DNI</string>
+    <string name="hint_phone">666 666 666</string>
+    <string name="hint_dni">12345678A</string>
+    <string name="hint_email">lucia@gmail.com</string>
+    <string name="vehicle_data">Datos del vehículo</string>
+
+    <string name="select_type_vechicle">Selecciona el tipo de vehículo</string>
+    <string name="add_matricula_title">Introduce la matrícula de tu vehículo habitual</string>
+    <string name="matricula">Matrícula</string>
+    <string name="check_vehicle_data_correct">Rellena los datos de tu vehículo</string>
+    <string name="matricula_year_optional">Año de matriculación (opcional)</string>
+    <string name="matricula_year">Año de matriculación</string>
+    <string name="brand">Marca</string>
+    <string name="model">Modelo</string>
+    <string name="name">Nombre</string>
+    <string name="select_vehicle_color">Selecciona el color de tu vehículo</string>
+    <string name="add_later">Añadir más tarde</string>
+    <string name="later">Más tarde</string>
+    <string name="search_insurance">Busca tu aseguradora</string>
+    <string name="featured_insurance">ASEGURADORAS DESTACADAS</string>
+    <string name="list_insurance">LISTADO DE ASEGURADORAS</string>
+    <string name="complete_insurance_data">Completa los datos de tu seguro</string>
+    <string name="company_insurance">Compañia de seguros</string>
+    <string name="company_insurance_number">Número de póliza</string>
+    <string name="company_insurance_titular">Titular de la póliza</string>
+    <string name="company_insurance_caducity">Caducidad de la póliza</string>
+    <string name="caducity">Caducidad</string>
+    <string name="caducity_insurance_date_near">La fecha de caducidad de tu póliza está cercana</string>
+    <string name="birthday">Fecha de nacimiento</string>
+    <string name="search_baliza">Buscar baliza</string>
+    <string name="omitir">Omitir</string>
+
+    <string name="turn_on_beacon_flash">Enciende tu baliza en modo destello</string>
+    <string name="turn_on_beacon_flash_detected">Pulsa sobre la baliza que quieras sincronizar con tu teléfono móvil</string>
+    <string name="select_vehicle_to_link">Elige uno de tus vehículos para vincular tu baliza</string>
+    <string name="search_again">Buscar de nuevo</string>
+    <string name="alert_need_bluetooth_title">Es necesario activar el bluetooth</string>
+    <string name="alert_need_bluetooth_description">Con ello podrás localizar tu dispositivo</string>
+    <string name="accept">Aceptar</string>
+    <string name="cancel">Cancelar</string>
+    <string name="save">Guardar</string>
+    <string name="retry">Intentar de nuevo</string>
+    <string name="settings">Ajustes</string>
+    <string name="beacon_sync_success">¡Tu baliza se ha sincronizado con éxito con tu teléfono móvil!</string>
+    <string name="beacon_sync_success_desc">La baliza se ha vinculado automáticamente al vehículo que has añadido. En tu perfil podrás añadir otros vehículos y balizas.</string>
+    <string name="beacon_error_need_bluettoh">Es necesario que <b><font color='black'>actives tu bluetooth</font></b> para sincronizar una baliza con tu teléfono móvil. ¿Deseas intentarlo de nuevo?</string>
+    <string name="beacons_not_detected">No se han localizado balizas para sincronizar con tu teléfono móvil</string>
+    <string name="no_activate_now">No quiero activarlo ahora</string>
+    <string name="finish">Finalizar</string>
+    <string name="go_home">Ir a inicio</string>
+    <string name="success_create_your_account">¡Tu cuenta se ha creado con éxito!</string>
+    <string name="error_matricula_other_user">La matrícula del vehículo que has introducido ya ha sido utilizada por otro usuario. ¿Quieres añadirla de todas formas?</string>
+    <string name="account">Cuenta</string>
+    <string name="vehicles">Vehículos</string>
+    <string name="incidences">Incidencias</string>
+    <string name="devices">Dispositivos</string>
+    <string name="add">Añadir</string>
+    <string name="delete">Eliminar</string>
+    <string name="location_disabled_click_to_activate">La ubicación está desactivada, pulsa para activarla</string>
+    <string name="activate_location_title">Activa tu ubicación</string>
+    <string name="activate_location_message">Es necesario conocer tu ubicación para reportar una incidencia</string>
+    <string name="alert_error_get_location_message">No se ha podido conocer tu ubicación para reportar una incidencia</string>
+    <string name="activate_location">Activar ubicación</string>
+    <string name="add_manually">Introducir manualmente</string>
+    <string name="activate_location_message_beacon">Es necesario conocer tu ubicación para sincronizar la baliza</string>
+    <string name="activate_location_message_beacon_always">Es necesario conocer siempre tu ubicación para detectar la baliza</string>
+    <string name="activate_location_message_beacon_always_go">Permitir siempre</string>
+    <string name="back">Atrás</string>
+    <string name="search_or_move_map">Busca o mueve el mapa</string>
+    <string name="insurance_data">Datos de la póliza</string>
+    <string name="beacon">Baliza</string>
+    <string name="drivers">Conductores</string>
+    <string name="delete_vechicle">Eliminar vehículo</string>
+    <string name="color">Color</string>
+    <string name="insurance">Aseguradora</string>
+    <string name="unlink">Desvincular</string>
+    <string name="unlink_beacon_message">¿Quieres desvincular la baliza del vehículo %1s?\nPodrás vincularla a otro vehículo desde el inicio.</string>
+    <string name="delete_vechicle_message">¿Quieres eliminar tu vehículo?\nPodrás añadir un nuevo vehículo para vincular tu baliza</string>
+    <string name="delete_vechicle_message_primary">¿Quieres eliminar tu vehículo?\nSe eliminará para el resto de conductores</string>
+    <string name="delete_driver_message">¿Quieres eliminar al conductor %1s de tu vehículo?</string>
+    <string name="incidence_status_active">Activa</string>
+    <string name="incidence_status_closed">Cerrada</string>
+    <string name="incidence_status_canceled">Cancelada</string>
+    <string name="go_to_map">Ir al mapa</string>
+    <string name="incidence_valorated_very_good">Has valorado esta incidencia como muy satisfactoria</string>
+    <string name="incidence_valorated_good">Has valorado esta incidencia como satisfactoria</string>
+    <string name="incidence_valorated_neutral">Has valorado esta incidencia como mejorable</string>
+    <string name="incidence_valorated_bad">Has valorado esta incidencia como insatisfactoria</string>
+    <string name="incidence_valorated_very_bad">Has valorado esta incidencia como muy insatisfactoria</string>
+    <string name="valorate_assitence">Valorar asistencia</string>
+    <string name="link_with">Vinculado con</string>
+    <string name="delete_device">Eliminar dispositivo</string>
+    <string name="delete_device_vinculated_message">¿Quieres eliminar tu dispositivo %1s?\nLos datos se borrarán de tu cuenta y se desvinculará del vehículo</string>
+    <string name="delete_device_message">¿Quieres eliminar tu dispositivo %1s?\nLos datos se borrarán de tu cuenta</string>
+    <string name="link_with_vehicle">Vincular con un vehículo</string>
+    <string name="select_vehicle_or_beacon">¿Quieres añadir un vehículo o una baliza?</string>
+    <string name="add_new_vehicle">Añadir nuevo vehículo</string>
+    <string name="add_new_device">Añadir nuevo dispositivo</string>
+    <string name="notifications_disable_message">Si desactivas las notificaciones y si reportas una incidencia con tu baliza, siempre te mandaremos una notificación por motivos de seguridad</string>
+    <string name="ask_link_beacon_to_vehicle_linked">¿Quieres vincular tu baliza con %1s? Este vehículo ya tiene una baliza vinculada. Si lo seleccionas, se sustituirá la anterior</string>
+    <string name="replace_beacon">Sustituir baliza</string>
+    <string name="include_birthday_to_complete">Incluye tu fecha de nacimiento para completar tus datos personales</string>
+    <string name="contact_phone">Contáctanos por teléfono</string>
+    <string name="contact_email">Contáctanos por email</string>
+    <string name="contact_faqs">Preguntas frecuentes</string>
+    <string name="contact_tutorial">Tutorial</string>
+    <string name="vehicle_and_beacon">Vehiculo y baliza*</string>
+    <string name="promotions">Promociones</string>
+    <string name="notifs_beacon_description">*Si tienes una baliza sincronizada con tu dispositivo y reportas una incidencia, te mandaremos siempre una notificación por motivos de seguridad.</string>
+    <!-- Notificaciones -->
+    <string name="channel_name">General</string>
+    <string name="channel_description">IncidenceAPP</string>
+    <string name="channel_name_beacon">Baliza</string>
+    <string name="channel_description_beacon">Detección de la baliza</string>
+    <string name="report_incidence">Reportar incidencia</string>
+    <string name="accident">Accidente</string>
+    <string name="fault">Avería</string>
+    <string name="report_ask_what">¿Has tenido una avería o un accidente?</string>
+    <string name="report_ask_what_descrip">Pasados %1s minutos sin respuesta, llamaremos automáticamente a emergencias</string>
+    <string name="ask_wounded">¿Hay heridos?</string>
+    <string name="yes">Si</string>
+    <string name="no">No</string>
+    <string name="accident_with_wounded">Accidente con heridos</string>
+    <string name="no_only_material_wounded">No, solo hay daños materiales</string>
+    <string name="policy_expired">Tu póliza ha caducado</string>
+    <string name="policy_expired_desc">Debes actualizar la fecha de caducidad de tu póliza para que podamos ponerte en contacto con tu aseguradora</string>
+    <string name="incidence_tip_lights">Activa las luces de emergencia</string>
+    <string name="incidence_tip_vest">Ponte el chaleco reflectante</string>
+    <string name="incidence_tip_exit_car">En el caso de salir del coche, hazlo por el lado más seguro</string>
+    <string name="incidence_tip_beacon">Enciende tu baliza en modo destello</string>
+    <string name="policy_update">Actualizar póliza</string>
+    <string name="ask_fault">¿Cuál es tu avería? Selecciona la opción que explique tu situación</string>
+    <string name="ask_fault_simple">¿Cuál es tu avería?</string>
+    <string name="fault_car_not_on">El coche no arranca</string>
+    <string name="fault_battery">Batería</string>
+    <string name="fault_flat">Pinchazo</string>
+    <string name="fault_car_not_fuel">No tengo combustible</string>
+    <string name="fault_other">No lo sé / Otros</string>
+    <string name="fault_fallo_mecanico">Fallo mecánico</string>
+    <string name="fault_fallo_motor">Fallo del motor</string>
+    <string name="fault_fallo_electrico">Fallo eléctrico</string>
+    <string name="fault_fallo_no_identifico">No identifico el problema</string>
+    <string name="fault_fallo_title">%1s, ¿podrías identificar la avería entre las siguientes opciones?</string>
+    <string name="ask_valoration">¿Estás satisfecho con el servicio de asistencia de Incidence?</string>
+    <string name="calling_grua_tip">Estamos llamando a la grúa para solucionar tu incidencia. Mientras tanto, recuerda:</string>
+    <string name="valorate_later">Valorar más tarde</string>
+    <string name="send_valoration">Enviar valoración</string>
+    <string name="ask_valoration_comment">Añade algún comentario que quieras hacer sobre tu experiencia:</string>
+    <string name="write_comment">Escribe aquí tu comentario...</string>
+    <string name="return_to_init">Volver al inicio</string>
+    <string name="thanks_for_valoration">¡Muchas gracias por tu valoración!</string>
+    <string name="your_opinion_important">Tu opinión nos ayuda a mejorar el servicio que ofrecemos.</string>
+    <string name="ask_valoration_why_bad">¿Por qué no estás satisfecho/a con el servicio? Puedes seleccionar varias opciones</string>
+    <string name="specify_reason">Especifica el motivo:</string>
+    <string name="write_here">Escribe aquí...</string>
+    <string name="valoration_bad_spec_one">El servicio de asistencia técnica</string>
+    <string name="valoration_bad_spec_two">La aplicación Incidence</string>
+    <string name="valoration_bad_spec_three">El tiempo de espera</string>
+    <string name="valoration_bad_spec_other">Otros</string>
+    <string name="service_valoration">Valoración del servicio</string>
+    <string name="your_insurance_contact_you">Tu aseguradora se pondrá en contacto contigo en unos minutos:</string>
+    <string name="ask_report_choose_vehicle">¿Podrías indicarnos con qué vehículo has sufrido la avería?</string>
+    <string name="ask_report_choose_vehicle_simple">¿Con qué vehículo viajas?</string>
+    <string name="title_assist_coming">La asistencia está de camino</string>
+    <string name="subtitle_assist_coming">Hora estimada de llegada %1s</string>
+    <string name="make_valoration">Dar valoración</string>
+    <string name="title_assist_finished">La grúa ha llegado con éxito</string>
+    <string name="subtitle_assist_finished">Esperamos que recibas la asistencia adecuada</string>
+    <string name="contact_grua">Contactar con la grúa</string>
+    <string name="contact_grua_cancel">Cancelar asistencia</string>
+    <string name="alert_error_ws_connection">No hay conexión a internet</string>
+    <string name="alert_error_ws">Se ha producido un error</string>
+    <string name="confirm_address">Confirmar dirección</string>
+    <string name="alert_inform_name">Debes informar el nombre</string>
+    <string name="alert_inform_email">Debes informar el correo electrónico</string>
+    <string name="alert_inform_dni">Debes informar el documento de identidad</string>
+    <string name="alert_no_internet">Sin conexión a Internet</string>
+    <string name="alert_no_internet_message">Espera unos segundos o llama a tu aseguradora si estás en una emergencia</string>
+    <string name="call_my_insurance">Llamar a mi aseguradora</string>
+    <string name="beacon_notif_title">Buscando dispositivo vinculado</string>
+    <string name="beacon_notif_subtitle">Mantén el Bluetooth y la localización encendidos</string>
+    <string name="call_to">Llamar al %1s</string>
+    <string name="ask_beacon_activated">¿Has activado tu baliza?</string>
+    <string name="ask_beacon_activated_desc">Haz click aquí para acceder directamente a la aplicación y reportar una incidencia</string>
+    <string name="insurance_not_found_desc">Tu aseguradora no aparece dentro del listado pero puedes añadirla manualmente</string>
+    <string name="new_insurance">Nueva aseguradora</string>
+    <string name="add_insurance">Añadir aseguradora</string>
+    <string name="alert_must_add_insurance">Debes añadir una aseguradora al vehículo</string>
+    <string name="version_app">Versión app</string>
+    <string name="wish_continue">¿Deseas continuar?</string>
+    <string name="no_saved_changes">No has guardado los cambios realizados</string>
+    <string name="save_and_close">Guardar y volver/cerrar</string>
+    <string name="no_save">No guardar</string>
+    <string name="buy_beacon">Comprar baliza</string>
+    <string name="your_incidence_reported">¡Tu incidencia ha sido reportada!</string>
+    <string name="your_incidence_reported_desc">Esperamos que recibas la asistencia adecuada</string>
+    <string name="close_incidence">Cerrar incidencia</string>
+    <string name="incidence_wish_good">¡Esperamos que todo haya ido bien!</string>
+    <string name="incidence_wish_good_desc">Ayúdanos a mejorar el servicio valorando tu experiencia</string>
+    <string name="loading">Cargando...</string>
+    <string name="incidence_in">en</string>
+    <string name="cancel_incidence">Cancelar incidencia</string>
+    <string name="driver_primary">Conductor principal</string>
+    <string name="driver_secondary">Conductor secundario</string>
+    <string name="select_type_driver">Selecciona tipo de conductor</string>
+    <string name="ask_you_are_this_vehicle_driver">¿Eres conductor de este vehículo?</string>
+    <string name="ask_you_are_this_vehicle_driver_desc">Este vehículo ya ha sido añadido por otro usuario</string>
+    <string name="ask_you_are_this_vehicle_driver_yes">Si, también soy conductor</string>
+    <string name="ask_you_are_this_vehicle_driver_no">No, introducir otra matrícula</string>
+    <string name="ask_type_driver_you_are">¿Qué tipo de conductor eres?</string>
+    <string name="ask_you_are_driver_primary">¿Eres el conductor principal?</string>
+    <string name="ask_you_are_driver_primary_desc">Hay otro usuario como conductor principal. Solicita sustituirlo por ti.</string>
+    <string name="i_am_driver_primary">Soy el conductor principal</string>
+    <string name="ask_you_are_driver_secondary">¿Eres conductor secundario?</string>
+    <string name="ask_you_are_driver_secondary_desc">Debes esperar a que el conductor principal valide tu solicitud para ser conductor secundario del vehículo</string>
+    <string name="validate_driver_primary">Valida al nuevo conductor principal</string>
+    <string name="validate_driver_primary_desc">%1s ha solicitado sustituirte como conductor principal del vehículo %1s\n\nSi aceptas se compartirán los datos del seguro y la baliza con él, y tú ya no podrás editarlos</string>
+    <string name="validate">Validar</string>
+    <string name="no_validate">No validar</string>
+    <string name="validate_driver_secondary">Valida al conductor secundario</string>
+    <string name="validate_driver_secondary_desc">%1s ha solicitado ser conductor secundario de tu vehículo %1s\n\nSi aceptas se compartirán los datos del seguro y la baliza con él</string>
+    <string name="alert_bluetooth_title">Activar el bluetooth</string>
+    <string name="alert_bluetooth_message">Es necesario que actives el bluetooth para sincronizar la baliza del vehículo con tu teléfono</string>
+    <string name="alert_bluetooth_btn_activate">Activar bluetooth</string>
+    <string name="alert_no_location_to_report">No podremos detectar tu posición en caso de incidencia</string>
+    <string name="alert_no_location_to_beacon">No podremos detectar la activación de tu baliza</string>
+    <string name="select_beacon_type">Elige el dispositivo que necesitas vincular</string>
+    <string name="select_beacon_type_bluetooth">Bluetooth</string>
+    <string name="select_beacon_type_qr">Lectura de QR</string>
+    <string name="select_beacon_type_smart">Smart</string>
+    <string name="select_beacon_type_iot">IoT</string>
+    <string name="select_beacon_type_qr_info">¿Dónde encuentro el QR de mi baliza?</string>
+    <string name="select_beacon_imei">IMEI</string>
+    <string name="select_beacon_imei_info">Podras escribir tu IMEI manualmente para configurar tu baliza</string>
+    <string name="lang_spanish">Español</string>
+    <string name="lang_english">English</string>
+    <string name="one">Uno</string>
+    <string name="two">Dos</string>
+    <string name="three">Tres</string>
+    <string name="four">Cuatro</string>
+    <string name="five">Cinco</string>
+    <string name="six" >Seis</string>
+    <string name="seven">Siete</string>
+    <string name="eight">Ocho</string>
+    <string name="nine">Nueve</string>
+    <string name="not_understand_voice">Perdona, no te he entendido</string>
+    <string name="alert_need_audio_permission_description">Es necesario el microfono para reportar tu incidencia por voz</string>
+    <string name="alert_llamada_emergencias">En %1d segundos llamaremos a Emergencias.</string>
+    <string name="qr_desc">Aleje la cámara al QR de su dispositivo</string>
+    <string name="validate_device">Comprobar tu baliza</string>
+    <string name="start_device">Enciende tu baliza y te mostraremos la fecha de caducidad, estado de la batería e incidencias comunicadas</string>
+    <string name="start_device_without_network">Sin red</string>
+    <string name="start_device_without_network_desc">Tu baliza parece no haber encontrado red para comunicar; por favor, apágala y vuelve a encenderla</string>
+    <string name="return_back">Volver</string>
+    <string name="stop_device">Apaga tu baliza</string>
+    <string name="stop_device_desc">Apaga tu baliza y así no notifica a la DGT</string>
+    <string name="device_desc_info1">Levante y retire la tapa presionando sobre el clip de anclaje de la misma.\nUtilice siempre pilas alcalinas tipo LR6 (AA).</string>
+    <string name="device_desc_info2"> La caja portapila está diseñada para que las pilas se coloquen en serie en una única posición. Si no consigue colocarlas o no entran correctamente, por favor fíjese en la posición y marcado de los bornes, y repita la operación.</string>
+    <string name="device_desc_info3">Una vez haya montado las nuevas pilas introduzca la tapa de nuevo colocándola como en el esquema, encaje, y presione hasta oír clic.Verifique que su equipo funciona correctamente</string>
+    <string name="device_desc_info_finish">Finalizar</string>
+    <string name="device_expiration">Fecha de caducidad</string>
+    <string name="device_battery_status">Estado de la batería</string>
+    <string name="alert_new_incidence_title">¿Tienes una incidencia real?</string>
+    <string name="alert_new_incidence_subtitle">Tu baliza ya ha notificado a la DGT tu detención en la vía</string>
+    <string name="faqs_url">https://soporte.incidence.eu/hc/en-gb</string>
+    <string name="imei_code_title">Teclea tu IMEI</string>
+    <string name="imei_code_subtitle">Introduce tu IMEI manualmente para sincronizar tu baliza</string>
+    <string name="ecommerce_subtitle">IVA y ENVÍO incluidos</string>
+    <string name="calling_emergency">Procedemos a llamar a emergencias</string>
+    <string name="turn_up_volume">Sube el volumen</string>
+    <string name="please_turn_up_volume">Por favor sube el volumen de tu dispositivo</string>
+    <string name="alert_llamada_emergencias_title">Aviso a emergencias</string>
+    <string name="alert_llamada_emergencias_subtitle">Has iniciado una incidencia.</string>
+
+    <string name="app_selector_textfield_placeholder">Votre  code</string>
+    <string name="app_selector_title">Entrez votre code ici</string>
+    <string name="app_selector_button_qr">Scanner QR</string>
+    <string name="app_selector_button_send">Envoyer</string>
+    <string name="action_accept">Oui</string>
+    <string name="action_denied">Non</string>
+    <string name="ws_response_default_cancel_button">Annuler</string>
+    <string name="button_retry">Réessayez</string>
+    <string name="error">Erreur</string>
+    <string name="empty"></string>
+    <string name="button_close">Fermer</string>
+    <string name="onboarding_button_start">DÉBUT</string>
+    <string name="ws_response_default_error_description">Une erreur s\'est produite</string>
+    <string name="default_empty_ws_response_subtitle">Faites à nouveau la demande pour actualiser les données</string>
+    <string name="default_error_ws_response_button">Réessayer</string>
+    <string name="default_empty_ws_response_title">Aucun résultat trouvé</string>
+    <string name="app_update_alert_message">L\'application a été mise à jour</string>
+    <string name="about_us_title">À propos de</string>
+    <string name="share_title">Partager</string>
+
+    <!-- Notificaciones -->
+    <string name="default_notification_channel_id">notifications</string>
+    <string name="default_notification_channel_name">Notifications</string>
+    <string name="default_notification_channel_description">notifications</string>
+
+    <!-- Messages webview -->
+    <string name="the_certificate_authority_is_not_trusted">Certificat non fiable</string>
+    <string name="the_certificate_has_expired">Le certificat a expiré</string>
+    <string name="the_certificate_hostname_mismatch">Certificate incompatible with the host</string>
+    <string name="the_certificate_is_not_yet_valid">Certificat incompatible avec l\'hôte</string>
+    <string name="do_you_want_to_continue_anyway">Le certificat n\'est pas encore valide</string>
+    <string name="ssl_certificate_error">Erreur de certificat SSL</string>
+
+    <!-- Dates -->
+    <string name="date_now">Maintenant</string>
+    <string name="date_seconds_ago">Il y a %1 secondes</string>
+    <string name="date_minutes_ago">%1 minutes ago</string>
+    <string name="date_hours_ago">Il y a %1 heures</string>
+    <string name="date_days_ago">Il y a %1 jours</string>
+    <string name="one_hour_ago">Il ya 1 heure</string>
+    <string name="one_minute_ago">Il y a 1 minute</string>
+    <string name="now">Maintenant</string>
+    <string name="yesterday">Hier</string>
+
+    <string name="ws_response_default_ok_button">OK</string>
+</resources>

@@ -1,0 +1,3 @@
+rootProject.name = "IncidenceLibraryAndroid"
+include ':app'
+include ':incidenceLibrary'

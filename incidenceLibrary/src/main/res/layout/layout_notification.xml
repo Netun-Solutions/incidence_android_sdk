@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal" android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/rounded_bottom_shadow">
+
+    <com.e510.commons.view.CircleImageView
+        android:id="@+id/notif_image"
+        android:layout_width="55dp"
+        android:layout_height="55dp"
+        android:padding="6dp"
+        android:src="@drawable/placeholder"
+        android:layout_marginLeft="@dimen/activity_horizontal_margin"
+        android:layout_gravity="center_vertical"
+        android:layout_marginTop="12dp"
+        android:layout_marginBottom="12dp"/>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+        android:layout_marginLeft="@dimen/activity_horizontal_margin"
+        android:layout_marginRight="@dimen/activity_horizontal_margin"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp">
+
+        <TextView
+            android:id="@+id/notif_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:lines="1"
+            android:textColor="@android:color/black"
+            android:textSize="17sp"
+            android:text="@string/empty"/>
+
+        <TextView
+            android:layout_below="@+id/notif_title"
+            android:id="@+id/notif_subtitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:maxLines="2"
+            android:textColor="@color/darkGray"
+            android:textSize="14sp"
+            android:text="@string/empty"/>
+
+    </RelativeLayout>
+
+</LinearLayout>

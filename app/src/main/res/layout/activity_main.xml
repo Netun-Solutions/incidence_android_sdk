@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".MainActivity"
+    android:padding="@dimen/activity_horizontal_margin">
+
+    <TextView
+        android:id="@+id/title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Incidence SDK Demo APP"
+        android:textAlignment="center"
+         />
+
+    <!--<Button
+        android:id="@+id/btnDeviceList"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/activity_horizontal_margin"
+        android:text="Device List"
+        app:layout_constraintBottom_toBottomOf="@+id/title"
+        />-->
+
+    <Button
+        android:id="@+id/btnDeviceCreate"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/activity_horizontal_margin"
+        android:text="Vincular baliza"
+        app:layout_constraintBottom_toBottomOf="@+id/title"
+        />
+
+    <Button
+        android:id="@+id/btnDeviceDelete"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/activity_horizontal_margin"
+        android:text="Desvincular baliza"
+        app:layout_constraintBottom_toBottomOf="@+id/btnDeviceCreate"
+        />
+
+    <Button
+        android:id="@+id/btnDeviceReview"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/activity_horizontal_margin"
+        android:text="Comprobar baliza"
+        app:layout_constraintBottom_toBottomOf="@+id/btnDeviceDelete"
+        />
+
+    <Button
+        android:id="@+id/btnIncidenceCreate"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/activity_horizontal_margin"
+        android:text="Crear incidencia"
+        app:layout_constraintBottom_toBottomOf="@+id/btnDeviceReview"
+        />
+
+    <Button
+        android:id="@+id/btnIncidenceClose"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/activity_horizontal_margin"
+        android:text="Cerrar incidencia"
+        app:layout_constraintBottom_toBottomOf="@+id/btnIncidenceCreate"
+        />
+
+    <Button
+        android:id="@+id/btnEcommerce"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/activity_horizontal_margin"
+        android:text="Ecommerce"
+        app:layout_constraintBottom_toBottomOf="@+id/btnIncidenceClose"
+        />
+
+</LinearLayout>

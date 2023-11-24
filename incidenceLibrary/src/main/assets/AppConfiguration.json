@@ -1,0 +1,68 @@
+{
+    "name": "IncidenceAPP",
+    "urlTerms": "",
+    "version": "1",
+    "registerDevice": "0",
+    "pushNotifications": "1",
+    "coin": "€",
+    "welcome":[],
+    "initial": {
+        "id": "menu",
+        "start": ""
+    },
+    "initialWithoutUser": {
+        "id": "menu",
+        "start": "",
+        "title": ""
+    },
+    "modules": {
+    },
+    "menu": {
+        "type": "side",
+        "selectedIndex": "0",
+        "homeImage": "",
+        "items": []
+    },
+    "appearance": {
+        "colors": {
+            "primary": "004FFF",
+            "primaryDark": "05349C",
+            "secondary": "00FFFF",
+            "splash": "004FFF",
+            "navigationBar": "004FFF",
+            "navigationTitle": "FFFFFF",
+            "menu": "004FFF",
+            "menuText": "FFFFFF",
+            "menuMoreText": "FFFFFF",
+            "shopBadge": "ae0f17",
+            "homeNotification": "000000",
+            "homeNotificationBackground": "",
+            "productHashtags": "ae0f17"
+        },
+        "fonts": {
+            "type": {
+                "primaryFont": {
+                    "light": "Silka-Light",
+                    "medium": "Silka-Medium",
+                    "regular": "Silka-Regular",
+                    "bold": "Silka-Bold"
+                },
+                "secondaryFont": {
+                    "light": "Silka-Light",
+                    "medium": "Silka-Medium",
+                    "regular": "Silka-Regular",
+                    "bold": "Silka-Bold"
+                }
+            }
+        },
+        "borderFields": "0",
+        "roundedFields": "4",
+        "roundedRegisterForm": "4",
+        "roundedImages": "12",
+        "statusBar": "lightContent",
+        "logo": "",
+        "icon": "",
+        "splashBackground": "",
+        "splashIcon": ""
+    }
+}

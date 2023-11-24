@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_alignParentRight="true"
+        android:id="@+id/layoutIconsRight">
+        <RelativeLayout
+            android:id="@+id/txtCloseEditText"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_centerVertical="true"
+            android:clickable="true"
+            android:visibility="gone">
+
+            <ImageView
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:layout_centerVertical="true"
+                android:src="@drawable/textfield_clear"/>
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/txtOk"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_centerVertical="true"
+            android:visibility="gone">
+
+            <ImageView
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:layout_centerVertical="true"
+                android:src="@drawable/textfield_ok"
+                android:id="@+id/imgOk"/>
+
+        </RelativeLayout>
+    </RelativeLayout>
+
+
+    <TextView
+        android:layout_toLeftOf="@+id/layoutIconsRight"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/txtLabel"
+        android:textSize="12sp"
+        android:layout_marginRight="8dp"
+        android:layout_marginBottom="6dp"
+        android:visibility="gone"/>
+
+    <com.e510.commons.view.VXEditText
+        android:layout_toLeftOf="@+id/layoutIconsRight"
+        android:layout_below="@+id/txtLabel"
+        android:id="@+id/txtInput"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="8dp"
+        android:textSize="16sp"
+        android:lineHeight="26dp"
+        android:textColor="@android:color/black"
+        android:textColorHint="@color/gray"
+        android:inputType="text"
+        android:singleLine="true"
+        android:background="@android:color/transparent"/>
+
+</RelativeLayout>

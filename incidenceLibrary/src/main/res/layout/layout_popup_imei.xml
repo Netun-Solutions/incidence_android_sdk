@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_centerInParent="true"
+    android:id="@+id/popupContainer"
+    android:focusable="true">
+
+    <View android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#303030"
+        android:alpha="0.4"
+        android:clickable="true"
+        android:id="@+id/popupContainerBackground"/>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/margin_normal"
+        android:background="@drawable/rounded_popup_background"
+        android:layout_centerInParent="true"
+        android:id="@+id/popupContainerView"
+        android:clickable="true">
+
+        <ImageView
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:src="@drawable/icon_close_black"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="@dimen/margin_normal"
+            android:layout_marginTop="@dimen/margin_normal"
+            android:id="@+id/imgClosePopupImei"/>
+
+
+        <TextView
+            android:layout_toLeftOf="@+id/imgClosePopupImei"
+            android:id="@+id/txtTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@android:color/black"
+            android:textSize="16sp"
+            android:lineHeight="26dp"
+            android:text="@string/imei_code_title"
+            android:layout_marginLeft="@dimen/margin_normal"
+            android:layout_marginRight="@dimen/margin_normal"
+            android:layout_marginTop="@dimen/margin_normal"
+            android:layout_marginBottom="@dimen/margin_normal"/>
+
+        <TextView
+            android:layout_below="@+id/txtTitle"
+            android:id="@+id/txtSubTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@android:color/black"
+            android:textSize="16sp"
+            android:lineHeight="26dp"
+            android:text="@string/imei_code_subtitle"
+            android:layout_marginLeft="@dimen/margin_normal"
+            android:layout_marginRight="@dimen/margin_normal"
+            android:layout_marginBottom="@dimen/margin_normal"/>
+
+        <es.incidence.core.utils.view.IField
+            android:layout_below="@+id/txtSubTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/margin_normal"
+            android:layout_marginRight="@dimen/margin_normal"
+            android:layout_marginBottom="@dimen/margin_normal"
+            android:id="@+id/fieldImei"/>
+
+        <es.incidence.core.utils.view.IButton
+            android:layout_below="@+id/fieldImei"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/button_height"
+            android:layout_marginTop="@dimen/margin_normal"
+            android:layout_marginBottom="@dimen/margin_normal"
+            android:layout_marginLeft="@dimen/margin_normal"
+            android:layout_marginRight="@dimen/margin_normal"
+            android:id="@+id/btnBlue"
+            app:topTitle="@string/continuar"
+            />
+
+
+    </RelativeLayout>
+</RelativeLayout>

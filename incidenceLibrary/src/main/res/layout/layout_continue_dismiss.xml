@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <es.incidence.core.utils.view.IButton
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/button_height"
+        android:layout_marginLeft="@dimen/margin_normal"
+        android:layout_marginRight="@dimen/margin_normal"
+        android:id="@+id/btnContinueColor"
+        app:topTitle="@string/continuar"/>
+
+    <TextView
+        android:layout_below="@+id/btnContinueColor"
+        android:id="@+id/txtAddLater"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/add_later"
+        android:textColor="@color/incidence500"
+        android:textSize="16sp"
+        android:lineHeight="20dp"
+        android:layout_marginTop="40dp"
+        android:layout_marginLeft="@dimen/margin_normal"
+        android:layout_marginRight="@dimen/margin_normal"
+        android:gravity="center"/>
+
+    <View
+        android:layout_below="@+id/txtAddLater"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/margin_normal_double"
+        android:id="@+id/viewMargin"/>
+
+
+</RelativeLayout>

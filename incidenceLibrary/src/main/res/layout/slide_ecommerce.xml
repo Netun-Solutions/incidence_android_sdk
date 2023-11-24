@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:clickable="true">
+
+    <ScrollView
+        android:id="@+id/layoutCardEcom"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="80dp"
+        android:scrollbars="none"
+        android:layout_marginLeft="@dimen/margin_normal"
+        android:layout_marginRight="@dimen/margin_normal">
+        <!--android:layout_marginLeft="6dp"
+        android:layout_marginRight="6dp"> -->
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/txtSlideTitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/black600"
+                android:textSize="24sp"
+                android:lineHeight="34dp"
+                app:autoSizeTextType="uniform"
+                app:autoSizeMaxTextSize="48sp"
+                app:autoSizeMinTextSize="11sp"
+                android:layout_marginTop="130dp"
+                android:layout_marginLeft="@dimen/margin_normal"
+                android:layout_marginRight="@dimen/margin_normal"
+                android:gravity="center"/>
+
+            <TextView
+                android:id="@+id/txtSlideSubtitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/black500"
+                android:textSize="14sp"
+                android:layout_marginTop="@dimen/margin_normal"
+                android:layout_marginLeft="@dimen/margin_normal"
+                android:layout_marginRight="@dimen/margin_normal"/>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/grey300"
+                android:layout_marginLeft="@dimen/margin_normal"
+                android:layout_marginRight="@dimen/margin_normal"
+                android:layout_marginTop="@dimen/margin_normal_medium"
+                android:id="@+id/cardLine"/>
+
+            <TextView
+                android:id="@+id/txtSlidePrice"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/black600"
+                android:gravity="center"
+                android:textSize="24sp"
+                android:lineHeight="34dp"
+                android:layout_marginTop="@dimen/margin_normal_medium"
+                android:layout_marginLeft="@dimen/margin_normal"
+                android:layout_marginRight="@dimen/margin_normal"/>
+
+        <LinearLayout
+            android:id="@+id/txtSlidePriceOffer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="@dimen/margin_normal"
+            android:layout_marginLeft="@dimen/margin_normal"
+            android:layout_marginRight="@dimen/margin_normal">
+                <TextView
+                    android:id="@+id/txtSlidePriceOld"
+                    android:layout_width="match_parent"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/black600"
+                    android:gravity="right"
+                    android:textSize="18sp"
+                    android:text="23"
+                    android:layout_gravity="center"
+                    android:layout_marginRight="6dp"/>
+                <TextView
+                    android:id="@+id/txtSlidePriceNew"
+                    android:layout_width="match_parent"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/colorPrimary"
+                    android:gravity="left|top"
+                    android:textSize="32sp"
+                    android:text="50"
+                    android:layout_marginLeft="6dp"/>
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/txtSlidePriceSubtext"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="@dimen/margin_normal"
+                android:textColor="@color/black500"
+                android:textSize="12sp"
+                android:gravity="right"
+                android:text="@string/ecommerce_subtitle"/>
+
+        </LinearLayout>
+
+    </ScrollView>
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="180dp"
+        android:scaleType="fitCenter"
+        android:id="@+id/imgView"
+        android:layout_marginLeft="@dimen/margin_normal_double"
+        android:layout_marginRight="@dimen/margin_normal_double"/>
+
+</RelativeLayout>

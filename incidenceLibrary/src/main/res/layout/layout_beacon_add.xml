@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:clickable="true"
+    android:id="@+id/layoutRoot"
+    android:background="@color/incidence100">
+
+    <RelativeLayout
+        android:id="@+id/layoutHeader"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/margin_normal"
+        android:layout_marginRight="@dimen/margin_normal"
+        android:layout_marginTop="40dp">
+
+        <TextView
+            android:id="@+id/txtTitleHeaderVehicle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/black600"
+            android:textSize="20sp"
+            android:lineHeight="30dp"
+            android:text="@string/sms_introduce"
+            android:gravity="center"
+            android:layout_marginBottom="14dp"
+            android:visibility="gone"
+            />
+
+        <TextView
+            android:layout_below="@+id/txtTitleHeaderVehicle"
+            android:id="@+id/txtHeaderVehicle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/black600"
+            android:textSize="16sp"
+            android:lineHeight="26dp"
+            android:text="@string/turn_on_beacon_flash"
+            android:gravity="center" />
+
+    </RelativeLayout>
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/layoutHeader"
+        android:src="@drawable/background_beacon"
+        android:id="@+id/imgBackground">
+
+    </ImageView>
+
+    <RelativeLayout android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/layoutHeader"
+        android:id="@+id/layoutLoading"
+        android:visibility="gone">
+        <androidx.core.widget.ContentLoadingProgressBar
+            android:theme="@style/ContentLoadingProgress"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            style="?android:attr/progressBarStyleLarge"
+            android:layout_centerInParent="true"/>
+    </RelativeLayout>
+
+    <ImageView
+        android:layout_centerVertical="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="@dimen/margin_normal_double"
+        android:layout_width="87dp"
+        android:layout_height="87dp"
+        android:src="@drawable/beacon_with_background"
+        android:id="@+id/imgBeacon"
+        android:visibility="gone"/>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/margin_normal_double"
+        android:layout_alignParentBottom="true"
+        android:id="@+id/viewMargin"/>
+
+    <TextView
+        android:id="@+id/txtOmitir"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/viewMargin"
+        android:layout_marginLeft="@dimen/margin_normal"
+        android:layout_marginTop="40dp"
+        android:layout_marginRight="@dimen/margin_normal"
+        android:gravity="center"
+        android:lineHeight="20dp"
+        android:text="@string/omitir"
+        android:textColor="@color/incidence500"
+        android:textSize="16sp" />
+
+    <es.incidence.core.utils.view.IButton
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/button_height"
+        android:layout_marginLeft="@dimen/margin_normal"
+        android:layout_marginRight="@dimen/margin_normal"
+        android:id="@+id/btnContinueBeacon"
+        app:topTitle="@string/search_again"
+        android:layout_above="@+id/txtOmitir"/>
+
+
+    <ScrollView
+        android:visibility="gone"
+        android:id="@+id/layoutInfo"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/btnContinueBeacon"
+        android:layout_below="@id/layoutHeader"
+        android:layout_marginTop="@dimen/margin_normal"
+        android:layout_marginBottom="@dimen/margin_normal">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="@dimen/margin_normal"
+            android:layout_marginRight="@dimen/margin_normal">
+
+            <RelativeLayout
+                android:id="@+id/layoutIn"
+                android:layout_width="180dp"
+                android:layout_height="180dp"
+                android:background="@drawable/ellipse"
+                android:layout_centerHorizontal="true"
+                android:layout_marginBottom="@dimen/margin_normal">
+                <ImageView
+                    android:layout_width="68dp"
+                    android:layout_height="68dp"
+                    android:layout_centerInParent="true"
+                    android:src="@drawable/beacon_icon_smart"
+                    android:id="@+id/imgIn"/>
+
+            </RelativeLayout>
+
+            <TextView
+                android:layout_below="@+id/layoutIn"
+                android:id="@+id/txtInfoTitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/black600"
+                android:textSize="16sp"
+                android:lineHeight="20dp"
+                android:text="@string/beacon_sync_success"
+                android:gravity="center"
+                android:layout_marginTop="@dimen/margin_normal"/>
+
+            <TextView
+                android:layout_marginTop="@dimen/margin_normal"
+                android:layout_below="@+id/txtInfoTitle"
+                android:id="@+id/txtInfoSubtitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/black500"
+                android:textSize="16sp"
+                android:lineHeight="20dp"
+                android:text="@string/beacon_sync_success_desc"
+                android:gravity="center" />
+
+
+
+        </RelativeLayout>
+
+
+    </ScrollView>
+
+
+
+</RelativeLayout>

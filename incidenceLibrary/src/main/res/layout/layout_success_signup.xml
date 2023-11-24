@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/layoutSuccessSignUp"
+    android:clickable="true"
+    android:background="@color/incidencePrincipal">
+
+
+    <com.e510.commons.view.SquareRelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true">
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="fitEnd"
+            android:paddingLeft="200dp"
+            android:src="@drawable/ellipse_middle" />
+
+    </com.e510.commons.view.SquareRelativeLayout>
+
+    <es.incidence.core.utils.view.IButton
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/button_height"
+        android:layout_marginLeft="@dimen/margin_normal"
+        android:layout_marginRight="@dimen/margin_normal"
+        android:id="@+id/btnSuccessSignUp"
+        app:topTitle="@string/go_home"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="@dimen/margin_normal_triple"/>
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/btnCreate">
+
+        <TextView
+            android:layout_marginLeft="@dimen/margin_normal"
+            android:layout_marginRight="@dimen/margin_normal"
+            android:id="@+id/txtHeader"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@android:color/white"
+            android:textSize="34sp"
+            android:lineHeight="44dp"
+            android:gravity="center"
+            android:layout_marginBottom="64dp"
+            android:text="@string/success_create_your_account"
+            android:layout_above="@+id/layoutstep1"/>
+
+        <RelativeLayout
+            android:id="@+id/layoutstep2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="40dp"
+            android:layout_marginLeft="45dp"
+            android:layout_marginRight="45dp"
+            android:layout_centerVertical="true">
+
+            <ImageView
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:src="@drawable/circle_check"
+                android:id="@+id/txtStep2check"/>
+
+            <TextView
+                android:layout_toRightOf="@+id/txtStep2check"
+                android:layout_marginLeft="16dp"
+                android:id="@+id/txtStep2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@android:color/white"
+                android:textSize="18sp"
+                android:lineHeight="28dp"
+                android:text="@string/create_account_step2"
+                android:layout_centerVertical="true"/>
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="45dp"
+            android:layout_marginRight="45dp"
+            android:id="@+id/layoutstep1"
+            android:layout_above="@+id/layoutstep2">
+
+            <ImageView
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:src="@drawable/circle_check"
+                android:id="@+id/txtStep1check"/>
+
+            <TextView
+                android:layout_toRightOf="@+id/txtStep1check"
+                android:layout_marginLeft="16dp"
+                android:id="@+id/txtStep1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@android:color/white"
+                android:textSize="18sp"
+                android:lineHeight="28dp"
+                android:text="@string/create_account_step1"
+                android:layout_centerVertical="true"/>
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/layoutstep3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="40dp"
+            android:layout_marginLeft="45dp"
+            android:layout_marginRight="45dp"
+            android:layout_below="@+id/layoutstep2">
+
+
+            <ImageView
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:src="@drawable/circle_check"
+                android:id="@+id/txtStep3check"/>
+
+            <TextView
+                android:layout_toRightOf="@+id/txtStep3check"
+                android:layout_marginLeft="16dp"
+                android:id="@+id/txtStep3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@android:color/white"
+                android:textSize="18sp"
+                android:lineHeight="28dp"
+                android:text="@string/create_account_step3"
+                android:layout_centerVertical="true"/>
+
+        </RelativeLayout>
+
+    </RelativeLayout>
+
+</RelativeLayout>

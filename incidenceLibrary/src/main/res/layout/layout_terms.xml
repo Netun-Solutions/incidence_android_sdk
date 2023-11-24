@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:clickable="true"
+    android:id="@+id/layoutRoot"
+    android:background="@color/incidence100">
+
+    <RelativeLayout
+        android:id="@+id/layoutBtn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:background="@android:color/white">
+
+        <es.incidence.core.utils.view.IButton
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/button_height"
+            android:layout_marginTop="@dimen/margin_normal"
+            android:layout_marginLeft="@dimen/margin_normal"
+            android:layout_marginRight="@dimen/margin_normal"
+            android:layout_marginBottom="@dimen/margin_normal"
+            android:id="@+id/btnAccept"
+            app:topTitle="@string/acepto"
+            />
+    </RelativeLayout>
+
+
+    <ScrollView
+        android:layout_above="@+id/layoutBtn"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginLeft="@dimen/margin_normal"
+            android:layout_marginRight="@dimen/margin_normal">
+
+            <TextView
+                android:id="@+id/txtSubtitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/black600"
+                android:textSize="16sp"
+                android:lineHeight="20dp"
+                android:text="Subtitle"
+                android:layout_marginTop="40dp"/>
+
+            <TextView
+                android:id="@+id/txtDescription"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/black600"
+                android:textSize="14sp"
+                android:lineHeight="24dp"
+                android:text="@string/terms_description"
+                android:layout_marginTop="16dp"/>
+
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/layoutcheck1"
+                android:layout_marginTop="34dp">
+
+                <ImageView
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:src="@drawable/checkbox_off"
+                    android:id="@+id/check1"/>
+
+                <TextView
+                    android:layout_toRightOf="@+id/check1"
+                    android:id="@+id/txtCheck1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/black500"
+                    android:textSize="14sp"
+                    android:lineHeight="24dp"
+                    android:layout_marginLeft="@dimen/margin_field"
+                    android:text="@string/terms_check1"/>
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/layoutcheck2"
+                android:layout_marginTop="34dp"
+                android:layout_marginBottom="@dimen/margin_normal_double">
+
+                <ImageView
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:src="@drawable/checkbox_off"
+                    android:id="@+id/check2"/>
+
+                <TextView
+                    android:layout_toRightOf="@+id/check2"
+                    android:id="@+id/txtCheck2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/black500"
+                    android:textSize="14sp"
+                    android:lineHeight="24dp"
+                    android:layout_marginLeft="@dimen/margin_field"
+                    android:text="@string/terms_check2"/>
+
+            </RelativeLayout>
+
+
+        </LinearLayout>
+    </ScrollView>
+
+
+
+
+
+</RelativeLayout>

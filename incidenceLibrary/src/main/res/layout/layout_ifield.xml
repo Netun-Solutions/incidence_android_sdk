@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content" >
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="64dp"
+        android:background="@android:color/white"
+        android:id="@+id/layoutRoot">
+
+        <ImageView
+            android:layout_width="26dp"
+            android:layout_height="26dp"
+            android:layout_marginLeft="@dimen/margin_field"
+            android:layout_centerVertical="true"
+            android:id="@+id/imgLeft"
+            android:visibility="gone"/>
+
+        <com.e510.commons.view.FloatLabeled.FloatEditText
+            android:layout_toRightOf="@+id/imgLeft"
+            android:id="@+id/textInputLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/margin_field"
+            android:layout_marginRight="@dimen/margin_field"/>
+
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/layoutClick"
+            android:background="@null"
+            android:visibility="gone"
+            android:clickable="true"/>
+
+    </RelativeLayout>
+
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:layout_marginLeft="@dimen/margin_field"
+        android:layout_marginRight="@dimen/margin_field"
+        android:textSize="12sp"
+        android:lineHeight="22dp"
+        android:textColor="@color/error"
+        android:layout_below="@+id/layoutRoot"
+        android:id="@+id/txtError"
+        android:visibility="invisible"/>
+
+</RelativeLayout>

@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <RelativeLayout
+        android:id="@+id/layoutParentRoot"
+        android:layout_width="match_parent"
+        android:layout_height="64dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@android:color/white"
+            android:id="@+id/layoutRoot"
+            android:orientation="horizontal"
+            android:weightSum="4">
+
+            <RelativeLayout
+                android:id="@+id/layoutDrop"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1">
+
+                <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_centerHorizontal="true">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/txtDrop"
+                        android:textSize="16sp"
+                        android:lineHeight="26dp"
+                        android:textColor="@color/black600"
+                        android:layout_centerVertical="true"
+                        />
+
+                    <ImageView
+                        android:layout_toRightOf="@+id/txtDrop"
+                        android:layout_width="24dp"
+                        android:layout_height="24dp"
+                        android:src="@drawable/drop_down_icon"
+                        android:layout_centerVertical="true"/>
+
+                </RelativeLayout>
+
+            </RelativeLayout>
+
+
+
+            <View
+                android:layout_width="1dp"
+                android:layout_height="match_parent"
+                android:background="@color/grey200"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="8dp"/>
+
+            <com.e510.commons.view.FloatLabeled.FloatEditText
+                android:id="@+id/textInputLayout"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="3"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="@dimen/margin_field"
+                android:layout_marginRight="@dimen/margin_field"/>
+
+        </LinearLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/layoutClick"
+            android:background="@null"
+            android:visibility="gone"
+            android:clickable="true"/>
+
+    </RelativeLayout>
+
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:layout_marginLeft="@dimen/margin_field"
+        android:layout_marginRight="@dimen/margin_field"
+        android:textSize="12sp"
+        android:lineHeight="22dp"
+        android:textColor="@color/error"
+        android:layout_below="@+id/layoutParentRoot"
+        android:id="@+id/txtError"
+        android:visibility="invisible"/>
+
+</RelativeLayout>

@@ -1,0 +1,78 @@
+plugins {
+    id 'com.android.library'
+    id 'maven-publish'
+}
+
+group = 'com.github.vimafe82'
+version = '1.0'
+
+android {
+    namespace 'com.e510.incidencelibrary'
+    compileSdkVersion 33
+
+    defaultConfig {
+        minSdkVersion 24
+        targetSdkVersion 33
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        consumerProguardFiles "consumer-rules.pro"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_11
+        targetCompatibility JavaVersion.VERSION_11
+    }
+}
+
+dependencies {
+
+    implementation 'androidx.appcompat:appcompat:1.6.1'
+    implementation 'com.google.android.material:material:1.5.0'
+    testImplementation 'junit:junit:4.13.2'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.5'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
+
+
+    implementation 'com.google.code.gson:gson:2.8.6'
+    implementation 'org.michaelbel:bottomsheet:1.2.3'
+    implementation 'dev.b3nedikt.restring:restring:5.1.2'
+    // Intercept view inflation
+    implementation 'dev.b3nedikt.viewpump:viewpump:4.0.7'
+    // Allows to update the text of views at runtime without recreating the activity
+    implementation 'dev.b3nedikt.reword:reword:4.0.1'
+    implementation "com.amitshekhar.android:jackson-android-networking:1.0.2"
+    api 'org.greenrobot:eventbus:3.3.1'
+    implementation 'net.yslibrary.keyboardvisibilityevent:keyboardvisibilityevent:3.0.0-RC2'
+    implementation 'com.github.bumptech.glide:glide:4.11.0'
+    annotationProcessor 'com.github.bumptech.glide:compiler:4.11.0'
+    implementation 'com.github.douglasjunior:android-simple-tooltip:1.0.0-rc.0'
+    implementation "androidx.percentlayout:percentlayout:1.0.0"
+    implementation 'com.google.android.gms:play-services-location:17.0.0'
+    implementation 'com.github.yuriy-budiyev:code-scanner:2.1.2'
+    //implementation 'org.altbeacon:android-beacon-library:2.19.5'
+    implementation 'com.mapbox.mapboxsdk:mapbox-android-sdk:9.2.1'
+    implementation 'com.mapbox.mapboxsdk:mapbox-sdk-services:5.8.0'
+    implementation "com.mapbox.search:mapbox-search-android-ui:1.0.0-beta.20"
+    api "com.github.JakeWharton:ViewPagerIndicator:2.4.1"
+}
+
+// Because the components are created only during the afterEvaluate phase, you must
+// configure your publications using the afterEvaluate() lifecycle method.
+afterEvaluate {
+    publishing {
+        publications {
+            release(MavenPublication) {
+                from components.release
+                groupId = 'com.github.vimafe82'
+                artifactId = 'IncidenceLibraryAndroid'
+                version = "0.0.4"
+            }
+        }
+    }
+}

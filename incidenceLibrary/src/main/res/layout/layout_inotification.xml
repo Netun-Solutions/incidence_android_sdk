@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/layoutRoot"
+    android:background="@android:color/transparent">
+
+    <View
+        android:id="@+id/layoutBlur"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/black600"
+        android:clickable="true"
+        android:alpha="0.9"/>
+
+    <RelativeLayout
+        android:id="@+id/layoutRound"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:background="@android:color/white">
+
+        <View
+            android:layout_width="85dp"
+            android:layout_height="5dp"
+            android:background="@color/grey200"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="16dp"
+            android:id="@+id/line"/>
+
+        <TextView
+            android:layout_below="@+id/line"
+            android:id="@+id/txtTitle"
+            android:layout_marginTop="40dp"
+            android:layout_marginLeft="@dimen/margin_normal"
+            android:layout_marginRight="@dimen/margin_normal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/black600"
+            android:textSize="16sp"
+            android:lineHeight="20dp"
+            android:text="@string/error_matricula_other_user"
+            android:gravity="center"
+            android:visibility="invisible"/>
+
+
+        <TextView
+            android:layout_below="@+id/txtTitle"
+            android:id="@+id/txtMessage"
+            android:layout_marginTop="8dp"
+            android:layout_marginLeft="@dimen/margin_normal"
+            android:layout_marginRight="@dimen/margin_normal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/black600"
+            android:textSize="16sp"
+            android:lineHeight="26dp"
+            android:text="@string/error_matricula_other_user"
+            android:gravity="center"/>
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/txtMessage"
+            android:layout_marginTop="@dimen/margin_normal"
+            android:id="@+id/scrollLayoutOptions"
+            android:visibility="gone">
+
+            <LinearLayout
+                android:id="@+id/layoutOptions"
+                android:layout_marginLeft="@dimen/margin_normal"
+                android:layout_marginRight="@dimen/margin_normal"
+                android:paddingBottom="@dimen/margin_normal_double"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                />
+
+        </ScrollView>
+
+
+        <es.incidence.core.utils.view.IButton
+            android:layout_below="@+id/txtMessage"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/button_height"
+            android:layout_marginTop="48dp"
+            android:layout_marginLeft="@dimen/margin_normal"
+            android:layout_marginRight="@dimen/margin_normal"
+            android:layout_marginBottom="@dimen/margin_normal"
+            android:id="@+id/btnNotifContinue"
+            app:topTitle="@string/continuar"/>
+
+        <TextView
+            android:layout_below="@+id/btnNotifContinue"
+            android:id="@+id/txtNotifCancel"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/cancel"
+            android:textColor="@color/incidence500"
+            android:textSize="16sp"
+            android:lineHeight="20dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginLeft="@dimen/margin_normal"
+            android:layout_marginRight="@dimen/margin_normal"
+            android:layout_marginBottom="45dp"
+            android:gravity="center"/>
+
+    </RelativeLayout>
+
+</RelativeLayout>

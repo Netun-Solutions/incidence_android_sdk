@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item name="toolbar_title" type="id" />
+    <item name="toolbar_subtitle" type="id" />
+    <item name="layout_activity_main" type="id" />
+    <item name="fragment_container" type="id" />
+    <item name="fragment_container_under_toolbar" type="id" />
+    <item name="ic_notification" type="drawable" />
+    <item name="logotype" type="drawable" />
+    <item name="background_login" type="drawable" />
+    <item name="google_api_key" type="string"/>
+</resources>

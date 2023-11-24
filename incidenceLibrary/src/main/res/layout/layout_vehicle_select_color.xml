@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/layoutRootSignHome"
+    android:clickable="true"
+    android:background="@color/incidence100">
+
+
+    <include
+        android:id="@+id/layoutContinueDismiss"
+        layout="@layout/layout_continue_dismiss"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"/>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/layoutContinueDismiss"
+        android:layout_marginTop="@dimen/margin_normal"
+        android:layout_marginBottom="@dimen/margin_normal"
+        android:orientation="vertical"
+        android:weightSum="2">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="0.8">
+            <ImageView
+                android:id="@+id/imgVehicle"
+                android:layout_width="119dp"
+                android:layout_height="119dp"
+                android:layout_centerInParent="true"
+                android:src="@drawable/car_black"
+                android:scaleType="fitCenter"/>
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1.2">
+
+            <TextView
+                android:id="@+id/txtHeader"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/black600"
+                android:textSize="16sp"
+                android:lineHeight="26dp"
+                android:text="@string/select_vehicle_color"
+                android:gravity="center"
+                android:layout_marginTop="@dimen/margin_normal_double"
+                android:layout_marginLeft="@dimen/margin_normal"
+                android:layout_marginRight="@dimen/margin_normal"/>
+
+            <ScrollView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_below="@+id/txtHeader">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginLeft="@dimen/margin_normal_double"
+                    android:layout_marginRight="@dimen/margin_normal_double"
+                    android:orientation="vertical"
+                    android:id="@+id/layoutRows"/>
+
+            </ScrollView>
+
+        </RelativeLayout>
+
+
+    </LinearLayout>
+
+</RelativeLayout>

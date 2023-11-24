@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/nif_dni"
+        android:title="@string/nif" />
+    <item
+        android:id="@+id/nif_id"
+        android:title="@string/nie"/>
+
+    <item
+        android:id="@+id/nif_cif"
+        android:title="@string/cif"/>
+</menu>

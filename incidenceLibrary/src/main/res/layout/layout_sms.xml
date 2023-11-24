@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:clickable="true"
+    android:id="@+id/layoutRoot"
+    android:background="@color/incidence100">
+
+
+    <RelativeLayout
+        android:id="@+id/layoutHeader"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/margin_normal"
+        android:layout_marginRight="@dimen/margin_normal"
+        android:layout_marginTop="40dp">
+
+        <TextView
+            android:id="@+id/txtTitleHeaderSms"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/black600"
+            android:textSize="20sp"
+            android:lineHeight="30dp"
+            android:text="@string/sms_introduce"
+            android:gravity="center"
+            android:layout_marginBottom="14dp"
+            android:visibility="gone"
+            />
+
+        <TextView
+            android:layout_below="@+id/txtTitleHeaderSms"
+            android:id="@+id/txtHeaderSms"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/black600"
+            android:textSize="16sp"
+            android:lineHeight="26dp"
+            android:text="@string/sms_introduce"
+            android:gravity="center" />
+
+
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_below="@+id/layoutHeader"
+        android:id="@+id/layoutPin"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="43dp"
+        android:layout_marginLeft="@dimen/margin_normal_double"
+        android:layout_marginRight="@dimen/margin_normal_double"
+        android:orientation="horizontal"
+        android:weightSum="4">
+        
+        <es.incidence.core.utils.view.PinEditText
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:textSize="22sp"
+            android:maxLength="1"
+            android:background="@color/white"
+            android:id="@+id/txtCode1"
+            android:hint="-"
+            android:gravity="center"
+            android:inputType="phone"
+            android:digits="0123456789"
+            android:layout_marginRight="4dp"/>
+
+        <es.incidence.core.utils.view.PinEditText
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:textSize="22sp"
+            android:maxLength="1"
+            android:background="@color/white"
+            android:id="@+id/txtCode2"
+            android:hint="-"
+            android:gravity="center"
+            android:inputType="phone"
+            android:digits="0123456789"
+            android:layout_marginLeft="4dp"
+            android:layout_marginRight="4dp"/>
+
+        <es.incidence.core.utils.view.PinEditText
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:textSize="22sp"
+            android:maxLength="1"
+            android:background="@color/white"
+            android:id="@+id/txtCode3"
+            android:hint="-"
+            android:gravity="center"
+            android:inputType="phone"
+            android:digits="0123456789"
+            android:layout_marginLeft="4dp"
+            android:layout_marginRight="4dp"/>
+
+        <es.incidence.core.utils.view.PinEditText
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:textSize="22sp"
+            android:maxLength="1"
+            android:background="@color/white"
+            android:id="@+id/txtCode4"
+            android:hint="-"
+            android:gravity="center"
+            android:inputType="phone"
+            android:digits="0123456789"
+            android:layout_marginLeft="4dp"/>
+        
+    </LinearLayout>
+
+    <TextView
+        android:layout_below="@+id/layoutPin"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:layout_marginLeft="@dimen/margin_field"
+        android:layout_marginRight="@dimen/margin_field"
+        android:textSize="12sp"
+        android:lineHeight="22dp"
+        android:gravity="center"
+        android:textColor="@color/error"
+        android:id="@+id/txtError"
+        android:visibility="invisible"/>
+
+    <TextView
+        android:layout_below="@+id/txtError"
+        android:id="@+id/txtResend"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/sms_resend"
+        android:textColor="@color/incidence500"
+        android:textSize="14sp"
+        android:lineHeight="24dp"
+        android:layout_marginTop="@dimen/margin_normal_double"
+        android:layout_marginLeft="@dimen/margin_normal"
+        android:layout_marginRight="@dimen/margin_normal"
+        android:gravity="center"/>
+
+    <TextView
+        android:layout_below="@+id/txtResend"
+        android:id="@+id/txtResendTime"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/sms_caducity_time"
+        android:textColor="@color/black500"
+        android:textSize="12sp"
+        android:lineHeight="22dp"
+        android:layout_marginTop="@dimen/margin_normal_medium"
+        android:layout_marginLeft="@dimen/margin_normal"
+        android:layout_marginRight="@dimen/margin_normal"
+        android:gravity="center"/>
+
+    <es.incidence.core.utils.view.IButton
+        android:layout_below="@+id/txtResendTime"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/button_height"
+        android:layout_marginTop="@dimen/margin_normal"
+        android:layout_marginLeft="@dimen/margin_normal"
+        android:layout_marginRight="@dimen/margin_normal"
+        android:layout_marginBottom="@dimen/margin_normal"
+        android:id="@+id/btnAccept"
+        app:topTitle="@string/sms_validate"
+        />
+
+</RelativeLayout>
