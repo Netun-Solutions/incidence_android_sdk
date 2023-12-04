@@ -619,4 +619,51 @@ Todo ello sin perjuicio de que dicho plazo pueda ampliarse, cuando usted así lo
     <string name="yesterday">Ieri</string>
 
     <string name="ws_response_default_ok_button">Accettare</string>
+
+    <string name="help_is_on_the_way">La asistencia está en camino</string>
+    <string name="help_is_on_the_way_v2">Tu incidencia ha sido reportada</string>
+    <string name="estimated_arrival_time">Hora estimada de llegada</string>
+    <string name="call_insurer">Llamar aseguradora</string>
+    <string name="share_location">Compartir ubicación</string>
+    <string name="send_message">Enviar mensaje</string>
+    <string name="swipe_to_resolve_issue">Desliza para resolver incidencia</string>
+    <string name="mistake_desc">¿Has notificado la incidencia por error?</string>
+    <string name="press_here">Pulsa aquí</string>
+    <string name="was_it_a_mistake">¿Ha sido un error?</string>
+    <string name="yes_it_was_a_mistake">Sí, ha sido un error</string>
+    <string name="no_continue_with_the_incidence">No, continuar con la incidencia</string>
+    <string name="personal_information">datos personales</string>
+
+    <string name="send_your_warning_message_to_your_emergency_contacts">Envía tu mensaje de aviso a tus contactos de emergencia</string>
+    <string name="share_my_location">Compartir mi ubicación</string>
+    <string name="break_down_alert">He tenido una avería con el coche, y estoy esperando la grúa, te llamo lo antes posible</string>
+    <string name="send_already">¡Enviar ya!</string>
+    <string name="cancel_sending_sms">Cancelar envio de SMS</string>
+
+    <string name="emergency_contacts">Contactos emergencia</string>
+    <string name="add_new_emergency_contact">Añadir contacto de emergencia</string>
+    <string name="add_your_emergency_contacts">1.Añade tus contactos de emergencia</string>
+    <string name="add_your_contacts_and_we_will_notify_them_of_your_status_in_case_you_have_an_incident">Añade tus contactos y les notificaremos tu estado en caso de que tengas una incidencia</string>
+    <string name="write_the_message_to_your_emergency_contacts">2.Escribe el mensaje a tus contactos de emergencia</string>
+    <string name="write_the_message_you_want_us_to_send_to_your_contacts_after_reporting_your_incident">Escribe el mensaje que quieres que enviemos a tus contactos después de reportar tu incidencia</string>
+    <string name="rate_service">Valorar servicio</string>
+    <string name="fly_later">Volorar más tarde</string>
+    <string name="add_new_contact">Añadir nuevo contacto</string>
+    <string name="search_contact_message">Escribe el móvil o busca en agenda</string>
+    <string name="sms_message">Hola, he tenido un problema con el coche. Te llamo cuanto antes y te cuento en detalle</string>
+    <string name="add_emergency_contact_success_message">Contacto de emergencia agregado con éxito.</string>
+    <string name="message_sent_successfully">Mensaje enviado con éxito</string>
+    <string name="default_text_save_success_message">Mensaje predeterminado guardado con éxito</string>
+    <string name="notify_incidence">Incidencia notificada a a la DGT</string>
+    <string name="notify_incidence_desc">Tu baliza ya ha reportado a la DGT tu detención en la vía</string>
+    <string name="add_your_emergency_contacts_first">Primero añade algún contacto de emergencia</string>
+    <string name="contactos">Contactos</string>
+    <string name="buscar">Buscar...</string>
+    <string name="car_intro">Welcome to Incidence, your roadside assistance application.
+        Now, if you have an accident or a breakdown, we will help you to report it from your vehicle and without using your mobile phone. You can also access and check the status of your IoT beacon.
+        Remember that, for your safety, the "Check IoT beacon" and "Report incident" functions will be blocked while driving, in order to avoid distractions, so you can focus only on driving.
+        Thank you for choosing Incidence.
+    </string>
+    <string name="car_without_vehicles">Primero debes añadir un vehículo</string>
+    <string name="contact_data">Introduce el nombre y teléfono del contacto</string>
 </resources>

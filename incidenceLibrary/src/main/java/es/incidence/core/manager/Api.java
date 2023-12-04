@@ -61,8 +61,8 @@ public class Api
         }
         Device d = DeviceUtils.getDevice(context);
         Networking.setBasicHeader(HEADER_AUTHORIZATION, apikey);
-        //Networking.setBasicHeader(HEADER_APP, d.getPackageName());
-        Networking.setBasicHeader(HEADER_APP, "mapfre.com.app");
+        Networking.setBasicHeader(HEADER_APP, d.getPackageName());
+        //Networking.setBasicHeader(HEADER_APP, "mapfre.com.app");
         Networking.setBasicHeader(HEADER_LANG, Core.getLanguage());
         Networking.setBasicHeader(HEADER_PLATFORM, "android");
 

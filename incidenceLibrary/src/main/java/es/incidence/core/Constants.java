@@ -10,17 +10,17 @@ public class Constants
     private static final String BASE_URL_PRO = "https://api-pro.incidence.eu";
     public static String BASE_URL = "";
 
+    public static boolean FLAG_INCIDENCE_DGT = false;
+
     public static final String SCREEN_DEVELOPER = "DEVELOPER";
     public static final String SCREEN_DEVICE_LIST = "SCREEN_DEVICE_LIST";
     public static final String SCREEN_DEVICE_CREATE = "SCREEN_DEVICE_CREATE";
-    public static final String SCREEN_DEVICE_DELETE = "SCREEN_DEVICE_DELETE";
-
+    public static final String FUNC_DEVICE_DELETE = "FUNC_DEVICE_DELETE";
     public static final String SCREEN_DEVICE_REVIEW = "SCREEN_DEVICE_REVIEW";
-
     public static final String SCREEN_ECOMMERCE = "SCREEN_ECOMMERCE";
     public static final String FUNC_REPOR_INC = "FUNC_REPOR_INC";
-
     public static final String FUNC_CLOSE_INC = "FUNC_CLOSE_INC";
+    public static final String SCREEN_REPOR_INC = "SCREEN_REPOR_INC";
     public static final String SCREEN_ERROR = "ERROR";
 
     public static void setBaseUrl(Environment environment)

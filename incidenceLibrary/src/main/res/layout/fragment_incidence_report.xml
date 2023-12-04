@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:clickable="true"
+    android:id="@+id/layoutRootIncidenceReport"
+    android:background="@android:color/white">
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:layout_marginBottom="15dp"
+        android:layout_marginRight="@dimen/margin_normal"
+        android:layout_alignParentRight="true"
+        android:id="@+id/layoutNavRight"
+        android:visibility="gone">
+
+        <TextView
+            android:id="@+id/txtNavTitleRight"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/black400"
+            android:textSize="16sp"
+            android:lineHeight="20dp"
+            android:layout_centerVertical="true"
+            android:visibility="gone"/>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+            <ImageView
+                android:layout_width="28dp"
+                android:layout_height="28dp"
+                android:layout_centerVertical="true"
+                android:src="@drawable/icon_delete"
+                android:id="@+id/imgNavTitleRight"
+                android:paddingTop="5dp"
+                android:layout_marginRight="20dp"
+                android:visibility="gone"/>
+
+            <ImageView
+                android:layout_width="32dp"
+                android:layout_height="32dp"
+                android:layout_centerVertical="true"
+                android:src="@drawable/icon_delete"
+                android:id="@+id/imgNavTitleSecondRight"
+                android:visibility="gone"/>
+        </LinearLayout>
+
+
+    </RelativeLayout>
+
+
+    <es.incidence.core.utils.view.INavigation
+        android:id="@+id/inavigation"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_toLeftOf="@+id/layoutNavRight" />
+
+
+    <View
+        android:layout_alignParentBottom="true"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/margin_normal_double"
+        android:id="@+id/viewMargin"/>
+
+    <TextView
+        android:layout_above="@+id/viewMargin"
+        android:id="@+id/btnCancel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/cancel"
+        android:textColor="@color/incidence500"
+        android:textSize="16sp"
+        android:lineHeight="20dp"
+        android:layout_marginTop="40dp"
+        android:layout_marginLeft="@dimen/margin_normal"
+        android:layout_marginRight="@dimen/margin_normal"
+        android:gravity="center"/>
+
+    <es.incidence.core.utils.view.IButton
+        android:layout_above="@+id/btnCancel"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/button_height"
+        android:layout_marginTop="16dp"
+        android:layout_marginLeft="@dimen/margin_normal"
+        android:layout_marginRight="@dimen/margin_normal"
+        android:id="@+id/btnRed"
+        app:topTitle="@string/accident"/>
+
+    <es.incidence.core.utils.view.IButton
+        android:layout_above="@+id/btnRed"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/button_height"
+        android:layout_marginTop="16dp"
+        android:layout_marginLeft="@dimen/margin_normal"
+        android:layout_marginRight="@dimen/margin_normal"
+        android:id="@+id/btnBlue"
+        app:topTitle="@string/fault"/>
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/btnBlue"
+        android:layout_below="@+id/inavigation"
+        android:id="@+id/layoutContent"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingTop="8dp"
+        android:orientation="vertical">
+
+        <include layout="@layout/layout_alert_volumen" android:visibility="gone" />
+        <include layout="@layout/layout_alert_time" android:visibility="gone"  />
+        <include layout="@layout/layout_alert_dgt" android:visibility="gone"  />
+    </LinearLayout>
+
+    <com.e510.commons.view.Hud
+        android:id="@+id/hud"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+
+
+</RelativeLayout>

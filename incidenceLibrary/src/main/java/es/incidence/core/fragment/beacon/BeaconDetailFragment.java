@@ -27,14 +27,12 @@ import com.e510.commons.utils.LogUtil;
 import com.e510.commons.utils.Utils;
 import com.e510.incidencelibrary.R;
 
-import org.json.JSONArray;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.concurrent.TimeUnit;
 
 import es.incidence.core.Constants;
-import es.incidence.core.adapter.IncidenceDGTListAdapter;
 import es.incidence.core.domain.Beacon;
 import es.incidence.core.domain.IncidenceDGT;
 import es.incidence.core.domain.User;
@@ -72,7 +70,7 @@ public class BeaconDetailFragment extends IFragment
 	private ImageView imgDevice;
 
     private ListView listView;
-    private IncidenceDGTListAdapter adapter;
+    //private IncidenceDGTListAdapter adapter;
 
     private RelativeLayout layoutStopDevice;
     private CardView alertVolumeErrorContainer;
@@ -161,6 +159,12 @@ public class BeaconDetailFragment extends IFragment
         super.setupUI(rootView);
 
         navigation = rootView.findViewById(R.id.inavigation);
+        navigation.setBackClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onClickReturn();
+            }
+        });
 
         //String title = beacon.name;
         String title = "";
@@ -257,8 +261,8 @@ public class BeaconDetailFragment extends IFragment
 
         listView = layoutRootBeaconDetailInfo.findViewById(R.id.listView);
         items = new ArrayList<>();
-        adapter = new IncidenceDGTListAdapter(this, items);
-        listView.setAdapter(adapter);
+        //adapter = new IncidenceDGTListAdapter(this, items);
+        //listView.setAdapter(adapter);
 
         imgInfo = layoutRootBeaconDetailInfo.findViewById(R.id.imgInfo);
         imgInfo.setOnClickListener(new View.OnClickListener() {
@@ -377,6 +381,7 @@ public class BeaconDetailFragment extends IFragment
     }
 
     private void onClickReturn() {
+        cancelHandler();
         closeThis();
     }
 
@@ -445,6 +450,7 @@ public class BeaconDetailFragment extends IFragment
 
 
                                 items.clear();
+                                /*
                                 JSONArray incidences = data.optJSONArray("incidences");
                                 if (incidences != null) {
                                     for (int i = 0; i < incidences.length(); i++) {
@@ -469,7 +475,7 @@ public class BeaconDetailFragment extends IFragment
                                         items.add(incidenceDGT);
                                     }
                                 }
-
+                                */
                                 if (dgt == 0) {
                                     openAlertStopDeviceView();
                                 } else if (dgt == 1) {
@@ -571,7 +577,7 @@ public class BeaconDetailFragment extends IFragment
         txtSubTitleBattery.setText(String.format("%.2f", battery) + "%");
         txtSubtitleFecha.setText(expirationDate);
 
-        adapter.notifyDataSetChanged();
+        //adapter.notifyDataSetChanged();
     }
 
     private void goToBeaconInfo()

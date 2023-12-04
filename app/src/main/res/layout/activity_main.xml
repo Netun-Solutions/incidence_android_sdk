@@ -79,4 +79,13 @@
         app:layout_constraintBottom_toBottomOf="@+id/btnIncidenceClose"
         />
 
+    <Button
+        android:id="@+id/btnReportInc"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/activity_horizontal_margin"
+        android:text="Flujo reportar incidencia"
+        app:layout_constraintBottom_toBottomOf="@+id/btnEcommerce"
+        />
+
 </LinearLayout>

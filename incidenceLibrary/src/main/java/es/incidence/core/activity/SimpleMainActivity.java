@@ -13,7 +13,9 @@ import es.incidence.core.fragment.add.AddBeaconFragment;
 import es.incidence.core.fragment.beacon.BeaconDetailFragment;
 import es.incidence.core.fragment.beacon.BeaconListFragment;
 import es.incidence.core.fragment.ecommerce.EcommerceFragment;
+import es.incidence.core.fragment.error.ErrorFragment;
 import es.incidence.core.fragment.incidence.ReportIncidenceSimpleFragment;
+import es.incidence.core.fragment.incidence.report.IncidenceReportFragment;
 
 public class SimpleMainActivity extends IActivity
 {
@@ -65,8 +67,18 @@ public class SimpleMainActivity extends IActivity
             Incidence incidence = b.getParcelable("incidence");
 
             showInitialFragment(ReportIncidenceSimpleFragment.newInstance(vehicle, user, incidence, false));
+        } else if (Constants.SCREEN_ERROR.equals(screen)) {
+
+            String error = b.getString("error");
+
+            showInitialFragment(ErrorFragment.newInstance(error));
+        } else if (Constants.SCREEN_REPOR_INC.equals(screen)) {
+
+            User user = b.getParcelable("user");
+            Vehicle vehicle = b.getParcelable("vehicle");
+
+
+            showInitialFragment(IncidenceReportFragment.newInstance(vehicle, false));
         }
-
-
     }
 }

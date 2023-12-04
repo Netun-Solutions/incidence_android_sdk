@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/alertDgtContainer"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginHorizontal="@dimen/margin_field"
+    android:layout_marginBottom="8dp"
+    card_view:cardCornerRadius="8dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:id="@+id/firstLineAlert"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:id="@+id/imgDgtDesc"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:layout_alignParentLeft="true"
+                android:layout_marginHorizontal="16dp"
+                android:layout_marginVertical="8dp"
+                android:src="@drawable/ico_conection"/>
+
+            <ImageView
+                android:id="@+id/alertDgtImgClose"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:layout_alignParentRight="true"
+                android:layout_marginHorizontal="16dp"
+                android:layout_marginVertical="8dp"
+                android:src="@drawable/icon_close_black" />
+
+
+            <TextView
+                android:id="@+id/alertDgtTitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_toLeftOf="@+id/alertDgtImgClose"
+                android:layout_toRightOf="@+id/imgDgtDesc"
+                android:ellipsize="end"
+                android:lines="1"
+                android:text="@string/notify_incidence"
+                android:textColor="@color/black700"
+                android:textSize="14sp"
+                android:lineHeight="24dp"/>
+        </RelativeLayout>
+
+        <TextView
+            android:id="@+id/alertDgtSubTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="48dp"
+            android:text="@string/notify_incidence_desc"
+            android:textColor="@color/black500"
+            android:textSize="14sp"
+            android:layout_marginBottom="8dp"/>
+
+        <es.incidence.core.utils.view.IButton
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/button_height"
+            android:layout_marginBottom="8dp"
+            android:layout_marginHorizontal="12dp"
+            android:id="@+id/btnBlue"
+            android:visibility="gone"/>
+    </LinearLayout>
+</androidx.cardview.widget.CardView>

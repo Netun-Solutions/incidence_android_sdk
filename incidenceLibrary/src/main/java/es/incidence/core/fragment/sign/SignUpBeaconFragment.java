@@ -51,6 +51,7 @@ import es.incidence.core.activity.IActivity;
 import es.incidence.core.domain.Beacon;
 import es.incidence.core.domain.User;
 import es.incidence.core.domain.Vehicle;
+import es.incidence.core.entity.BeaconData;
 import es.incidence.core.entity.event.Event;
 import es.incidence.core.entity.event.EventCode;
 import es.incidence.core.entity.sign.SignStep;
@@ -1006,7 +1007,12 @@ public class SignUpBeaconFragment extends SignUpFragment {
                     //vehicle.beacon = beacon;
                     //vehicle.id=vehicle.externalVehicleId;
 
-					Beacon cBeacon = (Beacon) response.get("beacon", Beacon.class);
+                    Beacon cBeacon = null;
+                    BeaconData beacons = (BeaconData) response.get("data", BeaconData.class);
+                    if (beacons != null && beacons.beacon != null && beacons.beacon.size() > 0) {
+                        cBeacon = beacons.beacon.get(0);
+                    }
+                    //Beacon cBeacon = (Beacon) response.get("beacon", Beacon.class);
                     if (cBeacon != null && cBeacon.beaconType != null) {
                         beaconTypeId = cBeacon.beaconType.id;
                     }

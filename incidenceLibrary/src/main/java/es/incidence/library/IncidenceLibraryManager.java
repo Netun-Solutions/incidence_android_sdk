@@ -151,40 +151,22 @@ public class IncidenceLibraryManager {
         }
     }
 
-    /*
-    public Intent getIncidenceCreateViewController(User user, Vehicle vehicle, Incidence incidence) {
-        String res = validateScreen(Constants.FUNC_REPOR_INC);
-        if (res == SCREEN_OK) {
-            Intent intent = createIntent(Constants.FUNC_REPOR_INC);
-            intent.putExtra("user", user);
-            intent.putExtra("vehicle", vehicle);
-            intent.putExtra("incidence", incidence);
-            return intent;
-        } else {
-            return processScreenError(res);
-        }
-    }
-    */
-
-    /*
-    public Intent getIncidenceCloseViewController(User user, Vehicle vehicle, Incidence incidence) {
-        String res = validateScreen(Constants.FUNC_CLOSE_INC);
-        if (res == SCREEN_OK) {
-            Intent intent = createIntent(Constants.FUNC_CLOSE_INC);
-            intent.putExtra("user", user);
-            intent.putExtra("vehicle", vehicle);
-            intent.putExtra("incidence", incidence);
-            return intent;
-        } else {
-            return processScreenError(res);
-        }
-    }
-    */
-
     public Intent getEcommerceViewController(User user, Vehicle vehicle) {
         String res = validateScreen(Constants.SCREEN_ECOMMERCE);
         if (res == SCREEN_OK) {
             Intent intent = createIntent(Constants.SCREEN_ECOMMERCE);
+            intent.putExtra("user", user);
+            intent.putExtra("vehicle", vehicle);
+            return intent;
+        } else {
+            return processScreenError(res);
+        }
+    }
+
+    public Intent getReportIncViewController(User user, Vehicle vehicle) {
+        String res = validateScreen(Constants.SCREEN_REPOR_INC);
+        if (res == SCREEN_OK) {
+            Intent intent = createIntent(Constants.SCREEN_REPOR_INC);
             intent.putExtra("user", user);
             intent.putExtra("vehicle", vehicle);
             return intent;
@@ -202,12 +184,6 @@ public class IncidenceLibraryManager {
     }
 
     private Intent processScreenError(String error) {
-        /*
-        if (error == "NO_VALID_API_KEY") {
-            let viewController = ErrorViewController.create()
-            return viewController
-        }
-         */
         Intent intent = new Intent(context, SimpleMainActivity.class);
         Bundle b = new Bundle();
         b.putString("screen", Constants.SCREEN_ERROR);
@@ -288,65 +264,83 @@ public class IncidenceLibraryManager {
     }
 
     public void deleteBeaconFunc(User user, Vehicle vehicle, IActionListener iActionListener) {
-        Api.deleteBeaconSdk(new IRequestListener() {
-            @Override
-            public void onFinish(IResponse response) {
-                if (iActionListener != null) {
-                    IActionResponse actionResponse;
-                    if (response.isSuccess())
-                    {
-                        actionResponse = new IActionResponse(true);
-                    }
-                    else
-                    {
-                        actionResponse = new IActionResponse(false, response.message);
-                    }
+        String res = validateScreen(Constants.FUNC_DEVICE_DELETE);
+        if (res == SCREEN_OK) {
+            Api.deleteBeaconSdk(new IRequestListener() {
+                @Override
+                public void onFinish(IResponse response) {
+                    if (iActionListener != null) {
+                        IActionResponse actionResponse;
+                        if (response.isSuccess())
+                        {
+                            actionResponse = new IActionResponse(true);
+                        }
+                        else
+                        {
+                            actionResponse = new IActionResponse(false, response.message);
+                        }
 
-                    iActionListener.onFinish(actionResponse);
+                        iActionListener.onFinish(actionResponse);
+                    }
                 }
-            }
-        }, user, vehicle);
+            }, user, vehicle);
+        } else {
+            IActionResponse actionResponse = new IActionResponse(false, res);
+            iActionListener.onFinish(actionResponse);
+        }
     }
 
     public void createIncidenceFunc(User user, Vehicle vehicle, Incidence incidence, IActionListener iActionListener) {
-        Api.postIncidenceSdk(new IRequestListener() {
-            @Override
-            public void onFinish(IResponse response) {
-                if (iActionListener != null) {
-                    IActionResponse actionResponse;
-                    if (response.isSuccess())
-                    {
-                        actionResponse = new IActionResponse(true);
-                    }
-                    else
-                    {
-                        actionResponse = new IActionResponse(false, response.message);
-                    }
+        String res = validateScreen(Constants.FUNC_REPOR_INC);
+        if (res == SCREEN_OK) {
+            Api.postIncidenceSdk(new IRequestListener() {
+                @Override
+                public void onFinish(IResponse response) {
+                    if (iActionListener != null) {
+                        IActionResponse actionResponse;
+                        if (response.isSuccess())
+                        {
+                            actionResponse = new IActionResponse(true);
+                        }
+                        else
+                        {
+                            actionResponse = new IActionResponse(false, response.message);
+                        }
 
-                    iActionListener.onFinish(actionResponse);
+                        iActionListener.onFinish(actionResponse);
+                    }
                 }
-            }
-        }, user, vehicle, incidence);
+            }, user, vehicle, incidence);
+        } else {
+            IActionResponse actionResponse = new IActionResponse(false, res);
+            iActionListener.onFinish(actionResponse);
+        }
     }
 
     public void closeIncidenceFunc(User user, Vehicle vehicle, Incidence incidence, IActionListener iActionListener) {
-        Api.putIncidenceSdk(new IRequestListener() {
-            @Override
-            public void onFinish(IResponse response) {
-                if (iActionListener != null) {
-                    IActionResponse actionResponse;
-                    if (response.isSuccess())
-                    {
-                        actionResponse = new IActionResponse(true);
-                    }
-                    else
-                    {
-                        actionResponse = new IActionResponse(false, response.message);
-                    }
+        String res = validateScreen(Constants.FUNC_CLOSE_INC);
+        if (res == SCREEN_OK) {
+            Api.putIncidenceSdk(new IRequestListener() {
+                @Override
+                public void onFinish(IResponse response) {
+                    if (iActionListener != null) {
+                        IActionResponse actionResponse;
+                        if (response.isSuccess())
+                        {
+                            actionResponse = new IActionResponse(true);
+                        }
+                        else
+                        {
+                            actionResponse = new IActionResponse(false, response.message);
+                        }
 
-                    iActionListener.onFinish(actionResponse);
+                        iActionListener.onFinish(actionResponse);
+                    }
                 }
-            }
-        }, user, vehicle, incidence);
+            }, user, vehicle, incidence);
+        } else {
+            IActionResponse actionResponse = new IActionResponse(false, res);
+            iActionListener.onFinish(actionResponse);
+        }
     }
 }

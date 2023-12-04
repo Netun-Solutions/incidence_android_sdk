@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android" xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/alertTimeErrorContainer"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginHorizontal="@dimen/margin_field"
+    android:layout_marginBottom="8dp"
+    card_view:cardCornerRadius="8dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:id="@+id/firstLineAlert"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:id="@+id/imgDesc"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:layout_alignParentLeft="true"
+                android:layout_marginHorizontal="16dp"
+                android:layout_marginVertical="8dp"
+                android:src="@drawable/icon_historial"/>
+
+            <ImageView
+                android:id="@+id/alertTimeErrorImgClose"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:layout_alignParentRight="true"
+                android:layout_marginHorizontal="16dp"
+                android:layout_marginVertical="8dp"
+                android:src="@drawable/icon_close_black" />
+
+
+            <TextView
+                android:id="@+id/alertTimeErrorTitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_toLeftOf="@+id/alertTimeErrorImgClose"
+                android:layout_toRightOf="@+id/imgDesc"
+                android:ellipsize="end"
+                android:lines="1"
+                android:text="@string/alert_llamada_emergencias_title"
+                android:textColor="@color/black700"
+                android:textSize="14sp"
+                android:lineHeight="24dp"/>
+        </RelativeLayout>
+
+        <TextView
+            android:id="@+id/alertTimeErrorSubTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="48dp"
+            android:text="@string/alert_llamada_emergencias_subtitle"
+            android:textColor="@color/black500"
+            android:textSize="14sp"
+            android:layout_marginBottom="8dp"/>
+
+        <TextView
+            android:id="@+id/alertTimeErrorSubTitleDesc"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="48dp"
+            android:text="@string/alert_llamada_emergencias"
+            android:textColor="@color/error200"
+            android:textSize="14sp"
+            android:layout_marginBottom="8dp"/>
+    </LinearLayout>
+</androidx.cardview.widget.CardView>

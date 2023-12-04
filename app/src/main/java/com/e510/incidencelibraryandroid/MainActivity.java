@@ -1,7 +1,10 @@
 package com.e510.incidencelibraryandroid;
 
+import static com.e510.commons.utils.LogUtil.makeLogTag;
+
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 
@@ -19,12 +22,15 @@ import es.incidence.library.IncidenceLibraryManager;
 
 public class MainActivity extends AppCompatActivity {
 
+    private static final String TAG = makeLogTag(MainActivity.class);
+
     private Button btnDeviceCreate;
     private Button btnDeviceDelete;
     private Button btnDeviceReview;
     private Button btnIncidenceCreate;
     private Button btnIncidenceClose;
     private Button btnEcommerce;
+    private Button btnReportInc;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -102,8 +108,10 @@ public class MainActivity extends AppCompatActivity {
                 IncidenceLibraryManager.instance.deleteBeaconFunc(user, vehicle, response -> {
                     if (response.isSuccess()) {
                         //MAKE OK ACTIONS
+                        Log.d(TAG, "SUCCESS");
                     } else {
                         //MAKE KO ACTIONS
+                        Log.d(TAG, "ERROR: " + response.message);
                     }
                 });
             }
@@ -120,8 +128,10 @@ public class MainActivity extends AppCompatActivity {
             IncidenceLibraryManager.instance.createIncidenceFunc(user, vehicle, incidence, response -> {
                 if (response.isSuccess()) {
                     //MAKE OK ACTIONS
+                    Log.d(TAG, "SUCCESS");
                 } else {
                     //MAKE KO ACTIONS
+                    Log.d(TAG, "ERROR: " + response.message);
                 }
             }
         ));
@@ -133,8 +143,10 @@ public class MainActivity extends AppCompatActivity {
                 IncidenceLibraryManager.instance.closeIncidenceFunc(user, vehicle, incidence, response -> {
                     if (response.isSuccess()) {
                         //MAKE OK ACTIONS
+                        Log.d(TAG, "SUCCESS");
                     } else {
                         //MAKE KO ACTIONS
+                        Log.d(TAG, "ERROR: " + response.message);
                     }
                 });
 
@@ -144,6 +156,12 @@ public class MainActivity extends AppCompatActivity {
         btnEcommerce = findViewById(R.id.btnEcommerce);
         btnEcommerce.setOnClickListener(v -> {
             Intent activity = IncidenceLibraryManager.instance.getEcommerceViewController(user, vehicle);
+            startActivity(activity);
+        });
+
+        btnReportInc = findViewById(R.id.btnReportInc);
+        btnReportInc.setOnClickListener(v -> {
+            Intent activity = IncidenceLibraryManager.instance.getReportIncViewController(user, vehicle);
             startActivity(activity);
         });
     }
