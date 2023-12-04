@@ -3,7 +3,7 @@ plugins {
     id 'maven-publish'
 }
 
-group = 'com.github.CarlosCondeGil'
+group = 'com.github.Netun-Solutions'
 version = '1.0'
 
 android {
@@ -61,17 +61,16 @@ dependencies {
 
 // Because the components are created only during the afterEvaluate phase, you must
 // configure your publications using the afterEvaluate() lifecycle method.
-/*
+
 afterEvaluate {
     publishing {
         publications {
             release(MavenPublication) {
                 from components.release
-                groupId = 'com.github.vimafe82'
-                artifactId = 'IncidenceLibraryAndroid'
-                version = "0.0.4"
+                groupId = 'com.github.Netun-Solutions'
+                artifactId = 'incidence_android_sdk'
+                version = "0.0.1"
             }
         }
     }
 }
-*/
