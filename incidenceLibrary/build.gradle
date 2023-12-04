@@ -3,7 +3,7 @@ plugins {
     id 'maven-publish'
 }
 
-group = 'com.github.vimafe82'
+group = 'com.github.CarlosCondeGil'
 version = '1.0'
 
 android {
