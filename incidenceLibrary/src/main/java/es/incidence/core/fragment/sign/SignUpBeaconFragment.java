@@ -35,8 +35,6 @@ import com.e510.commons.utils.Utils;
 import com.e510.commons.view.FloatLabeled.FloatEditText;
 import com.e510.incidencelibrary.R;
 import com.e510.location.LocationManager;
-import com.e510.networking.Mapper;
-import com.google.gson.Gson;
 import com.google.zxing.BarcodeFormat;
 import com.google.zxing.Result;
 
@@ -166,11 +164,6 @@ public class SignUpBeaconFragment extends SignUpFragment {
         if (getArguments() != null) {
             autoSelectedVehicle = getArguments().getParcelable(KEY_AUTO_SELECTED_VEHICLE);
             autoSelectedUser = getArguments().getParcelable(KEY_AUTO_SELECTED_USER);
-        }
-
-        String showIoTStr = Core.loadData(Constants.KEY_CONFIG_SHOW_IOT);
-        if (showIoTStr != null && "0".equals(showIoTStr)) {
-            showIoT = false;
         }
     }
 
@@ -665,6 +658,7 @@ public class SignUpBeaconFragment extends SignUpFragment {
         fieldImei.setHint(getString(R.string.select_beacon_imei));
         fieldImei.setTitle(getString(R.string.select_beacon_imei));
         fieldImei.setType(IField.TYPE_NUMBER);
+        //fieldImei.setText("869154040054509");
 
         RelativeLayout layoutQR = view.findViewById(R.id.layoutRow);
 
@@ -994,31 +988,14 @@ public class SignUpBeaconFragment extends SignUpFragment {
             public void onFinish(IResponse response) {
                 hideHud();
                 if (response.isSuccess()) {
-                    String token = response.get("token");
-                    Core.saveData(Constants.KEY_USER_TOKEN, token);
-                    String userResponseStr = response.get("user");
-                    User userResponse = (User) Mapper.get(User.class, userResponseStr);
-                    userResponse.externalUserId = user.externalUserId;
-                    Gson gson = new Gson();
-                    String jsonStr = gson.toJson(userResponse);
-                    Core.saveData(Constants.KEY_USER, jsonStr);
-
-                    //beacon.name = vehicle.getName();
-                    //vehicle.beacon = beacon;
-                    //vehicle.id=vehicle.externalVehicleId;
-
                     Beacon cBeacon = null;
                     BeaconData beacons = (BeaconData) response.get("data", BeaconData.class);
                     if (beacons != null && beacons.beacon != null && beacons.beacon.size() > 0) {
                         cBeacon = beacons.beacon.get(0);
                     }
-                    //Beacon cBeacon = (Beacon) response.get("beacon", Beacon.class);
                     if (cBeacon != null && cBeacon.beaconType != null) {
                         beaconTypeId = cBeacon.beaconType.id;
                     }
-                    //Core.saveVehicle(vehicle);
-                    //EventBus.getDefault().post(new Event(EventCode.VEHICLE_UPDATED, vehicle));
-                    //EventBus.getDefault().post(new Event(EventCode.BEACON_ADDED, vehicle.beacon));
 
                     showBeaconAddedView();
                 } else {

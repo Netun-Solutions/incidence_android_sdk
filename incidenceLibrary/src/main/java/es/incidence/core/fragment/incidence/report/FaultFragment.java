@@ -40,13 +40,14 @@ public class FaultFragment extends IncidenceReportFragment
         return true;
     }
 
-    public static FaultFragment newInstance(int parent, Vehicle vehicle, boolean openFromNotification)
+    public static FaultFragment newInstance(int parent, Vehicle vehicle, User user, boolean openFromNotification)
     {
         FaultFragment fragment = new FaultFragment();
 
         Bundle bundle = new Bundle();
         bundle.putInt(KEY_PARENT, parent);
         bundle.putParcelable(KEY_VEHICLE, vehicle);
+        bundle.putParcelable(KEY_USER, user);
         bundle.putBoolean(KEY_NOTIFICATION, openFromNotification);
         fragment.setArguments(bundle);
 
@@ -59,6 +60,8 @@ public class FaultFragment extends IncidenceReportFragment
         if(getArguments() != null) {
             parent = getArguments().getInt(KEY_PARENT);
             openFromNotification = getArguments().getBoolean(KEY_NOTIFICATION);
+            vehicle = getArguments().getParcelable(KEY_VEHICLE);
+            user = getArguments().getParcelable(KEY_USER);
         }
     }
 
@@ -125,14 +128,6 @@ public class FaultFragment extends IncidenceReportFragment
         View view = inflater.inflate(R.layout.layout_incidence_fault, null);
         LinearLayout layoutRows = view.findViewById(R.id.layoutRows);
 
-        if (parent > 2)
-        {
-            User user = Core.getUser();
-            TextView txtTitle = view.findViewById(R.id.txtTitle);
-            txtTitle.setText(getString(R.string.fault_fallo_title, user.name));
-        }
-
-
         ArrayList<IncidenceType> list = Core.getIncidencesTypes(parent);
         for (int i = 0; i < list.size(); i++)
         {
@@ -165,11 +160,11 @@ public class FaultFragment extends IncidenceReportFragment
         ArrayList<IncidenceType> list = Core.getIncidencesTypes(incidenceTypeId);
         if (list != null && list.size() > 0)
         {
-            mListener.addFragmentAnimated(FaultFragment.newInstance(incidenceTypeId, vehicle, openFromNotification));
+            mListener.addFragmentAnimated(FaultFragment.newInstance(incidenceTypeId, vehicle, user, openFromNotification));
         }
         else
         {
-            mListener.addFragmentAnimated(InsuranceCallingFragment.newInstance(vehicle, incidenceTypeId, openFromNotification));
+            mListener.addFragmentAnimated(InsuranceCallingFragment.newInstance(vehicle, user, incidenceTypeId, openFromNotification));
         }
     }
 

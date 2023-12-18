@@ -1,7 +1,6 @@
 package es.incidence.core.manager;
 
 import android.content.Context;
-import android.location.Location;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.util.Log;
@@ -27,10 +26,8 @@ import es.incidence.core.domain.Beacon;
 import es.incidence.core.domain.IDevice;
 import es.incidence.core.domain.Incidence;
 import es.incidence.core.domain.Notification;
-import es.incidence.core.domain.Policy;
 import es.incidence.core.domain.User;
 import es.incidence.core.domain.Vehicle;
-import es.incidence.core.domain.Versions;
 
 public class Api
 {
@@ -41,24 +38,20 @@ public class Api
     private static final String HEADER_AUTHORIZATION = "Authorization";
     private static final String HEADER_APP = "app";
     private static final String HEADER_LANG = "lang";
-    private static final String HEADER_TOKEN = "token";
+    //private static final String HEADER_TOKEN = "token";
     private static final String HEADER_PLATFORM = "platform";
-
-
-    private static String getToken()
-    {
-        return Core.loadData(Constants.KEY_USER_TOKEN);
-    }
 
     public static void init(Context context, String apikey)
     {
         Networking.init(context, false);
 
+        /*
         String token = getToken();
         if (token != null) {
             //Networking.setAuthorization(token);
             Networking.setBasicHeader(HEADER_TOKEN, token);
         }
+        */
         Device d = DeviceUtils.getDevice(context);
         Networking.setBasicHeader(HEADER_AUTHORIZATION, apikey);
         Networking.setBasicHeader(HEADER_APP, d.getPackageName());
@@ -206,95 +199,6 @@ public class Api
         }
     }
 
-    public static void getDeviceNotifications(final IRequestListener viewListener)
-    {
-        String url = Constants.BASE_URL + "/" + "device/notifications";
-        log("Request: " + url);
-
-        HashMap<String, String> params = new HashMap<>();
-
-        JSONObjectRequestListener requestListener = new JSONObjectRequestListener() {
-            @Override
-            public void onResponse(JSONObject response)
-            {
-                IResponse res = IResponse.generate(response);
-                log("Response: " + res.json);
-
-                if (res.isSuccess())
-                {
-                    String notificationsTypes = res.get("notificationsTypes");
-                    Core.saveData(Constants.KEY_USER_DEVICE_NOTIFICATIONS, notificationsTypes);
-                }
-
-                if (viewListener != null)
-                    viewListener.onFinish(res);
-            }
-
-            @Override
-            public void onError(ANError anError)
-            {
-                IResponse res = IResponse.generate(anError);
-                log("Response: " + res.json);
-
-                if (viewListener != null)
-                    viewListener.onFinish(res);
-            }
-        };
-
-        Networking.getDirect(url, params, requestListener);
-    }
-
-    public static void setDeviceNotifications(final IRequestListener viewListener, String idNotification, String status)
-    {
-        String url = Constants.BASE_URL + "/" + "device/notifications";
-        log("Request: " + url);
-
-        HashMap<String, String> params = new HashMap<>();
-        params.put("notificationId", idNotification);
-        params.put("status", status);
-
-        JSONObjectRequestListener requestListener = new JSONObjectRequestListener() {
-            @Override
-            public void onResponse(JSONObject response)
-            {
-                IResponse res = IResponse.generate(response);
-                log("Response: " + res.json);
-
-                if (res.isSuccess())
-                {
-                    //Para que se quede el json actualizado
-                    getDeviceNotifications(new IRequestListener() {
-                        @Override
-                        public void onFinish(IResponse response) {
-                            if (viewListener != null)
-                                viewListener.onFinish(response);
-                        }
-                    });
-                }
-                else
-                {
-                    if (viewListener != null)
-                        viewListener.onFinish(res);
-                }
-            }
-
-            @Override
-            public void onError(ANError anError)
-            {
-                IResponse res = IResponse.generate(anError);
-                log("Response: " + res.json);
-
-                if (viewListener != null)
-                    viewListener.onFinish(res);
-            }
-        };
-        Networking.putDirect(url, params, requestListener);
-    }
-
-    //
-    /// END DEVICE
-    /////////////////////
-
     /////////////////////
     /// INIT SIGN
     //
@@ -307,586 +211,6 @@ public class Api
 
         JSONObjectRequestListener requestListener = getSimpleListener(viewListener);
         Networking.getDirect(url, params, requestListener);
-    }
-
-    public static void signIn(final IRequestListener viewListener, String phone, String email)
-    {
-        String url = Constants.BASE_URL + "/" + "user/login";
-        log("Request: " + url);
-
-        HashMap<String, String> params = new HashMap<>();
-        if (phone != null)
-            params.put("phone", phone);
-        else if (email != null)
-            params.put("email", email);
-
-        JSONObjectRequestListener requestListener = getSimpleListener(viewListener);
-        Networking.postDirect(url, params, requestListener);
-    }
-
-    public static void signUp(final IRequestListener viewListener, String name, String phone)
-    {
-        String url = Constants.BASE_URL + "/" + "user";
-        log("Request: " + url);
-
-        HashMap<String, String> params = new HashMap<>();
-        params.put("name", name);
-        params.put("phone", phone);
-        params.put("checkTerms", "1");
-
-        JSONObjectRequestListener requestListener = getSimpleListener(viewListener);
-        Networking.postDirect(url, params, requestListener);
-    }
-
-    public static void deleteAccount(final IRequestListener viewListener)
-    {
-        String url = Constants.BASE_URL + "/" + "user";
-        log("Request: " + url);
-
-        HashMap<String, String> params = new HashMap<>();
-
-        JSONObjectRequestListener requestListener = getSimpleListener(viewListener);
-        Networking.deleteDirect(url, params, requestListener);
-    }
-
-
-    public static void updateUser(final IRequestListener viewListener, String name, String phone, String identityType, String dni, String email, String birthday, String checkAdvertising)
-    {
-        String url = Constants.BASE_URL + "/" + "user";
-        log("Request: " + url);
-
-        HashMap<String, String> params = new HashMap<>();
-        params.put("name", name);
-        params.put("phone", phone);
-        params.put("checkTerms", "1");
-
-        if (checkAdvertising != null)
-            params.put("checkAdvertising", checkAdvertising);
-
-        if (identityType != null)
-            params.put("identityType", identityType);
-        if (dni != null)
-            params.put("dni", dni);
-        if (email != null)
-            params.put("email", email);
-        if (birthday != null)
-            params.put("birthday", birthday);
-
-
-        JSONObjectRequestListener requestListener = new JSONObjectRequestListener() {
-            @Override
-            public void onResponse(JSONObject response)
-            {
-                IResponse res = IResponse.generate(response);
-                log("Response: " + res.json);
-
-                if (res.isSuccess())
-                {
-                    String user = res.get("user");
-                    Core.saveData(Constants.KEY_USER, user);
-                }
-
-                if (viewListener != null)
-                    viewListener.onFinish(res);
-            }
-
-            @Override
-            public void onError(ANError anError)
-            {
-                IResponse res = IResponse.generate(anError);
-                log("Response: " + res.json);
-
-                if (viewListener != null)
-                    viewListener.onFinish(res);
-            }
-        };
-
-        Networking.putDirect(url, params, requestListener);
-    }
-
-
-
-    public static void validateCode(final IRequestListener viewListener, String code)
-    {
-        String url = Constants.BASE_URL + "/" + "user/code/validate";
-        log("Request: " + url);
-
-        HashMap<String, String> params = new HashMap<>();
-        params.put("code", code);
-
-        JSONObjectRequestListener requestListener = new JSONObjectRequestListener() {
-            @Override
-            public void onResponse(JSONObject response)
-            {
-                IResponse res = IResponse.generate(response);
-                log("Response: " + res.json);
-
-                if (res.isSuccess())
-                {
-                    String user = res.get("user");
-                    Core.saveData(Constants.KEY_USER, user);
-
-                    String token = res.get("token");
-                    Core.saveData(Constants.KEY_USER_TOKEN, token);
-                    //Networking.setAuthorization(token);
-                    Networking.setBasicHeader(HEADER_TOKEN, token);
-
-                    getGeneralData(new IRequestListener() {
-                        @Override
-                        public void onFinish(IResponse response)
-                        {
-                            if (viewListener != null)
-                                viewListener.onFinish(res);
-                        }
-                    });
-
-                    getDeviceNotifications(null);
-                }
-                else
-                {
-                    if (viewListener != null)
-                        viewListener.onFinish(res);
-                }
-            }
-
-            @Override
-            public void onError(ANError anError)
-            {
-                IResponse res = IResponse.generate(anError);
-                log("Response: " + res.json);
-
-                if (viewListener != null)
-                    viewListener.onFinish(res);
-            }
-        };
-
-        Networking.postDirect(url, params, requestListener);
-    }
-
-    public static void generateCode(final IRequestListener viewListener, boolean toEmail)
-    {
-        String url = Constants.BASE_URL + "/" + "user/code/generate";
-        log("Request: " + url);
-
-        HashMap<String, String> params = new HashMap<>();
-        if (toEmail) {
-            params.put("type", "email");
-        }
-
-        JSONObjectRequestListener requestListener = getSimpleListener(viewListener);
-        Networking.postDirect(url, params, requestListener);
-    }
-
-    public static void getGeneralData(final IRequestListener viewListener)
-    {
-        String url = Constants.BASE_URL + "/" + "types";
-        log("Request: " + url);
-
-        HashMap<String, String> params = new HashMap<>();
-
-        JSONObjectRequestListener requestListener = new JSONObjectRequestListener() {
-            @Override
-            public void onResponse(JSONObject response)
-            {
-                IResponse res = IResponse.generate(response);
-                log("Response: " + res.json);
-
-                if (res.isSuccess() && res.json != null)
-                {
-                    Core.saveData(Constants.KEY_GENERAL_DATA, res.json);
-                }
-
-                if (viewListener != null)
-                    viewListener.onFinish(res);
-            }
-
-            @Override
-            public void onError(ANError anError)
-            {
-                IResponse res = IResponse.generate(anError);
-                log("Response: " + res.json);
-
-                if (viewListener != null)
-                    viewListener.onFinish(res);
-            }
-        };
-
-        Networking.getDirect(url, params, requestListener);
-    }
-
-    //
-    /// END SIGN
-    /////////////////////
-
-    public static void getGlobals(final IRequestListener viewListener)
-    {
-        String url = Constants.BASE_URL + "/" + "globals";
-        log("Request: " + url);
-
-        HashMap<String, String> params = new HashMap<>();
-
-        JSONObjectRequestListener requestListener = new JSONObjectRequestListener() {
-            @Override
-            public void onResponse(JSONObject response)
-            {
-                IResponse res = IResponse.generate(response);
-                log("Response: " + res.json);
-
-                if (res.isSuccess() && res.json != null)
-                {
-                    boolean forceUpdate = false;
-                    String currentLang = Core.getLanguage();
-                    String literalsLang = Core.loadData(Constants.KEY_LITERALS_LANG);
-                    String literals = Core.loadData(Constants.KEY_LITERALS_VERSION);
-                    String literalsVoice = Core.loadData(Constants.KEY_LITERALS_VOICE_VALUES);
-
-                    if (literalsLang != null && !literalsLang.equalsIgnoreCase(currentLang)) {
-                        forceUpdate = true;
-                    }
-                    else if (literalsLang == null && currentLang.equals("en"))
-                    {
-                        forceUpdate = true;
-                    }
-
-                    /*if (literalsVoice == null) {
-                        forceUpdate = true;
-                    }*/
-                    final boolean forcedUpdate = forceUpdate;
-
-                    Versions versions = (Versions) res.get("versions", Versions.class);
-                    if (forceUpdate || literalsLang == null || literals == null || literalsVoice == null || (versions != null && versions.literals > Integer.parseInt(literals)))
-                    {
-                        getLiterals(new IRequestListener() {
-                            @Override
-                            public void onFinish(IResponse response) {
-                                if (response.isSuccess())
-                                {
-                                    String valores = response.get("items");
-                                    String valoresVoice = response.get("items_voice");
-
-                                    if (valores != null || valoresVoice != null) {
-                                        if (valores != null) {
-                                            //Strip slashes
-                                            valores = valores.replace("\\/", "/");
-                                            valores = valores.replace("\\n", "\n");
-
-                                            Core.saveData(Constants.KEY_LITERALS_VALUES, valores);
-                                            Core.saveData(Constants.KEY_LITERALS_LANG, currentLang);
-                                            Core.saveData(Constants.KEY_LITERALS_VERSION, versions.literals + "");
-                                        }
-
-                                        if (valoresVoice != null) {
-                                            valoresVoice = valoresVoice.replace("\\/", "/");
-                                            valoresVoice = valoresVoice.replace("\\n", "\n");
-
-                                            Core.saveData(Constants.KEY_LITERALS_VOICE_VALUES, valoresVoice);
-                                        }
-
-                                        Core.updateLiterals(forcedUpdate);
-                                    }
-                                }
-                            }
-                        });
-                    }
-
-
-                    Core.saveData(Constants.KEY_CONFIG_EXPIRE_POLICY_TIME, String.valueOf(versions.expirePolicyTime));
-                    Core.saveData(Constants.KEY_CONFIG_RETRY_SECON_DRIVER_REQUEST, String.valueOf(versions.retrySeconDriverRequest));
-                    Core.saveData(Constants.KEY_CONFIG_MAP_REFRESH_TIME, String.valueOf(versions.mapRefreshTime));
-                    Core.saveData(Constants.KEY_CONFIG_EXPIRE_SMS_TIME, String.valueOf(versions.expireSmsTime));
-                    Core.saveData(Constants.KEY_CONFIG_EXPIRE_CANCEL_TIME, String.valueOf(versions.expireCancelTime));
-                    Core.saveData(Constants.KEY_CONFIG_HOME_VIDEO, String.valueOf(versions.homeVideo));
-                    Core.saveData(Constants.KEY_CONFIG_SHOW_IOT, String.valueOf(versions.showIoT));
-                    Core.saveData(Constants.KEY_CONFIG_REPEAT_VOICE, String.valueOf(versions.repeatVoice));
-                    Core.saveData(Constants.KEY_CONFIG_TEST_META_KEY, versions.testMetaKey);
-                    Core.saveData(Constants.KEY_YOUTUBE_ID, versions.YOUTUBE_ID);
-                }
-
-                if (viewListener != null)
-                    viewListener.onFinish(res);
-            }
-
-            @Override
-            public void onError(ANError anError)
-            {
-                IResponse res = IResponse.generate(anError);
-                log("Response: " + res.json);
-
-                if (viewListener != null)
-                    viewListener.onFinish(res);
-            }
-        };
-
-        Networking.getDirect(url, params, requestListener);
-    }
-
-    public static void getLiterals(final IRequestListener viewListener)
-    {
-        String url = Constants.BASE_URL + "/" + "literals/app";
-        log("Request: " + url);
-
-        HashMap<String, String> params = new HashMap<>();
-
-        JSONObjectRequestListener requestListener = new JSONObjectRequestListener() {
-            @Override
-            public void onResponse(JSONObject response)
-            {
-                IResponse res = IResponse.generate(response);
-                log("Response: " + res.json);
-
-                if (res.isSuccess() && res.json != null)
-                {
-                    //Core.saveData(Constants.KEY_GENERAL_DATA, res.json);
-                }
-
-                if (viewListener != null)
-                    viewListener.onFinish(res);
-            }
-
-            @Override
-            public void onError(ANError anError)
-            {
-                IResponse res = IResponse.generate(anError);
-                log("Response: " + res.json);
-
-                if (viewListener != null)
-                    viewListener.onFinish(res);
-            }
-        };
-
-        Networking.getDirect(url, params, requestListener);
-    }
-
-    public static void validateLicensePlate(final IRequestListener viewListener, String licensePlate)
-    {
-        String url = Constants.BASE_URL + "/" + "vehicle/licensePlate/validate";
-        log("Request: " + url);
-
-        HashMap<String, String> params = new HashMap<>();
-        params.put("licensePlate", licensePlate);
-
-        JSONObjectRequestListener requestListener = getSimpleListener(viewListener);
-        Networking.postDirect(url, params, requestListener);
-    }
-
-    public static void addVehicle(final IRequestListener viewListener, Vehicle vehicle)
-    {
-        String url = Constants.BASE_URL + "/" + "vehicle";
-        log("Request: " + url);
-
-        HashMap<String, String> params = new HashMap<>();
-        params.put("licensePlate", vehicle.licensePlate);
-        params.put("brand", vehicle.brand);
-        params.put("model", vehicle.model);
-        if (vehicle.registrationYear != null && vehicle.registrationYear.length() > 0)
-            params.put("registrationYear", vehicle.registrationYear);
-        params.put("vehicleTypeId", vehicle.vehicleType.id+"");
-        if (vehicle.color != null)
-            params.put("colorId", vehicle.color.id+"");
-
-        JSONObjectRequestListener requestListener = getSimpleListener(viewListener);
-        Networking.postDirect(url, params, requestListener);
-    }
-
-    public static void updateVehicle(final IRequestListener viewListener, Vehicle vehicle)
-    {
-        String url = Constants.BASE_URL + "/" + "vehicle";
-        log("Request: " + url);
-
-        HashMap<String, String> params = new HashMap<>();
-        params.put("licensePlate", vehicle.licensePlate);
-        params.put("brand", vehicle.brand);
-        params.put("model", vehicle.model);
-        if (vehicle.registrationYear != null && vehicle.registrationYear.length() > 0)
-            params.put("registrationYear", vehicle.registrationYear);
-        params.put("vehicleTypeId", vehicle.vehicleType.id+"");
-        params.put("colorId", vehicle.color.id+"");
-
-        JSONObjectRequestListener requestListener = getSimpleListener(viewListener);
-        Networking.putDirect(url, params, requestListener);
-    }
-
-    public static void deleteVehicle(final IRequestListener viewListener, Vehicle vehicle)
-    {
-        String url = Constants.BASE_URL + "/" + "vehicle";
-        log("Request: " + url);
-
-        HashMap<String, String> params = new HashMap<>();
-        params.put("licensePlate", vehicle.licensePlate);
-
-        JSONObjectRequestListener requestListener = getSimpleListener(viewListener);
-        Networking.deleteDirect(url, params, requestListener);
-    }
-
-    public static void deleteVehicleBeacon(final IRequestListener viewListener, Vehicle vehicle)
-    {
-        String url = Constants.BASE_URL + "/" + "vehicle/beacon";
-        log("Request: " + url);
-
-        HashMap<String, String> params = new HashMap<>();
-        params.put("beaconId", vehicle.beacon.id + "");
-        params.put("vehicleId", vehicle.id + "");
-
-        JSONObjectRequestListener requestListener = getSimpleListener(viewListener);
-        Networking.deleteDirect(url, params, requestListener);
-    }
-
-    public static void updateVehicleBeacon(final IRequestListener viewListener, Beacon beacon, String newName)
-    {
-        String url = Constants.BASE_URL + "/" + "vehicle/beacon";
-        log("Request: " + url);
-
-        HashMap<String, String> params = new HashMap<>();
-        params.put("beaconId", beacon.id+"");
-        params.put("vehicleId", beacon.vehicle.id+"");
-        params.put("name", newName);
-
-        JSONObjectRequestListener requestListener = getSimpleListener(viewListener);
-        Networking.putDirect(url, params, requestListener);
-    }
-
-    public static void getVehicles(final IRequestListener viewListener)
-    {
-        String url = Constants.BASE_URL + "/" + "vehicles";
-        log("Request: " + url);
-
-        HashMap<String, String> params = new HashMap<>();
-
-
-        JSONObjectRequestListener requestListener = new JSONObjectRequestListener() {
-            @Override
-            public void onResponse(JSONObject response)
-            {
-                IResponse res = IResponse.generate(response);
-                log("Response: " + res.json);
-
-                if (res.isSuccess())
-                {
-                    String vehicles = res.get("vehicles");
-                    Core.saveData(Constants.KEY_USER_VEHICLES, vehicles);
-                }
-
-                if (viewListener != null)
-                    viewListener.onFinish(res);
-            }
-
-            @Override
-            public void onError(ANError anError)
-            {
-                IResponse res = IResponse.generate(anError);
-                log("Response: " + res.json);
-
-                if (viewListener != null)
-                    viewListener.onFinish(res);
-            }
-        };
-
-        Networking.getDirect(url, params, requestListener);
-    }
-
-    public static void addVehiclePolicy(final IRequestListener viewListener, Vehicle vehicle, Policy policy)
-    {
-        String url = Constants.BASE_URL + "/" + "policy";
-        log("Request: " + url);
-
-        HashMap<String, String> params = new HashMap<>();
-        params.put("policyId", vehicle.policy.id);
-        params.put("insuranceId", vehicle.insurance.id);
-        params.put("identityType", policy.identityType.id+"");
-        params.put("dni", policy.dni);
-        params.put("policyNumber", policy.policyNumber);
-        //params.put("policyStart", policy.policyStart);
-        if (policy.policyEnd != null)
-            params.put("policyEnd", policy.policyEnd);
-
-        JSONObjectRequestListener requestListener = getSimpleListener(viewListener);
-        Networking.putDirect(url, params, requestListener);
-    }
-
-    public static void addVehicleInsurance(final IRequestListener viewListener, Vehicle vehicle)
-    {
-        String url = Constants.BASE_URL + "/" + "policy";
-        log("Request: " + url);
-
-        HashMap<String, String> params = new HashMap<>();
-        params.put("policyId", vehicle.policy.id);
-        params.put("insuranceId", vehicle.insurance.id);
-
-        JSONObjectRequestListener requestListener = getSimpleListener(viewListener);
-        Networking.putDirect(url, params, requestListener);
-    }
-
-
-    public static void getInsurances(final IRequestListener viewListener)
-    {
-        String url = Constants.BASE_URL + "/" + "insurances";
-        log("Request: " + url);
-
-        HashMap<String, String> params = new HashMap<>();
-
-        JSONObjectRequestListener requestListener = getSimpleListener(viewListener);
-        Networking.getDirect(url, params, requestListener);
-    }
-
-    public static void addInsurance(final IRequestListener viewListener, String policyId, String name)
-    {
-        String url = Constants.BASE_URL + "/" + "insurance/custom";
-        log("Request: " + url);
-
-        HashMap<String, String> params = new HashMap<>();
-        params.put("policyId", policyId);
-        params.put("name", name);
-
-        JSONObjectRequestListener requestListener = getSimpleListener(viewListener);
-        Networking.postDirect(url, params, requestListener);
-    }
-
-    public static void validateBeacon(final IRequestListener viewListener, Beacon beacon)
-    {
-        String url = Constants.BASE_URL + "/" + "beacons/validate";
-        log("Request: " + url);
-
-        HashMap<String, String> params = new HashMap<>();
-
-        if (beacon.iot != null)
-        {
-            params.put("iot", beacon.iot);
-        }
-        else
-        {
-            params.put("uuid", beacon.uuid);
-            params.put("major", beacon.major);
-            params.put("minor", beacon.minor);
-        }
-
-        JSONObjectRequestListener requestListener = getSimpleListener(viewListener);
-        Networking.postDirect(url, params, requestListener);
-    }
-
-    public static void addBeacon(final IRequestListener viewListener, Beacon beacon, Vehicle vehicle)
-    {
-        String url = Constants.BASE_URL + "/" + "beacons";
-        log("Request: " + url);
-
-        HashMap<String, String> params = new HashMap<>();
-        //params.put("beaconTypeId", beacon.beaconTypeId);
-
-        if (beacon.iot != null)
-        {
-            params.put("beaconTypeId", "2");
-            params.put("iot", beacon.iot);
-        }
-        else
-        {
-            params.put("beaconTypeId", "1");
-            params.put("uuid", beacon.uuid);
-            params.put("major", beacon.major);
-            params.put("minor", beacon.minor);
-        }
-        params.put("vehicleId", vehicle.id);
-
-        JSONObjectRequestListener requestListener = getSimpleListener(viewListener);
-        Networking.postDirect(url, params, requestListener);
     }
 
     public static void addBeaconSdk(final IRequestListener viewListener, User user, Beacon beacon, Vehicle vehicle)
@@ -1066,7 +390,7 @@ public class Api
 
     public static void deleteBeaconSdk(final IRequestListener viewListener, User user, Vehicle vehicle)
     {
-        Networking.setBasicHeader(HEADER_TOKEN, getToken());
+        //Networking.setBasicHeader(HEADER_TOKEN, getToken());
 
         String url = Constants.BASE_URL + "/" + "sdk/beacon";
         log("Request: " + url);
@@ -1216,6 +540,7 @@ public class Api
         Networking.postDirect(url, params, requestListener);
     }
 
+    /*
     public static void reportIncidence(final IRequestListener viewListener, String licensePlate, String incidenceTypeId, String street, String city, String country, Location location, boolean openFromNotification)
     {
         String url = Constants.BASE_URL + "/" + "incidence";
@@ -1248,6 +573,7 @@ public class Api
         JSONObjectRequestListener requestListener = getSimpleListener(viewListener);
         Networking.postDirect(url, params, requestListener);
     }
+    */
 
     public static void closeIncidence(final IRequestListener viewListener, int incidenceId)
     {
@@ -1319,7 +645,7 @@ public class Api
 
     public static void getEcommercesSdk(final IRequestListener viewListener, User user, Vehicle vehicle)
     {
-        Networking.setBasicHeader(HEADER_TOKEN, getToken());
+        //Networking.setBasicHeader(HEADER_TOKEN, getToken());
 
         String url = Constants.BASE_URL + "/sdk/ecommerces";
         log("Request: " + url);
@@ -1426,7 +752,7 @@ public class Api
 
     public static void getBeaconSdk(final IRequestListener viewListener, User user, Vehicle vehicle)
     {
-        Networking.setBasicHeader(HEADER_TOKEN, getToken());
+        //Networking.setBasicHeader(HEADER_TOKEN, getToken());
 
         String url = Constants.BASE_URL + "/sdk/beacon";
         log("Request: " + url);
@@ -1459,7 +785,7 @@ public class Api
 
     public static void getBeaconDetailSdk(final IRequestListener viewListener, User user, Vehicle vehicle)
     {
-        Networking.setBasicHeader(HEADER_TOKEN, getToken());
+        //Networking.setBasicHeader(HEADER_TOKEN, getToken());
 
         String url = Constants.BASE_URL + "/sdk/iot_check";
         log("Request: " + url);
@@ -1492,7 +818,7 @@ public class Api
 
     public static void postIncidenceSdk(final IRequestListener viewListener, User user, Vehicle vehicle, Incidence incidence)
     {
-        Networking.setBasicHeader(HEADER_TOKEN, getToken());
+        //Networking.setBasicHeader(HEADER_TOKEN, getToken());
 
         String url = Constants.BASE_URL + "/sdk/incidence";
         log("Request: " + url);
@@ -1523,18 +849,19 @@ public class Api
         params.put("street", incidence.street);
         params.put("city", incidence.city);
         params.put("country", incidence.country);
-        params.put("latitude", String.valueOf(incidence.latitude));
-        params.put("longitude", String.valueOf(incidence.longitude));
+        params.put("latitude", incidence.latitude != null ? String.valueOf(incidence.latitude) : "");
+        params.put("longitude", incidence.longitude != null ? String.valueOf(incidence.longitude) : "");
         params.put("fromNotification", "0"); //  (0: reportado manualmente. 1: reportado por baliza)
         params.put("externalIncidenceId", incidence.externalIncidenceId);
 
         JSONObjectRequestListener requestListener = getSimpleListener(viewListener);
         Networking.postDirect(url, params, requestListener);
+        //Networking.postDirect2(url, params, requestListener);
     }
 
     public static void putIncidenceSdk(final IRequestListener viewListener, User user, Vehicle vehicle, Incidence incidence)
     {
-        Networking.setBasicHeader(HEADER_TOKEN, getToken());
+        //Networking.setBasicHeader(HEADER_TOKEN, getToken());
 
         String url = Constants.BASE_URL + "/sdk/incidence";
         log("Request: " + url);

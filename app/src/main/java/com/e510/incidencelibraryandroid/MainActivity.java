@@ -2,12 +2,15 @@ package com.e510.incidencelibraryandroid;
 
 import static com.e510.commons.utils.LogUtil.makeLogTag;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
 
+import androidx.activity.result.ActivityResult;
 import androidx.appcompat.app.AppCompatActivity;
 
 import es.incidence.core.domain.ColorType;
@@ -22,6 +25,8 @@ import es.incidence.library.IncidenceLibraryManager;
 
 public class MainActivity extends AppCompatActivity {
 
+    protected final BetterActivityResult<Intent, ActivityResult> activityLauncher = BetterActivityResult.registerActivityForResult(this);
+
     private static final String TAG = makeLogTag(MainActivity.class);
 
     private Button btnDeviceCreate;
@@ -31,18 +36,19 @@ public class MainActivity extends AppCompatActivity {
     private Button btnIncidenceClose;
     private Button btnEcommerce;
     private Button btnReportInc;
+    private Button btnReportIncSimple;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        String dni = "15111111T";
-        String phone = "650010001";
-        String externalUserId = "15001";
-        String externalVehicleId = "15001";
-        String licensePlate = "1511XXX";
-        String externalIncidenceId = "15001";
+        String dni = "15111115T";
+        String phone = "650010005";
+        String externalUserId = "15005";
+        String externalVehicleId = "15005";
+        String licensePlate = "1511XX5";
+        String externalIncidenceId = "15005";
 
         IdentityType dniIdentityType = new IdentityType();
         dniIdentityType.name = "dni"; // (tipo de documento de identidad: dni, nie, cif)
@@ -54,7 +60,7 @@ public class MainActivity extends AppCompatActivity {
         color.name = "Rojo";
 
         Policy policy = new Policy();
-        policy.policyNumber = "111111111"; // (número de la póliza)
+        policy.policyNumber = "111111115"; // (número de la póliza)
         policy.policyEnd = "2024-10-09"; // (fecha caducidad de la póliza)
         policy.identityType = dniIdentityType; // (tipo de documento identidad del asegurador)
         policy.dni = dni; // (documento de identidad del asegurador)
@@ -63,7 +69,7 @@ public class MainActivity extends AppCompatActivity {
         user.externalUserId = externalUserId; // (identificador externo del usuario)
         user.name = "Nombre TEST"; // (nombre del usuario)
         user.phone = phone; // (teléfono)
-        user.email = "sdkm1@tridenia.com"; // (e-mail)
+        user.email = "sdkm5@tridenia.com"; // (e-mail)
         user.identityType = dniIdentityType;
         user.dni = dni; // (número del documento de identidad)
         user.birthday = "1979-09-29"; // (fecha de Nacimiento)
@@ -81,7 +87,7 @@ public class MainActivity extends AppCompatActivity {
 
         IncidenceType incidenceType = new IncidenceType();
         incidenceType.id = 5; // Pinchazo
-        incidenceType.externalId = "B10"; // Pinchazo
+        incidenceType.externalId = "B1"; // Pinchazo
 
         Incidence incidence = new Incidence();
         incidence.incidenceType = incidenceType;
@@ -109,9 +115,11 @@ public class MainActivity extends AppCompatActivity {
                     if (response.isSuccess()) {
                         //MAKE OK ACTIONS
                         Log.d(TAG, "SUCCESS");
+                        Toast.makeText(MainActivity.this, "Baliza desvinculada con éxito", Toast.LENGTH_SHORT).show();
                     } else {
                         //MAKE KO ACTIONS
                         Log.d(TAG, "ERROR: " + response.message);
+                        Toast.makeText(MainActivity.this, "Baliza desvinculada con error: " + response.message, Toast.LENGTH_SHORT).show();
                     }
                 });
             }
@@ -129,9 +137,11 @@ public class MainActivity extends AppCompatActivity {
                 if (response.isSuccess()) {
                     //MAKE OK ACTIONS
                     Log.d(TAG, "SUCCESS");
+                    Toast.makeText(MainActivity.this, "Incidencia creada con éxito", Toast.LENGTH_SHORT).show();
                 } else {
                     //MAKE KO ACTIONS
                     Log.d(TAG, "ERROR: " + response.message);
+                    Toast.makeText(MainActivity.this, "Incidencia creada con error: " + response.message, Toast.LENGTH_SHORT).show();
                 }
             }
         ));
@@ -144,9 +154,11 @@ public class MainActivity extends AppCompatActivity {
                     if (response.isSuccess()) {
                         //MAKE OK ACTIONS
                         Log.d(TAG, "SUCCESS");
+                        Toast.makeText(MainActivity.this, "Incidencia cerrada con éxito", Toast.LENGTH_SHORT).show();
                     } else {
                         //MAKE KO ACTIONS
                         Log.d(TAG, "ERROR: " + response.message);
+                        Toast.makeText(MainActivity.this, "Incidencia cerrada con error: " + response.message, Toast.LENGTH_SHORT).show();
                     }
                 });
 
@@ -161,8 +173,40 @@ public class MainActivity extends AppCompatActivity {
 
         btnReportInc = findViewById(R.id.btnReportInc);
         btnReportInc.setOnClickListener(v -> {
-            Intent activity = IncidenceLibraryManager.instance.getReportIncViewController(user, vehicle);
-            startActivity(activity);
+            Intent activity = IncidenceLibraryManager.instance.getReportIncViewControllerFlowComplete(user, vehicle);
+            //startActivity(activity);
+            activityLauncher.launch(activity, result -> {
+                if (result.getResultCode() == Activity.RESULT_OK) {
+                    // There are no request codes
+                    Intent data = result.getData();
+                    Incidence incidence1=data.getParcelableExtra("incidence");
+                    Log.e(TAG, "Incidencia creada con éxito: " + incidence1.externalIncidenceId);
+                    // doSomeOperations();
+
+                    Toast.makeText(MainActivity.this, "Incidencia creada con éxito: " + incidence1.externalIncidenceId, Toast.LENGTH_SHORT).show();
+                } else {
+                    Toast.makeText(MainActivity.this, "No se ha podido crear la incidencia", Toast.LENGTH_SHORT).show();
+                }
+            });
+        });
+        //btnReportInc.setVisibility(View.GONE);
+
+        btnReportIncSimple = findViewById(R.id.btnReportIncSimple);
+        btnReportIncSimple.setOnClickListener(v -> {
+            Intent activity = IncidenceLibraryManager.instance.getReportIncViewControllerFlowSimple(user, vehicle);
+            //startActivity(activity);
+            activityLauncher.launch(activity, result -> {
+                if (result.getResultCode() == Activity.RESULT_OK) {
+                    // There are no request codes
+                    Intent data = result.getData();
+                    Incidence incidence1=data.getParcelableExtra("incidence");
+                    Log.e(TAG, "Incidencia creada con éxito: " + incidence1.externalIncidenceId);
+                    // doSomeOperations();
+                    Toast.makeText(MainActivity.this, "Incidencia creada con éxito: " + incidence1.externalIncidenceId, Toast.LENGTH_SHORT).show();
+                } else {
+                    Toast.makeText(MainActivity.this, "No se ha podido crear la incidencia", Toast.LENGTH_SHORT).show();
+                }
+            });
         });
     }
 
@@ -171,4 +215,21 @@ public class MainActivity extends AppCompatActivity {
         super.onResume();
 
     }
+
+    /*
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == 2) {
+            if(resultCode == Activity.RESULT_OK){
+                String result=data.getStringExtra("result");
+            }
+            if (resultCode == Activity.RESULT_CANCELED) {
+                // Do your task here.
+            }
+        } else {
+            super.onActivityResult(requestCode, resultCode, data);
+        }
+    }
+    */
 }

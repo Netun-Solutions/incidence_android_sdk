@@ -17,10 +17,12 @@ import java.util.ArrayList;
 
 import es.incidence.core.Constants;
 import es.incidence.core.Core;
+import es.incidence.core.domain.User;
 import es.incidence.core.domain.Vehicle;
 import es.incidence.core.entity.event.Event;
 import es.incidence.core.entity.event.EventCode;
 import es.incidence.core.manager.insuranceCall.InsuranceCallController;
+import es.incidence.library.IncidenceLibraryManager;
 
 public class AccidentFragment extends IncidenceReportFragment
 {
@@ -29,12 +31,13 @@ public class AccidentFragment extends IncidenceReportFragment
         return true;
     }
 
-    public static AccidentFragment newInstance(Vehicle vehicle, boolean openFromNotification)
+    public static AccidentFragment newInstance(Vehicle vehicle, User user, boolean openFromNotification)
     {
         AccidentFragment fragment = new AccidentFragment();
 
         Bundle bundle = new Bundle();
         bundle.putParcelable(KEY_VEHICLE, vehicle);
+        bundle.putParcelable(KEY_USER, user);
         bundle.putBoolean(KEY_NOTIFICATION, openFromNotification);
         fragment.setArguments(bundle);
 
@@ -96,7 +99,7 @@ public class AccidentFragment extends IncidenceReportFragment
         layoutContent.addView(view);
 
 
-        if (vehicle == null || vehicle.insurance == null)
+        if (IncidenceLibraryManager.instance.getInsurance() == null)
         {
             btnBlue.setDisabledColors();
             btnBlue.setOnClickListener(null);
@@ -109,7 +112,7 @@ public class AccidentFragment extends IncidenceReportFragment
     private void onlyMaterial()
     {
         speechStop();
-        if (vehicle != null && vehicle.insurance != null && vehicle.insurance.phone != null)
+        if (IncidenceLibraryManager.instance.getInsurance() != null && IncidenceLibraryManager.instance.getInsurance().phone != null)
         {
             InsuranceCallController.locateInsuranceCallPhone(getContext(), vehicle, new InsuranceCallController.LocationCallInsuranceListener() {
                 @Override

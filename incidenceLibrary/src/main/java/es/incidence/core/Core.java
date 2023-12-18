@@ -20,30 +20,24 @@ import com.e510.commons.utils.config.AppConfiguration;
 import com.e510.incidencelibrary.BuildConfig;
 import com.e510.incidencelibrary.R;
 import com.e510.networking.Mapper;
-import com.google.gson.Gson;
 
-import org.json.JSONObject;
 import org.michaelbel.bottomsheet.BottomSheet;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
+import java.util.List;
 import java.util.Locale;
 import java.util.Map;
 
 import dev.b3nedikt.restring.Restring;
 import dev.b3nedikt.reword.RewordInterceptor;
 import dev.b3nedikt.viewpump.ViewPump;
-import es.incidence.core.domain.BeaconType;
-import es.incidence.core.domain.ColorType;
-import es.incidence.core.domain.DeviceNotification;
-import es.incidence.core.domain.Driver;
 import es.incidence.core.domain.IDevice;
 import es.incidence.core.domain.IncidenceType;
-import es.incidence.core.domain.User;
 import es.incidence.core.domain.Vehicle;
-import es.incidence.core.domain.VehicleType;
 import es.incidence.core.manager.Api;
+import es.incidence.library.IncidenceLibraryManager;
 import es.incidence.library.config.Environment;
 //import es.incidence.core.manager.beacon.BeaconManager;
 //import es.incidence.core.manager.beacon.BeaconService;
@@ -110,15 +104,7 @@ public class Core {
     }
 
     public static void signOut() {
-        removeData(Constants.KEY_USER);
-        removeData(Constants.KEY_USER_TOKEN);
-        removeData(Constants.KEY_USER_DEFAULT_VEHICLE_ID);
-        removeData(Constants.KEY_USER_VEHICLES);
-        removeData(Constants.KEY_USER_DEVICE_NOTIFICATIONS);
-        removeData(Constants.KEY_LAST_INCIDENCE_REPORTED_DATE);
-        saveData(Constants.KEY_USER_SIGNOUT, "1");
 
-        //application.restartApp();
     }
     /*
     public static void startApp(BaseActivity currentActivity) {
@@ -182,32 +168,8 @@ public class Core {
         }
     }
 
-    public static void getGeneralData() {
-        if (loadData(Constants.KEY_USER_TOKEN) != null) {
-            Api.getGeneralData(null);
 
-            User user = getUser();
-            if (user != null && user.id == null) { //para solucionar que antes no se enviaba el id
-                Api.updateUser(null, user.name, user.phone, null, null, null, null, null);
-            }
-        }
-
-        Api.getGlobals(null);
-    }
-    /*
-    public static void trackGeoposition() {
-        if (LocationManager.hasPermission(application)) {
-            LocationManager.getLocation(application, new LocationManager.LocationListener() {
-                @Override
-                public void onLocationResult(Location location) {
-                    Api.trackGeoposition(null, location.getLatitude() + "", location.getLongitude() + "");
-                }
-            });
-        }
-    }
-    */
-    public static void updateLiterals(boolean forceUpdate) {
-        String valores = loadData(Constants.KEY_LITERALS_VALUES);
+    public static void updateLiterals(String valores) {
         if (valores != null) {
             LinkedHashMap<String, String> list = (LinkedHashMap<String, String>) Mapper.get(LinkedHashMap.class, valores);
             if (list != null) {
@@ -228,18 +190,6 @@ public class Core {
 
                 Locale current = application.getResources().getConfiguration().locale;
                 Restring.putStrings(current, map);
-
-                /* No hacemos reword porque sino los fields que le hemos sustituido el texto pod sus valores se vuelven a reiniciar con el string original
-                final BaseActivity activity = application.getCurrentActivity();
-                if (activity != null) {
-                    final View rootView = activity.getWindow().getDecorView().findViewById(android.R.id.content);
-                    Reword.reword(rootView);
-                }*/
-
-                if (forceUpdate)
-                {
-                    //application.restartApp();
-                }
             }
         }
     }
@@ -340,17 +290,6 @@ public class Core {
     ////////////////
     // Load objets
 
-    public static User getUser() {
-        User res = null;
-
-        String user = loadData(Constants.KEY_USER);
-        if (user != null) {
-            res = (User) Mapper.get(User.class, user);
-        }
-
-        return res;
-    }
-
     public static String getLanguage()
     {
         String language = Core.loadData(Constants.KEY_USER_LANG);
@@ -358,7 +297,7 @@ public class Core {
         {
             language = Locale.getDefault().getLanguage();
         }
-
+        language = "es";
         return language;
     }
 
@@ -373,57 +312,11 @@ public class Core {
         return application.getResources().getConfiguration().locale;
     }
 
-    public static boolean isUserPrimaryForVehicle(Vehicle vehicle)
-    {
-        User user = getUser();
-        boolean isUserPrimary = false;
-        if (vehicle != null && vehicle.drivers != null)
-        {
-            for (int i = 0; i < vehicle.drivers.size(); i++)
-            {
-                Driver driver = vehicle.drivers.get(i);
-                if (driver.isTypePrimary() && user.id != null && driver.id == Integer.parseInt(user.id))
-                {
-                    isUserPrimary = true;
-                    break;
-                }
-            }
-        }
-
-        return isUserPrimary;
-    }
-
-    private static ArrayList getGeneralDataList(String key, Class clase) {
-        ArrayList res = null;
-
-        try {
-            String general = loadData(Constants.KEY_GENERAL_DATA);
-            if (general != null) {
-                JSONObject json = new JSONObject(general);
-                res = Mapper.getList(clase, json.getString(key));
-            }
-        } catch (Exception e) {
-            LogUtil.logE(TAG, e.getMessage());
-        }
-
-        return res;
-    }
-
-    public static ArrayList<BeaconType> getBeaconTypes() {
-        return getGeneralDataList("beaconsTypes", BeaconType.class);
-    }
-
-    public static ArrayList<ColorType> getColors() {
-        return getGeneralDataList("colors", ColorType.class);
-    }
-
-    public static ArrayList<IncidenceType> getIncidencesTypes() {
-        return getGeneralDataList("incidencesTypes", IncidenceType.class);
-    }
-
     public static ArrayList<IncidenceType> getIncidencesTypes(int parent) {
         ArrayList<IncidenceType> res = new ArrayList<>();
-        ArrayList<IncidenceType> list = getGeneralDataList("incidencesTypes", IncidenceType.class);
+
+        //ArrayList<IncidenceType> list = getGeneralDataList("incidencesTypes", IncidenceType.class);
+        List<IncidenceType> list = IncidenceLibraryManager.instance.incidencesTypes;
         if (list != null) {
             for (int i = 0; i < list.size(); i++) {
                 IncidenceType it = list.get(i);
@@ -436,215 +329,13 @@ public class Core {
         return res;
     }
 
-    public static ArrayList<VehicleType> getVehiclesTypes() {
-        return getGeneralDataList("vehiclesTypes", VehicleType.class);
-    }
 
-    public static VehicleType getVehicleType(int id) {
-        VehicleType res = null;
-
-        ArrayList<VehicleType> list = getVehiclesTypes();
-        if (list != null) {
-            for (int i = 0; i < list.size(); i++) {
-                VehicleType type = list.get(i);
-                if (type.id == id) {
-                    res = type;
-                    break;
-                }
-            }
-        }
-
-        return res;
-    }
-
-    public static ColorType getColorType(VehicleType vehicleType, int id) {
-        ColorType res = null;
-
-        if (vehicleType != null && vehicleType.colors != null) {
-            for (int i = 0; i < vehicleType.colors.size(); i++) {
-                ColorType type = vehicleType.colors.get(i);
-                if (type.id == id) {
-                    res = type;
-                    break;
-                }
-            }
-        }
-
-        return res;
-    }
-
-    public static DeviceNotification getDeviceNotification(int notificationId) {
-        DeviceNotification res = null;
-
-        try {
-            String general = loadData(Constants.KEY_USER_DEVICE_NOTIFICATIONS);
-            if (general != null) {
-                ArrayList list = Mapper.getList(DeviceNotification.class, general);
-                for (int i = 0; i < list.size(); i++) {
-                    DeviceNotification d = (DeviceNotification) list.get(i);
-                    if (d.id == notificationId) {
-                        res = d;
-                        break;
-                    }
-                }
-            }
-        } catch (Exception e) {
-            LogUtil.logE(TAG, e.getMessage());
-        }
-
-
-        return res;
-    }
-
-    /*
-    public static String getVehicleImage(Vehicle vehicle)
-    {
-        String urlImage = null;
-        ArrayList<VehicleType> types = getVehiclesTypes();
-
-        if (types != null && vehicle != null && vehicle.colorId != null && vehicle.vehicleTypeId != null)
-        {
-            for (int j = 0; j < types.size(); j++)
-            {
-                VehicleType type = types.get(j);
-                if (type.id == Integer.parseInt(vehicle.vehicleTypeId))
-                {
-                    if (type.colors != null)
-                    {
-                        for (int k = 0; k < type.colors.size(); k++)
-                        {
-                            ColorType col = type.colors.get(k);
-                            if (col.id == Integer.parseInt(vehicle.colorId))
-                            {
-                                urlImage = col.image;
-                                break;
-                            }
-                        }
-                    }
-                    break;
-                }
-            }
-        }
-
-        return urlImage;
-    }
-    */
-
-    public static ArrayList<Vehicle> getVehicles()
-    {
-        ArrayList<Vehicle> items = new ArrayList<>();
-        String list = Core.loadData(Constants.KEY_USER_VEHICLES);
-        if (list != null) {
-            items = Mapper.getList(Vehicle.class, list);
-        }
-
-        return items;
-    }
-
-    public static void deleteVehicle(Vehicle vehicle)
-    {
-        replaceVehicle(vehicle, true);
-    }
-    public static void saveVehicle(Vehicle vehicle)
-    {
-        replaceVehicle(vehicle, false);
-    }
-    private static void replaceVehicle(Vehicle vehicle, boolean delete)
-    {
-        if (vehicle != null)
-        {
-            ArrayList<Vehicle> items = getVehicles();
-            ArrayList<Vehicle> newItems = new ArrayList<>();
-            boolean exist = false;
-
-            for (int i = 0; i < items.size(); i++)
-            {
-                Vehicle v = items.get(i);
-                if (v.id.equals(vehicle.id))
-                {
-                    if (!delete)
-                    {
-                        exist = true;
-                        newItems.add(vehicle);
-                    }
-                }
-                else
-                {
-                    newItems.add(v);
-                }
-            }
-
-            if (!exist && !delete)
-            {
-                newItems.add(vehicle);
-            }
-
-            Gson gson = new Gson();
-            String jsonStr = gson.toJson(newItems);
-            saveData(Constants.KEY_USER_VEHICLES, jsonStr);
-        }
-    }
-
-    public static Vehicle getVehicleFromBeacon(String beaconId)
-    {
-        ArrayList<Vehicle> items = getVehicles();
-        Vehicle vehicle = items != null && items.size() == 1 ? items.get(0) : null;
-
-        if (items != null && beaconId != null)
-        {
-            for (int i = 0; i < items.size(); i++)
-            {
-                Vehicle v = items.get(i);
-                if (v.beacon != null)
-                {
-                    String beaconKey = v.beacon.getId();
-                    if (beaconKey != null && beaconKey.equals(beaconId))
-                    {
-                        vehicle = v;
-                        break;
-                    }
-                }
-            }
-        }
-
-        return vehicle;
-    }
-
-    public static Vehicle getVehicle(String vehicleId)
-    {
-        ArrayList<Vehicle> items = getVehicles();
-        Vehicle vehicle = items != null && items.size() == 1 ? items.get(0) : null;
-
-        if (items != null && vehicleId != null)
-        {
-            for (int i = 0; i < items.size(); i++)
-            {
-                Vehicle v = items.get(i);
-                if (v.id != null && v.id.equals(vehicleId))
-                {
-                    vehicle = v;
-                    break;
-                }
-            }
-        }
-
-        return vehicle;
-    }
 
     public static boolean hasAnyVehicleWithBeacon() //se revisan los beacons que van por beaconmanager. los IoT no.
     {
         boolean res = false;
 
-        ArrayList<Vehicle> items = getVehicles();
-        if (items != null) {
-            for (int i = 0; i < items.size(); i++) {
-                Vehicle vehicle = items.get(i);
-                if (vehicle.beacon != null && vehicle.beacon.uuid != null && vehicle.beacon.beaconType != null && vehicle.beacon.beaconType.id == 1) {
-                    res = true;
-                    break;
-                }
-            }
-        }
+
 
         return res;
     }

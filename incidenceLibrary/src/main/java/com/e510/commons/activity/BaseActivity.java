@@ -31,7 +31,6 @@ import com.e510.commons.fragment.FragmentAnimation;
 import com.e510.commons.fragment.OnFragmentInteractionListener;
 import com.e510.commons.utils.FontUtils;
 import com.e510.commons.utils.LogUtil;
-import com.e510.commons.utils.banner.VXBannerManager;
 import com.e510.commons.utils.config.AppConfiguration;
 import com.e510.commons.utils.config.E510Resources;
 import com.e510.commons.view.Hud;
@@ -175,7 +174,6 @@ public class BaseActivity extends AppCompatActivity implements OnFragmentInterac
         IncidenceLibraryManager.instance.activityCreated(this);
 
         firstResume = true;
-        VXBannerManager.getInstance().cleanPushNotifications(this);
         registerEventBus();
     }
 

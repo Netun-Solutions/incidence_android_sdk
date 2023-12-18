@@ -13,7 +13,7 @@ public class Constants
     public static boolean FLAG_INCIDENCE_DGT = false;
 
     public static final String SCREEN_DEVELOPER = "DEVELOPER";
-    public static final String SCREEN_DEVICE_LIST = "SCREEN_DEVICE_LIST";
+    //public static final String SCREEN_DEVICE_LIST = "SCREEN_DEVICE_LIST";
     public static final String SCREEN_DEVICE_CREATE = "SCREEN_DEVICE_CREATE";
     public static final String FUNC_DEVICE_DELETE = "FUNC_DEVICE_DELETE";
     public static final String SCREEN_DEVICE_REVIEW = "SCREEN_DEVICE_REVIEW";
@@ -21,6 +21,7 @@ public class Constants
     public static final String FUNC_REPOR_INC = "FUNC_REPOR_INC";
     public static final String FUNC_CLOSE_INC = "FUNC_CLOSE_INC";
     public static final String SCREEN_REPOR_INC = "SCREEN_REPOR_INC";
+    public static final String SCREEN_REPOR_INC_SIMPLE = "SCREEN_REPOR_INC_SIMPLE";
     public static final String SCREEN_ERROR = "ERROR";
 
     public static void setBaseUrl(Environment environment)
@@ -57,6 +58,7 @@ public class Constants
 
 
     public static final String KEY_DEVICE_ID = "KEY_DEVICE_ID";
+/*
     public static final String KEY_USER_TOKEN = "KEY_USER_TOKEN";
     public static final String KEY_USER = "KEY_USER";
     public static final String KEY_USER_DEVICE_NOTIFICATIONS = "KEY_USER_DEVICE_NOTIFICATIONS";
@@ -64,11 +66,11 @@ public class Constants
     public static final String KEY_USER_VEHICLES = "KEY_USER_VEHICLES";
     public static final String KEY_USER_SIGNOUT = "KEY_USER_SIGNOUT";
     public static final String KEY_GENERAL_DATA = "KEY_GENERAL_DATA";
-    public static final String KEY_USER_LANG = "KEY_USER_LANG";
     public static final String KEY_LITERALS_LANG = "KEY_LITERALS_LANG";
-    public static final String KEY_LITERALS_VERSION = "KEY_LITERALS_VERSION";
+    public static final String KEY_LITERALS_VERSION = "KEY_LITERALS_VERSION";*/
+    public static final String KEY_USER_LANG = "KEY_USER_LANG";
     public static final String KEY_LITERALS_VALUES = "KEY_LITERALS_VALUES";
-    public static final String KEY_LITERALS_VOICE_VALUES = "KEY_LITERALS_VOICE_VALUES";
+    public static final String KEY_LITERALS_VOICE_VALUES = "KEY_LITERALS_VOICE_VALUES";/*
     public static final String KEY_LAST_INCIDENCE_REPORTED_DATE = "KEY_LAST_INCIDENCE_REPORTED_DATE";
     public static final String KEY_SERVICE_BEACON_STARTED = "KEY_SERVICE_BEACON_STARTED";
     public static final String KEY_CONFIG_EXPIRE_POLICY_TIME = "KEY_CONFIG_EXPIRE_POLICY_TIME";
@@ -100,9 +102,11 @@ public class Constants
     public static final String VALIDATE_USER_NIE_EXISTS = "user_nie_exists";
     public static final String VALIDATE_USER_EMAIL_EXISTS = "user_email_exists";
     public static final String VALIDATE_USER_PHONE_EXISTS = "user_phone_exists";
-
+    */
     public static final String WS_RESPONSE_ACTION_INVALID_SESSION = "invalid_session";
 
+
+    public static final int FAULT = 2;
     public static final int ACCIDENT_TYPE_ONLY_MATERIAL = 12;
     public static final int ACCIDENT_TYPE_WOUNDED = 13;
 

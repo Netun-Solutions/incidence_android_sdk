@@ -1,11 +1,14 @@
 package es.incidence.core.fragment.incidence.report;
 
+import static android.app.Activity.RESULT_OK;
 import static com.e510.commons.utils.LogUtil.makeLogTag;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.location.Location;
 import android.media.AudioManager;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.speech.tts.TextToSpeech;
@@ -22,7 +25,7 @@ import androidx.annotation.Nullable;
 import androidx.cardview.widget.CardView;
 import androidx.core.graphics.drawable.DrawableCompat;
 
-import com.e510.commons.utils.DateUtils;
+import com.e510.commons.activity.BaseActivity;
 import com.e510.commons.utils.FontUtils;
 import com.e510.commons.utils.LogUtil;
 import com.e510.commons.utils.Utils;
@@ -32,6 +35,7 @@ import com.e510.location.LocationManager;
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
 import org.greenrobot.eventbus.ThreadMode;
+import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.concurrent.TimeUnit;
@@ -39,6 +43,8 @@ import java.util.concurrent.TimeUnit;
 import es.incidence.core.Constants;
 import es.incidence.core.Core;
 import es.incidence.core.domain.Incidence;
+import es.incidence.core.domain.IncidenceType;
+import es.incidence.core.domain.User;
 import es.incidence.core.domain.Vehicle;
 import es.incidence.core.entity.event.Event;
 import es.incidence.core.entity.event.EventCode;
@@ -52,18 +58,23 @@ import es.incidence.core.manager.incidence.IncidenceManager;
 import es.incidence.core.utils.IUtils;
 import es.incidence.core.utils.view.IButton;
 import es.incidence.core.utils.view.INavigation;
+import es.incidence.library.IncidenceLibraryManager;
 
 public class IncidenceReportFragment extends IFragment implements SpeechManagerListener {
 
     private static final String TAG = makeLogTag(IncidenceReportFragment.class);
     public static final String KEY_VEHICLE = "KEY_VEHICLE";
     public static final String KEY_VEHICLE_TMP = "KEY_VEHICLE_TMP";
+    public static final String KEY_USER = "KEY_USER";
     public static final String KEY_NOTIFICATION = "KEY_NOTIFICATION";
+    public static final String KEY_FLOW_COMPLETE = "KEY_FLOW_COMPLETE";
 
     //params
     public Vehicle vehicle;
     public Vehicle vehicleTmp;
+    public User user;
     public boolean openFromNotification;
+    public boolean flowComplete;
     public boolean holdSpeech = false;
 
     public RelativeLayout layoutNavRight;
@@ -106,17 +117,19 @@ public class IncidenceReportFragment extends IFragment implements SpeechManagerL
 
     private CountDownTimer countDownTimerRepeatVoice;
 
-    public static IncidenceReportFragment newInstance(Vehicle vehicle, boolean openFromNotification) {
-        return newInstance(vehicle, null, openFromNotification);
+    public static IncidenceReportFragment newInstance(Vehicle vehicle, User user, boolean openFromNotification, Boolean flowComplete) {
+        return newInstance(vehicle, null, user, openFromNotification, flowComplete);
     }
-    public static IncidenceReportFragment newInstance(Vehicle vehicle, Vehicle vehicleTmp, boolean openFromNotification)
+    public static IncidenceReportFragment newInstance(Vehicle vehicle, Vehicle vehicleTmp, User user, boolean openFromNotification, Boolean flowComplete)
     {
         IncidenceReportFragment fragment = new IncidenceReportFragment();
 
         Bundle bundle = new Bundle();
         bundle.putParcelable(KEY_VEHICLE, vehicle);
         bundle.putParcelable(KEY_VEHICLE_TMP, vehicleTmp);
+        bundle.putParcelable(KEY_USER, user);
         bundle.putBoolean(KEY_NOTIFICATION, openFromNotification);
+        bundle.putBoolean(KEY_FLOW_COMPLETE, flowComplete);
         fragment.setArguments(bundle);
 
         return fragment;
@@ -128,8 +141,10 @@ public class IncidenceReportFragment extends IFragment implements SpeechManagerL
         IUtils.keepScreenOn(getActivity());
         if (getArguments() != null) {
             vehicle = getArguments().getParcelable(KEY_VEHICLE);
-            vehicleTmp = getArguments().getParcelable(KEY_VEHICLE_TMP);
+            //vehicleTmp = getArguments().getParcelable(KEY_VEHICLE_TMP);
+            user = getArguments().getParcelable(KEY_USER);
             openFromNotification = getArguments().getBoolean(KEY_NOTIFICATION);
+            flowComplete = getArguments().getBoolean(KEY_FLOW_COMPLETE);
         }
     }
 
@@ -336,7 +351,21 @@ public class IncidenceReportFragment extends IFragment implements SpeechManagerL
                 startSpeech(false);
             }
         }
+        activateLocation();
         addContent();
+    }
+
+    private void activateLocation()
+    {
+        if (!LocationManager.hasPermission(getContext())) {
+            //A partir de Api 30 no se puede solicitar directamente el Always, sino no sale la alerta
+            if (Build.VERSION.SDK_INT >= 30) {
+                LocationManager.requestPermission(BaseActivity.PERMISSION_LOCATION_REQUEST_CODE, getBaseActivity());
+            }
+            else {
+                LocationManager.requestPermissionWithBackground(BaseActivity.PERMISSION_LOCATION_REQUEST_CODE, getBaseActivity());
+            }
+        }
     }
 
     private void microButtonClick() {
@@ -462,7 +491,8 @@ public class IncidenceReportFragment extends IFragment implements SpeechManagerL
     }
 
     private void startCountDownTimerRepeatVoice() {
-        String repeatVoice = Core.loadData(Constants.KEY_CONFIG_REPEAT_VOICE);
+        //String repeatVoice = Core.loadData(Constants.KEY_CONFIG_REPEAT_VOICE);
+        String repeatVoice = "15";
         if (repeatVoice != null) {
             if (countDownTimerRepeatVoice != null) {
                 countDownTimerRepeatVoice.cancel();
@@ -602,10 +632,12 @@ public class IncidenceReportFragment extends IFragment implements SpeechManagerL
     public void onClickCancel()
     {
         speechStop();
-        mListener.cleanAllBackStackEntries();
+        //mListener.cleanAllBackStackEntries();
 
         alertTimeErrorContainer.setVisibility(View.GONE);
         alertVolumeErrorContainer.setVisibility(View.GONE);
+
+        getActivity().finish();
     }
 
     public void dgtAlertUpdatedView() {
@@ -617,14 +649,11 @@ public class IncidenceReportFragment extends IFragment implements SpeechManagerL
         speechStop();
         isShowingFragment = false;
 
-        if (vehicle != null)
-        {
+        if (!flowComplete) {
+            reportIncidenceSdk(Constants.FAULT, user.phone);
+        } else {
             int parent = 2; //Avería es 2
-            mListener.addFragmentAnimated(FaultFragment.newInstance(parent, vehicle, openFromNotification));
-        }
-        else
-        {
-            mListener.addFragmentAnimated(IncidenceReportVehicleFragment.newInstance(false, openFromNotification));
+            mListener.addFragmentAnimated(FaultFragment.newInstance(parent, vehicle, user, openFromNotification));
         }
     }
 
@@ -638,13 +667,10 @@ public class IncidenceReportFragment extends IFragment implements SpeechManagerL
             countDownTimerRepeatVoice.cancel();
         }*/
 
-        if (vehicle != null)
-        {
-            mListener.addFragmentAnimated(AccidentFragment.newInstance(vehicle, openFromNotification));
-        }
-        else
-        {
-            mListener.addFragmentAnimated(IncidenceReportVehicleFragment.newInstance(true, openFromNotification));
+        if (!flowComplete) {
+            reportIncidenceSdk(Constants.ACCIDENT_TYPE_ONLY_MATERIAL, user.phone);
+        } else {
+            mListener.addFragmentAnimated(AccidentFragment.newInstance(vehicle, user, openFromNotification));
         }
     }
 
@@ -820,93 +846,39 @@ public class IncidenceReportFragment extends IFragment implements SpeechManagerL
         }
     }
 
+    protected void reportIncidenceSdk(int idIncidence, String phone) {
+        IncidenceType incidenceType = new IncidenceType();
+        //incidenceType.id = idIncidence;
+        //incidenceType.externalId = "B30";
+        incidenceType.externalId = idIncidence+"";
+
+        Incidence incidence = new Incidence();
+        incidence.incidenceType = incidenceType;
+        //incidence.street = "Carrer Major, 2";
+        //incidence.city = "Barcelona";
+        //incidence.country = "España";
+        //incidence.latitude = 41.4435945;
+        //incidence.longitude = 2.2319534;
+        //incidence.externalIncidenceId = externalIncidenceId;
+
+        IncidenceLibraryManager.instance.createIncidenceFunc(user, vehicle, incidence, response -> {
+            if (response.isSuccess()) {
+                //MAKE OK ACTIONS
+                Log.d(TAG, "SUCCESS");
+
+                Intent data = new Intent();
+                data.putExtra("incidence", incidence);
+                getActivity().setResult(RESULT_OK, data);
+            } else {
+                //MAKE KO ACTIONS
+                Log.d(TAG, "ERROR: " + response.message);
+            }
+            getActivity().finish();
+        });
+    }
+
     protected void reportLocation(String idIncidence, String phone, Location location)
     {
-        /*
-        MapBoxManager.searchAddress(location, new SearchCallback() {
-            @Override
-            public void onResults(@NotNull List<? extends SearchResult> list, @NotNull ResponseInfo responseInfo)
-            {
-                String street = "";
-                String city = "";
-                String country = "";
-
-                if (!list.isEmpty()) {
-                    SearchResult searchResult = list.get(0);
-                    SearchAddress searchAddress = searchResult.getAddress();
-                    if (searchAddress != null)
-                    {
-                        if (searchAddress.getLocality() != null)
-                        {
-                            city = searchAddress.getLocality();
-                        }
-                        if (searchAddress.getCountry() != null)
-                        {
-                            country = searchAddress.getCountry();
-                        }
-
-                        String addr2 = searchAddress.getStreet();
-                        if (addr2 == null)
-                            addr2 = "";
-                        if (searchAddress.getHouseNumber() != null) {
-                            addr2 += ", " + searchAddress.getHouseNumber();
-                        }
-
-                        street = addr2;
-                    }
-                }
-
-                String licensePlate = "";
-                if (vehicle != null) {
-                    licensePlate = vehicle.licensePlate;
-                } else if (vehicleTmp != null) {
-                    licensePlate = vehicleTmp.licensePlate;
-                }
-
-                Api.reportIncidence(new IRequestListener() {
-                    @Override
-                    public void onFinish(IResponse response) {
-                        hideHud();
-                        if (response.isSuccess())
-                        {
-                            String ahora = DateUtils.getCurrentDate().getTimeInMillis() + "";
-                            Core.saveData(Constants.KEY_LAST_INCIDENCE_REPORTED_DATE, ahora);
-
-                            EventBus.getDefault().post(new Event(EventCode.INCIDENCE_REPORTED));
-
-                            boolean call = true;
-                            if (idIncidence.equals(Constants.ACCIDENT_TYPE_ONLY_MATERIAL+""))
-                            {
-                                Incidence incidence = (Incidence) response.get("incidence", Incidence.class);
-                                if (incidence != null && incidence.openApp != null)
-                                {
-                                    call = false;
-                                    Core.startNewApp(getContext(), incidence.openApp.androidPackage, incidence.openApp.androidDeeplink, incidence.openApp.androidGooglePlayURL);
-                                }
-                            }
-
-                            if (call)
-                            {
-                                Core.callPhone(phone, true);
-                            }
-
-                            mListener.cleanAllBackStackEntries();
-                        }
-                        else
-                        {
-                            onBadResponse(response);
-                        }
-                    }
-                }, licensePlate, idIncidence, street, city, country, location, openFromNotification);
-            }
-
-            @Override
-            public void onError(@NotNull Exception e) {
-                hideHud();
-                showAlert(R.string.alert_error_get_location_message);
-            }
-        });
-        */
         String licensePlate = "", street = "", city = "", country = "";
         if (vehicle != null) {
             licensePlate = vehicle.licensePlate;
@@ -914,41 +886,50 @@ public class IncidenceReportFragment extends IFragment implements SpeechManagerL
             licensePlate = vehicleTmp.licensePlate;
         }
 
-        Api.reportIncidence(new IRequestListener() {
+        IncidenceType incidenceType = new IncidenceType();
+        //incidenceType.id = idIncidence;
+        //incidenceType.externalId = "B30";
+        incidenceType.externalId = idIncidence+"";
+
+        Incidence incidence = new Incidence();
+        incidence.incidenceType = incidenceType;
+        incidence.street = street;
+        incidence.city = city;
+        incidence.country = country;
+        incidence.latitude = location.getLatitude();
+        incidence.longitude = location.getLongitude();
+        //incidence.externalIncidenceId = externalIncidenceId;
+
+        Api.postIncidenceSdk(new IRequestListener() {
             @Override
             public void onFinish(IResponse response) {
                 hideHud();
                 if (response.isSuccess())
                 {
-                    String ahora = DateUtils.getCurrentDate().getTimeInMillis() + "";
-                    Core.saveData(Constants.KEY_LAST_INCIDENCE_REPORTED_DATE, ahora);
-
-                    EventBus.getDefault().post(new Event(EventCode.INCIDENCE_REPORTED));
-
-                    boolean call = true;
-                    if (idIncidence.equals(Constants.ACCIDENT_TYPE_ONLY_MATERIAL+""))
-                    {
-                        Incidence incidence = (Incidence) response.get("incidence", Incidence.class);
-                        if (incidence != null && incidence.openApp != null)
-                        {
-                            call = false;
-                            Core.startNewApp(getContext(), incidence.openApp.androidPackage, incidence.openApp.androidDeeplink, incidence.openApp.androidGooglePlayURL);
+                    if (incidence != null) {
+                        try {
+                            JSONObject jsonObject = response.get();
+                            JSONObject incidenceObject = jsonObject.getJSONObject("incidence");
+                            int id = incidenceObject.getInt("id");
+                            String externalIncidenceTypeId = incidenceObject.getString("externalIncidenceTypeId");
+                            incidence.id = id;
+                            incidence.externalIncidenceId = externalIncidenceTypeId;
+                        } catch (Exception e) {
+                            e.printStackTrace();
                         }
-                    }
 
-                    if (call)
-                    {
-                        Core.callPhone(phone, true);
+                        Intent data = new Intent();
+                        data.putExtra("incidence", incidence);
+                        getActivity().setResult(RESULT_OK, data);
                     }
-
-                    mListener.cleanAllBackStackEntries();
+                    getActivity().finish();
                 }
                 else
                 {
                     onBadResponse(response);
                 }
             }
-        }, licensePlate, idIncidence, street, city, country, location, openFromNotification);
+        }, user, vehicle, incidence);
     }
 
     @Subscribe(threadMode = ThreadMode.MAIN)

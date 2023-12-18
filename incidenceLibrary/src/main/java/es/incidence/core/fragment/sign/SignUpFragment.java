@@ -29,16 +29,11 @@ import es.incidence.core.domain.Vehicle;
 import es.incidence.core.entity.sign.SignStep;
 import es.incidence.core.entity.sign.SignStepType;
 import es.incidence.core.fragment.IFragment;
-import es.incidence.core.manager.Api;
-import es.incidence.core.manager.IRequestListener;
-import es.incidence.core.manager.IResponse;
 import es.incidence.core.utils.view.IButton;
 import es.incidence.core.utils.view.IDropField;
 import es.incidence.core.utils.view.IField;
 import es.incidence.core.utils.view.INavigation;
 import es.incidence.core.utils.view.IStepper;
-import es.incidence.core.utils.view.SMSView;
-import es.incidence.core.utils.view.TermsView;
 
 public class SignUpFragment extends IFragment
 {
@@ -437,36 +432,7 @@ public class SignUpFragment extends IFragment
                 navigation.setTitle(signStep.navigationTitle);
                 layoutContainer.setVisibility(View.VISIBLE);
 
-                //layoutFields.removeAllViews();
-                //layoutContainer.removeAllViews();
 
-                TermsView termsView = new TermsView(getContext());
-                signStep.customView = termsView;
-                termsView.setTag(STEP_TAG);
-                termsView.setOnClickAcceptListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view)
-                    {
-                        if (signStep.validation != null)
-                        {
-                            signStep.validation.validate();
-                        }
-                        else
-                        {
-                            printNextStep();
-                        }
-                    }
-                });
-
-                if(termsView.getParent() != null) {
-                    ((ViewGroup)termsView.getParent()).removeView(termsView); // <- fix
-                }
-                layoutContainer.addView(termsView);
-
-                if (animated)
-                {
-                    termsView.startAnimation(slide);
-                }
             }
             else if (signStep.type == SignStepType.SMS)
             {
@@ -476,65 +442,7 @@ public class SignUpFragment extends IFragment
                 //layoutFields.removeAllViews();
                 //layoutContainer.removeAllViews();
 
-                SMSView smsView = new SMSView(getContext());
-                signStep.customView = smsView;
-                smsView.setTitle(getString(R.string.hola));
-                smsView.setTag(STEP_TAG);
-                smsView.setOnClickAcceptListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-                        String valor = smsView.getText();
-                        showHud();
-                        Api.validateCode(new IRequestListener() {
-                            @Override
-                            public void onFinish(IResponse response) {
-                                hideHud();
 
-                                if (response.isSuccess())
-                                {
-                                    printNextStep();
-                                }
-                                else
-                                {
-                                    //onBadResponse(response);
-                                    if (response != null && response.message != null)
-                                    {
-                                        smsView.showError(response.message);
-                                    }
-                                }
-                            }
-                        }, valor);
-                    }
-                });
-                smsView.setOnClickResendCodeListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-                        showHud();
-                        Api.generateCode(new IRequestListener() {
-                            @Override
-                            public void onFinish(IResponse response) {
-                                hideHud();
-                                if (response.isSuccess()) {
-                                    smsView.restartCodeTimer();
-                                }
-                                else
-                                {
-                                    onBadResponse(response);
-                                }
-                            }
-                        }, false);
-                    }
-                });
-
-                if(smsView.getParent() != null) {
-                    ((ViewGroup)smsView.getParent()).removeView(smsView); // <- fix
-                }
-                layoutContainer.addView(smsView);
-
-                if (animated)
-                {
-                    smsView.startAnimation(slide);
-                }
             }
             else if (signStep.type == SignStepType.CUSTOM)
             {

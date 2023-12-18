@@ -77,22 +77,36 @@ public class Networking
 
     private static void addBasicData(ANRequest.PostRequestBuilder request)
     {
+        HashMap<String, String> headers = new HashMap<>();
         if (INSTANCE.authorization != null) {
             request.addHeaders("Authorization", "Bearer " + INSTANCE.authorization);
+            headers.put("Authorization", "Bearer " + INSTANCE.authorization);
         }
 
         request.addBodyParameter("locale", DeviceUtils.getLocale());
 
         request.addHeaders(INSTANCE.customHeaders);
+        headers.putAll(INSTANCE.customHeaders);
+
+        if (BuildConfig.DEBUG) {
+            Log.e(TAG, "headers: " + headers);
+        }
     }
 
     private static void addBasicData(ANRequest.GetRequestBuilder request)
     {
+        HashMap<String, String> headers = new HashMap<>();
         if (INSTANCE.authorization != null) {
             request.addHeaders("Authorization", "Bearer " + INSTANCE.authorization);
+            headers.put("Authorization", "Bearer " + INSTANCE.authorization);
         }
 
         request.addHeaders(INSTANCE.customHeaders);
+        headers.putAll(INSTANCE.customHeaders);
+
+        if (BuildConfig.DEBUG) {
+            Log.e(TAG, "headers: " + headers);
+        }
     }
 
     public static void setBasicHeader(String key, String value)

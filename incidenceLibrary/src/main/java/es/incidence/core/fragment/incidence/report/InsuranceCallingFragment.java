@@ -1,5 +1,8 @@
 package es.incidence.core.fragment.incidence.report;
 
+import static android.app.Activity.RESULT_OK;
+
+import android.content.Intent;
 import android.graphics.drawable.GradientDrawable;
 import android.os.Bundle;
 import android.os.Handler;
@@ -24,6 +27,7 @@ import java.util.ArrayList;
 import es.incidence.core.Constants;
 import es.incidence.core.Core;
 import es.incidence.core.domain.Incidence;
+import es.incidence.core.domain.User;
 import es.incidence.core.domain.Vehicle;
 import es.incidence.core.entity.event.Event;
 import es.incidence.core.entity.event.EventCode;
@@ -31,6 +35,7 @@ import es.incidence.core.manager.IResponse;
 import es.incidence.core.manager.ImageManager;
 import es.incidence.core.manager.insuranceCall.InsuranceCallController;
 import es.incidence.core.manager.insuranceCall.InsuranceCallDelegate;
+import es.incidence.library.IncidenceLibraryManager;
 
 public class InsuranceCallingFragment extends IncidenceReportFragment implements InsuranceCallDelegate
 {
@@ -46,12 +51,13 @@ public class InsuranceCallingFragment extends IncidenceReportFragment implements
         return true;
     }
 
-    public static InsuranceCallingFragment newInstance(Vehicle vehicle, int incidenceTypeId, boolean openFromNotification)
+    public static InsuranceCallingFragment newInstance(Vehicle vehicle, User user, int incidenceTypeId, boolean openFromNotification)
     {
         InsuranceCallingFragment fragment = new InsuranceCallingFragment();
 
         Bundle bundle = new Bundle();
         bundle.putParcelable(KEY_VEHICLE, vehicle);
+        bundle.putParcelable(KEY_USER, user);
         bundle.putInt(KEY_INCIDENCE, incidenceTypeId);
         bundle.putBoolean(KEY_NOTIFICATION, openFromNotification);
         fragment.setArguments(bundle);
@@ -65,6 +71,8 @@ public class InsuranceCallingFragment extends IncidenceReportFragment implements
 
         if(getArguments() != null) {
             incidenceTypeId = getArguments().getInt(KEY_INCIDENCE);
+            vehicle = getArguments().getParcelable(KEY_VEHICLE);
+            user = getArguments().getParcelable(KEY_USER);
         }
     }
 
@@ -86,9 +94,9 @@ public class InsuranceCallingFragment extends IncidenceReportFragment implements
         speechRecognizion.add(Core.getLiteralVoice("cancel", getContext()));
 
         voiceDialogs = new ArrayList<String>();
-        if (vehicle.insurance.textIncidence != null)
+        if (IncidenceLibraryManager.instance.getInsurance() != null && IncidenceLibraryManager.instance.getInsurance().textIncidence != null)
         {
-            voiceDialogs.add(vehicle.insurance.textIncidence);
+            voiceDialogs.add(IncidenceLibraryManager.instance.getInsurance().textIncidence);
         }
         voiceDialogs.add(Core.getLiteralVoice("incidence_tip_beacon", getContext()));
         voiceDialogs.add(Core.getLiteralVoice("incidence_tip_lights", getContext()));
@@ -112,13 +120,13 @@ public class InsuranceCallingFragment extends IncidenceReportFragment implements
         layoutTips.setBackground(back);
 
         ImageView imgInsurance = view.findViewById(R.id.imgInsurance);
-        if (vehicle != null && vehicle.insurance != null)
+        if (IncidenceLibraryManager.instance.getInsurance() != null)
         {
-            ImageManager.loadImage(getContext(), vehicle.insurance.image, imgInsurance);
+            ImageManager.loadImage(getContext(), IncidenceLibraryManager.instance.getInsurance().image, imgInsurance);
 
-            if (vehicle.insurance.textIncidence != null)
+            if (IncidenceLibraryManager.instance.getInsurance().textIncidence != null)
             {
-                txtDescription.setText(vehicle.insurance.textIncidence);
+                txtDescription.setText(IncidenceLibraryManager.instance.getInsurance().textIncidence);
             }
         }
         else
@@ -142,13 +150,15 @@ public class InsuranceCallingFragment extends IncidenceReportFragment implements
     @Override
     public void onClickCancel() {
         speechStop();
-        mListener.cleanAllBackStackEntries();
+        //mListener.cleanAllBackStackEntries();
+
+        getActivity().finish();
     }
 
     private void reportIncidence()
     {
         showHud();
-        InsuranceCallController.reportIncidence(getContext(), this, incidenceTypeId, vehicle, this, openFromNotification);
+        InsuranceCallController.reportIncidence(getContext(), this, incidenceTypeId, vehicle, user, this, openFromNotification);
     }
 
     @Override
@@ -186,17 +196,26 @@ public class InsuranceCallingFragment extends IncidenceReportFragment implements
     @Override
     public void onSuccessReport(Incidence incidence)
     {
-        close();
+        close(incidence);
     }
 
-    private void close()
+    private void close() {
+        close(null);
+    }
+    private void close(Incidence incidence)
     {
         if (handlerSuccessReported != null && runnableSuccessReported != null) {
             handlerSuccessReported.removeCallbacks(runnableSuccessReported);
         }
 
         hideHud();
-        mListener.cleanAllBackStackEntries();
+        //mListener.cleanAllBackStackEntries();
+        if (incidence != null) {
+            Intent data = new Intent();
+            data.putExtra("incidence", incidence);
+            getActivity().setResult(RESULT_OK, data);
+        }
+        getActivity().finish();
     }
 
     @Subscribe(threadMode = ThreadMode.MAIN)
