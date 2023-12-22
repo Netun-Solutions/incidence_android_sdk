@@ -660,18 +660,14 @@ public class IncidenceReportFragment extends IFragment implements SpeechManagerL
     public void onClickRed()
     {
         speechStop();
-        /*if (countDownTimer != null) {
-            countDownTimer.cancel();
-        }
-        if (countDownTimerRepeatVoice != null) {
-            countDownTimerRepeatVoice.cancel();
-        }*/
-
+        /*
         if (!flowComplete) {
             reportIncidenceSdk(Constants.ACCIDENT_TYPE_ONLY_MATERIAL, user.phone);
         } else {
             mListener.addFragmentAnimated(AccidentFragment.newInstance(vehicle, user, openFromNotification));
         }
+        */
+        mListener.addFragmentAnimated(AccidentFragment.newInstance(vehicle, user, openFromNotification));
     }
 
     @Override

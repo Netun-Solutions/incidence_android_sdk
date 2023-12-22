@@ -78,6 +78,7 @@ public class IncidenceLibraryManager {
                     instance.validApiKey = true;
 
                     screens = response.getList("functionalities", String.class);
+                    screens.add(Constants.SCREEN_REPOR_INC_SIMPLE);
 
                     insurance = (Insurance) response.get("insurance", Insurance.class);
 
