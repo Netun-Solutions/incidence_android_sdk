@@ -2,12 +2,9 @@ package es.incidence.core;
 
 import static com.e510.commons.utils.LogUtil.makeLogTag;
 
-import android.Manifest;
 import android.app.Application;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
-import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Handler;
@@ -18,10 +15,7 @@ import com.e510.commons.utils.LogUtil;
 import com.e510.commons.utils.Prefs;
 import com.e510.commons.utils.config.AppConfiguration;
 import com.e510.incidencelibrary.BuildConfig;
-import com.e510.incidencelibrary.R;
 import com.e510.networking.Mapper;
-
-import org.michaelbel.bottomsheet.BottomSheet;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -374,6 +368,7 @@ public class Core {
         }
     }
 
+    /*
     public static void callPhone(String phone) {
         callPhone(phone, false);
     }
@@ -421,6 +416,7 @@ public class Core {
             }
         }
     }
+    */
 
     public static void activityStopped() {
         /*

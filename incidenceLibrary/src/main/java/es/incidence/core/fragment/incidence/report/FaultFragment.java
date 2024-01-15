@@ -73,7 +73,7 @@ public class FaultFragment extends IncidenceReportFragment
         btnBlue.setVisibility(View.GONE);
 
         layoutNavRight.setVisibility(View.VISIBLE);
-        imgNavTitleRight.setVisibility(View.VISIBLE);
+        imgNavTitleRight.setVisibility(View.GONE);
         imgNavTitleRight.setImageDrawable(Utils.getDrawable(getContext(), R.drawable.icon_phone));
         imgNavTitleRight.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -85,7 +85,7 @@ public class FaultFragment extends IncidenceReportFragment
                     {
                         if (phone != null && phone.length() > 0)
                         {
-                            Core.callPhone(phone);
+                            //Core.callPhone(phone);
                         }
                     }
                 });
