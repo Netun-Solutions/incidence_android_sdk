@@ -46,7 +46,9 @@ dependencies {
     implementation 'dev.b3nedikt.viewpump:viewpump:4.0.7'
     // Allows to update the text of views at runtime without recreating the activity
     implementation 'dev.b3nedikt.reword:reword:4.0.1'
-    implementation "com.amitshekhar.android:jackson-android-networking:1.0.2"
+    implementation('com.amitshekhar.android:jackson-android-networking:1.0.2') {
+        exclude group: "com.android.support"
+    }
     api 'org.greenrobot:eventbus:3.3.1'
     implementation 'net.yslibrary.keyboardvisibilityevent:keyboardvisibilityevent:3.0.0-RC2'
     implementation 'com.github.bumptech.glide:glide:4.11.0'
