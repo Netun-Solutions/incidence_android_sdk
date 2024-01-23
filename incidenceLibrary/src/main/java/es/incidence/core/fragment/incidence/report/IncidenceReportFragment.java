@@ -649,10 +649,12 @@ public class IncidenceReportFragment extends IFragment implements SpeechManagerL
         speechStop();
         isShowingFragment = false;
 
-        if (!flowComplete) {
+        int parent = 2; //Avería es 2
+        ArrayList<IncidenceType> list = Core.getIncidencesTypes(parent);
+
+        if (list.size() == 0) {
             reportIncidenceSdk(Constants.FAULT, user.phone);
         } else {
-            int parent = 2; //Avería es 2
             mListener.addFragmentAnimated(FaultFragment.newInstance(parent, vehicle, user, openFromNotification));
         }
     }
@@ -660,14 +662,14 @@ public class IncidenceReportFragment extends IFragment implements SpeechManagerL
     public void onClickRed()
     {
         speechStop();
-        /*
-        if (!flowComplete) {
+
+        int parent = 1; //Accidente es 1
+        ArrayList<IncidenceType> list = Core.getIncidencesTypes(parent);
+        if (list.size() == 0) {
             reportIncidenceSdk(Constants.ACCIDENT_TYPE_ONLY_MATERIAL, user.phone);
         } else {
             mListener.addFragmentAnimated(AccidentFragment.newInstance(vehicle, user, openFromNotification));
         }
-        */
-        mListener.addFragmentAnimated(AccidentFragment.newInstance(vehicle, user, openFromNotification));
     }
 
     @Override
