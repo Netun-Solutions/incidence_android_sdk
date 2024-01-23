@@ -649,11 +649,11 @@ public class IncidenceReportFragment extends IFragment implements SpeechManagerL
         speechStop();
         isShowingFragment = false;
 
-        int parent = 2; //Avería es 2
+        int parent = Constants.FAULT; //Avería es 2
         ArrayList<IncidenceType> list = Core.getIncidencesTypes(parent);
 
         if (list.size() == 0) {
-            reportIncidenceSdk(Constants.FAULT, user.phone);
+            reportIncidenceSdk(parent, user.phone);
         } else {
             mListener.addFragmentAnimated(FaultFragment.newInstance(parent, vehicle, user, openFromNotification));
         }
@@ -663,10 +663,10 @@ public class IncidenceReportFragment extends IFragment implements SpeechManagerL
     {
         speechStop();
 
-        int parent = 1; //Accidente es 1
+        int parent = Constants.ACCIDENT; //Accidente es 1
         ArrayList<IncidenceType> list = Core.getIncidencesTypes(parent);
         if (list.size() == 0) {
-            reportIncidenceSdk(Constants.ACCIDENT_TYPE_ONLY_MATERIAL, user.phone);
+            reportIncidenceSdk(parent, user.phone);
         } else {
             mListener.addFragmentAnimated(AccidentFragment.newInstance(vehicle, user, openFromNotification));
         }

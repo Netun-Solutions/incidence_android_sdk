@@ -106,6 +106,7 @@ public class Constants
     public static final String WS_RESPONSE_ACTION_INVALID_SESSION = "invalid_session";
 
 
+    public static final int ACCIDENT = 1;
     public static final int FAULT = 2;
     public static final int ACCIDENT_TYPE_ONLY_MATERIAL = 12;
     public static final int ACCIDENT_TYPE_WOUNDED = 13;
