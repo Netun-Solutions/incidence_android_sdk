@@ -32,7 +32,7 @@ import es.incidence.core.domain.IncidenceType;
 import es.incidence.core.domain.Vehicle;
 import es.incidence.core.manager.Api;
 import es.incidence.library.IncidenceLibraryManager;
-import es.incidence.library.config.Environment;
+import es.incidence.library.config.IncidenceEnvironment;
 //import es.incidence.core.manager.beacon.BeaconManager;
 //import es.incidence.core.manager.beacon.BeaconService;
 //import io.sentry.Sentry;
@@ -58,14 +58,14 @@ public class Core {
     }
 
     //public static void init(BaseApplication app) {
-    public static void init(Application app, String apikey, Environment environment) {
+    public static void init(Application app, String apikey, IncidenceEnvironment environment) {
         application = app;
         prepareConfigs(apikey, environment);
         Restring.init(app);
         ViewPump.init(RewordInterceptor.INSTANCE);
     }
 
-    private static void prepareConfigs(String apikey, Environment environment) {
+    private static void prepareConfigs(String apikey, IncidenceEnvironment environment) {
         if (BuildConfig.DEBUG) {
             LogUtil.config("", true);
         }

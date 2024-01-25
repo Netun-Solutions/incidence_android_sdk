@@ -1,7 +1,7 @@
 package es.incidence.core;
 
 
-import es.incidence.library.config.Environment;
+import es.incidence.library.config.IncidenceEnvironment;
 
 public class Constants
 {
@@ -24,17 +24,17 @@ public class Constants
     public static final String SCREEN_REPOR_INC_SIMPLE = "SCREEN_REPOR_INC_SIMPLE";
     public static final String SCREEN_ERROR = "ERROR";
 
-    public static void setBaseUrl(Environment environment)
+    public static void setBaseUrl(IncidenceEnvironment environment)
     {
-        if (environment == Environment.TEST)
+        if (environment == IncidenceEnvironment.TEST)
         {
             BASE_URL = BASE_URL_TEST;
         }
-        else if (environment == Environment.PRE)
+        else if (environment == IncidenceEnvironment.PRE)
         {
             BASE_URL = BASE_URL_PRE;
         }
-        else if (environment == Environment.PRO)
+        else if (environment == IncidenceEnvironment.PRO)
         {
             BASE_URL = BASE_URL_PRO;
         }

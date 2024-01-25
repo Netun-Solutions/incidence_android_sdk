@@ -1,6 +1,6 @@
 package es.incidence.library.config;
 
-public enum Environment {
+public enum IncidenceEnvironment {
     TEST,
     PRE,
     PRO

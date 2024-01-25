@@ -2,9 +2,9 @@ package es.incidence.library.config;
 
 public class IncidenceLibraryConfig {
     final private String apikey;
-    final private Environment environment;
+    final private IncidenceEnvironment environment;
 
-    private IncidenceLibraryConfig(String apikeyLoc, Environment environment) {
+    private IncidenceLibraryConfig(String apikeyLoc, IncidenceEnvironment environment) {
         this.apikey = apikeyLoc;
         this.environment = environment;
     }
@@ -13,20 +13,20 @@ public class IncidenceLibraryConfig {
         return apikey;
     }
 
-    public Environment getEnvironment() {
+    public IncidenceEnvironment getEnvironment() {
         return environment;
     }
 
     public static class Builder {
         private String apikey;
-        private Environment environment = Environment.TEST;
+        private IncidenceEnvironment environment = IncidenceEnvironment.TEST;
 
         public Builder setApikey(String apikey) {
             this.apikey = apikey;
             return this;
         }
 
-        public Builder setEnvironment(Environment environment) {
+        public Builder setEnvironment(IncidenceEnvironment environment) {
             this.environment = environment;
             return this;
         }
