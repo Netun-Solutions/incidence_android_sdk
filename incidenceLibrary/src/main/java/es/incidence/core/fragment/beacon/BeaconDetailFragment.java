@@ -167,7 +167,7 @@ public class BeaconDetailFragment extends IFragment
         });
 
         //String title = beacon.name;
-        String title = "";
+        String title = getString(R.string.incidence_key_beacon);
         navigation.init(this, title, true);
 
         layoutRootBeaconDetailFind = rootView.findViewById(R.id.layoutRootBeaconDetailFind);
