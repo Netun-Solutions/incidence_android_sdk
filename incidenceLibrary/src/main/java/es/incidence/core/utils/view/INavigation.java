@@ -62,7 +62,7 @@ public class INavigation extends RelativeLayout
             }
         });
         txtTitle = view.findViewById(R.id.txtTitle);
-        txtTitle.setText(R.string.create_account);
+        txtTitle.setText(R.string.incidence_key_create_account);
 
         FontUtils.setTypeValueText(txtTitle, Constants.FONT_SEMIBOLD, getContext());
 

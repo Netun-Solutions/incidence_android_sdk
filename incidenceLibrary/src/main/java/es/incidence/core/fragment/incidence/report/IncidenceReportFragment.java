@@ -179,7 +179,7 @@ public class IncidenceReportFragment extends IFragment implements SpeechManagerL
 
     @Override
     public int getTitleId() {
-        return R.string.report_incidence;
+        return R.string.incidence_key_report_incidence;
     }
 
     @Override
@@ -257,7 +257,7 @@ public class IncidenceReportFragment extends IFragment implements SpeechManagerL
         });
         FontUtils.setTypeValueText(btnCancel, Constants.FONT_SEMIBOLD, getContext());
         btnRed = rootView.findViewById(R.id.btnRed);
-        btnRed.setText(getString(R.string.accident));
+        btnRed.setText(getString(R.string.incidence_key_accident));
         btnRed.setPrimaryColors(R.color.error100, R.color.error);
         FontUtils.setTypeValueText(btnRed, Constants.FONT_SEMIBOLD, getContext());
         btnRed.setOnClickListener(new View.OnClickListener() {
@@ -267,7 +267,7 @@ public class IncidenceReportFragment extends IFragment implements SpeechManagerL
             }
         });
         btnBlue = rootView.findViewById(R.id.btnBlue);
-        btnBlue.setText(getString(R.string.fault));
+        btnBlue.setText(getString(R.string.incidence_key_fault));
         btnBlue.setPrimaryColors();
         FontUtils.setTypeValueText(btnBlue, Constants.FONT_SEMIBOLD, getContext());
         btnBlue.setOnClickListener(new View.OnClickListener() {
@@ -389,16 +389,16 @@ public class IncidenceReportFragment extends IFragment implements SpeechManagerL
 
     public void setUpVoiceLiterals() {
         speechRecognizion = new ArrayList<String>();
-        speechRecognizion.add(Core.getLiteralVoice("one", getContext()));
-        speechRecognizion.add(Core.getLiteralVoice("fault", getContext()));
-        speechRecognizion.add(Core.getLiteralVoice("two", getContext()));
-        speechRecognizion.add(Core.getLiteralVoice("accident", getContext()));
-        speechRecognizion.add(Core.getLiteralVoice("three", getContext()));
-        speechRecognizion.add(Core.getLiteralVoice("cancel", getContext()));
+        speechRecognizion.add(Core.getLiteralVoiceSDK("incidence_key_one", getContext()));
+        speechRecognizion.add(Core.getLiteralVoiceSDK("incidence_key_fault", getContext()));
+        speechRecognizion.add(Core.getLiteralVoiceSDK("incidence_key_two", getContext()));
+        speechRecognizion.add(Core.getLiteralVoiceSDK("incidence_key_accident", getContext()));
+        speechRecognizion.add(Core.getLiteralVoiceSDK("incidence_key_three", getContext()));
+        speechRecognizion.add(Core.getLiteralVoiceSDK("incidence_key_cancel", getContext()));
 
         voiceDialogs = new ArrayList<String>();
-        voiceDialogs.add(Core.getLiteralVoice("report_ask_what", getContext()));
-        voiceDialogs.add(Core.getLiteralVoice("report_ask_what_descrip", getContext()));
+        voiceDialogs.add(Core.getLiteralVoiceSDK("incidence_key_report_ask_what", getContext()));
+        voiceDialogs.add(Core.getLiteralVoiceSDK("incidence_key_report_ask_what_descrip", getContext()));
         voiceDialogs.addAll(speechRecognizion);
     }
 
@@ -451,7 +451,7 @@ public class IncidenceReportFragment extends IFragment implements SpeechManagerL
                                 });
                                 speechManager.unmuteBeepSoundOfRecorder();
                                 if (notUnderstand) {
-                                    textToSpeech.speak(Core.getLiteralVoice("not_understand_voice", getContext()), TextToSpeech.QUEUE_FLUSH, null, TextToSpeech.ACTION_TTS_QUEUE_PROCESSING_COMPLETED);
+                                    textToSpeech.speak(Core.getLiteralVoiceSDK("incidence_key_not_understand_voice", getContext()), TextToSpeech.QUEUE_FLUSH, null, TextToSpeech.ACTION_TTS_QUEUE_PROCESSING_COMPLETED);
                                 } else if (emergency) {
                                     textToSpeech.speak(emergencyMessage, TextToSpeech.QUEUE_FLUSH, null, null);
                                 } else {
@@ -511,7 +511,7 @@ public class IncidenceReportFragment extends IFragment implements SpeechManagerL
                             time = String.format("%02d:%02d", minutes, seconds);
                         }
 
-                        String timeText = context.getString(R.string.report_ask_what_descrip, time);
+                        String timeText = context.getString(R.string.incidence_key_report_ask_what_descrip, time);
                         LogUtil.logE(TAG, "onTickRepeatVoice: " + timeText);
 
                         if (seconds == 0) {
@@ -556,7 +556,7 @@ public class IncidenceReportFragment extends IFragment implements SpeechManagerL
 
     protected void setUpTimeAlert() {
         if (IncidenceManager.secondsGlobal != 0 && IncidenceManager.secondsGlobal<=30) {
-            String secondsText = getContext().getString(R.string.alert_llamada_emergencias, IncidenceManager.secondsGlobal);
+            String secondsText = getContext().getString(R.string.incidence_key_alert_llamada_emergencias, IncidenceManager.secondsGlobal);
             if (!alertTimeErrorContainerHided) {
                 alertTimeErrorContainer.setVisibility(View.VISIBLE);
 
@@ -588,7 +588,7 @@ public class IncidenceReportFragment extends IFragment implements SpeechManagerL
         TextView txtDescription = view.findViewById(R.id.txtDescription);
 
 
-        txtDescription.setText(getContext().getString(R.string.report_ask_what_descrip, "03:00"));
+        txtDescription.setText(getContext().getString(R.string.incidence_key_report_ask_what_descrip, "03:00"));
         IncidenceManager.secondsGlobal = 0;
         countDownTimer = new CountDownTimer(60000 * 3, 1000) {
 
@@ -605,23 +605,23 @@ public class IncidenceReportFragment extends IFragment implements SpeechManagerL
                 }
                 setUpTimeAlert();
 
-                String timeText = getContext().getString(R.string.report_ask_what_descrip, time);
+                String timeText = getContext().getString(R.string.incidence_key_report_ask_what_descrip, time);
                 LogUtil.logE(TAG, "onTick: " + timeText + " - " + seconds);
                 txtDescription.setText(timeText);
 
                 if (minutes == 0 && seconds == 0) {
-                    txtDescription.setText(getContext().getString(R.string.report_ask_what_descrip, "00:00"));
+                    txtDescription.setText(getContext().getString(R.string.incidence_key_report_ask_what_descrip, "00:00"));
 
                     EventBus.getDefault().post(new Event(EventCode.INCICENDE_TIME_STOP));
 
-                    if (SpeechManager.isEnabled) startSpeech(false, true, getContext().getString(R.string.calling_emergency));
+                    if (SpeechManager.isEnabled) startSpeech(false, true, getContext().getString(R.string.incidence_key_calling_emergency));
                     reportIncidence(Constants.ACCIDENT_TYPE_WOUNDED+"", Constants.PHONE_EMERGENCY);
                 }
             }
 
             public void onFinish()
             {
-                txtDescription.setText(getContext().getString(R.string.report_ask_what_descrip, "00:00"));
+                txtDescription.setText(getContext().getString(R.string.incidence_key_report_ask_what_descrip, "00:00"));
             }
         };
         countDownTimer.start();
@@ -691,7 +691,7 @@ public class IncidenceReportFragment extends IFragment implements SpeechManagerL
         if (!match.isEmpty()) {
             voiceRecognizionMatch(match);
         } else if (!string.isEmpty() && !SpeechManager.isStopping) {
-            String text =  Core.getLiteralVoice("not_understand_voice", getContext()).toLowerCase().replace(",", "");
+            String text =  Core.getLiteralVoiceSDK("incidence_key_not_understand_voice", getContext()).toLowerCase().replace(",", "");
             if (string.toLowerCase().equals(text)) {
                 startVoiceRecognition();
             } else {
@@ -705,11 +705,11 @@ public class IncidenceReportFragment extends IFragment implements SpeechManagerL
     }
 
     public void voiceRecognizionMatch(String string) {
-        if (Core.getLiteralVoice("one", getContext()).toLowerCase().equals(string) || Core.getLiteralVoice("fault", getContext()).toLowerCase().equals(string)) {
+        if (Core.getLiteralVoiceSDK("incidence_key_one", getContext()).toLowerCase().equals(string) || Core.getLiteralVoiceSDK("incidence_key_fault", getContext()).toLowerCase().equals(string)) {
             onClickBlue();
-        } else if (Core.getLiteralVoice("two", getContext()).toLowerCase().equals(string) || Core.getLiteralVoice("accident", getContext()).toLowerCase().equals(string)) {
+        } else if (Core.getLiteralVoiceSDK("incidence_key_two", getContext()).toLowerCase().equals(string) || Core.getLiteralVoiceSDK("incidence_key_accident", getContext()).toLowerCase().equals(string)) {
             onClickRed();
-        } else if (Core.getLiteralVoice("three", getContext()).toLowerCase().equals(string) || Core.getLiteralVoice("cancel", getContext()).toLowerCase().equals(string)) {
+        } else if (Core.getLiteralVoiceSDK("incidence_key_three", getContext()).toLowerCase().equals(string) || Core.getLiteralVoiceSDK("incidence_key_cancel", getContext()).toLowerCase().equals(string)) {
             onClickCancel();
         }
     }
@@ -718,45 +718,45 @@ public class IncidenceReportFragment extends IFragment implements SpeechManagerL
     public String getNumberName(int index) {
         switch (index){
             case 1:
-                return Core.getLiteralVoice("one", getContext()).toLowerCase();
+                return Core.getLiteralVoiceSDK("incidence_key_one", getContext()).toLowerCase();
             case 2:
-                return Core.getLiteralVoice("two", getContext()).toLowerCase();
+                return Core.getLiteralVoiceSDK("incidence_key_two", getContext()).toLowerCase();
             case 3:
-                return Core.getLiteralVoice("three", getContext()).toLowerCase();
+                return Core.getLiteralVoiceSDK("incidence_key_three", getContext()).toLowerCase();
             case 4:
-                return Core.getLiteralVoice("four", getContext()).toLowerCase();
+                return Core.getLiteralVoiceSDK("incidence_key_four", getContext()).toLowerCase();
             case 5:
-                return Core.getLiteralVoice("five", getContext()).toLowerCase();
+                return Core.getLiteralVoiceSDK("incidence_key_five", getContext()).toLowerCase();
             case 6:
-                return Core.getLiteralVoice("six", getContext()).toLowerCase();
+                return Core.getLiteralVoiceSDK("incidence_key_six", getContext()).toLowerCase();
             case 7:
-                return Core.getLiteralVoice("seven", getContext()).toLowerCase();
+                return Core.getLiteralVoiceSDK("incidence_key_seven", getContext()).toLowerCase();
             case 8:
-                return Core.getLiteralVoice("eight", getContext()).toLowerCase();
+                return Core.getLiteralVoiceSDK("incidence_key_eight", getContext()).toLowerCase();
             case 9:
-                return Core.getLiteralVoice("nine", getContext()).toLowerCase();
+                return Core.getLiteralVoiceSDK("incidence_key_nine", getContext()).toLowerCase();
         }
         return "";
     }
 
     public Integer getNumberValue(String literal) {
-        if (literal.equals(Core.getLiteralVoice("one", getContext()).toLowerCase())) {
+        if (literal.equals(Core.getLiteralVoiceSDK("incidence_key_one", getContext()).toLowerCase())) {
             return 1;
-        } else if (literal.equals(Core.getLiteralVoice("two", getContext()).toLowerCase())) {
+        } else if (literal.equals(Core.getLiteralVoiceSDK("incidence_key_two", getContext()).toLowerCase())) {
             return 2;
-        } else if (literal.equals(Core.getLiteralVoice("three", getContext()).toLowerCase())) {
+        } else if (literal.equals(Core.getLiteralVoiceSDK("incidence_key_three", getContext()).toLowerCase())) {
             return 3;
-        } else if (literal.equals(Core.getLiteralVoice("four", getContext()).toLowerCase())) {
+        } else if (literal.equals(Core.getLiteralVoiceSDK("incidence_key_four", getContext()).toLowerCase())) {
             return 4;
-        } else if (literal.equals(Core.getLiteralVoice("five", getContext()).toLowerCase())) {
+        } else if (literal.equals(Core.getLiteralVoiceSDK("incidence_key_five", getContext()).toLowerCase())) {
             return 5;
-        } else if (literal.equals(Core.getLiteralVoice("six", getContext()).toLowerCase())) {
+        } else if (literal.equals(Core.getLiteralVoiceSDK("incidence_key_six", getContext()).toLowerCase())) {
             return 6;
-        } else if (literal.equals(Core.getLiteralVoice("seven", getContext()).toLowerCase())) {
+        } else if (literal.equals(Core.getLiteralVoiceSDK("incidence_key_seven", getContext()).toLowerCase())) {
             return 7;
-        } else if (literal.equals(Core.getLiteralVoice("eight", getContext()).toLowerCase())) {
+        } else if (literal.equals(Core.getLiteralVoiceSDK("incidence_key_eight", getContext()).toLowerCase())) {
             return 8;
-        } else if (literal.equals(Core.getLiteralVoice("nine", getContext()).toLowerCase())) {
+        } else if (literal.equals(Core.getLiteralVoiceSDK("incidence_key_nine", getContext()).toLowerCase())) {
             return 9;
         }
         return null;
@@ -781,7 +781,7 @@ public class IncidenceReportFragment extends IFragment implements SpeechManagerL
                 SpeechManager.isEnabled = false;
                 setUpSpeechButton();
                 setUpVolumeAlert();
-                showAlert(R.string.alert_need_audio_permission_description);
+                showAlert(R.string.incidence_key_alert_need_audio_permission_description);
             }
         }
     }
@@ -816,7 +816,7 @@ public class IncidenceReportFragment extends IFragment implements SpeechManagerL
                         else
                         {
                             hideHud();
-                            showAlert(R.string.activate_location_message);
+                            showAlert(R.string.incidence_key_activate_location_message);
                         }
                     }
                 });
@@ -833,14 +833,14 @@ public class IncidenceReportFragment extends IFragment implements SpeechManagerL
                     else
                     {
                         hideHud();
-                        showAlert(R.string.activate_location_message);
+                        showAlert(R.string.incidence_key_activate_location_message);
                     }
                 }
             });
         }
         else
         {
-            showAlert(R.string.activate_location_message);
+            showAlert(R.string.incidence_key_activate_location_message);
         }
     }
 

@@ -110,13 +110,13 @@ public class FaultFragment extends IncidenceReportFragment
         if (getNumberName(speechRecognizion.size()) != null) {
             speechRecognizion.add(getNumberName(list.size()+1));
         }
-        speechRecognizion.add(Core.getLiteralVoice("cancel", getContext()).toLowerCase());
+        speechRecognizion.add(Core.getLiteralVoiceSDK("incidence_key_cancel", getContext()).toLowerCase());
 
         voiceDialogs = new ArrayList<String>();
         if (parent > 2) {
-            voiceDialogs.add(Core.getLiteralVoice("fault_fallo_title", getContext()));
+            voiceDialogs.add(Core.getLiteralVoiceSDK("incidence_key_fault_fallo_title", getContext()));
         } else {
-            voiceDialogs.add(Core.getLiteralVoice("ask_fault", getContext()));
+            voiceDialogs.add(Core.getLiteralVoiceSDK("incidence_key_ask_fault", getContext()));
         }
         voiceDialogs.addAll(speechRecognizion);
     }
@@ -181,7 +181,7 @@ public class FaultFragment extends IncidenceReportFragment
                 onClickCancel();
             }
         } else {
-            if (Core.getLiteralVoice("cancel", getContext()).toLowerCase().equals(string)) {
+            if (Core.getLiteralVoiceSDK("incidence_key_cancel", getContext()).toLowerCase().equals(string)) {
                 onClickCancel();
             } else {
                 for (IncidenceType item : list) {

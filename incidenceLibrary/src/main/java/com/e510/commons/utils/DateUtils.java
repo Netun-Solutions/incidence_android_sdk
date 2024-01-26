@@ -236,23 +236,23 @@ public class DateUtils
         int minutes;
 
         if (deltaSeconds < 5){
-            dateString = context.getString(R.string.now);
+            dateString = context.getString(R.string.incidence_key_now);
         } else if (deltaSeconds < ONE_MINUTE) {
-            dateString = context.getString(R.string.date_seconds_ago).replace(REPLACE_CHAR, String.valueOf(deltaSeconds));
+            dateString = context.getString(R.string.incidence_key_date_seconds_ago).replace(REPLACE_CHAR, String.valueOf(deltaSeconds));
         } else if (deltaSeconds < TWO_MINUTES) {
-            dateString = context.getString(R.string.one_minute_ago);
+            dateString = context.getString(R.string.incidence_key_one_minute_ago);
         } else if (deltaMinutes < ONE_HOUR) {
-            dateString = context.getString(R.string.date_minutes_ago).replace(REPLACE_CHAR, String.valueOf(deltaMinutes));
+            dateString = context.getString(R.string.incidence_key_date_minutes_ago).replace(REPLACE_CHAR, String.valueOf(deltaMinutes));
         } else if (deltaMinutes < TWO_HOURS) {
-            dateString = context.getString(R.string.one_hour_ago);
+            dateString = context.getString(R.string.incidence_key_one_hour_ago);
         } else if (deltaMinutes < ONE_DAY) {
             minutes = deltaMinutes / 60;
-            dateString = context.getString(R.string.date_hours_ago).replace(REPLACE_CHAR, String.valueOf(minutes));
+            dateString = context.getString(R.string.incidence_key_date_hours_ago).replace(REPLACE_CHAR, String.valueOf(minutes));
         } else if (deltaMinutes < TWO_DAYS) {
-            dateString = context.getString(R.string.yesterday);
+            dateString = context.getString(R.string.incidence_key_yesterday);
         } else if (deltaMinutes < A_WEEK) {
             minutes = deltaMinutes / (60 * 24);
-            dateString = context.getString(R.string.date_days_ago).replace(REPLACE_CHAR, String.valueOf(minutes));
+            dateString = context.getString(R.string.incidence_key_date_days_ago).replace(REPLACE_CHAR, String.valueOf(minutes));
         } else {
             dateString = DATE_ES.format(date).toLowerCase();
         }

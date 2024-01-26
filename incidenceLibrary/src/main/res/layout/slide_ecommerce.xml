@@ -52,8 +52,7 @@
                 android:background="@color/grey300"
                 android:layout_marginLeft="@dimen/margin_normal"
                 android:layout_marginRight="@dimen/margin_normal"
-                android:layout_marginTop="@dimen/margin_normal_medium"
-                android:id="@+id/cardLine"/>
+                android:layout_marginTop="@dimen/margin_normal_medium" />
 
             <TextView
                 android:id="@+id/txtSlidePrice"
@@ -106,7 +105,7 @@
                 android:textColor="@color/black500"
                 android:textSize="12sp"
                 android:gravity="right"
-                android:text="@string/ecommerce_subtitle"/>
+                android:text="@string/incidence_key_ecommerce_subtitle"/>
 
         </LinearLayout>
 

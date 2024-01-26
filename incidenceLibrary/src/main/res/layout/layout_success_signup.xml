@@ -28,7 +28,7 @@
         android:layout_marginLeft="@dimen/margin_normal"
         android:layout_marginRight="@dimen/margin_normal"
         android:id="@+id/btnSuccessSignUp"
-        app:topTitle="@string/go_home"
+        app:topTitle="@string/incidence_key_go_home"
         android:layout_alignParentBottom="true"
         android:layout_marginBottom="@dimen/margin_normal_triple"/>
 
@@ -49,7 +49,7 @@
             android:lineHeight="44dp"
             android:gravity="center"
             android:layout_marginBottom="64dp"
-            android:text="@string/success_create_your_account"
+            android:text="@string/incidence_key_success_create_your_account"
             android:layout_above="@+id/layoutstep1"/>
 
         <RelativeLayout
@@ -70,13 +70,12 @@
             <TextView
                 android:layout_toRightOf="@+id/txtStep2check"
                 android:layout_marginLeft="16dp"
-                android:id="@+id/txtStep2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textColor="@android:color/white"
                 android:textSize="18sp"
                 android:lineHeight="28dp"
-                android:text="@string/create_account_step2"
+                android:text="@string/incidence_key_create_account_step2"
                 android:layout_centerVertical="true"/>
 
         </RelativeLayout>
@@ -98,19 +97,17 @@
             <TextView
                 android:layout_toRightOf="@+id/txtStep1check"
                 android:layout_marginLeft="16dp"
-                android:id="@+id/txtStep1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textColor="@android:color/white"
                 android:textSize="18sp"
                 android:lineHeight="28dp"
-                android:text="@string/create_account_step1"
+                android:text="@string/incidence_key_create_account_step1"
                 android:layout_centerVertical="true"/>
 
         </RelativeLayout>
 
         <RelativeLayout
-            android:id="@+id/layoutstep3"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="40dp"
@@ -128,13 +125,12 @@
             <TextView
                 android:layout_toRightOf="@+id/txtStep3check"
                 android:layout_marginLeft="16dp"
-                android:id="@+id/txtStep3"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textColor="@android:color/white"
                 android:textSize="18sp"
                 android:lineHeight="28dp"
-                android:text="@string/create_account_step3"
+                android:text="@string/incidence_key_create_account_step3"
                 android:layout_centerVertical="true"/>
 
         </RelativeLayout>

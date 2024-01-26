@@ -38,7 +38,7 @@
                 android:textColor="@color/black600"
                 android:textSize="16sp"
                 android:lineHeight="26dp"
-                android:text="@string/create_account_step2"
+                android:text="@string/incidence_key_create_account_step2"
                 android:layout_centerVertical="true"
                 android:gravity="center"
                 android:layout_marginLeft="@dimen/margin_normal"
@@ -64,7 +64,7 @@
                 android:layout_marginRight="@dimen/margin_normal"
                 android:layout_marginBottom="@dimen/margin_normal_double"
                 android:id="@+id/btnContinue"
-                app:topTitle="@string/continuar"
+                app:topTitle="@string/incidence_key_continuar"
                 />
 
 

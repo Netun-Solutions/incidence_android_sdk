@@ -16,7 +16,6 @@
         android:visibility="gone"/>
 
     <LinearLayout
-        android:id="@+id/message_container"
         android:layout_toRightOf="@+id/imgLeft"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

@@ -23,7 +23,7 @@
             android:layout_height="wrap_content"
             android:gravity="left"
             android:lineHeight="26dp"
-            android:text="@string/select_beacon_type"
+            android:text="@string/incidence_key_select_beacon_type"
             android:textColor="@color/black600"
             android:textSize="16sp" />
 
@@ -55,7 +55,7 @@
             android:layout_toRightOf="@+id/imgLeft"
             android:includeFontPadding="false"
             android:lineHeight="26dp"
-            android:text="@string/select_beacon_type_iot"
+            android:text="@string/incidence_key_select_beacon_type_iot"
             android:textColor="@color/black600"
             android:textSize="16sp" />
 
@@ -111,7 +111,7 @@
                 android:layout_centerVertical="true"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/select_beacon_type_qr"
+                android:text="@string/incidence_key_select_beacon_type_qr"
                 android:textColor="@color/black600"
                 android:textSize="16sp"
                 android:lineHeight="26dp"
@@ -162,7 +162,7 @@
                 android:layout_centerVertical="true"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/select_beacon_imei"
+                android:text="@string/incidence_key_select_beacon_imei"
                 android:textColor="@color/black600"
                 android:textSize="16sp"
                 android:lineHeight="26dp"
@@ -180,7 +180,6 @@
         </RelativeLayout>
         <View
             android:visibility="visible"
-            android:id="@+id/line12"
             android:layout_width="match_parent"
             android:layout_height="1dp"
             android:background="@color/grey300"
@@ -208,12 +207,11 @@
             android:src="@drawable/dispositivo_blue" />
 
         <TextView
-            android:id="@+id/txtTitle2"
             android:layout_toRightOf="@+id/imgLeft2"
             android:layout_centerVertical="true"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/select_beacon_type_smart"
+            android:text="@string/incidence_key_select_beacon_type_smart"
             android:textColor="@color/black600"
             android:textSize="16sp"
             android:lineHeight="26dp"
@@ -261,12 +259,11 @@
             android:layout_centerVertical="true"/>
 
         <TextView
-            android:id="@+id/txtTitle21"
             android:layout_toRightOf="@+id/imgLeft21"
             android:layout_centerVertical="true"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/select_beacon_type_bluetooth"
+            android:text="@string/incidence_key_select_beacon_type_bluetooth"
             android:textColor="@color/black600"
             android:textSize="16sp"
             android:lineHeight="26dp"
@@ -298,7 +295,7 @@
             android:layout_marginRight="@dimen/margin_normal"
             android:gravity="center"
             android:lineHeight="20dp"
-            android:text="@string/omitir"
+            android:text="@string/incidence_key_omitir"
             android:textColor="@color/incidence500"
             android:textSize="16sp"/>
         <View

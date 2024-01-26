@@ -40,7 +40,7 @@
             android:textColor="@color/black600"
             android:textSize="16sp"
             android:lineHeight="20dp"
-            android:text="@string/error_matricula_other_user"
+            android:text="@string/incidence_key_error_matricula_other_user"
             android:gravity="center"
             android:visibility="invisible"/>
 
@@ -56,7 +56,7 @@
             android:textColor="@color/black600"
             android:textSize="16sp"
             android:lineHeight="26dp"
-            android:text="@string/error_matricula_other_user"
+            android:text="@string/incidence_key_error_matricula_other_user"
             android:gravity="center"/>
 
         <ScrollView
@@ -89,14 +89,14 @@
             android:layout_marginRight="@dimen/margin_normal"
             android:layout_marginBottom="@dimen/margin_normal"
             android:id="@+id/btnNotifContinue"
-            app:topTitle="@string/continuar"/>
+            app:topTitle="@string/incidence_key_continuar"/>
 
         <TextView
             android:layout_below="@+id/btnNotifContinue"
             android:id="@+id/txtNotifCancel"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/cancel"
+            android:text="@string/incidence_key_cancel"
             android:textColor="@color/incidence500"
             android:textSize="16sp"
             android:lineHeight="20dp"

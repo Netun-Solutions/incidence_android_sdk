@@ -66,7 +66,7 @@ public class Api
                 /*
                 if (response.code == Response.RS_CODE_ERROR_CHANGE_PASSWORD) {
                     BaseActivity baseActivity = getCurrentActivity();
-                    baseActivity.showAlert(baseActivity.getString(R.string.app_name), baseActivity.getString(R.string.session_timeout), new DialogInterface.OnClickListener() {
+                    baseActivity.showAlert(baseActivity.getString(R.string.incidence_key_app_name), baseActivity.getString(R.string.incidence_key_session_timeout), new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialog, int which) {
                             dialog.cancel();

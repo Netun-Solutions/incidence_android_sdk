@@ -78,7 +78,7 @@ public class EcommerceFragment extends IFragment
 
     @Override
     public int getTitleId() {
-        return R.string.buy_beacon;
+        return R.string.incidence_key_buy_beacon;
     }
 
     @Override

@@ -182,7 +182,7 @@ public class SignUpBeaconFragment extends SignUpFragment {
         super.setupUI(rootView);
 
 
-        navigation.setTitle(getString(com.e510.incidencelibrary.R.string.create_account_step3));
+        navigation.setTitle(getString(com.e510.incidencelibrary.R.string.incidence_key_create_account_step3));
 
 
         LayoutInflater inflater = LayoutInflater.from(getContext());
@@ -235,10 +235,10 @@ public class SignUpBeaconFragment extends SignUpFragment {
         layoutIn2.setBackground(Utils.getDrawable(getContext(), R.drawable.ellipse));
         imgInSuccess.setImageDrawable(Utils.getDrawable(getContext(), R.drawable.beacon_icon_iot));
         txtInfoTitle2.setVisibility(View.VISIBLE);
-        txtInfoTitle2.setText(R.string.beacon_sync_success);
-        txtInfoSubtitle2.setText(R.string.beacon_sync_success_desc);
+        txtInfoTitle2.setText(R.string.incidence_key_beacon_sync_success);
+        txtInfoSubtitle2.setText(R.string.incidence_key_beacon_sync_success_desc);
         btnContinue2.setVisibility(View.VISIBLE);
-        btnContinue2.setText(getString(R.string.finish));
+        btnContinue2.setText(getString(R.string.incidence_key_finish));
         txtOmitir2.setVisibility(View.GONE);
 
         layoutRootSignUp.addView(layoutSuccess);
@@ -276,8 +276,8 @@ public class SignUpBeaconFragment extends SignUpFragment {
 
         SignStep s0 = new SignStep(ID_BEACON_SELECT_TYPE);
         s0.type = SignStepType.CUSTOM;
-        s0.navigationTitle = getString(R.string.create_account_step3);
-        s0.title = getString(R.string.turn_on_beacon_flash);
+        s0.navigationTitle = getString(R.string.incidence_key_create_account_step3);
+        s0.title = getString(R.string.incidence_key_turn_on_beacon_flash);
         s0.customFullView = getStep0View();
         steps.add(s0);
 
@@ -316,7 +316,7 @@ public class SignUpBeaconFragment extends SignUpFragment {
                     layoutScanQR.setVisibility(View.INVISIBLE);
 
                     INavigation layoutScanQRNavigation = layoutScanQR.findViewById(R.id.inavigation);
-                    layoutScanQRNavigation.init(this, getString(R.string.create_account_step3), true);
+                    layoutScanQRNavigation.init(this, getString(R.string.incidence_key_create_account_step3), true);
                     layoutScanQRNavigation.setTitleColor(Utils.getColor(getContext(), android.R.color.white));
                     layoutScanQRNavigation.setBackColor(Utils.getColor(getContext(), android.R.color.white));
                     layoutScanQRNavigation.clearBackground();
@@ -388,7 +388,7 @@ public class SignUpBeaconFragment extends SignUpFragment {
                     startActivity(intentOpenBluetoothSettings);
                 }
             };
-            showAlertConfirm(getString(R.string.alert_need_bluetooth_title), getString(R.string.alert_need_bluetooth_description), listenerSettings, getString(R.string.settings), listenerCancel, getString(R.string.cancel));
+            showAlertConfirm(getString(R.string.incidence_key_alert_need_bluetooth_title), getString(R.string.incidence_key_alert_need_bluetooth_description), listenerSettings, getString(R.string.incidence_key_settings), listenerCancel, getString(R.string.incidence_key_cancel));
         } else {
             BluetoothAdapter mBluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
             if (mBluetoothAdapter == null) {
@@ -437,11 +437,11 @@ public class SignUpBeaconFragment extends SignUpFragment {
     }
 
     private void showLocationPopUp() {
-        String title = getString(R.string.activate_location_title);
-        String message = getString(R.string.activate_location_message_beacon);
+        String title = getString(R.string.incidence_key_activate_location_title);
+        String message = getString(R.string.incidence_key_activate_location_message_beacon);
         ArrayList<String> options = new ArrayList<>();
-        options.add(getString(R.string.activate_location));
-        options.add(getString(R.string.cancel));
+        options.add(getString(R.string.incidence_key_activate_location));
+        options.add(getString(R.string.incidence_key_cancel));
 
         View.OnClickListener listener = new View.OnClickListener() {
             @Override
@@ -543,8 +543,8 @@ public class SignUpBeaconFragment extends SignUpFragment {
 
                 SignStep s1 = new SignStep(ID_BEACON_POWER);
                 s1.type = SignStepType.CUSTOM;
-                s1.navigationTitle = getString(R.string.create_account_step3);
-                s1.title = getString(R.string.turn_on_beacon_flash);
+                s1.navigationTitle = getString(R.string.incidence_key_create_account_step3);
+                s1.title = getString(R.string.incidence_key_turn_on_beacon_flash);
                 s1.customFullView = getStep1View();
                 steps.add(1, s1);
 
@@ -641,7 +641,7 @@ public class SignUpBeaconFragment extends SignUpFragment {
                                              }
         );
         btnBlue.setVisibility(View.VISIBLE);
-        btnBlue.setText(getString(R.string.accept));
+        btnBlue.setText(getString(R.string.incidence_key_accept));
         btnBlue.setPrimaryColors();
         FontUtils.setTypeValueText(btnBlue, Constants.FONT_SEMIBOLD, getContext());
         btnBlue.setOnClickListener(new View.OnClickListener() {
@@ -655,8 +655,8 @@ public class SignUpBeaconFragment extends SignUpFragment {
             }
         });
 
-        fieldImei.setHint(getString(R.string.select_beacon_imei));
-        fieldImei.setTitle(getString(R.string.select_beacon_imei));
+        fieldImei.setHint(getString(R.string.incidence_key_select_beacon_imei));
+        fieldImei.setTitle(getString(R.string.incidence_key_select_beacon_imei));
         fieldImei.setType(IField.TYPE_NUMBER);
         //fieldImei.setText("869154040054509");
 
@@ -711,7 +711,7 @@ public class SignUpBeaconFragment extends SignUpFragment {
     }
 
     public void showTooltipText(View rowView) {
-        Tooltip.showTooltipText(getContext(), rowView, getString(R.string.select_beacon_imei_info));
+        Tooltip.showTooltipText(getContext(), rowView, getString(R.string.incidence_key_select_beacon_imei_info));
     }
 
     private View getStep1View() {
@@ -824,11 +824,11 @@ public class SignUpBeaconFragment extends SignUpFragment {
         layoutIn.setBackground(Utils.getDrawable(getContext(), R.drawable.circle_help));
         imgIn.setImageDrawable(Utils.getDrawable(getContext(), R.drawable.bluetooth));
         txtInfoTitle.setVisibility(View.GONE);
-        txtInfoSubtitle.setText(Html.fromHtml(getString(R.string.beacon_error_need_bluettoh)));
+        txtInfoSubtitle.setText(Html.fromHtml(getString(R.string.incidence_key_beacon_error_need_bluettoh)));
         btnContinue.setVisibility(View.VISIBLE);
-        btnContinue.setText(getString(R.string.retry));
+        btnContinue.setText(getString(R.string.incidence_key_retry));
         txtOmitir.setVisibility(View.VISIBLE);
-        txtOmitir.setText(getString(R.string.no_activate_now));
+        txtOmitir.setText(getString(R.string.incidence_key_no_activate_now));
         layoutLoading.setVisibility(View.GONE);
 
         currentView = VIEW_ACTIVATE_BLUETOOTH;
@@ -836,12 +836,12 @@ public class SignUpBeaconFragment extends SignUpFragment {
 
     private void showBeaconsDetectedView() {
         TextView textView = layoutHeader.findViewById(R.id.txtHeaderVehicle);
-        textView.setText(R.string.turn_on_beacon_flash_detected);
+        textView.setText(R.string.incidence_key_turn_on_beacon_flash_detected);
 
         btnContinue.setVisibility(View.VISIBLE);
-        btnContinue.setText(getString(R.string.search_again));
+        btnContinue.setText(getString(R.string.incidence_key_search_again));
         txtOmitir.setVisibility(View.VISIBLE);
-        txtOmitir.setText(getString(R.string.omitir));
+        txtOmitir.setText(getString(R.string.incidence_key_omitir));
 
         currentView = VIEW_BEACONS_DETECTED;
     }
@@ -854,11 +854,11 @@ public class SignUpBeaconFragment extends SignUpFragment {
         layoutIn.setBackground(Utils.getDrawable(getContext(), R.drawable.circle_help));
         imgIn.setImageDrawable(Utils.getDrawable(getContext(), R.drawable.info));
         txtInfoTitle.setVisibility(View.GONE);
-        txtInfoSubtitle.setText(R.string.beacons_not_detected);
+        txtInfoSubtitle.setText(R.string.incidence_key_beacons_not_detected);
         btnContinue.setVisibility(View.VISIBLE);
-        btnContinue.setText(getString(R.string.retry));
+        btnContinue.setText(getString(R.string.incidence_key_retry));
         txtOmitir.setVisibility(View.VISIBLE);
-        txtOmitir.setText(getString(R.string.omitir));
+        txtOmitir.setText(getString(R.string.incidence_key_omitir));
 
         currentView = VIEW_NO_BEACONS_DETECTED;
     }
@@ -912,7 +912,7 @@ public class SignUpBeaconFragment extends SignUpFragment {
                 //showHud();
                 layoutLoading.setVisibility(View.VISIBLE);
             } else {
-                showAlert(R.string.app_name, R.string.alert_no_location_to_beacon, new DialogInterface.OnClickListener() {
+                showAlert(R.string.incidence_key_app_name, R.string.incidence_key_alert_no_location_to_beacon, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         //showHud();
@@ -954,10 +954,10 @@ public class SignUpBeaconFragment extends SignUpFragment {
         hideKeyboard();
 
         String title = null;
-        String message = getString(R.string.ask_link_beacon_to_vehicle_linked, vehicle.getName());
+        String message = getString(R.string.incidence_key_ask_link_beacon_to_vehicle_linked, vehicle.getName());
         ArrayList<String> options = new ArrayList<>();
-        options.add(getString(R.string.cancel));
-        options.add(getString(R.string.replace_beacon));
+        options.add(getString(R.string.incidence_key_cancel));
+        options.add(getString(R.string.incidence_key_replace_beacon));
         ArrayList<Integer> optionsColors = new ArrayList<>();
         optionsColors.add(Utils.getColor(getContext(), R.color.black600));
         optionsColors.add(Utils.getColor(getContext(), R.color.error));

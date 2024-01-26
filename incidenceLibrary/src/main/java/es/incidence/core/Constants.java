@@ -15,6 +15,7 @@ public class Constants
     public static final String SCREEN_DEVELOPER = "DEVELOPER";
     //public static final String SCREEN_DEVICE_LIST = "SCREEN_DEVICE_LIST";
     public static final String SCREEN_DEVICE_CREATE = "SCREEN_DEVICE_CREATE";
+    public static final String FUNC_DEVICE_GET = "FUNC_DEVICE_GET";
     public static final String FUNC_DEVICE_DELETE = "FUNC_DEVICE_DELETE";
     public static final String SCREEN_DEVICE_REVIEW = "SCREEN_DEVICE_REVIEW";
     public static final String SCREEN_ECOMMERCE = "SCREEN_ECOMMERCE";

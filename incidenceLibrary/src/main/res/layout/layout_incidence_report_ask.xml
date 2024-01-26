@@ -23,7 +23,7 @@
         android:textColor="@color/black600"
         android:textSize="24sp"
         android:lineHeight="34dp"
-        android:text="@string/report_ask_what"
+        android:text="@string/incidence_key_report_ask_what"
         android:gravity="center"/>
 
     <TextView
@@ -37,7 +37,7 @@
         android:textColor="@color/black500"
         android:textSize="14sp"
         android:lineHeight="24dp"
-        android:text="@string/report_ask_what_descrip"
+        android:text="@string/incidence_key_report_ask_what_descrip"
         android:gravity="center"/>
 
 

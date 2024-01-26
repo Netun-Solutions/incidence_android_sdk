@@ -271,7 +271,7 @@ public class InsuranceCallController
                         {
                             Log.e("ERROR", "onSuccessReport6");
                             //Core.callPhone(phone);
-                            String[] items = {context.getString(R.string.call_to, phone), context.getString(R.string.cancel)};
+                            String[] items = {context.getString(R.string.incidence_key_call_to, phone), context.getString(R.string.incidence_key_cancel)};
                             int[] icons = {R.drawable.ic_call_phone, R.drawable.transparent};
                             /*
                             IBottomSheet.Builder builder = new IBottomSheet.Builder(context);

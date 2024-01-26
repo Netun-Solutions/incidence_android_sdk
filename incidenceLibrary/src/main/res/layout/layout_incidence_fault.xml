@@ -18,7 +18,7 @@
             android:textColor="@color/black600"
             android:textSize="16sp"
             android:lineHeight="26dp"
-            android:text="@string/ask_fault"/>
+            android:text="@string/incidence_key_ask_fault"/>
 
         <LinearLayout
             android:orientation="vertical"

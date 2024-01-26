@@ -71,7 +71,7 @@
         android:id="@+id/btnCancel"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/cancel"
+        android:text="@string/incidence_key_cancel"
         android:textColor="@color/incidence500"
         android:textSize="16sp"
         android:lineHeight="20dp"
@@ -88,7 +88,7 @@
         android:layout_marginLeft="@dimen/margin_normal"
         android:layout_marginRight="@dimen/margin_normal"
         android:id="@+id/btnRed"
-        app:topTitle="@string/accident"/>
+        app:topTitle="@string/incidence_key_accident"/>
 
     <es.incidence.core.utils.view.IButton
         android:layout_above="@+id/btnRed"
@@ -98,7 +98,7 @@
         android:layout_marginLeft="@dimen/margin_normal"
         android:layout_marginRight="@dimen/margin_normal"
         android:id="@+id/btnBlue"
-        app:topTitle="@string/fault"/>
+        app:topTitle="@string/incidence_key_fault"/>
 
 
     <RelativeLayout

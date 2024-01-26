@@ -45,7 +45,7 @@
         android:layout_marginHorizontal="@dimen/margin_normal_double"
         android:gravity="center"
         android:lineHeight="26dp"
-        android:text="@string/qr_desc"
+        android:text="@string/incidence_key_qr_desc"
         android:textColor="@color/white"
         android:textSize="16sp" />
 

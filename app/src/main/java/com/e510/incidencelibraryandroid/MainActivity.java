@@ -29,6 +29,7 @@ public class MainActivity extends AppCompatActivity {
 
     private static final String TAG = makeLogTag(MainActivity.class);
 
+    private Button btnGetDevice;
     private Button btnDeviceCreate;
     private Button btnDeviceDelete;
     private Button btnDeviceReview;
@@ -97,6 +98,24 @@ public class MainActivity extends AppCompatActivity {
         incidence.latitude = 41.4435945;
         incidence.longitude = 2.2319534;
         incidence.externalIncidenceId = externalIncidenceId;
+
+        btnGetDevice = findViewById(R.id.btnGetDevice);
+        btnGetDevice.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                IncidenceLibraryManager.instance.deleteBeaconFunc(user, vehicle, response -> {
+                    if (response.isSuccess()) {
+                        //MAKE OK ACTIONS
+                        Log.d(TAG, "SUCCESS");
+                        Toast.makeText(MainActivity.this, "SI hay baliza asociada", Toast.LENGTH_SHORT).show();
+                    } else {
+                        //MAKE KO ACTIONS
+                        Log.d(TAG, "ERROR: " + response.message);
+                        Toast.makeText(MainActivity.this, "NO hay baliza asociada", Toast.LENGTH_SHORT).show();
+                    }
+                });
+            }
+        });
 
         btnDeviceCreate = findViewById(R.id.btnDeviceCreate);
         btnDeviceCreate.setOnClickListener(new View.OnClickListener() {

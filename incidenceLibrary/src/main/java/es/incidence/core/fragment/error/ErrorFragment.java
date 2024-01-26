@@ -39,7 +39,7 @@ public class ErrorFragment extends IFragment
 
     @Override
     public int getTitleId() {
-        return R.string.error;
+        return R.string.incidence_key_error;
     }
 
     @Override

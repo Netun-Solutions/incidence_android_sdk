@@ -13,7 +13,6 @@
         android:orientation="vertical">
 
         <RelativeLayout
-            android:id="@+id/firstLineAlert"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
@@ -45,7 +44,7 @@
                 android:layout_toRightOf="@+id/imgDesc"
                 android:ellipsize="end"
                 android:lines="1"
-                android:text="@string/alert_llamada_emergencias_title"
+                android:text="@string/incidence_key_alert_llamada_emergencias_title"
                 android:textColor="@color/black700"
                 android:textSize="14sp"
                 android:lineHeight="24dp"/>
@@ -56,7 +55,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="48dp"
-            android:text="@string/alert_llamada_emergencias_subtitle"
+            android:text="@string/incidence_key_alert_llamada_emergencias_subtitle"
             android:textColor="@color/black500"
             android:textSize="14sp"
             android:layout_marginBottom="8dp"/>
@@ -66,7 +65,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="48dp"
-            android:text="@string/alert_llamada_emergencias"
+            android:text="@string/incidence_key_alert_llamada_emergencias"
             android:textColor="@color/error200"
             android:textSize="14sp"
             android:layout_marginBottom="8dp"/>

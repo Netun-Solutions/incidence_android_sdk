@@ -409,14 +409,14 @@ public class IField extends RelativeLayout
         getContext().getResources().updateConfiguration(config, getContext().getResources().getDisplayMetrics());
 
         final DatePickerDialog dialog = new DatePickerDialog(getContext(), onDateSetListener(), currentCalendar.get(Calendar.YEAR), currentCalendar.get(Calendar.MONTH), currentCalendar.get(Calendar.DAY_OF_MONTH));
-        dialog.setButton(DialogInterface.BUTTON_POSITIVE, getContext().getString(R.string.accept), new DialogInterface.OnClickListener() {
+        dialog.setButton(DialogInterface.BUTTON_POSITIVE, getContext().getString(R.string.incidence_key_accept), new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogIn, int which) {
                 //Your code
                 dialog.onClick(dialog, which);
             }
         });
-        dialog.setButton(DialogInterface.BUTTON_NEUTRAL, getContext().getString(R.string.delete), new DialogInterface.OnClickListener() {
+        dialog.setButton(DialogInterface.BUTTON_NEUTRAL, getContext().getString(R.string.incidence_key_delete), new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 //Your code

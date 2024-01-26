@@ -193,7 +193,7 @@ public class BaseFragment extends GlobalFragmentParcelable {
 
     public int getTitleId()
     {
-        return R.string.app_name;
+        return R.string.incidence_key_app_name;
     }
 
     public int getLayoutRootId()
@@ -248,12 +248,12 @@ public class BaseFragment extends GlobalFragmentParcelable {
 
     public void showAlertConfirm(String title, String message, DialogInterface.OnClickListener listenerPositive, DialogInterface.OnClickListener listenerNegative)
     {
-        showAlertConfirm(title, message, listenerPositive, getString(R.string.action_accept), listenerNegative, getString(R.string.action_denied));
+        showAlertConfirm(title, message, listenerPositive, getString(R.string.incidence_key_action_accept), listenerNegative, getString(R.string.incidence_key_action_denied));
     }
 
     public void showAlert(int messageId)
     {
-        showAlert(getString(R.string.app_name), getString(messageId));
+        showAlert(getString(R.string.incidence_key_app_name), getString(messageId));
     }
 
     public void showAlert(int titleId, int messageId)
@@ -263,7 +263,7 @@ public class BaseFragment extends GlobalFragmentParcelable {
 
     public void showAlert(String message)
     {
-        showAlert(getString(R.string.app_name), message);
+        showAlert(getString(R.string.incidence_key_app_name), message);
     }
 
     public void showAlert(String title, String message) {
@@ -275,7 +275,7 @@ public class BaseFragment extends GlobalFragmentParcelable {
                 builder.setTitle(title);
                 builder.setCancelable(false);
                 builder.setMessage(message);
-                builder.setNegativeButton(R.string.ws_response_default_ok_button, new DialogInterface.OnClickListener()
+                builder.setNegativeButton(R.string.incidence_key_ws_response_default_ok_button, new DialogInterface.OnClickListener()
                 {
                     public void onClick(DialogInterface dialog, int id)
                     {
@@ -293,12 +293,12 @@ public class BaseFragment extends GlobalFragmentParcelable {
 
     public void showAlert(int titleId, int messageId, DialogInterface.OnClickListener listener)
     {
-        showAlert(getString(titleId), getString(messageId), listener, R.string.ws_response_default_ok_button);
+        showAlert(getString(titleId), getString(messageId), listener, R.string.incidence_key_ws_response_default_ok_button);
     }
 
     public void showAlert(String title, String message, DialogInterface.OnClickListener listener)
     {
-        showAlert(title, message, listener, R.string.ws_response_default_ok_button);
+        showAlert(title, message, listener, R.string.incidence_key_ws_response_default_ok_button);
     }
 
     public void showAlert(String title, String message, DialogInterface.OnClickListener listener, int listenerTitle)

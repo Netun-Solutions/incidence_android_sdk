@@ -15,7 +15,6 @@
         android:orientation="vertical">
 
         <RelativeLayout
-            android:id="@+id/firstLineAlert"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
@@ -47,7 +46,7 @@
                 android:layout_toRightOf="@+id/imgDgtDesc"
                 android:ellipsize="end"
                 android:lines="1"
-                android:text="@string/notify_incidence"
+                android:text="@string/incidence_key_notify_incidence"
                 android:textColor="@color/black700"
                 android:textSize="14sp"
                 android:lineHeight="24dp"/>
@@ -58,7 +57,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="48dp"
-            android:text="@string/notify_incidence_desc"
+            android:text="@string/incidence_key_notify_incidence_desc"
             android:textColor="@color/black500"
             android:textSize="14sp"
             android:layout_marginBottom="8dp"/>

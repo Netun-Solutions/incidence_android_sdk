@@ -22,7 +22,7 @@
             android:textColor="@color/black600"
             android:textSize="20sp"
             android:lineHeight="30dp"
-            android:text="@string/sms_introduce"
+            android:text="@string/incidence_key_sms_introduce"
             android:gravity="center"
             android:layout_marginBottom="14dp"
             android:visibility="gone"
@@ -36,7 +36,7 @@
             android:textColor="@color/black600"
             android:textSize="16sp"
             android:lineHeight="26dp"
-            android:text="@string/turn_on_beacon_flash"
+            android:text="@string/incidence_key_turn_on_beacon_flash"
             android:gravity="center" />
 
     </RelativeLayout>
@@ -89,7 +89,7 @@
         android:layout_marginRight="@dimen/margin_normal"
         android:gravity="center"
         android:lineHeight="20dp"
-        android:text="@string/omitir"
+        android:text="@string/incidence_key_omitir"
         android:textColor="@color/incidence500"
         android:textSize="16sp" />
 
@@ -99,7 +99,7 @@
         android:layout_marginLeft="@dimen/margin_normal"
         android:layout_marginRight="@dimen/margin_normal"
         android:id="@+id/btnContinueBeacon"
-        app:topTitle="@string/search_again"
+        app:topTitle="@string/incidence_key_search_again"
         android:layout_above="@+id/txtOmitir"/>
 
 
@@ -144,7 +144,7 @@
                 android:textColor="@color/black600"
                 android:textSize="16sp"
                 android:lineHeight="20dp"
-                android:text="@string/beacon_sync_success"
+                android:text="@string/incidence_key_beacon_sync_success"
                 android:gravity="center"
                 android:layout_marginTop="@dimen/margin_normal"/>
 
@@ -157,7 +157,7 @@
                 android:textColor="@color/black500"
                 android:textSize="16sp"
                 android:lineHeight="20dp"
-                android:text="@string/beacon_sync_success_desc"
+                android:text="@string/incidence_key_beacon_sync_success_desc"
                 android:gravity="center" />
 
 

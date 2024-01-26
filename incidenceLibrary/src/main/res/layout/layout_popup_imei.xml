@@ -41,7 +41,7 @@
             android:textColor="@android:color/black"
             android:textSize="16sp"
             android:lineHeight="26dp"
-            android:text="@string/imei_code_title"
+            android:text="@string/incidence_key_imei_code_title"
             android:layout_marginLeft="@dimen/margin_normal"
             android:layout_marginRight="@dimen/margin_normal"
             android:layout_marginTop="@dimen/margin_normal"
@@ -55,7 +55,7 @@
             android:textColor="@android:color/black"
             android:textSize="16sp"
             android:lineHeight="26dp"
-            android:text="@string/imei_code_subtitle"
+            android:text="@string/incidence_key_imei_code_subtitle"
             android:layout_marginLeft="@dimen/margin_normal"
             android:layout_marginRight="@dimen/margin_normal"
             android:layout_marginBottom="@dimen/margin_normal"/>
@@ -78,7 +78,7 @@
             android:layout_marginLeft="@dimen/margin_normal"
             android:layout_marginRight="@dimen/margin_normal"
             android:id="@+id/btnBlue"
-            app:topTitle="@string/continuar"
+            app:topTitle="@string/incidence_key_continuar"
             />
 
 

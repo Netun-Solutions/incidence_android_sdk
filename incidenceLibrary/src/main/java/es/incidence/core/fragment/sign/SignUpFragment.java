@@ -79,7 +79,7 @@ public class SignUpFragment extends IFragment
 
     @Override
     public int getTitleId() {
-        return R.string.empty;
+        return R.string.incidence_key_empty;
     }
 
     @Override
@@ -140,7 +140,7 @@ public class SignUpFragment extends IFragment
         super.setupUI(rootView);
 
         navigation = rootView.findViewById(R.id.inavigation);
-        navigation.init(this, getString(R.string.create_account_step1), true);
+        navigation.init(this, getString(R.string.incidence_key_create_account_step1), true);
         navigation.setBackClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -160,7 +160,7 @@ public class SignUpFragment extends IFragment
         txtHeader = rootView.findViewById(R.id.txtHeader);
         layoutFields = rootView.findViewById(R.id.layoutFields);
         btnContinue = rootView.findViewById(R.id.btnContinue);
-        btnContinue.setText(getString(R.string.continuar));
+        btnContinue.setText(getString(R.string.incidence_key_continuar));
         validateContinue(false);
         FontUtils.setTypeValueText(btnContinue, Constants.FONT_SEMIBOLD, getContext());
 

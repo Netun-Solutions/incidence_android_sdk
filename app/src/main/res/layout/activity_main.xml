@@ -26,12 +26,21 @@
         />-->
 
     <Button
+        android:id="@+id/btnGetDevice"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/activity_horizontal_margin"
+        android:text="¿Tiene baliza?"
+        app:layout_constraintBottom_toBottomOf="@+id/title"
+        />
+
+    <Button
         android:id="@+id/btnDeviceCreate"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/activity_horizontal_margin"
         android:text="Vincular baliza"
-        app:layout_constraintBottom_toBottomOf="@+id/title"
+        app:layout_constraintBottom_toBottomOf="@+id/btnGetDevice"
         />
 
     <Button

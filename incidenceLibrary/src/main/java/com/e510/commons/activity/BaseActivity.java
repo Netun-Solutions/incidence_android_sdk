@@ -771,7 +771,7 @@ public class BaseActivity extends AppCompatActivity implements OnFragmentInterac
                 getSupportFragmentManager().beginTransaction().remove(initialFragment).commit();
             }
 
-            toolbar.setTitle(getString(R.string.app_name));
+            toolbar.setTitle(getString(R.string.incidence_key_app_name));
 
         }
         catch (Exception e)
@@ -1110,7 +1110,7 @@ public class BaseActivity extends AppCompatActivity implements OnFragmentInterac
 
     public void showAlert(String message)
     {
-        showAlert(getString(R.string.app_name), message);
+        showAlert(getString(R.string.incidence_key_app_name), message);
     }
     public void showAlert(String title, String message)
     {
@@ -1121,7 +1121,7 @@ public class BaseActivity extends AppCompatActivity implements OnFragmentInterac
                 AlertDialog.Builder builder = new AlertDialog.Builder(this);
                 builder.setTitle(title);
                 builder.setMessage(message);
-                builder.setNegativeButton(R.string.ws_response_default_ok_button, new DialogInterface.OnClickListener()
+                builder.setNegativeButton(R.string.incidence_key_ws_response_default_ok_button, new DialogInterface.OnClickListener()
                 {
                     public void onClick(DialogInterface dialog, int id)
                     {
@@ -1155,7 +1155,7 @@ public class BaseActivity extends AppCompatActivity implements OnFragmentInterac
             };
         }
 
-        builder.setNegativeButton(R.string.ws_response_default_ok_button, listener);
+        builder.setNegativeButton(R.string.incidence_key_ws_response_default_ok_button, listener);
         builder.create().show();
     }
 

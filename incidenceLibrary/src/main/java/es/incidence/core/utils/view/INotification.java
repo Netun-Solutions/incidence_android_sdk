@@ -88,7 +88,7 @@ public class INotification extends RelativeLayout
 
         txtNotifCancel = view.findViewById(R.id.txtNotifCancel);
         FontUtils.setTypeValueText(txtNotifCancel, Constants.FONT_SEMIBOLD, getContext());
-        cancelText = context.getString(R.string.cancel);
+        cancelText = context.getString(R.string.incidence_key_cancel);
         txtNotifCancel.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View view) {

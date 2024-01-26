@@ -59,9 +59,9 @@ public class ReportIncidenceSimpleFragment extends IFragment
     @Override
     public int getTitleId() {
         if (createIncidence) {
-            return R.string.report_incidence;
+            return R.string.incidence_key_report_incidence;
         } else {
-            return R.string.close_incidence;
+            return R.string.incidence_key_close_incidence;
         }
     }
 

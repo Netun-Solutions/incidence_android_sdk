@@ -56,15 +56,15 @@ public class AccidentFragment extends IncidenceReportFragment
     @Override
     public void setUpVoiceLiterals() {
         speechRecognizion = new ArrayList<String>();
-        speechRecognizion.add(Core.getLiteralVoice("one", getContext()));
-        speechRecognizion.add(Core.getLiteralVoice("no_only_material_wounded", getContext()));
-        speechRecognizion.add(Core.getLiteralVoice("two", getContext()));
-        speechRecognizion.add(Core.getLiteralVoice("accident_with_wounded", getContext()));
-        speechRecognizion.add(Core.getLiteralVoice("three", getContext()));
-        speechRecognizion.add(Core.getLiteralVoice("cancel", getContext()));
+        speechRecognizion.add(Core.getLiteralVoiceSDK("incidence_key_one", getContext()));
+        speechRecognizion.add(Core.getLiteralVoiceSDK("incidence_key_no_only_material_wounded", getContext()));
+        speechRecognizion.add(Core.getLiteralVoiceSDK("incidence_key_two", getContext()));
+        speechRecognizion.add(Core.getLiteralVoiceSDK("incidence_key_accident_with_wounded", getContext()));
+        speechRecognizion.add(Core.getLiteralVoiceSDK("incidence_key_three", getContext()));
+        speechRecognizion.add(Core.getLiteralVoiceSDK("incidence_key_cancel", getContext()));
 
         voiceDialogs = new ArrayList<String>();
-        voiceDialogs.add(Core.getLiteralVoice("ask_wounded", getContext()));
+        voiceDialogs.add(Core.getLiteralVoiceSDK("incidence_key_ask_wounded", getContext()));
         voiceDialogs.addAll(speechRecognizion);
     }
 
@@ -77,7 +77,7 @@ public class AccidentFragment extends IncidenceReportFragment
 
         RelativeLayout layout1 = view.findViewById(R.id.layout1);
         TextView txtTitle1 = layout1.findViewById(R.id.txtTitle);
-        txtTitle1.setText(R.string.no_only_material_wounded);
+        txtTitle1.setText(R.string.incidence_key_no_only_material_wounded);
         layout1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -87,7 +87,7 @@ public class AccidentFragment extends IncidenceReportFragment
 
         RelativeLayout layout2 = view.findViewById(R.id.layout2);
         TextView txtTitle2 = layout2.findViewById(R.id.txtTitle);
-        txtTitle2.setText(R.string.accident_with_wounded);
+        txtTitle2.setText(R.string.incidence_key_accident_with_wounded);
         txtTitle2.setTextColor(Utils.getColor(getContext(), R.color.error));
         layout2.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -127,7 +127,7 @@ public class AccidentFragment extends IncidenceReportFragment
         }
         else
         {
-            showAlert(R.string.alert_must_add_insurance);
+            showAlert(R.string.incidence_key_alert_must_add_insurance);
         }
     }
 
@@ -139,11 +139,11 @@ public class AccidentFragment extends IncidenceReportFragment
 
     @Override
     public void voiceRecognizionMatch(String string) {
-        if (Core.getLiteralVoice("one", getContext()).toLowerCase().equals(string) || Core.getLiteralVoice("no_only_material_wounded", getContext()).toLowerCase().equals(string)) {
+        if (Core.getLiteralVoiceSDK("incidence_key_one", getContext()).toLowerCase().equals(string) || Core.getLiteralVoiceSDK("incidence_key_no_only_material_wounded", getContext()).toLowerCase().equals(string)) {
             onlyMaterial();
-        } else if (Core.getLiteralVoice("two", getContext()).toLowerCase().equals(string) || Core.getLiteralVoice("accident_with_wounded", getContext()).toLowerCase().equals(string)) {
+        } else if (Core.getLiteralVoiceSDK("incidence_key_two", getContext()).toLowerCase().equals(string) || Core.getLiteralVoiceSDK("incidence_key_accident_with_wounded", getContext()).toLowerCase().equals(string)) {
             wounded();
-        } else if (Core.getLiteralVoice("three", getContext()).toLowerCase().equals(string) || Core.getLiteralVoice("cancel", getContext()).toLowerCase().equals(string)) {
+        } else if (Core.getLiteralVoiceSDK("incidence_key_three", getContext()).toLowerCase().equals(string) || Core.getLiteralVoiceSDK("incidence_key_cancel", getContext()).toLowerCase().equals(string)) {
             onClickCancel();
         }
     }

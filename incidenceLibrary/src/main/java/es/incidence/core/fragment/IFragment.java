@@ -48,15 +48,15 @@ public class IFragment extends BaseFragment {
 
             if (response.message != null)
             {
-                showAlert(getString(R.string.nombre_app), response.message, listener);
+                showAlert(getString(R.string.incidence_key_nombre_app), response.message, listener);
             }
             else if (response.status != null && response.status.equals(IResponse.RESPONSE_ERROR_CONNECTION))
             {
-                showAlert(getString(R.string.nombre_app), getString(R.string.alert_error_ws_connection), listener);
+                showAlert(getString(R.string.incidence_key_nombre_app), getString(R.string.incidence_key_alert_error_ws_connection), listener);
             }
             else
             {
-                showAlert(getString(R.string.nombre_app), getString(R.string.alert_error_ws), listener);
+                showAlert(getString(R.string.incidence_key_nombre_app), getString(R.string.incidence_key_alert_error_ws), listener);
             }
         }
     }

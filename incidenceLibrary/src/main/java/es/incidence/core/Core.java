@@ -78,7 +78,7 @@ public class Core {
             @Override
             public void onUpdated() {
                 BaseActivity baseActivity = application.getCurrentActivity();
-                baseActivity.showAlert(baseActivity.getString(R.string.app_name), baseActivity.getString(R.string.app_update_alert_message), new DialogInterface.OnClickListener() {
+                baseActivity.showAlert(baseActivity.getString(R.string.incidence_key_app_name), baseActivity.getString(R.string.incidence_key_app_update_alert_message), new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         dialog.cancel();
@@ -184,11 +184,14 @@ public class Core {
 
                 Locale current = application.getResources().getConfiguration().locale;
                 Restring.putStrings(current, map);
+
+                Core.saveData(Constants.KEY_LITERALS_VALUES, valores);
+                Core.saveData(Constants.KEY_LITERALS_VOICE_VALUES, valores);
             }
         }
     }
 
-    public static String getLiteral(String stringId) {
+    public static String getLiteralSDK(String stringId) {
         String res = null;
 
         String valores = loadData(Constants.KEY_LITERALS_VALUES);
@@ -200,7 +203,7 @@ public class Core {
         return res;
     }
 
-    public static String getLiteralVoice(String stringId, Context context) {
+    public static String getLiteralVoiceSDK(String stringId, Context context) {
         String res = null;
 
         String valores = loadData(Constants.KEY_LITERALS_VOICE_VALUES);
@@ -217,9 +220,9 @@ public class Core {
         return res;
     }
 
-    public static String getString(int stringId, Context defaultContext)
+    public static String getStringSDK(int stringId, Context defaultContext)
     {
-        String res = getString(stringId);
+        String res = getStringSDK(stringId);
 
         if (defaultContext != null && (res == null || res.length() == 0))
         {
@@ -228,7 +231,7 @@ public class Core {
 
         return res;
     }
-    public static String getString(int stringId)
+    public static String getStringSDK(int stringId)
     {
         String res = "";
         /*
@@ -245,12 +248,12 @@ public class Core {
         }
         */
         String strId = application.getResources().getResourceEntryName(stringId);
-        res = getLiteral(strId);
+        res = getLiteralSDK(strId);
 
         return res;
     }
 
-    public static String getString(int stringId, String str1)
+    public static String getStringSDK(int stringId, String str1)
     {
         String res = "";
         /*
@@ -271,7 +274,7 @@ public class Core {
         }
         */
         String strId = application.getResources().getResourceEntryName(stringId);
-        res = getLiteral(strId);
+        res = getLiteralSDK(strId);
         if (res != null && res.length() > 0)
         {
             res = res.replace("%1s", str1);
@@ -397,7 +400,7 @@ public class Core {
             }
             else
             {
-                String[] items = {application.getString(R.string.call_to, phone), application.getString(R.string.cancel)};
+                String[] items = {application.getString(R.string.incidence_key_call_to, phone), application.getString(R.string.incidence_key_cancel)};
                 int[] icons = {R.drawable.ic_call_phone, R.drawable.transparent};
 
                 //BottomSheet.Builder builder = new BottomSheet.Builder(application.getCurrentActivity());

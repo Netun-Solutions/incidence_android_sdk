@@ -67,10 +67,10 @@ public class LocationManager
 
         AlertDialog.Builder builder = new AlertDialog.Builder(activity);
         builder
-                .setTitle(activity.getString(R.string.app_name))
-                .setMessage(activity.getString(R.string.required_location_permission_text))
-                .setPositiveButton(activity.getString(R.string.required_location_ok_text), dialogClickListener)
-                .setNegativeButton(activity.getString(R.string.required_location_cancel_text), dialogClickListener)
+                .setTitle(activity.getString(R.string.incidence_key_app_name))
+                .setMessage(activity.getString(R.string.incidence_key_required_location_permission_text))
+                .setPositiveButton(activity.getString(R.string.incidence_key_required_location_ok_text), dialogClickListener)
+                .setNegativeButton(activity.getString(R.string.incidence_key_required_location_cancel_text), dialogClickListener)
                 .show();
     }
 

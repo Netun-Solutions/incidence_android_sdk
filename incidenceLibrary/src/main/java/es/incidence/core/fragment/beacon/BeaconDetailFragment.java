@@ -124,7 +124,7 @@ public class BeaconDetailFragment extends IFragment
 
     @Override
     public int getTitleId() {
-        return R.string.beacon;
+        return R.string.incidence_key_beacon;
     }
 
     @Override
@@ -200,8 +200,8 @@ public class BeaconDetailFragment extends IFragment
                 }
             }
         );
-        alertVolumeErrorTitle.setText(getString(R.string.stop_device));
-        alertVolumeErrorSubTitle.setText(getString(R.string.stop_device_desc));
+        alertVolumeErrorTitle.setText(getString(R.string.incidence_key_stop_device));
+        alertVolumeErrorSubTitle.setText(getString(R.string.incidence_key_stop_device_desc));
         //imgDesc.setImageDrawable(getContext().getDrawable(R.drawable.ico_conection));
         imgDesc.setImageDrawable(Utils.getDrawable(getContext(), R.drawable.ico_conection));
         DrawableCompat.setTint(imgDesc.getDrawable(), Utils.getColor(getContext(), R.color.colorPrimary));
@@ -222,13 +222,13 @@ public class BeaconDetailFragment extends IFragment
                 }
             }
         );
-        alertNewIncidenceTitle.setText(getString(R.string.alert_new_incidence_title));
-        alertNewIncidenceSubTitle.setText(getString(R.string.alert_new_incidence_subtitle));
+        alertNewIncidenceTitle.setText(getString(R.string.incidence_key_alert_new_incidence_title));
+        alertNewIncidenceSubTitle.setText(getString(R.string.incidence_key_alert_new_incidence_subtitle));
         //imgDesc.setImageDrawable(getContext().getDrawable(R.drawable.ico_conection));
         imgDescNewIncidence.setImageDrawable(Utils.getDrawable(getContext(), R.drawable.ico_conection));
         DrawableCompat.setTint(imgDescNewIncidence.getDrawable(), Utils.getColor(getContext(), R.color.colorPrimary));
         btnBlue.setVisibility(View.VISIBLE);
-        btnBlue.setText(getString(R.string.report_incidence));
+        btnBlue.setText(getString(R.string.incidence_key_report_incidence));
         btnBlue.setPrimaryColors();
         btnBlue.setHeight((int)getResources().getDimension(R.dimen.margin_normal_medium));
         FontUtils.setTypeValueText(btnBlue, Constants.FONT_SEMIBOLD, getContext());
@@ -325,17 +325,17 @@ public class BeaconDetailFragment extends IFragment
 
             public void onFinish()
             {
-                showAlertConfirm(getString(R.string.start_device_without_network), getString(R.string.start_device_without_network_desc), new DialogInterface.OnClickListener() {
+                showAlertConfirm(getString(R.string.incidence_key_start_device_without_network), getString(R.string.incidence_key_start_device_without_network_desc), new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
                         startCountDownTimer();
                     }
-                }, getString(R.string.accept), new DialogInterface.OnClickListener() {
+                }, getString(R.string.incidence_key_accept), new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
                         onClickReturn();
                     }
-                }, getString(R.string.cancel));
+                }, getString(R.string.incidence_key_cancel));
             }
         };
         countDownTimer.start();
@@ -410,7 +410,7 @@ public class BeaconDetailFragment extends IFragment
                                 onClickReturn();
                             }
                         };
-                        showAlert(getString(R.string.nombre_app), "Sin balizas asociados", listener);
+                        showAlert(getString(R.string.incidence_key_nombre_app), "Sin balizas asociados", listener);
                     }
                 }
                 else

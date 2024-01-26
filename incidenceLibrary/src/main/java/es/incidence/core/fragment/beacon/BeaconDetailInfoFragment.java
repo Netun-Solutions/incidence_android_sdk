@@ -53,7 +53,7 @@ public class BeaconDetailInfoFragment extends IFragment
 
     @Override
     public int getTitleId() {
-        return R.string.beacon;
+        return R.string.incidence_key_beacon;
     }
 
     @Override
@@ -96,7 +96,7 @@ public class BeaconDetailInfoFragment extends IFragment
         navigation.init(this, title, true);
 
         btnBlue = rootView.findViewById(R.id.btnBlue);
-        btnBlue.setText(getString(R.string.continuar));
+        btnBlue.setText(getString(R.string.incidence_key_continuar));
         btnBlue.setPrimaryColors();
         FontUtils.setTypeValueText(btnBlue, Constants.FONT_SEMIBOLD, getContext());
         btnBlue.setOnClickListener(new View.OnClickListener() {
@@ -118,7 +118,7 @@ public class BeaconDetailInfoFragment extends IFragment
         if (beacon.beaconType != null && beacon.beaconType.textBeaconScreen1 != null) {
             txtHeaderBeacon.setText(beacon.beaconType.textBeaconScreen1);
         } else {
-            txtHeaderBeacon.setText(R.string.device_desc_info1);
+            txtHeaderBeacon.setText(R.string.incidence_key_device_desc_info1);
         }
 
         IncidenceLibraryManager.instance.setViewBackground(rootView);
@@ -136,7 +136,7 @@ public class BeaconDetailInfoFragment extends IFragment
             if (beacon.beaconType != null && beacon.beaconType.textBeaconScreen2 != null) {
                 txtHeaderBeacon.setText(beacon.beaconType.textBeaconScreen2);
             } else {
-                txtHeaderBeacon.setText(getString(R.string.device_desc_info2));
+                txtHeaderBeacon.setText(getString(R.string.incidence_key_device_desc_info2));
             }
 
             position = 1;
@@ -151,12 +151,12 @@ public class BeaconDetailInfoFragment extends IFragment
             if (beacon.beaconType != null && beacon.beaconType.textBeaconScreen3 != null) {
                 txtHeaderBeacon.setText(beacon.beaconType.textBeaconScreen3);
             } else {
-                txtHeaderBeacon.setText(getString(R.string.device_desc_info3));
+                txtHeaderBeacon.setText(getString(R.string.incidence_key_device_desc_info3));
             }
 
             position = 2;
 
-            btnBlue.setText(getString(R.string.device_desc_info_finish));
+            btnBlue.setText(getString(R.string.incidence_key_device_desc_info_finish));
         } else if (position == 2) {
             closeThis();
         }

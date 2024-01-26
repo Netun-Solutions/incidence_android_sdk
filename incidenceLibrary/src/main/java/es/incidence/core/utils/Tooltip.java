@@ -29,7 +29,7 @@ public class Tooltip
                         .arrowHeight((float)Utils.dpToPx(9))
                         .arrowColor(Utils.getColor(context, R.color.incidencePrincipal))
                         .contentView(R.layout.layout_tooltip, R.id.txtTitle)
-                        //.text(R.string.caducity_insurance_date_near)
+                        //.text(R.string.incidence_key_caducity_insurance_date_near)
                         .focusable(true)
                         .build();
 
@@ -41,7 +41,7 @@ public class Tooltip
     }
 
     public static void showTooltipDevice(Context context, View view) {
-        String desc = context.getString(R.string.select_beacon_type_qr_info);
+        String desc = context.getString(R.string.incidence_key_select_beacon_type_qr_info);
         showTooltipDevice(context, view, desc);
     }
     public static void showTooltipDevice(Context context, View view, String message)
@@ -59,7 +59,7 @@ public class Tooltip
                         .arrowHeight((float)Utils.dpToPx(9))
                         .arrowColor(Utils.getColor(context, R.color.incidencePrincipal))
                         .contentView(R.layout.layout_tooltip_device, R.id.txtTitle)
-                        //.text(R.string.caducity_insurance_date_near)
+                        //.text(R.string.incidence_key_caducity_insurance_date_near)
                         .focusable(true)
                         .setWidth(ViewGroup.LayoutParams.FILL_PARENT)
                         .build();
@@ -86,7 +86,7 @@ public class Tooltip
                         .arrowHeight((float)Utils.dpToPx(9))
                         .arrowColor(Utils.getColor(context, R.color.incidencePrincipal))
                         .contentView(R.layout.layout_tooltip_device, R.id.txtTitle)
-                        //.text(R.string.caducity_insurance_date_near)
+                        //.text(R.string.incidence_key_caducity_insurance_date_near)
                         .focusable(true)
                         .setWidth(ViewGroup.LayoutParams.FILL_PARENT)
                         .build();

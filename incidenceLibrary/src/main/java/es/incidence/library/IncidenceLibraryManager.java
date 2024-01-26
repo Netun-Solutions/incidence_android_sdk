@@ -18,6 +18,7 @@ import java.util.List;
 import es.incidence.core.Constants;
 import es.incidence.core.Core;
 import es.incidence.core.activity.SimpleMainActivity;
+import es.incidence.core.domain.Beacon;
 import es.incidence.core.domain.Incidence;
 import es.incidence.core.domain.IncidenceType;
 import es.incidence.core.domain.Insurance;
@@ -283,6 +284,38 @@ public class IncidenceLibraryManager {
                         if (response.isSuccess())
                         {
                             actionResponse = new IActionResponse(true);
+                        }
+                        else
+                        {
+                            actionResponse = new IActionResponse(false, response.message);
+                        }
+
+                        iActionListener.onFinish(actionResponse);
+                    }
+                }
+            }, user, vehicle);
+        } else {
+            IActionResponse actionResponse = new IActionResponse(false, res);
+            iActionListener.onFinish(actionResponse);
+        }
+    }
+
+    public void getBeaconFunc(User user, Vehicle vehicle, IActionListener iActionListener) {
+        String res = validateScreen(Constants.FUNC_DEVICE_GET);
+        if (res == SCREEN_OK) {
+            Api.getBeaconSdk(new IRequestListener() {
+                @Override
+                public void onFinish(IResponse response) {
+                    if (iActionListener != null) {
+                        IActionResponse actionResponse;
+                        if (response.isSuccess())
+                        {
+                            ArrayList<Beacon> list = response.getList("beacon", Beacon.class);
+                            if (list.size() > 0) {
+                                actionResponse = new IActionResponse(true);
+                            } else {
+                                actionResponse = new IActionResponse(false, response.message);
+                            }
                         }
                         else
                         {

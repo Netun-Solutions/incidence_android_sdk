@@ -81,27 +81,27 @@ public class InsuranceCallingFragment extends IncidenceReportFragment implements
         super.setupUI(rootView);
 
         btnRed.setVisibility(View.GONE);
-        btnBlue.setText(R.string.accept);
+        btnBlue.setText(R.string.incidence_key_accept);
         speechManager.setUpListener(this);
     }
 
     @Override
     public void setUpVoiceLiterals() {
         speechRecognizion = new ArrayList<String>();
-        speechRecognizion.add(Core.getLiteralVoice("one", getContext()));
-        speechRecognizion.add(Core.getLiteralVoice("accept", getContext()));
-        speechRecognizion.add(Core.getLiteralVoice("two", getContext()));
-        speechRecognizion.add(Core.getLiteralVoice("cancel", getContext()));
+        speechRecognizion.add(Core.getLiteralVoiceSDK("incidence_key_one", getContext()));
+        speechRecognizion.add(Core.getLiteralVoiceSDK("incidence_key_accept", getContext()));
+        speechRecognizion.add(Core.getLiteralVoiceSDK("incidence_key_two", getContext()));
+        speechRecognizion.add(Core.getLiteralVoiceSDK("incidence_key_cancel", getContext()));
 
         voiceDialogs = new ArrayList<String>();
         if (IncidenceLibraryManager.instance.getInsurance() != null && IncidenceLibraryManager.instance.getInsurance().textIncidence != null)
         {
             voiceDialogs.add(IncidenceLibraryManager.instance.getInsurance().textIncidence);
         }
-        voiceDialogs.add(Core.getLiteralVoice("incidence_tip_beacon", getContext()));
-        voiceDialogs.add(Core.getLiteralVoice("incidence_tip_lights", getContext()));
-        voiceDialogs.add(Core.getLiteralVoice("incidence_tip_vest", getContext()));
-        voiceDialogs.add(Core.getLiteralVoice("incidence_tip_exit_car", getContext()));
+        voiceDialogs.add(Core.getLiteralVoiceSDK("incidence_key_incidence_tip_beacon", getContext()));
+        voiceDialogs.add(Core.getLiteralVoiceSDK("incidence_key_incidence_tip_lights", getContext()));
+        voiceDialogs.add(Core.getLiteralVoiceSDK("incidence_key_incidence_tip_vest", getContext()));
+        voiceDialogs.add(Core.getLiteralVoiceSDK("incidence_key_incidence_tip_exit_car", getContext()));
         voiceDialogs.addAll(speechRecognizion);
     }
 
@@ -165,7 +165,7 @@ public class InsuranceCallingFragment extends IncidenceReportFragment implements
     public void onLocationErrorResult()
     {
         hideHud();
-        showAlert(R.string.alert_error_get_location_message);
+        showAlert(R.string.incidence_key_alert_error_get_location_message);
     }
 
     @Override
@@ -237,9 +237,9 @@ public class InsuranceCallingFragment extends IncidenceReportFragment implements
 
     @Override
     public void voiceRecognizionMatch(String string) {
-        if (Core.getLiteralVoice("one", getContext()).toLowerCase().equals(string) || Core.getLiteralVoice("accept", getContext()).toLowerCase().equals(string)) {
+        if (Core.getLiteralVoiceSDK("incidence_key_one", getContext()).toLowerCase().equals(string) || Core.getLiteralVoiceSDK("incidence_key_accept", getContext()).toLowerCase().equals(string)) {
             onClickBlue();
-        } else if (Core.getLiteralVoice("two", getContext()).toLowerCase().equals(string) || Core.getLiteralVoice("cancel", getContext()).toLowerCase().equals(string)) {
+        } else if (Core.getLiteralVoiceSDK("incidence_key_two", getContext()).toLowerCase().equals(string) || Core.getLiteralVoiceSDK("incidence_key_cancel", getContext()).toLowerCase().equals(string)) {
             onClickCancel();
         }
     }
