@@ -24,6 +24,7 @@ public class Constants
     public static final String SCREEN_REPOR_INC = "SCREEN_REPOR_INC";
     public static final String SCREEN_REPOR_INC_SIMPLE = "SCREEN_REPOR_INC_SIMPLE";
     public static final String SCREEN_ERROR = "ERROR";
+    public static final String SCREEN_LINK_RESULT = "SCREEN_LINK_RESULT";
 
     public static void setBaseUrl(IncidenceEnvironment environment)
     {

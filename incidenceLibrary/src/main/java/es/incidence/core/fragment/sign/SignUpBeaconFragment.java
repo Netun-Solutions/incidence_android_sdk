@@ -874,23 +874,26 @@ public class SignUpBeaconFragment extends SignUpFragment {
     }
 
     private void showBeaconAddedView() {
-        //positionStep = 0;
-        //printStep(false);
-        isScanning = true;
-        navigation.setEnabled(false);
-        stepper.setVisibility(View.GONE);
+        if (IncidenceLibraryManager.instance.needShowLinkResult()) {
+            //positionStep = 0;
+            //printStep(false);
+            isScanning = true;
+            navigation.setEnabled(false);
+            stepper.setVisibility(View.GONE);
 
-        layoutSuccess.setVisibility(View.VISIBLE);
-        if (beaconTypeId == 1) {
-            imgInSuccess.setImageDrawable(Utils.getDrawable(getContext(), R.drawable.beacon_icon_smart));
-        } else if (beaconTypeId == 3) {
-            imgInSuccess.setImageDrawable(Utils.getDrawable(getContext(), R.drawable.beacon_icon_hella));
-        } else
-        {
-            imgInSuccess.setImageDrawable(Utils.getDrawable(getContext(), R.drawable.beacon_icon_iot));
+            layoutSuccess.setVisibility(View.VISIBLE);
+            if (beaconTypeId == 1) {
+                imgInSuccess.setImageDrawable(Utils.getDrawable(getContext(), R.drawable.beacon_icon_smart));
+            } else if (beaconTypeId == 3) {
+                imgInSuccess.setImageDrawable(Utils.getDrawable(getContext(), R.drawable.beacon_icon_hella));
+            } else {
+                imgInSuccess.setImageDrawable(Utils.getDrawable(getContext(), R.drawable.beacon_icon_iot));
+            }
+
+            currentView = VIEW_BEACON_ADDED;
+        } else {
+            getActivity().finish();
         }
-
-        currentView = VIEW_BEACON_ADDED;
     }
 
     @Override

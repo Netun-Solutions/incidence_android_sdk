@@ -200,6 +200,15 @@ public class IncidenceLibraryManager {
         }
     }
 
+    public boolean needShowLinkResult() {
+        String res = validateScreen(Constants.SCREEN_LINK_RESULT);
+        if (res == SCREEN_OK) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
     private Intent createIntent(String screenDeviceList) {
         Intent intent = new Intent(context, SimpleMainActivity.class);
         Bundle b = new Bundle();
