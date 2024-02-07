@@ -25,6 +25,10 @@ public class SimpleMainActivity extends IActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.simple_activity_main);
 
+        if (getSupportActionBar() != null) {
+            getSupportActionBar().hide();
+        }
+
         Bundle b = getIntent().getExtras();
         screen = b.getString("screen");
 

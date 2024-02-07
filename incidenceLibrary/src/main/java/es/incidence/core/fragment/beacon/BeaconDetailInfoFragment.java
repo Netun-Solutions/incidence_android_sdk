@@ -122,6 +122,8 @@ public class BeaconDetailInfoFragment extends IFragment
         }
 
         IncidenceLibraryManager.instance.setViewBackground(rootView);
+        IncidenceLibraryManager.instance.setButtonBackground(btnBlue);
+        IncidenceLibraryManager.instance.setButtonTextColor(btnBlue);
     }
 
     private void onClickBlue() {

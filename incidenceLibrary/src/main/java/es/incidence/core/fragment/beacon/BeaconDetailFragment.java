@@ -410,7 +410,7 @@ public class BeaconDetailFragment extends IFragment
                                 onClickReturn();
                             }
                         };
-                        showAlert(getString(R.string.incidence_key_nombre_app), "Sin balizas asociados", listener);
+                        showAlert(IUtils.getAppLable(getContext()), "Sin balizas asociados", listener);
                     }
                 }
                 else

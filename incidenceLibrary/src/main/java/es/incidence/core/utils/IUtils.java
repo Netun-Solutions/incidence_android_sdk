@@ -2,12 +2,15 @@ package es.incidence.core.utils;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.pm.ApplicationInfo;
+import android.content.pm.PackageManager;
 import android.location.Address;
 import android.location.Geocoder;
 import android.location.Location;
 import android.os.Build;
 import android.os.VibrationEffect;
 import android.os.Vibrator;
+import android.util.Log;
 import android.view.WindowManager;
 
 import java.io.IOException;
@@ -135,5 +138,15 @@ public class IUtils
             //deprecated in API 26
             v.vibrate(500);
         }
+    }
+
+    public static String getAppLable(Context context) {
+        ApplicationInfo applicationInfo = null;
+        try {
+            applicationInfo = context.getPackageManager().getApplicationInfo(context.getApplicationInfo().packageName, 0);
+        } catch (final PackageManager.NameNotFoundException e) {
+            Log.d("TAG", "The package with the given name cannot be found on the system.");
+        }
+        return (applicationInfo != null ? String.valueOf(context.getPackageManager().getApplicationLabel(applicationInfo)) : "Unknown");
     }
 }

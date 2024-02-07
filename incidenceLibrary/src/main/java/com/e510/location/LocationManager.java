@@ -23,6 +23,8 @@ import com.google.android.gms.location.LocationRequest;
 import com.google.android.gms.location.LocationResult;
 import com.google.android.gms.location.LocationServices;
 
+import es.incidence.core.utils.IUtils;
+
 public class LocationManager
 {
     private static final String TAG = "LocationMgr";
@@ -67,7 +69,7 @@ public class LocationManager
 
         AlertDialog.Builder builder = new AlertDialog.Builder(activity);
         builder
-                .setTitle(activity.getString(R.string.incidence_key_app_name))
+                .setTitle(IUtils.getAppLable(activity))
                 .setMessage(activity.getString(R.string.incidence_key_required_location_permission_text))
                 .setPositiveButton(activity.getString(R.string.incidence_key_required_location_ok_text), dialogClickListener)
                 .setNegativeButton(activity.getString(R.string.incidence_key_required_location_cancel_text), dialogClickListener)

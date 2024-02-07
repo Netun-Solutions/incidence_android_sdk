@@ -30,6 +30,8 @@ import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.ArrayList;
 
+import es.incidence.core.utils.IUtils;
+
 public class BaseFragment extends GlobalFragmentParcelable {
 
     private static final String TAG = makeLogTag(BaseFragment.class);
@@ -193,7 +195,7 @@ public class BaseFragment extends GlobalFragmentParcelable {
 
     public int getTitleId()
     {
-        return R.string.incidence_key_app_name;
+        return 0;
     }
 
     public int getLayoutRootId()
@@ -253,7 +255,7 @@ public class BaseFragment extends GlobalFragmentParcelable {
 
     public void showAlert(int messageId)
     {
-        showAlert(getString(R.string.incidence_key_app_name), getString(messageId));
+        showAlert(IUtils.getAppLable(getContext()), getString(messageId));
     }
 
     public void showAlert(int titleId, int messageId)
@@ -263,7 +265,7 @@ public class BaseFragment extends GlobalFragmentParcelable {
 
     public void showAlert(String message)
     {
-        showAlert(getString(R.string.incidence_key_app_name), message);
+        showAlert(IUtils.getAppLable(getContext()), message);
     }
 
     public void showAlert(String title, String message) {

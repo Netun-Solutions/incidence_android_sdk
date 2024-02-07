@@ -44,6 +44,7 @@ import org.greenrobot.eventbus.ThreadMode;
 
 import java.util.ArrayList;
 
+import es.incidence.core.utils.IUtils;
 import es.incidence.library.IncidenceLibraryManager;
 
 public class BaseActivity extends AppCompatActivity implements OnFragmentInteractionListener, View.OnClickListener {
@@ -771,7 +772,7 @@ public class BaseActivity extends AppCompatActivity implements OnFragmentInterac
                 getSupportFragmentManager().beginTransaction().remove(initialFragment).commit();
             }
 
-            toolbar.setTitle(getString(R.string.incidence_key_app_name));
+            toolbar.setTitle(IUtils.getAppLable(this));
 
         }
         catch (Exception e)
@@ -1110,7 +1111,7 @@ public class BaseActivity extends AppCompatActivity implements OnFragmentInterac
 
     public void showAlert(String message)
     {
-        showAlert(getString(R.string.incidence_key_app_name), message);
+        showAlert(IUtils.getAppLable(this), message);
     }
     public void showAlert(String title, String message)
     {

@@ -1,9 +1,12 @@
 package es.incidence.core.utils;
 
 import android.content.Context;
+import android.graphics.drawable.Drawable;
+import android.graphics.drawable.GradientDrawable;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.e510.commons.utils.FontUtils;
@@ -11,6 +14,7 @@ import com.e510.commons.utils.Utils;
 import com.e510.incidencelibrary.R;
 
 import es.incidence.core.Constants;
+import es.incidence.library.IncidenceLibraryManager;
 import io.github.douglasjunior.androidSimpleTooltip.SimpleTooltip;
 
 public class Tooltip
@@ -46,6 +50,11 @@ public class Tooltip
     }
     public static void showTooltipDevice(Context context, View view, String message)
     {
+        Integer color = IncidenceLibraryManager.instance.getSupportBackgroundColor();
+        if (color == null) {
+            color = Utils.getColor(context, R.color.incidencePrincipal);
+        }
+
         SimpleTooltip tooltip =
                 new SimpleTooltip.Builder(context)
                         .anchorView(view)
@@ -57,7 +66,7 @@ public class Tooltip
                         .padding((float) 0)
                         .arrowWidth((float)Utils.dpToPx(19))
                         .arrowHeight((float)Utils.dpToPx(9))
-                        .arrowColor(Utils.getColor(context, R.color.incidencePrincipal))
+                        .arrowColor(color)
                         .contentView(R.layout.layout_tooltip_device, R.id.txtTitle)
                         //.text(R.string.incidence_key_caducity_insurance_date_near)
                         .focusable(true)
@@ -68,11 +77,27 @@ public class Tooltip
         FontUtils.setTypeValueText(textView, Constants.FONT_REGULAR, context);
         textView.setText(message);
 
+        ImageView imgClose = tooltip.findViewById(R.id.imgClose);
+        //imgClose.setColorFilter(color);
+
+        RelativeLayout backTooltip = tooltip.findViewById(R.id.backTooltip);
+        Drawable background = backTooltip.getBackground();
+        GradientDrawable gradientDrawable = (GradientDrawable) background;
+        gradientDrawable.setColor(color);
+
+        IncidenceLibraryManager.instance.setSupportTextColor(textView);
+        IncidenceLibraryManager.instance.setSupportTintColor(imgClose);
+
         tooltip.show();
     }
 
     public static void showTooltipText(Context context, View view, String message)
     {
+        Integer color = IncidenceLibraryManager.instance.getSupportBackgroundColor();
+        if (color == null) {
+            color = Utils.getColor(context, R.color.incidencePrincipal);
+        }
+
         SimpleTooltip tooltip =
                 new SimpleTooltip.Builder(context)
                         .anchorView(view)
@@ -84,7 +109,7 @@ public class Tooltip
                         .padding((float) 0)
                         .arrowWidth((float)Utils.dpToPx(19))
                         .arrowHeight((float)Utils.dpToPx(9))
-                        .arrowColor(Utils.getColor(context, R.color.incidencePrincipal))
+                        .arrowColor(color)
                         .contentView(R.layout.layout_tooltip_device, R.id.txtTitle)
                         //.text(R.string.incidence_key_caducity_insurance_date_near)
                         .focusable(true)
@@ -97,6 +122,16 @@ public class Tooltip
 
         ImageView imageDevice = tooltip.findViewById(R.id.imgDevice);
         imageDevice.setVisibility(View.GONE);
+
+        ImageView imgClose = tooltip.findViewById(R.id.imgClose);
+
+        RelativeLayout backTooltip = tooltip.findViewById(R.id.backTooltip);
+        Drawable background = backTooltip.getBackground();
+        GradientDrawable gradientDrawable = (GradientDrawable) background;
+        gradientDrawable.setColor(color);
+
+        IncidenceLibraryManager.instance.setSupportTextColor(textView);
+        IncidenceLibraryManager.instance.setSupportTintColor(imgClose);
 
         tooltip.show();
     }

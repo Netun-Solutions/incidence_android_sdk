@@ -57,6 +57,7 @@ import es.incidence.core.entity.sign.SignStepType;
 import es.incidence.core.manager.Api;
 import es.incidence.core.manager.IRequestListener;
 import es.incidence.core.manager.IResponse;
+import es.incidence.core.utils.IUtils;
 import es.incidence.core.utils.Tooltip;
 import es.incidence.core.utils.view.IButton;
 import es.incidence.core.utils.view.IField;
@@ -218,6 +219,8 @@ public class SignUpBeaconFragment extends SignUpFragment {
                 onClickContinue();
             }
         });
+        IncidenceLibraryManager.instance.setButtonBackground(btnContinue2);
+        IncidenceLibraryManager.instance.setButtonTextColor(btnContinue2);
 
         ImageView imgBackground2 = layoutSuccess.findViewById(R.id.imgBackground);
         ImageView imgBeacon2 = layoutSuccess.findViewById(R.id.imgBeacon);
@@ -226,6 +229,10 @@ public class SignUpBeaconFragment extends SignUpFragment {
         imgInSuccess = layoutSuccess.findViewById(R.id.imgIn);
         TextView txtInfoTitle2 = layoutSuccess.findViewById(R.id.txtInfoTitle);
         FontUtils.setTypeValueText(txtInfoTitle2, Constants.FONT_SEMIBOLD, getContext());
+
+        IncidenceLibraryManager.instance.setTextColor(txtInfoTitle2);
+
+
         TextView txtInfoSubtitle2 = layoutSuccess.findViewById(R.id.txtInfoSubtitle);
 
         layoutHeader2.setVisibility(View.GONE);
@@ -655,6 +662,9 @@ public class SignUpBeaconFragment extends SignUpFragment {
             }
         });
 
+        IncidenceLibraryManager.instance.setButtonBackground(btnBlue);
+        IncidenceLibraryManager.instance.setButtonTextColor(btnBlue);
+
         fieldImei.setHint(getString(R.string.incidence_key_select_beacon_imei));
         fieldImei.setTitle(getString(R.string.incidence_key_select_beacon_imei));
         fieldImei.setType(IField.TYPE_NUMBER);
@@ -912,7 +922,7 @@ public class SignUpBeaconFragment extends SignUpFragment {
                 //showHud();
                 layoutLoading.setVisibility(View.VISIBLE);
             } else {
-                showAlert(R.string.incidence_key_app_name, R.string.incidence_key_alert_no_location_to_beacon, new DialogInterface.OnClickListener() {
+                showAlert(IUtils.getAppLable(getContext()), getString(R.string.incidence_key_alert_no_location_to_beacon), new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         //showHud();

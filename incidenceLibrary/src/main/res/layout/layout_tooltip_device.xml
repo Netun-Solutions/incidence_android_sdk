@@ -4,10 +4,12 @@
     android:layout_height="wrap_content">
 
     <RelativeLayout
+        android:id="@+id/backTooltip"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="@dimen/margin_normal"
         android:background="@drawable/rounded_tooltip_background">
+
 
         <ImageView
             android:layout_width="15dp"
@@ -42,7 +44,6 @@
             android:scaleType="fitCenter"
             android:src="@drawable/device_img"
             android:id="@+id/imgDevice"/>
-
 
     </RelativeLayout>
 </RelativeLayout>

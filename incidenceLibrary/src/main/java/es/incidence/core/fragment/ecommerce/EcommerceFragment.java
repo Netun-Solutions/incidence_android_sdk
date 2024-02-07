@@ -147,6 +147,8 @@ public class EcommerceFragment extends IFragment
         //circlePageIndicator.setViewPager(viewPager);
 
         IncidenceLibraryManager.instance.setViewBackground(rootView);
+        IncidenceLibraryManager.instance.setButtonBackground(button);
+        IncidenceLibraryManager.instance.setButtonTextColor(button);
     }
 
     @Override

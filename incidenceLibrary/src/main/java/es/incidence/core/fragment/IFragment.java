@@ -5,11 +5,12 @@ import android.view.View;
 
 import com.e510.commons.fragment.BaseFragment;
 import com.e510.commons.utils.FontUtils;
+import com.e510.incidencelibrary.R;
 
 import es.incidence.core.Constants;
 import es.incidence.core.Core;
-import com.e510.incidencelibrary.R;
 import es.incidence.core.manager.IResponse;
+import es.incidence.core.utils.IUtils;
 import es.incidence.core.utils.view.INotification;
 
 public class IFragment extends BaseFragment {
@@ -48,15 +49,15 @@ public class IFragment extends BaseFragment {
 
             if (response.message != null)
             {
-                showAlert(getString(R.string.incidence_key_nombre_app), response.message, listener);
+                showAlert(IUtils.getAppLable(getContext()), response.message, listener);
             }
             else if (response.status != null && response.status.equals(IResponse.RESPONSE_ERROR_CONNECTION))
             {
-                showAlert(getString(R.string.incidence_key_nombre_app), getString(R.string.incidence_key_alert_error_ws_connection), listener);
+                showAlert(IUtils.getAppLable(getContext()), getString(R.string.incidence_key_alert_error_ws_connection), listener);
             }
             else
             {
-                showAlert(getString(R.string.incidence_key_nombre_app), getString(R.string.incidence_key_alert_error_ws), listener);
+                showAlert(IUtils.getAppLable(getContext()), getString(R.string.incidence_key_alert_error_ws), listener);
             }
         }
     }

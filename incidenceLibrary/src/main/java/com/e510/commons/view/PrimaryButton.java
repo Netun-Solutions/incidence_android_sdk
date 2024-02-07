@@ -136,6 +136,12 @@ public class PrimaryButton extends RelativeLayout {
         layoutRound.setBackground(back);
     }
 
+    public void setBackground(int backgroundColor)
+    {
+        //GradientDrawable back =  Utils.createGradientDrawable(context, backgroundColor, (int) radius);
+        layoutRound.setBackgroundColor(backgroundColor);
+    }
+
     public void setTextColor(int color) {
         txtTitle.setTextColor(color);
     }

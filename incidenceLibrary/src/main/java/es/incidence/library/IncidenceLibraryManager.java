@@ -6,6 +6,7 @@ import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.e510.commons.activity.BaseActivity;
@@ -30,6 +31,7 @@ import es.incidence.core.manager.IActionListener;
 import es.incidence.core.manager.IActionResponse;
 import es.incidence.core.manager.IRequestListener;
 import es.incidence.core.manager.IResponse;
+import es.incidence.core.utils.view.IButton;
 import es.incidence.library.config.IncidenceLibraryConfig;
 
 public class IncidenceLibraryManager {
@@ -57,22 +59,23 @@ public class IncidenceLibraryManager {
         this.context = context;
     }
 
-    public static void setup(final Application context, IncidenceLibraryConfig incidenceLibraryConfig) {
+    public static void setup(final Application context, IncidenceLibraryConfig incidenceLibraryConfig, IActionListener iActionListener) {
         if (instance == null) {
             instance = new IncidenceLibraryManager(context, incidenceLibraryConfig);
 
             Core.init(context, incidenceLibraryConfig.getApikey(), incidenceLibraryConfig.getEnvironment());
         }
 
-        instance.validateApiKey();
+        instance.validateApiKey(iActionListener);
     }
 
-    private void validateApiKey() {
+    private void validateApiKey(IActionListener iActionListener) {
         String json = "";
         processConfigJson(json);
         Api.validateApiKey(new IRequestListener() {
             @Override
             public void onFinish(IResponse response) {
+                IActionResponse actionResponse;
 
                 if (response.isSuccess())
                 {
@@ -83,6 +86,15 @@ public class IncidenceLibraryManager {
                     insurance = (Insurance) response.get("insurance", Insurance.class);
 
                     appearance = (AppConfig) response.get("appearance", AppConfig.class);
+                    /*
+                    appearance.background_color="#FFFFFF";
+                    appearance.letter_color="#2D373D";
+                    appearance.error_letter_color="#2D373D";
+                    appearance.button_color="#D81E05";
+                    appearance.button_letter_color="#FFFFFF";
+                    appearance.support_background_color="#F5F6F7";
+                    appearance.support_letter_color="#2D373D";
+                    */
 
                     incidencesTypes = response.getList("incidenceTypes", IncidenceType.class);
 
@@ -97,8 +109,15 @@ public class IncidenceLibraryManager {
 
                     Core.registerDeviceSdk();
 
+                    actionResponse = new IActionResponse(true);
+
                 } else {
                     instance.validApiKey = false;
+                    actionResponse = new IActionResponse(false, response.message);
+                }
+
+                if (iActionListener != null) {
+                    iActionListener.onFinish(actionResponse);
                 }
             }
         });
@@ -267,6 +286,69 @@ public class IncidenceLibraryManager {
             return color;
         }
         return null;
+    }
+
+    public void setButtonBackground(IButton view) {
+        try {
+            if (appearance != null && appearance.button_color != null) {
+                int color = Color.parseColor(appearance.button_color);
+                view.setBackground(color);
+            }
+        } catch (Exception e) {
+            Log.e("", e.getMessage(), e);
+        }
+    }
+
+    public void setButtonTextColor(IButton view) {
+        try {
+            if (appearance != null && appearance.button_letter_color != null) {
+                int color = Color.parseColor(appearance.button_letter_color);
+                view.setTextColor(color);
+            }
+        } catch (Exception e) {
+            Log.e("", e.getMessage(), e);
+        }
+    }
+
+    public void setSupportBackgroundColor(View view) {
+        try {
+            if (appearance != null && appearance.support_background_color != null) {
+                int color = Color.parseColor(appearance.support_background_color);
+                view.setBackgroundColor(color);
+            }
+        } catch (Exception e) {
+            Log.e("", e.getMessage(), e);
+        }
+    }
+
+    public Integer getSupportBackgroundColor() {
+        if (appearance != null && appearance.support_background_color != null) {
+            int color = Color.parseColor(appearance.support_background_color);
+            return color;
+        }
+        return null;
+    }
+
+    public void setSupportTintColor(ImageView view) {
+        try {
+            if (appearance != null && appearance.support_letter_color != null) {
+                int color = Color.parseColor(appearance.support_letter_color);
+                view.setColorFilter(color);
+            }
+        } catch (Exception e) {
+            Log.e("", e.getMessage(), e);
+        }
+    }
+
+    public void setSupportTextColor(TextView view) {
+        try {
+            if (appearance != null && appearance.support_letter_color != null) {
+                int color = Color.parseColor(appearance.support_letter_color);
+                view.setTextColor(color);
+            }
+        } catch (Exception e) {
+            Log.e("", e.getMessage(), e);
+        }
     }
 
     public Insurance getInsurance() {
