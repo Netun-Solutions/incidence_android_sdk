@@ -1,5 +1,6 @@
 package es.incidence.core.fragment.sign;
 
+import static android.app.Activity.RESULT_OK;
 import static com.e510.commons.utils.LogUtil.makeLogTag;
 
 import android.Manifest;
@@ -811,6 +812,8 @@ public class SignUpBeaconFragment extends SignUpFragment {
             showSearchingView();
             makeLoadData();
         } else if (currentView.equals(VIEW_BEACON_ADDED)) {
+            Intent data = new Intent();
+            getActivity().setResult(RESULT_OK, data);
             getActivity().finish();
         }
     }
@@ -892,6 +895,8 @@ public class SignUpBeaconFragment extends SignUpFragment {
 
             currentView = VIEW_BEACON_ADDED;
         } else {
+            Intent data = new Intent();
+            getActivity().setResult(RESULT_OK, data);
             getActivity().finish();
         }
     }
