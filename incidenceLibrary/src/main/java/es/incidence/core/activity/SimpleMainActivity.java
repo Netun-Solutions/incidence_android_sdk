@@ -15,6 +15,7 @@ import es.incidence.core.fragment.ecommerce.EcommerceFragment;
 import es.incidence.core.fragment.error.ErrorFragment;
 import es.incidence.core.fragment.incidence.ReportIncidenceSimpleFragment;
 import es.incidence.core.fragment.incidence.report.IncidenceReportFragment;
+import es.incidence.core.fragment.incidence.report.IncidenceReportOp1Fragment;
 
 public class SimpleMainActivity extends IActivity
 {
@@ -71,6 +72,12 @@ public class SimpleMainActivity extends IActivity
             Boolean flowComplete = b.getBoolean("flowComplete");
 
             showInitialFragment(IncidenceReportFragment.newInstance(vehicle, user, false, flowComplete));
+        } else if (Constants.SCREEN_REPOR_INC_SIMPLE_OP1.equals(screen)) {
+            User user = b.getParcelable("user");
+            Vehicle vehicle = b.getParcelable("vehicle");
+            Boolean flowComplete = b.getBoolean("flowComplete");
+
+            showInitialFragment(IncidenceReportOp1Fragment.newInstance(vehicle, user, false, flowComplete));
         }
     }
 }

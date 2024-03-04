@@ -306,6 +306,7 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_below="@+id/inavigation"
         android:clickable="true"
         android:id="@+id/layoutStopDevice">
         <include layout="@layout/layout_alert_volumen" android:visibility="gone"/>
@@ -313,6 +314,7 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_below="@+id/inavigation"
         android:clickable="true"
         android:id="@+id/layoutNewIncidence">
         <include layout="@layout/layout_alert_volumen" android:visibility="gone"/>

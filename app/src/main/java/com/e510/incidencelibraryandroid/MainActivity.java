@@ -38,6 +38,7 @@ public class MainActivity extends AppCompatActivity {
     private Button btnEcommerce;
     private Button btnReportInc;
     private Button btnReportIncSimple;
+    private Button btnReportIncSimpleOp1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -227,6 +228,26 @@ public class MainActivity extends AppCompatActivity {
                 }
             });
         });
+
+        btnReportIncSimpleOp1 = findViewById(R.id.btnReportIncSimpleOp1);
+        btnReportIncSimpleOp1.setOnClickListener(v -> {
+            Intent activity = IncidenceLibraryManager.instance.getReportIncViewControllerFlowSimpleOp1(user, vehicle);
+            //startActivity(activity);
+            activityLauncher.launch(activity, result -> {
+                if (result.getResultCode() == Activity.RESULT_OK) {
+                    // There are no request codes
+                    Intent data = result.getData();
+                    Incidence incidence1=data.getParcelableExtra("incidence");
+                    Log.e(TAG, "Incidencia creada con éxito: " + incidence1.externalIncidenceId);
+                    // doSomeOperations();
+                    Toast.makeText(MainActivity.this, "Incidencia creada con éxito: " + incidence1.externalIncidenceId, Toast.LENGTH_SHORT).show();
+                } else {
+                    Toast.makeText(MainActivity.this, "No se ha podido crear la incidencia", Toast.LENGTH_SHORT).show();
+                }
+            });
+        });
+
+
     }
 
     @Override

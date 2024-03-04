@@ -89,7 +89,7 @@ public class BeaconDetailInfoFragment extends IFragment
         });
 
         stepper = rootView.findViewById(R.id.istepper);
-        float[] steps = new float[]{0.5f, 0f, 0f};
+        float[] steps = new float[]{1f, 0f, 0f};
         stepper.init(this, steps);
 
         String title = beacon.name;
@@ -143,6 +143,9 @@ public class BeaconDetailInfoFragment extends IFragment
 
             position = 1;
 
+            float[] steps = new float[]{1f, 1f, 0f};
+            stepper.setSteps(steps);
+
         } else if (position == 1) {
             if (beacon.beaconType != null && beacon.beaconType.imageBeaconScreen3 != null) {
                 ImageManager.loadImage(getContext(), beacon.beaconType.imageBeaconScreen3, null, imageBeacon, true);
@@ -157,6 +160,9 @@ public class BeaconDetailInfoFragment extends IFragment
             }
 
             position = 2;
+
+            float[] steps = new float[]{1f, 1f, 1f};
+            stepper.setSteps(steps);
 
             btnBlue.setText(getString(R.string.incidence_key_device_desc_info_finish));
         } else if (position == 2) {

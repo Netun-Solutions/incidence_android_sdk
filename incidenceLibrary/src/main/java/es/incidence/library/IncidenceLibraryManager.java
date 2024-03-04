@@ -200,6 +200,19 @@ public class IncidenceLibraryManager {
         }
     }
 
+    public Intent getReportIncViewControllerFlowSimpleOp1(User user, Vehicle vehicle) {
+        String res = validateScreen(Constants.SCREEN_REPOR_INC_SIMPLE_OP1);
+        if (res == SCREEN_OK) {
+            Intent intent = createIntent(Constants.SCREEN_REPOR_INC_SIMPLE_OP1);
+            intent.putExtra("user", user);
+            intent.putExtra("vehicle", vehicle);
+            intent.putExtra("flowComplete", false);
+            return intent;
+        } else {
+            return processScreenError(res);
+        }
+    }
+
     public boolean needShowLinkResult() {
         String res = validateScreen(Constants.SCREEN_LINK_RESULT);
         if (res == SCREEN_OK) {
@@ -276,6 +289,14 @@ public class IncidenceLibraryManager {
         } catch (Exception e) {
             Log.e("", e.getMessage(), e);
         }
+    }
+
+    public Integer getViewBackgroundColor() {
+        if (appearance != null && appearance.background_color != null) {
+            int color = Color.parseColor(appearance.background_color);
+            return color;
+        }
+        return null;
     }
 
     public void setTextColor(TextView view) {

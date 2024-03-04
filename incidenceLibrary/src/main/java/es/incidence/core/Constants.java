@@ -23,6 +23,7 @@ public class Constants
     public static final String FUNC_CLOSE_INC = "FUNC_CLOSE_INC";
     public static final String SCREEN_REPOR_INC = "SCREEN_REPOR_INC";
     public static final String SCREEN_REPOR_INC_SIMPLE = "SCREEN_REPOR_INC_SIMPLE";
+    public static final String SCREEN_REPOR_INC_SIMPLE_OP1 = "SCREEN_REPOR_INC_SIMPLE_OP1";
     public static final String SCREEN_ERROR = "ERROR";
     public static final String SCREEN_LINK_RESULT = "SCREEN_LINK_RESULT";
 
