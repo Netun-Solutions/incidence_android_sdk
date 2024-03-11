@@ -5,12 +5,13 @@
     android:layout_centerVertical="true">
 
     <ImageView
-        android:layout_marginTop="@dimen/margin_normal"
         android:layout_width="180dp"
         android:layout_height="180dp"
         android:adjustViewBounds="true"
-        android:src="@drawable/home_circle2"
+        android:src="@drawable/home_circle3"
         android:layout_centerHorizontal="true"
+        android:padding="@dimen/margin_normal"
+        android:layout_marginBottom="@dimen/margin_normal"
         android:id="@+id/imgCircle"/>
 
     <TextView
@@ -23,7 +24,7 @@
         android:textColor="@color/black600"
         android:textSize="24sp"
         android:lineHeight="34dp"
-        android:text="@string/incidence_key_report_ask_what"
+        android:text="@string/incidence_key_report_ask_what2"
         android:gravity="center"/>
 
     <TextView

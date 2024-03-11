@@ -404,15 +404,17 @@ public class IncidenceReportOp1Fragment extends IFragment implements SpeechManag
     public void setUpVoiceLiterals() {
         speechRecognizion = new ArrayList<String>();
         speechRecognizion.add(Core.getLiteralVoiceSDK("incidence_key_one", getContext()));
-        speechRecognizion.add(Core.getLiteralVoiceSDK("incidence_key_fault", getContext()));
-        speechRecognizion.add(Core.getLiteralVoiceSDK("incidence_key_two", getContext()));
         speechRecognizion.add(Core.getLiteralVoiceSDK("incidence_key_accident", getContext()));
+        speechRecognizion.add(Core.getLiteralVoiceSDK("incidence_key_two", getContext()));
+        speechRecognizion.add(Core.getLiteralVoiceSDK("incidence_key_fault", getContext()));
         speechRecognizion.add(Core.getLiteralVoiceSDK("incidence_key_three", getContext()));
         speechRecognizion.add(Core.getLiteralVoiceSDK("incidence_key_cancel", getContext()));
 
         voiceDialogs = new ArrayList<String>();
-        voiceDialogs.add(Core.getLiteralVoiceSDK("incidence_key_report_ask_what", getContext()));
-        voiceDialogs.add(Core.getLiteralVoiceSDK("incidence_key_report_ask_what_descrip", getContext()));
+        voiceDialogs.add(Core.getLiteralVoiceSDK("incidence_key_report_ask_what2", getContext()));
+        String timeText = Core.getLiteralVoiceSDK("incidence_key_report_ask_what_descrip", getContext());
+        timeText = String.format(timeText, "3");
+        voiceDialogs.add(timeText);
         voiceDialogs.addAll(speechRecognizion);
     }
 
@@ -945,10 +947,8 @@ public class IncidenceReportOp1Fragment extends IFragment implements SpeechManag
     }
 
     @Subscribe(threadMode = ThreadMode.MAIN)
-    public void onMessageEvent(Event event)
-    {
-        if (event.code == EventCode.VOLUMEN_CHANGED)
-        {
+    public void onMessageEvent(Event event) {
+        if (event.code == EventCode.VOLUMEN_CHANGED) {
             setUpVolumeAlert();
         } else if (event.code == EventCode.INCICENDE_TIME_STOP) {
             if (countDownTimer != null) {
@@ -956,8 +956,7 @@ public class IncidenceReportOp1Fragment extends IFragment implements SpeechManag
             }
             speechStop();
             IncidenceManager.secondsGlobal = 0;
-        } else if (event.code == EventCode.INCICENDE_VEHICLE_SELECTED)
-        {
+        } else if (event.code == EventCode.INCICENDE_VEHICLE_SELECTED) {
             vehicle = (Vehicle) event.object;
         } else if (event.code == EventCode.INCICENDE_DGT_UPDATED) {
             dgtAlertUpdatedView();

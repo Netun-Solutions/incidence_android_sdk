@@ -1,6 +1,7 @@
 package es.incidence.core.activity;
 
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.View;
 
 import com.e510.incidencelibrary.R;
@@ -16,10 +17,14 @@ import es.incidence.core.fragment.error.ErrorFragment;
 import es.incidence.core.fragment.incidence.ReportIncidenceSimpleFragment;
 import es.incidence.core.fragment.incidence.report.IncidenceReportFragment;
 import es.incidence.core.fragment.incidence.report.IncidenceReportOp1Fragment;
+import es.incidence.core.manager.SettingsContentObserver;
+import es.incidence.core.manager.SpeechManager;
 
 public class SimpleMainActivity extends IActivity
 {
     private String screen;
+
+    private SettingsContentObserver mSettingsContentObserver;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -79,5 +84,19 @@ public class SimpleMainActivity extends IActivity
 
             showInitialFragment(IncidenceReportOp1Fragment.newInstance(vehicle, user, false, flowComplete));
         }
+
+        mSettingsContentObserver = new SettingsContentObserver(new Handler(), this);
+        getApplicationContext().getContentResolver().registerContentObserver(
+                android.provider.Settings.System.CONTENT_URI, true,
+                mSettingsContentObserver);
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+
+        // Unregister broadcast listeners
+        SpeechManager.destroy();
+        getApplicationContext().getContentResolver().unregisterContentObserver(mSettingsContentObserver);
     }
 }

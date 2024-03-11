@@ -46,6 +46,7 @@
     <string name="incidence_key_accident">Accidente</string>
     <string name="incidence_key_fault">Avería</string>
     <string name="incidence_key_report_ask_what">¿Has tenido una avería o un accidente?</string>
+    <string name="incidence_key_report_ask_what2">¿Has tenido un accidente o una avería?</string>
     <string name="incidence_key_report_ask_what_descrip">Pasados %1s minutos sin respuesta, llamaremos automáticamente a emergencias</string>
     <string name="incidence_key_ask_wounded">¿Hay heridos?</string>
     <string name="incidence_key_accident_with_wounded">Accidente con heridos</string>
