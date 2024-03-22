@@ -39,6 +39,7 @@ public class MainActivity extends AppCompatActivity {
     private Button btnReportInc;
     private Button btnReportIncSimple;
     private Button btnReportIncSimpleOp1;
+    private Button btnGetGeo;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -104,7 +105,7 @@ public class MainActivity extends AppCompatActivity {
         btnGetDevice.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                IncidenceLibraryManager.instance.deleteBeaconFunc(user, vehicle, response -> {
+                IncidenceLibraryManager.instance.getBeaconFunc(user, vehicle, response -> {
                     if (response.isSuccess()) {
                         //MAKE OK ACTIONS
                         Log.d(TAG, "SUCCESS");
@@ -113,6 +114,24 @@ public class MainActivity extends AppCompatActivity {
                         //MAKE KO ACTIONS
                         Log.d(TAG, "ERROR: " + response.message);
                         Toast.makeText(MainActivity.this, "NO hay baliza asociada", Toast.LENGTH_SHORT).show();
+                    }
+                });
+            }
+        });
+
+        btnGetGeo = findViewById(R.id.btnGetGeo);
+        btnGetGeo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                IncidenceLibraryManager.instance.getGeoFunc(user, vehicle, response -> {
+                    if (response.isSuccess() && response.data != null) {
+                        //MAKE OK ACTIONS
+                        Log.d(TAG, "SUCCESS");
+                        Toast.makeText(MainActivity.this, "SI hay coordenadas " + response.data, Toast.LENGTH_SHORT).show();
+                    } else {
+                        //MAKE KO ACTIONS
+                        Log.d(TAG, "ERROR: " + response.message);
+                        Toast.makeText(MainActivity.this, "NO hay coordenadas", Toast.LENGTH_SHORT).show();
                     }
                 });
             }

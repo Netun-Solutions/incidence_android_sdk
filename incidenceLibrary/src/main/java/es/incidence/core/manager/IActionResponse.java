@@ -4,6 +4,7 @@ public class IActionResponse
 {
     public boolean status;
     public String message;
+    public Object data;
 
     public IActionResponse(boolean status) {
         this.status = status;

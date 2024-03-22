@@ -444,6 +444,39 @@ public class IncidenceLibraryManager {
         }
     }
 
+    public void getGeoFunc(User user, Vehicle vehicle, IActionListener iActionListener) {
+        String res = validateScreen(Constants.FUNC_COORDINATES_GET);
+        if (res == SCREEN_OK) {
+            Api.getGeoSdk(new IRequestListener() {
+                @Override
+                public void onFinish(IResponse response) {
+                    if (iActionListener != null) {
+                        IActionResponse actionResponse = new IActionResponse(false, response.message);
+                        if (response.isSuccess())
+                        {
+                            JSONObject obj = response.get();
+                            if (obj != null) {
+                                JSONObject data = obj.optJSONObject("data");
+                                if (data != null) {
+                                    //if (data.has("battery")) battery = data.getDouble("battery");
+                                    if (data.has("latitude") && data.has("latitude")) {
+                                        actionResponse = new IActionResponse(true);
+                                        actionResponse.data = data;
+                                    }
+                                }
+                            }
+                        }
+
+                        iActionListener.onFinish(actionResponse);
+                    }
+                }
+            }, user, vehicle);
+        } else {
+            IActionResponse actionResponse = new IActionResponse(false, res);
+            iActionListener.onFinish(actionResponse);
+        }
+    }
+
     public void createIncidenceFunc(User user, Vehicle vehicle, Incidence incidence, IActionListener iActionListener) {
         String res = validateScreen(Constants.FUNC_REPOR_INC);
         if (res == SCREEN_OK) {

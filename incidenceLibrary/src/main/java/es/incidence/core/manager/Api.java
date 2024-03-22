@@ -345,6 +345,39 @@ public class Api
         Networking.putDirect(url, params, requestListener);
     }
 
+    public static void getGeoSdk(final IRequestListener viewListener, User user, Vehicle vehicle)
+    {
+        //Networking.setBasicHeader(HEADER_TOKEN, getToken());
+
+        String url = Constants.BASE_URL + "/sdk/iot_coordinates";
+        log("Request: " + url);
+
+        HashMap<String, String> params = new HashMap<>();
+
+        params.put("external_user_id", user.externalUserId); // (identificador externo del usuario)
+        params.put("name", user.name); // (nombre del usuario)
+        params.put("phone", user.phone); // (teléfono)
+        params.put("email", user.email); // (e-mail)
+        params.put("identity_type", String.valueOf(user.identityType.name)); // (tipo de documento de identidad: dni, nie, cif)
+        params.put("dni", user.dni); // (número del documento de identidad)
+        params.put("birthday", user.birthday); // (fecha de Nacimiento)
+        params.put("check_terms", user.checkTerms); // (aceptación de la privacidad)
+        params.put("external_vehicle_id", vehicle.externalVehicleId); // (identificador externo del vehículo)
+        params.put("license_plate", vehicle.licensePlate); // (matrícula del vehículo)
+        params.put("registration_year", vehicle.registrationYear); // (fecha de matriculación)
+        params.put("vehicle_type", String.valueOf(vehicle.vehicleType.name)); // (tipo del vehículo)
+        params.put("brand", vehicle.brand); // (marca del vehículo)
+        params.put("model", vehicle.model); // (modelo del vehículo)
+        params.put("color", String.valueOf(vehicle.color.name)); // (color del vehículo)
+        params.put("policy_number", vehicle.policy.policyNumber); // (número de la póliza)
+        params.put("policy_end", vehicle.policy.policyEnd); // (fecha caducidad de la póliza)
+        params.put("policy_identity_type", String.valueOf(vehicle.policy.identityType.name)); // (tipo de documento identidad del asegurador)
+        params.put("policy_dni", vehicle.policy.dni); // (documento de identidad del asegurador)
+
+        JSONObjectRequestListener requestListener = getSimpleListener(viewListener);
+        Networking.putDirect(url, params, requestListener);
+    }
+
     public static void getBeaconDetailSdk(final IRequestListener viewListener, User user, Vehicle vehicle)
     {
         //Networking.setBasicHeader(HEADER_TOKEN, getToken());
