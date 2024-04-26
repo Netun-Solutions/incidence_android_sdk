@@ -2,9 +2,11 @@ package es.incidence.core;
 
 import static com.e510.commons.utils.LogUtil.makeLogTag;
 
+import android.Manifest;
 import android.app.Application;
 import android.content.Context;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Handler;
@@ -420,6 +422,33 @@ public class Core {
         }
     }
     */
+
+    public static void callPhone(String phone, boolean autoCall) {
+        if (phone != null && phone.length() > 0) {
+            if (autoCall) {
+                Uri phoneNumber = Uri.parse("tel:" + phone.trim());
+
+                if (application.checkSelfPermission(Manifest.permission.CALL_PHONE) != PackageManager.PERMISSION_GRANTED) {
+                    // TODO: Consider calling
+                    //    Activity#requestPermissions
+                    // here to request the missing permissions, and then overriding
+                    //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
+                    //                                          int[] grantResults)
+                    // to handle the case where the user grants the permission. See the documentation
+                    // for Activity#requestPermissions for more details.
+                    Intent intent = new Intent(Intent.ACTION_DIAL, phoneNumber);
+                    intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+
+                    application.startActivity(intent);
+                } else {
+                    Intent intent = new Intent(Intent.ACTION_CALL, phoneNumber);
+                    intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+
+                    application.startActivity(intent);
+                }
+            }
+        }
+    }
 
     public static void activityStopped() {
         /*

@@ -932,6 +932,8 @@ public class IncidenceReportOp1Fragment extends IFragment implements SpeechManag
                             e.printStackTrace();
                         }
 
+                        Core.callPhone(phone, true);
+
                         Intent data = new Intent();
                         data.putExtra("incidence", incidence);
                         getActivity().setResult(RESULT_OK, data);
