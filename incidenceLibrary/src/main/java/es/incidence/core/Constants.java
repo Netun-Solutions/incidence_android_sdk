@@ -11,6 +11,7 @@ public class Constants
     public static String BASE_URL = "";
 
     public static boolean FLAG_INCIDENCE_DGT = false;
+    public static boolean FLAG_INCIDENCE_DGT_CLOSED = false;
 
     public static final String SCREEN_DEVELOPER = "DEVELOPER";
     //public static final String SCREEN_DEVICE_LIST = "SCREEN_DEVICE_LIST";

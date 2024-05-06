@@ -48,7 +48,6 @@ import es.incidence.core.domain.User;
 import es.incidence.core.domain.Vehicle;
 import es.incidence.core.entity.event.Event;
 import es.incidence.core.entity.event.EventCode;
-import es.incidence.core.fragment.IFragment;
 import es.incidence.core.manager.Api;
 import es.incidence.core.manager.IRequestListener;
 import es.incidence.core.manager.IResponse;
@@ -60,7 +59,7 @@ import es.incidence.core.utils.view.IButton;
 import es.incidence.core.utils.view.INavigation;
 import es.incidence.library.IncidenceLibraryManager;
 
-public class IncidenceReportFragment extends IFragment implements SpeechManagerListener {
+public class IncidenceReportFragment extends IncidentReportBaseFragment implements SpeechManagerListener {
 
     private static final String TAG = makeLogTag(IncidenceReportFragment.class);
     public static final String KEY_VEHICLE = "KEY_VEHICLE";
@@ -70,9 +69,7 @@ public class IncidenceReportFragment extends IFragment implements SpeechManagerL
     public static final String KEY_FLOW_COMPLETE = "KEY_FLOW_COMPLETE";
 
     //params
-    public Vehicle vehicle;
     public Vehicle vehicleTmp;
-    public User user;
     public boolean openFromNotification;
     public boolean flowComplete;
     public boolean holdSpeech = false;
@@ -334,12 +331,14 @@ public class IncidenceReportFragment extends IFragment implements SpeechManagerL
                 public void onClick(View view) {
                     //microButtonClick();
                     alertDgtContainer.setVisibility(View.GONE);
+                    Constants.FLAG_INCIDENCE_DGT_CLOSED = true;
+                    EventBus.getDefault().post(new Event(EventCode.INCICENDE_DGT_UPDATED));
                 }
             }
         );
         alertDgtImg.setImageDrawable(Utils.getDrawable(getContext(), R.drawable.ico_conection));
         DrawableCompat.setTint(alertDgtImg.getDrawable(), Utils.getColor(getContext(), R.color.colorPrimary));
-        alertDgtContainer.setVisibility(Constants.FLAG_INCIDENCE_DGT ? View.VISIBLE : View.GONE);
+        alertDgtContainer.setVisibility(Constants.FLAG_INCIDENCE_DGT && !Constants.FLAG_INCIDENCE_DGT_CLOSED ? View.VISIBLE : View.GONE);
         //---
 
         setUpSpeechButton();
@@ -641,7 +640,7 @@ public class IncidenceReportFragment extends IFragment implements SpeechManagerL
     }
 
     public void dgtAlertUpdatedView() {
-        alertDgtContainer.setVisibility(Constants.FLAG_INCIDENCE_DGT ? View.VISIBLE : View.GONE);
+        alertDgtContainer.setVisibility(Constants.FLAG_INCIDENCE_DGT && !Constants.FLAG_INCIDENCE_DGT_CLOSED ? View.VISIBLE : View.GONE);
     }
 
     public void onClickBlue()

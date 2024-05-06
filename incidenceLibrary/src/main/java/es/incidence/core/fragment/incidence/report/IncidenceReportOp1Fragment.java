@@ -50,7 +50,6 @@ import es.incidence.core.domain.User;
 import es.incidence.core.domain.Vehicle;
 import es.incidence.core.entity.event.Event;
 import es.incidence.core.entity.event.EventCode;
-import es.incidence.core.fragment.IFragment;
 import es.incidence.core.manager.Api;
 import es.incidence.core.manager.IRequestListener;
 import es.incidence.core.manager.IResponse;
@@ -61,7 +60,7 @@ import es.incidence.core.utils.IUtils;
 import es.incidence.core.utils.view.INavigation;
 import es.incidence.library.IncidenceLibraryManager;
 
-public class IncidenceReportOp1Fragment extends IFragment implements SpeechManagerListener {
+public class IncidenceReportOp1Fragment extends IncidentReportBaseFragment implements SpeechManagerListener {
 
     private static final String TAG = makeLogTag(IncidenceReportOp1Fragment.class);
     public static final String KEY_VEHICLE = "KEY_VEHICLE";
@@ -71,9 +70,7 @@ public class IncidenceReportOp1Fragment extends IFragment implements SpeechManag
     public static final String KEY_FLOW_COMPLETE = "KEY_FLOW_COMPLETE";
 
     //params
-    public Vehicle vehicle;
     public Vehicle vehicleTmp;
-    public User user;
     public boolean openFromNotification;
     public boolean flowComplete;
     public boolean holdSpeech = false;
@@ -344,16 +341,18 @@ public class IncidenceReportOp1Fragment extends IFragment implements SpeechManag
         FontUtils.setTypeValueText(alertDgtTitle, Constants.FONT_SEMIBOLD, getContext());
         FontUtils.setTypeValueText(alertDgtSubTitle, Constants.FONT_REGULAR, getContext());
         alertDgtImgClose.setOnClickListener(new View.OnClickListener() {
-                                                @Override
-                                                public void onClick(View view) {
-                                                    //microButtonClick();
-                                                    alertDgtContainer.setVisibility(View.GONE);
-                                                }
-                                            }
+                @Override
+                public void onClick(View view) {
+                    //microButtonClick();
+                    alertDgtContainer.setVisibility(View.GONE);
+                    Constants.FLAG_INCIDENCE_DGT_CLOSED = true;
+                    EventBus.getDefault().post(new Event(EventCode.INCICENDE_DGT_UPDATED));
+                }
+            }
         );
         alertDgtImg.setImageDrawable(Utils.getDrawable(getContext(), R.drawable.ico_conection));
         DrawableCompat.setTint(alertDgtImg.getDrawable(), Utils.getColor(getContext(), R.color.colorPrimary));
-        alertDgtContainer.setVisibility(Constants.FLAG_INCIDENCE_DGT ? View.VISIBLE : View.GONE);
+        alertDgtContainer.setVisibility(Constants.FLAG_INCIDENCE_DGT && !Constants.FLAG_INCIDENCE_DGT_CLOSED ? View.VISIBLE : View.GONE);
         //---
 
         setUpSpeechButton();
@@ -657,7 +656,7 @@ public class IncidenceReportOp1Fragment extends IFragment implements SpeechManag
     }
 
     public void dgtAlertUpdatedView() {
-        alertDgtContainer.setVisibility(Constants.FLAG_INCIDENCE_DGT ? View.VISIBLE : View.GONE);
+        alertDgtContainer.setVisibility(Constants.FLAG_INCIDENCE_DGT && !Constants.FLAG_INCIDENCE_DGT_CLOSED ? View.VISIBLE : View.GONE);
     }
 
     public void onClickBlue()
