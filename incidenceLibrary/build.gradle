@@ -55,7 +55,7 @@ dependencies {
     annotationProcessor 'com.github.bumptech.glide:compiler:4.11.0'
     implementation 'com.github.douglasjunior:android-simple-tooltip:1.0.0-rc.0'
     implementation "androidx.percentlayout:percentlayout:1.0.0"
-    implementation 'com.google.android.gms:play-services-location:17.0.0'
+    implementation 'com.google.android.gms:play-services-location:21.0.1'
     implementation 'com.github.yuriy-budiyev:code-scanner:2.1.2'
     //implementation 'org.altbeacon:android-beacon-library:2.19.5'
     api "com.github.JakeWharton:ViewPagerIndicator:2.4.1"
