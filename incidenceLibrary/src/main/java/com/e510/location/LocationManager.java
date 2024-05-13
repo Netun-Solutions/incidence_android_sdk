@@ -168,6 +168,21 @@ public class LocationManager
         }
     }
 
+    public static void getUltimaLocation(Context context, final LocationListener listener)
+    {
+        if (hasPermission(context))
+        {
+            obtenerUltimaLocation(context, listener);
+        }
+        else
+        {
+            if (listener != null)
+            {
+                listener.onLocationResult(null);
+            }
+        }
+    }
+
     @SuppressLint("MissingPermission")
     private static void obtenerLocation(Context context, final LocationCallback callback)
     {
@@ -182,6 +197,18 @@ public class LocationManager
         request.setNumUpdates(1);
 
         client.requestLocationUpdates(request, callback, null);
+    }
+
+    @SuppressLint("MissingPermission")
+    private static void obtenerUltimaLocation(Context context, final LocationListener listener)
+    {
+        FusedLocationProviderClient client = LocationServices.getFusedLocationProviderClient(context);
+        client.getLastLocation().addOnSuccessListener(location -> {
+            if (listener != null)
+            {
+                listener.onLocationResult(location);
+            }
+        });
     }
 
     public interface LocationListener

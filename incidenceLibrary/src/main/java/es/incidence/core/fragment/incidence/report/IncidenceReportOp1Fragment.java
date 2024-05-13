@@ -668,7 +668,7 @@ public class IncidenceReportOp1Fragment extends IncidentReportBaseFragment imple
         ArrayList<IncidenceType> list = Core.getIncidencesTypes(parent);
 
         if (list.size() == 0) {
-            reportIncidenceSdk(parent, user.phone);
+            reportIncidence(String.valueOf(parent), Constants.PHONE_EMERGENCY);
         } else {
             mListener.addFragmentAnimated(FaultFragment.newInstance(parent, vehicle, user, openFromNotification));
         }
@@ -681,7 +681,7 @@ public class IncidenceReportOp1Fragment extends IncidentReportBaseFragment imple
         int parent = Constants.ACCIDENT; //Accidente es 1
         ArrayList<IncidenceType> list = Core.getIncidencesTypes(parent);
         if (list.size() == 0) {
-            reportIncidenceSdk(parent, user.phone);
+            reportIncidence(String.valueOf(parent), Constants.PHONE_EMERGENCY);
         } else {
             mListener.addFragmentAnimated(AccidentFragment.newInstance(vehicle, user, openFromNotification));
         }
@@ -837,28 +837,22 @@ public class IncidenceReportOp1Fragment extends IncidentReportBaseFragment imple
                 });
             }
             */
-            LocationManager.getLocation(getContext(), new LocationManager.LocationListener() {
+            LocationManager.getUltimaLocation(getContext(), new LocationManager.LocationListener() {
                 @Override
                 public void onLocationResult(Location location) {
 
-                    if (location != null)
-                    {
-                        reportLocation(idIncidence, phone, location);
-                    }
-                    else
-                    {
-                        hideHud();
-                        showAlert(R.string.incidence_key_activate_location_message);
-                    }
+                    reportLocation(idIncidence, phone, location);
                 }
             });
         }
         else
         {
-            showAlert(R.string.incidence_key_activate_location_message);
+            //showAlert(R.string.incidence_key_activate_location_message);
+            reportLocation(idIncidence, phone, null);
         }
     }
 
+    /*
     protected void reportIncidenceSdk(int idIncidence, String phone) {
         IncidenceType incidenceType = new IncidenceType();
         //incidenceType.id = idIncidence;
@@ -889,16 +883,10 @@ public class IncidenceReportOp1Fragment extends IncidentReportBaseFragment imple
             getActivity().finish();
         });
     }
+    */
 
     protected void reportLocation(String idIncidence, String phone, Location location)
     {
-        String licensePlate = "", street = "", city = "", country = "";
-        if (vehicle != null) {
-            licensePlate = vehicle.licensePlate;
-        } else if (vehicleTmp != null) {
-            licensePlate = vehicleTmp.licensePlate;
-        }
-
         IncidenceType incidenceType = new IncidenceType();
         //incidenceType.id = idIncidence;
         //incidenceType.externalId = "B30";
@@ -906,11 +894,10 @@ public class IncidenceReportOp1Fragment extends IncidentReportBaseFragment imple
 
         Incidence incidence = new Incidence();
         incidence.incidenceType = incidenceType;
-        incidence.street = street;
-        incidence.city = city;
-        incidence.country = country;
-        incidence.latitude = location.getLatitude();
-        incidence.longitude = location.getLongitude();
+        if (location != null) {
+            incidence.latitude = location.getLatitude();
+            incidence.longitude = location.getLongitude();
+        }
         //incidence.externalIncidenceId = externalIncidenceId;
 
         Api.postIncidenceSdk(new IRequestListener() {
