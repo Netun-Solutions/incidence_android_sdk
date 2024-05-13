@@ -22,6 +22,8 @@ import com.google.android.gms.location.LocationCallback;
 import com.google.android.gms.location.LocationRequest;
 import com.google.android.gms.location.LocationResult;
 import com.google.android.gms.location.LocationServices;
+import com.google.android.gms.location.Priority;
+import com.google.android.gms.tasks.CancellationTokenSource;
 
 import es.incidence.core.utils.IUtils;
 
@@ -203,7 +205,8 @@ public class LocationManager
     private static void obtenerUltimaLocation(Context context, final LocationListener listener)
     {
         FusedLocationProviderClient client = LocationServices.getFusedLocationProviderClient(context);
-        client.getLastLocation().addOnSuccessListener(location -> {
+        CancellationTokenSource cancellationTokenSource = new CancellationTokenSource();
+        client.getCurrentLocation(Priority.PRIORITY_BALANCED_POWER_ACCURACY, cancellationTokenSource.getToken()).addOnSuccessListener(location -> {
             if (listener != null)
             {
                 listener.onLocationResult(location);
