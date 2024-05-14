@@ -668,7 +668,7 @@ public class IncidenceReportOp1Fragment extends IncidentReportBaseFragment imple
         ArrayList<IncidenceType> list = Core.getIncidencesTypes(parent);
 
         if (list.size() == 0) {
-            reportIncidence(String.valueOf(parent), Constants.PHONE_EMERGENCY);
+            reportIncidence(String.valueOf(parent), null);
         } else {
             mListener.addFragmentAnimated(FaultFragment.newInstance(parent, vehicle, user, openFromNotification));
         }
@@ -681,7 +681,7 @@ public class IncidenceReportOp1Fragment extends IncidentReportBaseFragment imple
         int parent = Constants.ACCIDENT; //Accidente es 1
         ArrayList<IncidenceType> list = Core.getIncidencesTypes(parent);
         if (list.size() == 0) {
-            reportIncidence(String.valueOf(parent), Constants.PHONE_EMERGENCY);
+            reportIncidence(String.valueOf(parent), null);
         } else {
             mListener.addFragmentAnimated(AccidentFragment.newInstance(vehicle, user, openFromNotification));
         }
@@ -918,7 +918,9 @@ public class IncidenceReportOp1Fragment extends IncidentReportBaseFragment imple
                             e.printStackTrace();
                         }
 
-                        Core.callPhone(phone, true);
+                        if (phone != null) {
+                            Core.callPhone(phone, true);
+                        }
 
                         Intent data = new Intent();
                         data.putExtra("incidence", incidence);
