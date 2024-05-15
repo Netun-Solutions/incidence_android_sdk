@@ -32,6 +32,7 @@ import com.budiyev.android.codescanner.DecodeCallback;
 import com.e510.commons.activity.BaseActivity;
 import com.e510.commons.utils.FontUtils;
 import com.e510.commons.utils.LogUtil;
+import com.e510.commons.utils.StringUtils;
 import com.e510.commons.utils.Utils;
 import com.e510.commons.view.FloatLabeled.FloatEditText;
 import com.e510.incidencelibrary.R;
@@ -58,6 +59,7 @@ import es.incidence.core.entity.sign.SignStepType;
 import es.incidence.core.manager.Api;
 import es.incidence.core.manager.IRequestListener;
 import es.incidence.core.manager.IResponse;
+import es.incidence.core.manager.ImageManager;
 import es.incidence.core.utils.IUtils;
 import es.incidence.core.utils.Tooltip;
 import es.incidence.core.utils.view.IButton;
@@ -113,6 +115,7 @@ public class SignUpBeaconFragment extends SignUpFragment {
     //QR
     public boolean isIoT;
     public int beaconTypeId;
+    public String beaconImageBeaconIcon;
     private CodeScanner mCodeScanner;
     private RelativeLayout layoutScanQR;
 
@@ -885,12 +888,16 @@ public class SignUpBeaconFragment extends SignUpFragment {
             stepper.setVisibility(View.GONE);
 
             layoutSuccess.setVisibility(View.VISIBLE);
-            if (beaconTypeId == 1) {
-                imgInSuccess.setImageDrawable(Utils.getDrawable(getContext(), R.drawable.beacon_icon_smart));
-            } else if (beaconTypeId == 3) {
-                imgInSuccess.setImageDrawable(Utils.getDrawable(getContext(), R.drawable.beacon_icon_hella));
+            if (beaconImageBeaconIcon != null && StringUtils.isValidURL(beaconImageBeaconIcon)) {
+                ImageManager.loadFitImage(getContext(), beaconImageBeaconIcon, imgInSuccess);
             } else {
-                imgInSuccess.setImageDrawable(Utils.getDrawable(getContext(), R.drawable.beacon_icon_iot));
+                if (beaconTypeId == 1) {
+                    imgInSuccess.setImageDrawable(Utils.getDrawable(getContext(), R.drawable.beacon_icon_smart));
+                } else if (beaconTypeId == 3) {
+                    imgInSuccess.setImageDrawable(Utils.getDrawable(getContext(), R.drawable.beacon_icon_hella));
+                } else {
+                    imgInSuccess.setImageDrawable(Utils.getDrawable(getContext(), R.drawable.beacon_icon_iot));
+                }
             }
 
             currentView = VIEW_BEACON_ADDED;
@@ -1013,6 +1020,7 @@ public class SignUpBeaconFragment extends SignUpFragment {
                     }
                     if (cBeacon != null && cBeacon.beaconType != null) {
                         beaconTypeId = cBeacon.beaconType.id;
+                        beaconImageBeaconIcon = cBeacon.beaconType.imageBeaconIcon;
                     }
 
                     showBeaconAddedView();

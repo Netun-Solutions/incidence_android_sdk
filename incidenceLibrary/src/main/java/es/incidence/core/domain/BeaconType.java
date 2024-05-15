@@ -12,4 +12,5 @@ public class BeaconType
     public String textBeaconScreen1;
     public String textBeaconScreen2;
     public String textBeaconScreen3;
+    public String imageBeaconIcon;
 }

@@ -24,6 +24,7 @@ import androidx.core.graphics.drawable.DrawableCompat;
 
 import com.e510.commons.utils.FontUtils;
 import com.e510.commons.utils.LogUtil;
+import com.e510.commons.utils.StringUtils;
 import com.e510.commons.utils.Utils;
 import com.e510.incidencelibrary.R;
 
@@ -293,9 +294,13 @@ public class BeaconDetailFragment extends IFragment
         } else {
             imageBeacon.setImageResource(R.drawable.device_start);
         }
-		
-		int drawable = beacon.beaconType != null && beacon.beaconType.id == 1 ? R.drawable.beacon_icon_smart :  beacon.beaconType != null && beacon.beaconType.id == 3 ? R.drawable.beacon_icon_hella : R.drawable.beacon_icon_iot;
-        imgDevice.setImageDrawable(getContext().getDrawable(drawable));
+
+        if (beacon.beaconType != null && beacon.beaconType.imageBeaconIcon != null && StringUtils.isValidURL(beacon.beaconType.imageBeaconIcon)) {
+            ImageManager.loadFitImage(getContext(), beacon.beaconType.imageBeaconIcon, imgDevice);
+        } else {
+            int drawable = beacon.beaconType != null && beacon.beaconType.id == 1 ? R.drawable.beacon_icon_smart : beacon.beaconType != null && beacon.beaconType.id == 3 ? R.drawable.beacon_icon_hella : R.drawable.beacon_icon_iot;
+            imgDevice.setImageDrawable(getContext().getDrawable(drawable));
+        }
     }
 
     private void startCountDownTimer() {
