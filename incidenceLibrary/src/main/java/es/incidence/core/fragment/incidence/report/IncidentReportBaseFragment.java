@@ -37,14 +37,17 @@ public abstract class IncidentReportBaseFragment extends IFragment
 
     private Handler handlerCallDgt;
 
+    private boolean needCheckSelfPermission = true;
+
     @Override
     public void onResume() {
         super.onResume();
 
         loadBeacon();
 
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+        if (needCheckSelfPermission && Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             if (ActivityCompat.checkSelfPermission(getBaseActivity(), Manifest.permission.CALL_PHONE) != PackageManager.PERMISSION_GRANTED) {
+                needCheckSelfPermission = false;
                 ActivityCompat.requestPermissions(getBaseActivity(), new String[]{Manifest.permission.CALL_PHONE}, BaseActivity.PERMISSION_CALL_PHONE);
             }
         }
