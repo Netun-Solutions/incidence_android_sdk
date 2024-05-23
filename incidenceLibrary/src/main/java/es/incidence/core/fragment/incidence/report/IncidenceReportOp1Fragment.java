@@ -378,6 +378,8 @@ public class IncidenceReportOp1Fragment extends IncidentReportBaseFragment imple
             else {
                 LocationManager.requestPermissionWithBackground(BaseActivity.PERMISSION_LOCATION_REQUEST_CODE, getBaseActivity());
             }
+        } else {
+            checkCallPermission();
         }
     }
 
@@ -798,6 +800,8 @@ public class IncidenceReportOp1Fragment extends IncidentReportBaseFragment imple
                 setUpVolumeAlert();
                 showAlert(R.string.incidence_key_alert_need_audio_permission_description);
             }
+        } else if (requestCode == BaseActivity.PERMISSION_LOCATION_REQUEST_CODE) {
+            checkCallPermission();
         }
     }
 
