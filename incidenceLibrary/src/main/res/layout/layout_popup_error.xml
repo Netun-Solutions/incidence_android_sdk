@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_centerInParent="true"
+    android:clickable="true"
+    android:id="@+id/popupContainer"
+    android:focusable="true">
+
+    <View android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#303030"
+        android:alpha="0.4"
+        android:clickable="true"
+        android:id="@+id/popupContainerBackground"/>
+
+    <RelativeLayout
+        android:id="@+id/popupContainerView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:layout_marginHorizontal="@dimen/margin_normal"
+        android:background="@drawable/rounded_popup_background"
+        android:clickable="true">
+
+
+        <TextView
+            android:id="@+id/txtTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/margin_normal"
+            android:layout_marginTop="@dimen/margin_normal"
+            android:layout_marginRight="@dimen/margin_normal"
+            android:layout_marginBottom="@dimen/margin_normal"
+            android:lineHeight="26dp"
+            android:text="@string/incidence_key_imei_code_title"
+            android:textAlignment="center"
+            android:textColor="@android:color/black"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/txtSubTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/txtTitle"
+            android:layout_marginLeft="@dimen/margin_normal"
+            android:layout_marginRight="@dimen/margin_normal"
+            android:lineHeight="24dp"
+            android:text="@string/incidence_key_imei_code_subtitle"
+            android:textColor="@android:color/black"
+            android:textSize="14sp" />
+
+
+        <es.incidence.core.utils.view.IButton
+            android:id="@+id/btnBlue"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/button_height"
+            android:layout_below="@+id/txtSubTitle"
+            android:layout_marginLeft="@dimen/margin_normal"
+            android:layout_marginTop="@dimen/margin_normal_medium"
+            android:layout_marginRight="@dimen/margin_normal"
+            android:layout_marginBottom="@dimen/margin_normal"
+            app:topTitle="@string/incidence_key_continuar" />
+
+
+    </RelativeLayout>
+</RelativeLayout>

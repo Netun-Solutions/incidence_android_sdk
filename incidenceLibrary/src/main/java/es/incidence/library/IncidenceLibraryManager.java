@@ -10,6 +10,9 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.e510.commons.activity.BaseActivity;
+import com.mapbox.mapboxsdk.Mapbox;
+import com.mapbox.search.MapboxSearchSdk;
+import com.mapbox.search.location.DefaultLocationProvider;
 
 import org.json.JSONObject;
 
@@ -48,6 +51,7 @@ public class IncidenceLibraryManager {
     private AppConfig appearance;
     private List<String> screens = new ArrayList<>();
     private Insurance insurance;
+    private String mapboxAccessToken;
 
     public List<IncidenceType> incidencesTypes = new ArrayList<>();
 
@@ -66,10 +70,10 @@ public class IncidenceLibraryManager {
             Core.init(context, incidenceLibraryConfig.getApikey(), incidenceLibraryConfig.getEnvironment());
         }
 
-        instance.validateApiKey(iActionListener);
+        instance.validateApiKey(iActionListener, context);
     }
 
-    private void validateApiKey(IActionListener iActionListener) {
+    private void validateApiKey(IActionListener iActionListener, Application context) {
         String json = "";
         processConfigJson(json);
         Api.validateApiKey(new IRequestListener() {
@@ -82,10 +86,12 @@ public class IncidenceLibraryManager {
                     instance.validApiKey = true;
 
                     screens = response.getList("functionalities", String.class);
+                    mapboxAccessToken = response.get("mapbox_access_token");
 
                     insurance = (Insurance) response.get("insurance", Insurance.class);
 
                     appearance = (AppConfig) response.get("appearance", AppConfig.class);
+
                     /*
                     appearance.background_color="#FFFFFF";
                     appearance.letter_color="#2D373D";
@@ -108,6 +114,10 @@ public class IncidenceLibraryManager {
                     }
 
                     Core.registerDeviceSdk();
+
+                    //MapBox
+                    MapboxSearchSdk.initialize(context, mapboxAccessToken, new DefaultLocationProvider(context));
+                    Mapbox.getInstance(context, mapboxAccessToken);
 
                     actionResponse = new IActionResponse(true);
 
@@ -381,6 +391,10 @@ public class IncidenceLibraryManager {
         }
     }
 
+    public String getMapboxAccessToken() {
+        return mapboxAccessToken;
+    }
+
     public Insurance getInsurance() {
         return insurance;
     }
@@ -543,6 +557,68 @@ public class IncidenceLibraryManager {
         } else {
             IActionResponse actionResponse = new IActionResponse(false, res);
             iActionListener.onFinish(actionResponse);
+        }
+    }
+
+    public void cancelIncidenceFunc(User user, Vehicle vehicle, Incidence incidence, IActionListener iActionListener) {
+
+    }
+
+    public void validateOpenIncidenceFunc(User user, Vehicle vehicle, IActionListener iActionListener) {
+        String res = validateScreen(Constants.FUNC_OPEN_INC);
+        if (res == SCREEN_OK || true) {
+            Api.getIncidenceDetailSdk(new IRequestListener() {
+                @Override
+                public void onFinish(IResponse response) {
+                    if (iActionListener != null) {
+                        IActionResponse actionResponse;
+                        if (response.isSuccess())
+                        {
+                            Incidence incidence = null;
+                            JSONObject obj = response.get();
+                            if (obj != null) {
+                                incidence = (Incidence) response.get("incidence", Incidence.class);
+                            }
+                            actionResponse = new IActionResponse(true);
+                            actionResponse.data = incidence;
+                        }
+                        else
+                        {
+                            actionResponse = new IActionResponse(false, response.message);
+                        }
+
+                        iActionListener.onFinish(actionResponse);
+                    }
+                }
+            }, user, vehicle);
+        } else {
+            IActionResponse actionResponse = new IActionResponse(false, res);
+            iActionListener.onFinish(actionResponse);
+        }
+    }
+
+    public Intent getOpenIncViewController(User user, Vehicle vehicle) {
+        String res = validateScreen(Constants.SCREEN_OPEN_INC);
+        if (res == SCREEN_OK || true) {
+            Intent intent = createIntent(Constants.SCREEN_OPEN_INC);
+            intent.putExtra("user", user);
+            intent.putExtra("vehicle", vehicle);
+            return intent;
+        } else {
+            return processScreenError(res);
+        }
+    }
+
+    public Intent getEvaluateInc(User user, Vehicle vehicle) {
+        String res = validateScreen(Constants.SCREEN_REPOR_INC_SIMPLE_OP1);
+        if (res == SCREEN_OK) {
+            Intent intent = createIntent(Constants.SCREEN_REPOR_INC_SIMPLE_OP1);
+            intent.putExtra("user", user);
+            intent.putExtra("vehicle", vehicle);
+            intent.putExtra("flowComplete", false);
+            return intent;
+        } else {
+            return processScreenError(res);
         }
     }
 }

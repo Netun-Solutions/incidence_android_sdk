@@ -25,13 +25,13 @@ android {
         }
     }
     compileOptions {
-        //sourceCompatibility JavaVersion.VERSION_11
-        //targetCompatibility JavaVersion.VERSION_11
+        sourceCompatibility JavaVersion.VERSION_11
+        targetCompatibility JavaVersion.VERSION_11
     }
 }
 
 dependencies {
-
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation 'androidx.appcompat:appcompat:1.6.1'
     implementation 'com.google.android.material:material:1.5.0'
     testImplementation 'junit:junit:4.13.2'
@@ -39,7 +39,7 @@ dependencies {
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
 
 
-    implementation 'com.google.code.gson:gson:2.8.6'
+    implementation 'com.google.code.gson:gson:2.10.1'
     //implementation 'org.michaelbel:bottomsheet:1.2.3'
     implementation 'dev.b3nedikt.restring:restring:5.1.2'
     // Intercept view inflation
@@ -50,7 +50,7 @@ dependencies {
     implementation ('com.github.amitshekhariitbhu.Fast-Android-Networking:android-networking:1.0.4') {
         exclude group: "com.android.support"
     }
-    api "com.fasterxml.jackson.core:jackson-databind:2.8.2"
+    api "com.fasterxml.jackson.core:jackson-databind:2.18.3"
     api 'org.greenrobot:eventbus:3.3.1'
     implementation 'net.yslibrary.keyboardvisibilityevent:keyboardvisibilityevent:3.0.0-RC2'
     implementation 'com.github.bumptech.glide:glide:4.11.0'
@@ -60,7 +60,28 @@ dependencies {
     implementation 'com.google.android.gms:play-services-location:21.0.1'
     implementation 'com.github.yuriy-budiyev:code-scanner:2.1.2'
     //implementation 'org.altbeacon:android-beacon-library:2.19.5'
-    api "com.github.JakeWharton:ViewPagerIndicator:2.4.1"
+    //api "com.github.JakeWharton:ViewPagerIndicator:2.4.1"
+
+    api files('libs/mapbox-android-telemetry-8.1.0.aar')
+    //MapBox
+    //implementation 'com.mapbox.mapboxsdk:mapbox-android-sdk:9.6.0'
+    implementation ('com.mapbox.mapboxsdk:mapbox-android-sdk:9.6.0') {
+        exclude group: 'com.mapbox.mapboxsdk', module: 'mapbox-android-telemetry'
+    }
+    // https://mvnrepository.com/artifact/com.mapbox.mapboxsdk/mapbox-android-core
+    implementation 'com.mapbox.mapboxsdk:mapbox-android-core:5.0.0'
+
+    //implementation 'com.mapbox.mapboxsdk:mapbox-android-telemetry:7.0.0'
+    implementation 'com.mapbox.mapboxsdk:mapbox-sdk-services:5.8.0'
+    //implementation ('com.mapbox.mapboxsdk:mapbox-sdk-services:5.8.0') {
+    //    exclude group: 'com.mapbox.mapboxsdk', module: 'mapbox-android-telemetry'
+    //}
+    //implementation "com.mapbox.search:mapbox-search-android-ui:1.0.0-beta.20"
+    implementation ('com.mapbox.search:mapbox-search-android-ui:1.0.0-beta.20') {
+        exclude group: 'com.mapbox.mapboxsdk', module: 'mapbox-android-telemetry'
+    }
+
+    implementation "com.github.InvictusApps:slidetoact:0.9.2"
 }
 
 // Because the components are created only during the afterEvaluate phase, you must

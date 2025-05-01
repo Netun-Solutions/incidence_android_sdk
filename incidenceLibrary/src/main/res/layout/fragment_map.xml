@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:clickable="true"
+    android:background="@color/incidence100"
+    android:id="@+id/layoutRootMap">
+
+    <com.mapbox.mapboxsdk.maps.MapView
+        android:id="@+id/mapView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        />
+    
+    <ImageView
+        android:id="@+id/imgCenterMap"
+        android:layout_width="69dp"
+        android:layout_height="69dp"
+        android:src="@drawable/icon_center_map"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="@dimen/margin_normal"
+        android:layout_marginBottom="150dp"
+        android:visibility="gone"
+        />
+
+    <es.incidence.core.utils.view.INavigation
+        android:id="@+id/inavigation"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <es.incidence.core.utils.view.IField
+        android:layout_below="@+id/inavigation"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/field"
+        android:layout_marginLeft="@dimen/margin_normal"
+        android:layout_marginRight="@dimen/margin_normal"/>
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:visibility="gone"
+        android:id="@+id/layoutAutocomplete"
+        android:layout_below="@+id/field"
+        android:layout_marginTop="-20dp"
+        android:layout_marginLeft="@dimen/margin_normal"
+        android:layout_marginRight="@dimen/margin_normal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@android:color/white">
+
+        <View
+            app:layout_constraintTop_toTopOf="@+id/layoutRow"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/grey300"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            android:id="@+id/automcompleteLine"/>
+
+        <ListView
+            android:id="@+id/autocompleteListview"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintHeight_max="200dp"
+            app:layout_constrainedHeight="true"
+            android:divider="@android:color/transparent"
+            android:layout_below="@+id/automcompleteLine"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    <View
+        android:id="@+id/bottomSheetLayoutBlur"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/black600"
+        android:clickable="true"
+        android:visibility="gone"/>
+
+    <com.e510.commons.view.BottomSheetLayout
+        android:id="@+id/bottomSheetLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:collapsedHeight="50dp"
+        android:layout_alignParentBottom="true"
+        android:visibility="gone">
+
+        <RelativeLayout
+            android:id="@+id/layoutContent"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:clickable="true">
+
+        </RelativeLayout>
+
+    </com.e510.commons.view.BottomSheetLayout>
+
+</RelativeLayout>

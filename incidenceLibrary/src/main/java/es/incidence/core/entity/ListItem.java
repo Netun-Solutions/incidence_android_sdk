@@ -18,6 +18,7 @@ public class ListItem
     public Integer idTextColor;
     public Integer titleColor;
     public Integer arrowColor;
+    public Boolean searchFinished;
 
     public boolean clicable = true;
     public boolean editClicable = false;
@@ -39,6 +40,7 @@ public class ListItem
 
     //dropField
     public boolean dropfield;
+    public boolean dropfieldNoClear;
     public String titleDrop;
     public int menuDrop;
 
@@ -46,6 +48,11 @@ public class ListItem
     public boolean editable = true;
 
     public ListItemListener listItemListener;
+
+    public ListItem()
+    {
+
+    }
 
     public ListItem(String title, Object object)
     {

@@ -28,6 +28,8 @@ public class Constants
     public static final String SCREEN_REPOR_INC_SIMPLE_OP1 = "SCREEN_REPOR_INC_SIMPLE_OP1";
     public static final String SCREEN_ERROR = "ERROR";
     public static final String SCREEN_LINK_RESULT = "SCREEN_LINK_RESULT";
+    public static final String FUNC_OPEN_INC = "FUNC_OPEN_INC";
+    public static final String SCREEN_OPEN_INC = "SCREEN_OPEN_INC";
 
     public static void setBaseUrl(IncidenceEnvironment environment)
     {

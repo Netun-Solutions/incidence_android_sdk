@@ -9,6 +9,7 @@ public class Incidence implements Parcelable
 {
     public Integer id;
     public String externalIncidenceId;
+    public Integer vehicleIncidenceId;
     public String street;
     public String city;
     public String country;
@@ -26,10 +27,10 @@ public class Incidence implements Parcelable
 
     public Integer rate;
     public Integer asitur;
+    public Integer tracking;
     public Integer reporter;
 
     public Incidence(){}
-
 
     protected Incidence(Parcel in) {
         if (in.readByte() == 0) {
@@ -38,6 +39,7 @@ public class Incidence implements Parcelable
             id = in.readInt();
         }
         externalIncidenceId = in.readString();
+        vehicleIncidenceId = in.readInt();
         street = in.readString();
         city = in.readString();
         country = in.readString();
@@ -52,7 +54,6 @@ public class Incidence implements Parcelable
         } else {
             longitude = in.readDouble();
         }
-        incidenceType = in.readParcelable(IncidenceType.class.getClassLoader());
         openApp = in.readParcelable(OpenApp.class.getClassLoader());
         androidAuto = in.readInt();
         status = in.readInt();
@@ -65,6 +66,11 @@ public class Incidence implements Parcelable
             asitur = null;
         } else {
             asitur = in.readInt();
+        }
+        if (in.readByte() == 0) {
+            tracking = null;
+        } else {
+            tracking = in.readInt();
         }
         if (in.readByte() == 0) {
             reporter = null;
@@ -82,6 +88,7 @@ public class Incidence implements Parcelable
             dest.writeInt(id);
         }
         dest.writeString(externalIncidenceId);
+        dest.writeInt(vehicleIncidenceId);
         dest.writeString(street);
         dest.writeString(city);
         dest.writeString(country);
@@ -98,7 +105,6 @@ public class Incidence implements Parcelable
             dest.writeByte((byte) 1);
             dest.writeDouble(longitude);
         }
-        dest.writeParcelable(incidenceType, flags);
         dest.writeParcelable(openApp, flags);
         dest.writeInt(androidAuto);
         dest.writeInt(status);
@@ -113,6 +119,12 @@ public class Incidence implements Parcelable
         } else {
             dest.writeByte((byte) 1);
             dest.writeInt(asitur);
+        }
+        if (tracking == null) {
+            dest.writeByte((byte) 0);
+        } else {
+            dest.writeByte((byte) 1);
+            dest.writeInt(tracking);
         }
         if (reporter == null) {
             dest.writeByte((byte) 0);

@@ -254,7 +254,10 @@ public class IField extends RelativeLayout
         floatEditText.setTextColor(Utils.getColor(getContext(), idColor));
     }
 
-    public void setType(int type)
+    public void setType(int type) {
+        setType(type, false);
+    }
+    public void setType(int type, boolean dropfieldNoClear)
     {
         this.type = type;
         if (type == TYPE_EMAIL)
@@ -271,7 +274,7 @@ public class IField extends RelativeLayout
         }
         else if (type == TYPE_DATE)
         {
-            enableDatePicker();
+            enableDatePicker(dropfieldNoClear);
         }
         else if (type == TYPE_NUMBER)
         {
@@ -295,6 +298,24 @@ public class IField extends RelativeLayout
         layoutClick.setVisibility(View.VISIBLE);
     }
 
+
+    public void setFocusable(){
+        floatEditText.setFocusable(false);
+        floatEditText.setEnabled(false);
+    }
+
+    public void setStroke(){
+        layoutRoot.setBackground(getContext().getDrawable(R.drawable.blue_border));
+    }
+
+    public void setHalfCornersWithWhiteBg(){
+        layoutRoot.setBackground(getContext().getDrawable(R.drawable.blue_half_border_with_white_bg));
+    }
+
+    public void removeBg(){
+        layoutRoot.setBackground(null);
+    }
+
     public void enable()
     {
         layoutRoot.setOnClickListener(new OnClickListener() {
@@ -307,7 +328,7 @@ public class IField extends RelativeLayout
         layoutClick.setVisibility(View.GONE);
     }
 
-    public void enableDatePicker()
+    public void enableDatePicker(boolean dropfieldNoClear)
     {
         disable();
         setOnClickListener(new OnClickListener() {
@@ -320,7 +341,7 @@ public class IField extends RelativeLayout
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
-                showDatePickerDialog();
+                showDatePickerDialog(dropfieldNoClear);
             }
         });
     }
@@ -399,7 +420,7 @@ public class IField extends RelativeLayout
         floatEditText.setOnEditorActionListener(onKeyListener);
     }
 
-    public void showDatePickerDialog() {
+    public void showDatePickerDialog(boolean dropfieldNoClear) {
         Calendar currentCalendar = Calendar.getInstance();
         Locale coreLocale = Core.getLocaleLanguage();
         Locale.setDefault(coreLocale);
@@ -416,13 +437,15 @@ public class IField extends RelativeLayout
                 dialog.onClick(dialog, which);
             }
         });
-        dialog.setButton(DialogInterface.BUTTON_NEUTRAL, getContext().getString(R.string.incidence_key_delete), new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                //Your code
-                floatEditText.setText("");
-            }
-        });
+        if (!dropfieldNoClear) {
+            dialog.setButton(DialogInterface.BUTTON_NEUTRAL, getContext().getString(R.string.incidence_key_delete), new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    //Your code
+                    floatEditText.setText("");
+                }
+            });
+        }
         dialog.show();
     }
 

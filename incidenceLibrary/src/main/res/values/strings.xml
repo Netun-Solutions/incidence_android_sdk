@@ -124,4 +124,31 @@
 
     <string name="incidence_key_notify_incidence">Incidencia notificada a a la DGT</string>
     <string name="incidence_key_notify_incidence_desc">Tu baliza ya ha reportado a la DGT tu detención en la vía</string>
+
+    <string name="incidence_key_back">Atrás</string>
+    <string name="incidence_key_mistake_desc">¿Has notificado la incidencia por error?</string>
+    <string name="incidence_key_press_here">Pulsa aquí</string>
+    <string name="incidence_key_was_it_a_mistake">¿Ha sido un error?</string>
+    <string name="incidence_key_yes_it_was_a_mistake">Sí, ha sido un error</string>
+    <string name="incidence_key_no_continue_with_the_incidence">No, continuar con la incidencia</string>
+    <string name="incidence_key_personal_information">datos personales</string>
+    <string name="incidence_key_search_or_move_map">Busca o mueve el mapa</string>
+    <string name="incidence_key_name">Nombre</string>
+    <string name="incidence_key_incidence_status_closed">Cerrada</string>
+    <string name="incidence_key_search_contact_message">Escribe el móvil o busca en agenda</string>
+    <string name="incidence_key_agenda">Agenda</string>
+    <string name="incidence_key_help_is_on_the_way">La asistencia está en camino</string>
+    <string name="incidence_key_help_is_on_the_way_v2">Tu incidencia ha sido reportada</string>
+    <string name="incidence_key_estimated_arrival_time">Hora estimada de llegada</string>
+    <string name="incidence_key_call_insurer">Llamar aseguradora</string>
+    <string name="incidence_key_share_location">Compartir ubicación</string>
+    <string name="incidence_key_send_message">Enviar mensaje</string>
+    <string name="incidence_key_swipe_to_resolve_issue">Desliza para resolver incidencia</string>
+    <string name="incidence_key_share_my_location_title">IncidenceApp - mi ubicación</string>
+    <string name="incidence_key_share_my_location_desc">Te comparto la ubicación de mi incidencia con el coche en Google Maps: </string>
+    <string name="incidence_key_nombre_app">Incidence</string>
+    <string name="incidence_key_title_assist_coming">La asistencia está de camino</string>
+    <string name="incidence_key_subtitle_assist_coming">Hora estimada de llegada %1s</string>
+    <string name="incidence_key_title_assist_finished">La grúa ha llegado con éxito</string>
+    <string name="incidence_key_subtitle_assist_finished">Esperamos que recibas la asistencia adecuada</string>
 </resources>

@@ -35,4 +35,7 @@
 
     <color name="help100">#FFE4DE</color>
 
+    <color name="redLight">#ffe5e5</color>
+    <color name="white_trans">#88FFFFFF</color>
+
 </resources>

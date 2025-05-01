@@ -1,5 +1,20 @@
 plugins {
     id 'com.android.application'
+    id "org.owasp.dependencycheck" version "7.4.4"
+}
+
+apply plugin: 'org.owasp.dependencycheck'
+
+dependencyCheck {
+    //formats = listOf("HTML", "XML", "JSON") // Generate reports in HTML, JSON and XML format
+    //autoUpdate=false
+    format='HTML'
+    /*
+    nvd {
+        apiKey = "652174af-017b-4700-bea9-99776b01bc25"
+        //delay = 16000
+    }
+    */
 }
 
 android {
@@ -23,8 +38,8 @@ android {
         }
     }
     compileOptions {
-        //sourceCompatibility JavaVersion.VERSION_1_8
-        //targetCompatibility JavaVersion.VERSION_1_8
+        sourceCompatibility JavaVersion.VERSION_11
+        targetCompatibility JavaVersion.VERSION_11
     }
 }
 
