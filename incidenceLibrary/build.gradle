@@ -1,7 +1,23 @@
 plugins {
     id 'com.android.library'
     id 'maven-publish'
+    id "org.owasp.dependencycheck" version "8.2.1"
 }
+
+dependencyCheck {
+    //formats = listOf("HTML", "XML", "JSON") // Generate reports in HTML, JSON and XML format
+    //autoUpdate=false
+    format='HTML'
+    /*
+    nvd {
+        apiKey = "652174af-017b-4700-bea9-99776b01bc25"
+        delay = 16000
+    }
+
+     */
+}
+
+apply plugin: 'org.owasp.dependencycheck'
 
 group = 'com.github.Netun-Solutions'
 version = '1.0'
