@@ -41,8 +41,8 @@ android {
         }
     }
     compileOptions {
-        //sourceCompatibility JavaVersion.VERSION_11
-        //targetCompatibility JavaVersion.VERSION_11
+        sourceCompatibility JavaVersion.VERSION_21
+        targetCompatibility JavaVersion.VERSION_21
     }
 
     publishing {
@@ -55,14 +55,14 @@ android {
 
 dependencies {
 
-    implementation 'androidx.appcompat:appcompat:1.6.1'
-    implementation 'com.google.android.material:material:1.5.0'
+    implementation 'androidx.appcompat:appcompat:1.7.0'
+    implementation 'com.google.android.material:material:1.12.0'
     testImplementation 'junit:junit:4.13.2'
-    androidTestImplementation 'androidx.test.ext:junit:1.1.5'
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
+    androidTestImplementation 'androidx.test.ext:junit:1.2.1'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.6.1'
 
 
-    implementation 'com.google.code.gson:gson:2.8.6'
+    implementation 'com.google.code.gson:gson:2.10.1'
     //implementation 'org.michaelbel:bottomsheet:1.2.3'
     implementation 'dev.b3nedikt.restring:restring:5.1.2'
     // Intercept view inflation
@@ -70,10 +70,13 @@ dependencies {
     // Allows to update the text of views at runtime without recreating the activity
     implementation 'dev.b3nedikt.reword:reword:4.0.1'
     //implementation('com.amitshekhar.android:jackson-android-networking:1.0.2') {
+
+    implementation 'com.squareup.okhttp3:okhttp:4.12.0'
+
     implementation ('com.github.amitshekhariitbhu.Fast-Android-Networking:android-networking:1.0.4') {
         exclude group: "com.android.support"
     }
-    api "com.fasterxml.jackson.core:jackson-databind:2.8.2"
+    api "com.fasterxml.jackson.core:jackson-databind:2.18.3"
     api 'org.greenrobot:eventbus:3.3.1'
     implementation 'net.yslibrary.keyboardvisibilityevent:keyboardvisibilityevent:3.0.0-RC2'
     implementation 'com.github.bumptech.glide:glide:4.11.0'
