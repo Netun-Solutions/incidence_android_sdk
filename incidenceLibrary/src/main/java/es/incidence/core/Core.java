@@ -17,6 +17,7 @@ import com.e510.commons.utils.LogUtil;
 import com.e510.commons.utils.Prefs;
 import com.e510.commons.utils.config.AppConfiguration;
 import com.e510.incidencelibrary.BuildConfig;
+import com.e510.incidencelibrary.R;
 import com.e510.networking.Mapper;
 
 import java.util.ArrayList;
@@ -528,5 +529,31 @@ public class Core {
             e.printStackTrace();
         }
         */
+    }
+
+    public static void shareIncidence(Context context, Double longitude, Double latitude) {
+        String uri = "http://maps.google.com/maps?saddr=" +latitude+","+longitude;
+
+        Intent sharingIntent = new Intent(android.content.Intent.ACTION_SEND);
+        sharingIntent.setType("text/plain");
+        String ShareSub = getStringSDK(R.string.incidence_key_share_my_location_title);
+        sharingIntent.putExtra(android.content.Intent.EXTRA_SUBJECT, ShareSub);
+        sharingIntent.putExtra(android.content.Intent.EXTRA_TEXT, uri);
+        context.startActivity(Intent.createChooser(sharingIntent, ""));
+    }
+
+    public static void shareLocation(Context context, Double longitude, Double latitude) {
+        String uri = getShareLocationUrl(longitude, latitude);
+
+        Intent sharingIntent = new Intent(android.content.Intent.ACTION_SEND);
+        sharingIntent.setType("text/plain");
+        String ShareSub = getStringSDK(R.string.incidence_key_share_my_location_title);
+        sharingIntent.putExtra(android.content.Intent.EXTRA_SUBJECT, ShareSub);
+        sharingIntent.putExtra(android.content.Intent.EXTRA_TEXT, uri);
+        context.startActivity(Intent.createChooser(sharingIntent, ""));
+    }
+
+    public static String getShareLocationUrl(Double longitude, Double latitude) {
+        return getStringSDK(R.string.incidence_key_share_my_location_desc) + " https://www.google.com/maps/place/" +latitude+","+longitude;
     }
 }

@@ -28,6 +28,8 @@ public class Constants
     public static final String SCREEN_REPOR_INC_SIMPLE_OP1 = "SCREEN_REPOR_INC_SIMPLE_OP1";
     public static final String SCREEN_ERROR = "ERROR";
     public static final String SCREEN_LINK_RESULT = "SCREEN_LINK_RESULT";
+    public static final String FUNC_OPEN_INC = "FUNC_OPEN_INC";
+    public static final String SCREEN_OPEN_INC = "SCREEN_OPEN_INC";
 
     public static void setBaseUrl(IncidenceEnvironment environment)
     {
@@ -63,16 +65,16 @@ public class Constants
 
 
     public static final String KEY_DEVICE_ID = "KEY_DEVICE_ID";
-/*
-    public static final String KEY_USER_TOKEN = "KEY_USER_TOKEN";
-    public static final String KEY_USER = "KEY_USER";
-    public static final String KEY_USER_DEVICE_NOTIFICATIONS = "KEY_USER_DEVICE_NOTIFICATIONS";
-    public static final String KEY_USER_DEFAULT_VEHICLE_ID = "KEY_USER_DEFAULT_VEHICLE_ID";
-    public static final String KEY_USER_VEHICLES = "KEY_USER_VEHICLES";
-    public static final String KEY_USER_SIGNOUT = "KEY_USER_SIGNOUT";
-    public static final String KEY_GENERAL_DATA = "KEY_GENERAL_DATA";
-    public static final String KEY_LITERALS_LANG = "KEY_LITERALS_LANG";
-    public static final String KEY_LITERALS_VERSION = "KEY_LITERALS_VERSION";*/
+    /*
+        public static final String KEY_USER_TOKEN = "KEY_USER_TOKEN";
+        public static final String KEY_USER = "KEY_USER";
+        public static final String KEY_USER_DEVICE_NOTIFICATIONS = "KEY_USER_DEVICE_NOTIFICATIONS";
+        public static final String KEY_USER_DEFAULT_VEHICLE_ID = "KEY_USER_DEFAULT_VEHICLE_ID";
+        public static final String KEY_USER_VEHICLES = "KEY_USER_VEHICLES";
+        public static final String KEY_USER_SIGNOUT = "KEY_USER_SIGNOUT";
+        public static final String KEY_GENERAL_DATA = "KEY_GENERAL_DATA";
+        public static final String KEY_LITERALS_LANG = "KEY_LITERALS_LANG";
+        public static final String KEY_LITERALS_VERSION = "KEY_LITERALS_VERSION";*/
     public static final String KEY_USER_LANG = "KEY_USER_LANG";
     public static final String KEY_LITERALS_VALUES = "KEY_LITERALS_VALUES";
     public static final String KEY_LITERALS_VOICE_VALUES = "KEY_LITERALS_VOICE_VALUES";/*

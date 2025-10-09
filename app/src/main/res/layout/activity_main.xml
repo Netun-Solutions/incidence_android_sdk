@@ -1,127 +1,147 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    tools:context=".MainActivity"
-    android:padding="@dimen/activity_horizontal_margin">
-
-    <TextView
-        android:id="@+id/title"
+    tools:context=".MainActivity">
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Incidence SDK Demo APP"
-        android:textAlignment="center"
-         />
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="@dimen/activity_horizontal_margin">
+        <TextView
+            android:id="@+id/title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Incidence SDK Demo APP"
+            android:textAlignment="center"
+            />
 
-    <!--<Button
-        android:id="@+id/btnDeviceList"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/activity_horizontal_margin"
-        android:text="Device List"
-        app:layout_constraintBottom_toBottomOf="@+id/title"
-        />-->
+        <!--<Button
+            android:id="@+id/btnDeviceList"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/activity_horizontal_margin"
+            android:text="Device List"
+            app:layout_constraintBottom_toBottomOf="@+id/title"
+            />-->
 
-    <Button
-        android:id="@+id/btnGetDevice"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/activity_horizontal_margin_quart"
-        android:text="¿Tiene baliza?"
-        app:layout_constraintBottom_toBottomOf="@+id/title"
-        />
+        <Button
+            android:id="@+id/btnGetDevice"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/activity_horizontal_margin_quart"
+            android:text="¿Tiene baliza?"
+            app:layout_constraintBottom_toBottomOf="@+id/title"
+            />
 
-    <Button
-        android:id="@+id/btnDeviceCreate"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/activity_horizontal_margin_quart"
-        android:text="Vincular baliza"
-        app:layout_constraintBottom_toBottomOf="@+id/btnGetDevice"
-        />
+        <Button
+            android:id="@+id/btnDeviceCreate"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/activity_horizontal_margin_quart"
+            android:text="Vincular baliza"
+            app:layout_constraintBottom_toBottomOf="@+id/btnGetDevice"
+            />
 
-    <Button
-        android:id="@+id/btnDeviceDelete"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/activity_horizontal_margin_quart"
-        android:text="Desvincular baliza"
-        app:layout_constraintBottom_toBottomOf="@+id/btnDeviceCreate"
-        />
+        <Button
+            android:id="@+id/btnDeviceDelete"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/activity_horizontal_margin_quart"
+            android:text="Desvincular baliza"
+            app:layout_constraintBottom_toBottomOf="@+id/btnDeviceCreate"
+            />
 
-    <Button
-        android:id="@+id/btnDeviceReview"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/activity_horizontal_margin_quart"
-        android:text="Comprobar baliza"
-        app:layout_constraintBottom_toBottomOf="@+id/btnDeviceDelete"
-        />
+        <Button
+            android:id="@+id/btnDeviceReview"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/activity_horizontal_margin_quart"
+            android:text="Comprobar baliza"
+            app:layout_constraintBottom_toBottomOf="@+id/btnDeviceDelete"
+            />
 
-    <Button
-        android:id="@+id/btnIncidenceCreate"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/activity_horizontal_margin_quart"
-        android:text="Crear incidencia"
-        app:layout_constraintBottom_toBottomOf="@+id/btnDeviceReview"
-        />
+        <Button
+            android:id="@+id/btnIncidenceCreate"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/activity_horizontal_margin_quart"
+            android:text="Crear incidencia"
+            app:layout_constraintBottom_toBottomOf="@+id/btnDeviceReview"
+            />
 
-    <Button
-        android:id="@+id/btnIncidenceClose"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/activity_horizontal_margin_quart"
-        android:text="Cerrar incidencia"
-        app:layout_constraintBottom_toBottomOf="@+id/btnIncidenceCreate"
-        />
+        <Button
+            android:id="@+id/btnIncidenceClose"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/activity_horizontal_margin_quart"
+            android:text="Cerrar incidencia"
+            app:layout_constraintBottom_toBottomOf="@+id/btnIncidenceCreate"
+            />
 
-    <Button
-        android:id="@+id/btnEcommerce"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/activity_horizontal_margin_quart"
-        android:text="Ecommerce"
-        app:layout_constraintBottom_toBottomOf="@+id/btnIncidenceClose"
-        />
+        <Button
+            android:id="@+id/btnEcommerce"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/activity_horizontal_margin_quart"
+            android:text="Ecommerce"
+            app:layout_constraintBottom_toBottomOf="@+id/btnIncidenceClose"
+            />
 
-    <Button
-        android:id="@+id/btnReportInc"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/activity_horizontal_margin_quart"
-        android:text="Flujo reportar incidencia"
-        app:layout_constraintBottom_toBottomOf="@+id/btnEcommerce"
-        />
+        <Button
+            android:id="@+id/btnReportInc"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/activity_horizontal_margin_quart"
+            android:text="Flujo reportar incidencia"
+            app:layout_constraintBottom_toBottomOf="@+id/btnEcommerce"
+            />
 
-    <Button
-        android:id="@+id/btnReportIncSimple"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/activity_horizontal_margin_quart"
-        android:text="Flujo reportar incidencia (simplificado)"
-        app:layout_constraintBottom_toBottomOf="@+id/btnReportInc"
-        />
+        <Button
+            android:id="@+id/btnReportIncSimple"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/activity_horizontal_margin_quart"
+            android:text="Flujo reportar incidencia (simplificado)"
+            app:layout_constraintBottom_toBottomOf="@+id/btnReportInc"
+            />
 
-    <Button
-        android:id="@+id/btnReportIncSimpleOp1"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/activity_horizontal_margin_quart"
-        android:text="Flujo reportar incidencia OP1 (simplificado)"
-        app:layout_constraintBottom_toBottomOf="@+id/btnReportIncSimple"
-        />
+        <Button
+            android:id="@+id/btnReportIncSimpleOp1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/activity_horizontal_margin_quart"
+            android:text="Flujo reportar incidencia OP1 (simplificado)"
+            app:layout_constraintBottom_toBottomOf="@+id/btnReportIncSimple"
+            />
 
-    <Button
-        android:id="@+id/btnGetGeo"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/activity_horizontal_margin_quart"
-        android:text="Obtener geoposición"
-        app:layout_constraintBottom_toBottomOf="@+id/btnReportInc"
-        />
+        <Button
+            android:id="@+id/btnGetGeo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/activity_horizontal_margin_quart"
+            android:text="Obtener geoposición"
+            app:layout_constraintBottom_toBottomOf="@+id/btnReportInc"
+            />
 
-</LinearLayout>
+        <Button
+            android:id="@+id/btnValInc"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/activity_horizontal_margin_quart"
+            android:text="Comprobar incidencia abierta"
+            app:layout_constraintBottom_toBottomOf="@+id/btnReportInc"
+            />
+
+        <Button
+            android:id="@+id/btnOpenInc"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/activity_horizontal_margin_quart"
+            android:text="Abrir incidencia abierta"
+            app:layout_constraintBottom_toBottomOf="@+id/btnReportInc"
+            />
+    </LinearLayout>
+</ScrollView>

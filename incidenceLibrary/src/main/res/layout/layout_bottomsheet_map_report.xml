@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <View
+        android:layout_width="85dp"
+        android:layout_height="5dp"
+        android:background="@color/grey200"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="16dp"
+        android:id="@+id/line"/>
+
+    <TextView
+        android:layout_below="@+id/line"
+        android:id="@+id/txtTitle"
+        android:layout_marginTop="40dp"
+        android:layout_marginLeft="@dimen/margin_normal"
+        android:layout_marginRight="@dimen/margin_normal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="@color/black600"
+        android:textSize="16sp"
+        android:lineHeight="20dp"
+        android:text="@string/incidence_key_title_assist_finished"
+        android:gravity="center"/>
+
+    <TextView
+        android:layout_below="@+id/txtTitle"
+        android:id="@+id/txtMessage"
+        android:layout_marginTop="8dp"
+        android:layout_marginLeft="@dimen/margin_normal"
+        android:layout_marginRight="@dimen/margin_normal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="@color/black500"
+        android:textSize="16sp"
+        android:lineHeight="26dp"
+        android:text="@string/incidence_key_subtitle_assist_finished"
+        android:gravity="center"/>
+
+    <es.incidence.core.utils.view.IButton
+        android:layout_below="@+id/txtMessage"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/button_height"
+        android:layout_marginTop="48dp"
+        android:layout_marginLeft="@dimen/margin_normal"
+        android:layout_marginRight="@dimen/margin_normal"
+        android:id="@+id/btnContinue"
+        app:topTitle="@string/incidence_key_make_valoration" />
+
+    <RelativeLayout
+        android:layout_below="@+id/txtMessage"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/button_height"
+        android:layout_marginTop="48dp"
+        android:layout_marginLeft="@dimen/margin_normal"
+        android:layout_marginRight="@dimen/margin_normal"
+        android:id="@+id/btnCallGrua">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_centerInParent="true"
+            android:layout_marginLeft="@dimen/margin_normal"
+            android:layout_marginRight="@dimen/margin_normal">
+
+            <ImageView
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:src="@drawable/icon_phone"
+                android:layout_gravity="center_vertical"
+                android:id="@+id/imgCallGrua"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="14sp"
+                android:lineHeight="24dp"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="@dimen/margin_normal_medium"
+                android:textColor="@color/incidence500"
+                android:text="@string/incidence_key_contact_grua"/>
+
+        </LinearLayout>
+
+    </RelativeLayout>
+
+    <com.e510.commons.view.SwipeButton
+        android:id="@+id/btnContinueSwipe"
+        android:layout_below="@+id/btnCallGrua"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/button_height"
+        android:layout_marginTop="18dp"
+        android:layout_marginLeft="@dimen/margin_normal"
+        android:layout_marginRight="@dimen/margin_normal"/>
+
+
+    <TextView
+        android:layout_below="@+id/btnContinue"
+        android:id="@+id/txtAddLater"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/incidence_key_later"
+        android:textColor="@color/incidence500"
+        android:textSize="16sp"
+        android:lineHeight="20dp"
+        android:layout_marginTop="40dp"
+        android:layout_marginLeft="@dimen/margin_normal"
+        android:layout_marginRight="@dimen/margin_normal"
+        android:gravity="center"/>
+
+    <View
+        android:layout_below="@+id/txtAddLater"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/margin_normal_double"
+        android:id="@+id/viewMargin"/>
+
+    <View
+        android:layout_below="@+id/btnContinueSwipe"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/margin_normal_double"
+        android:id="@+id/viewMargin2"/>
+
+
+</RelativeLayout>

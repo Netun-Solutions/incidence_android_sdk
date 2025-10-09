@@ -15,10 +15,13 @@ import es.incidence.core.fragment.beacon.BeaconDetailFragment;
 import es.incidence.core.fragment.ecommerce.EcommerceFragment;
 import es.incidence.core.fragment.error.ErrorFragment;
 import es.incidence.core.fragment.incidence.ReportIncidenceSimpleFragment;
+import es.incidence.core.fragment.incidence.report.ActiveIncidenceDetailFragment;
 import es.incidence.core.fragment.incidence.report.IncidenceReportFragment;
 import es.incidence.core.fragment.incidence.report.IncidenceReportOp1Fragment;
+import es.incidence.core.fragment.maps.MapFragment;
 import es.incidence.core.manager.SettingsContentObserver;
 import es.incidence.core.manager.SpeechManager;
+import es.incidence.library.IncidenceLibraryManager;
 
 public class SimpleMainActivity extends IActivity
 {
@@ -83,12 +86,34 @@ public class SimpleMainActivity extends IActivity
             Boolean flowComplete = b.getBoolean("flowComplete");
 
             showInitialFragment(IncidenceReportOp1Fragment.newInstance(vehicle, user, false, flowComplete));
+        } else if (Constants.SCREEN_OPEN_INC.equals(screen)) {
+            User user = b.getParcelable("user");
+            Vehicle vehicle = b.getParcelable("vehicle");
+
+            showOpenInc(user, vehicle);
         }
 
         mSettingsContentObserver = new SettingsContentObserver(new Handler(), this);
         getApplicationContext().getContentResolver().registerContentObserver(
                 android.provider.Settings.System.CONTENT_URI, true,
                 mSettingsContentObserver);
+    }
+
+    private void showOpenInc(User user, Vehicle vehicle) {
+        //showInitialFragment(MapFragment.newInstance("", ""));
+
+        showHud();
+        IncidenceLibraryManager.instance.validateOpenIncidenceFunc(user, vehicle, response -> {
+            hideHud();
+            if (response.isSuccess()) {
+                //Incidence incidence = new Incidence();
+                Incidence incidence = (Incidence) response.data;
+                showInitialFragment(ActiveIncidenceDetailFragment.newInstance(vehicle, user, incidence));
+            } else {
+                String error = "No existe incidencia abierta";
+                showInitialFragment(ErrorFragment.newInstance(error));
+            }
+        });
     }
 
     @Override

@@ -40,6 +40,8 @@ public class MainActivity extends AppCompatActivity {
     private Button btnReportIncSimple;
     private Button btnReportIncSimpleOp1;
     private Button btnGetGeo;
+    private Button btnValInc;
+    private Button btnOpenInc;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -172,18 +174,18 @@ public class MainActivity extends AppCompatActivity {
 
         btnIncidenceCreate = findViewById(R.id.btnIncidenceCreate);
         btnIncidenceCreate.setOnClickListener(v ->
-            IncidenceLibraryManager.instance.createIncidenceFunc(user, vehicle, incidence, response -> {
-                if (response.isSuccess()) {
-                    //MAKE OK ACTIONS
-                    Log.d(TAG, "SUCCESS");
-                    Toast.makeText(MainActivity.this, "Incidencia creada con éxito", Toast.LENGTH_SHORT).show();
-                } else {
-                    //MAKE KO ACTIONS
-                    Log.d(TAG, "ERROR: " + response.message);
-                    Toast.makeText(MainActivity.this, "Incidencia creada con error: " + response.message, Toast.LENGTH_SHORT).show();
-                }
-            }
-        ));
+                IncidenceLibraryManager.instance.createIncidenceFunc(user, vehicle, incidence, response -> {
+                            if (response.isSuccess()) {
+                                //MAKE OK ACTIONS
+                                Log.d(TAG, "SUCCESS");
+                                Toast.makeText(MainActivity.this, "Incidencia creada con éxito", Toast.LENGTH_SHORT).show();
+                            } else {
+                                //MAKE KO ACTIONS
+                                Log.d(TAG, "ERROR: " + response.message);
+                                Toast.makeText(MainActivity.this, "Incidencia creada con error: " + response.message, Toast.LENGTH_SHORT).show();
+                            }
+                        }
+                ));
 
         btnIncidenceClose = findViewById(R.id.btnIncidenceClose);
         btnIncidenceClose.setOnClickListener(new View.OnClickListener() {
@@ -266,7 +268,82 @@ public class MainActivity extends AppCompatActivity {
             });
         });
 
+/**************************************/
+        btnReportIncSimpleOp1 = findViewById(R.id.btnReportIncSimpleOp1);
+        btnReportIncSimpleOp1.setOnClickListener(v -> {
+            Intent activity = IncidenceLibraryManager.instance.getEvaluateInc(user, vehicle);
+            //startActivity(activity);
+            activityLauncher.launch(activity, result -> {
+                if (result.getResultCode() == Activity.RESULT_OK) {
+                    // There are no request codes
+                    Intent data = result.getData();
+                    Incidence incidence1=data.getParcelableExtra("incidence");
+                    Log.e(TAG, "Incidencia valorada con éxito: " + incidence1.externalIncidenceId);
+                    // doSomeOperations();
+                    Toast.makeText(MainActivity.this, "Incidencia valorada con éxito: " + incidence1.externalIncidenceId, Toast.LENGTH_SHORT).show();
+                } else {
+                    Toast.makeText(MainActivity.this, "No se ha podido valorada la incidencia", Toast.LENGTH_SHORT).show();
+                }
+            });
+        });
+/**************************************/
+        /*
+        btnIncidenceClose = findViewById(R.id.btnIncidenceClose);
+        btnIncidenceClose.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                IncidenceLibraryManager.instance.cancelIncidenceFunc(user, vehicle, incidence, response -> {
+                    if (response.isSuccess()) {
+                        //MAKE OK ACTIONS
+                        Log.d(TAG, "SUCCESS");
+                        Toast.makeText(MainActivity.this, "Incidencia cancelada con éxito", Toast.LENGTH_SHORT).show();
+                    } else {
+                        //MAKE KO ACTIONS
+                        Log.d(TAG, "ERROR: " + response.message);
+                        Toast.makeText(MainActivity.this, "Incidencia cancelada con error: " + response.message, Toast.LENGTH_SHORT).show();
+                    }
+                });
+            }
+        });
+        */
+/**************************************/
 
+        btnValInc = findViewById(R.id.btnValInc);
+        btnValInc.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                IncidenceLibraryManager.instance.validateOpenIncidenceFunc(user, vehicle, response -> {
+                    if (response.isSuccess()) {
+                        //MAKE OK ACTIONS
+                        Log.d(TAG, "SUCCESS");
+                        Toast.makeText(MainActivity.this, "SI existe incidencia abierta", Toast.LENGTH_SHORT).show();
+                    } else {
+                        //MAKE KO ACTIONS
+                        Log.d(TAG, "ERROR: " + response.message);
+                        Toast.makeText(MainActivity.this, "NO existe incidencia abierta", Toast.LENGTH_SHORT).show();
+                    }
+                });
+            }
+        });
+
+        btnOpenInc = findViewById(R.id.btnOpenInc);
+        btnOpenInc.setOnClickListener(v -> {
+            Intent activity = IncidenceLibraryManager.instance.getOpenIncViewController(user, vehicle);
+            //startActivity(activity);
+            activityLauncher.launch(activity, result -> {
+                if (result.getResultCode() == Activity.RESULT_OK) {
+                    // There are no request codes
+                    Intent data = result.getData();
+                    Incidence incidence1=data.getParcelableExtra("incidence");
+                    Log.e(TAG, "Incidencia creada con éxito: " + incidence1.externalIncidenceId);
+                    // doSomeOperations();
+
+                    Toast.makeText(MainActivity.this, "Incidencia creada con éxito: " + incidence1.externalIncidenceId, Toast.LENGTH_SHORT).show();
+                } else {
+                    Toast.makeText(MainActivity.this, "No se ha podido crear la incidencia", Toast.LENGTH_SHORT).show();
+                }
+            });
+        });
     }
 
     @Override

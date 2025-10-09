@@ -34,5 +34,7 @@
     <color name="error200">#DC4A6D</color>
 
     <color name="help100">#FFE4DE</color>
+    <color name="white_trans">#88FFFFFF</color>
+    <color name="redLight">#ffe5e5</color>
 
 </resources>

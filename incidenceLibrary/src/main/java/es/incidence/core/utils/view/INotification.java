@@ -172,6 +172,11 @@ public class INotification extends RelativeLayout
         txtMessage.setText(message);
     }
 
+    private void setContinueWithTheMistakeTextColor(int color){
+        txtNotifCancel.setTextColor(getContext().getColor(color));
+
+    }
+
     private void setMessageMarginTop()
     {
         RelativeLayout.LayoutParams params = (RelativeLayout.LayoutParams) txtMessage.getLayoutParams();
@@ -269,9 +274,9 @@ public class INotification extends RelativeLayout
 
     public void showNotification(ViewGroup layoutToShow, String message, View.OnClickListener listenerButton)
     {
-        showNotification(layoutToShow, null, message, null, cancelText, null, null, true);
+        showNotification(layoutToShow, null, message, null, cancelText, null, null, true,false);
     }
-    public void showNotification(ViewGroup layoutToShow, String title, String message, String titleButton, String titleCancelButton, View.OnClickListener listenerButton, View.OnClickListener listenerButtonCancel, boolean canHide)
+    public void showNotification(ViewGroup layoutToShow, String title, String message, String titleButton, String titleCancelButton, View.OnClickListener listenerButton, View.OnClickListener listenerButtonCancel, boolean canHide,boolean fromIsMistake)
     {
         boolean hasOtherNotification = false;
         if (notification != null) {
@@ -287,6 +292,13 @@ public class INotification extends RelativeLayout
         if (title != null) {
             notification.setTitle(title);
         }
+
+        if(fromIsMistake){
+            notification.setContinueWithTheMistakeTextColor(R.color.error);
+        }else{
+            notification.setContinueWithTheMistakeTextColor(R.color.colorPrimary);
+        }
+
         notification.setMessage(message);
         if (titleButton != null) {
             notification.setTitleButton(titleButton);
@@ -462,6 +474,20 @@ public class INotification extends RelativeLayout
                 }
             });
             notification.animateHide(slide);
+        }
+    }
+
+    public void hideNoAnimated()
+    {
+        if (notification != null)
+        {
+            ViewGroup layoutParent = (ViewGroup) notification.getParent();
+            if (layoutParent != null)
+            {
+                layoutParent.removeView(notification);
+            }
+
+            notification = null;
         }
     }
 
