@@ -87,8 +87,6 @@ dependencies {
     implementation 'com.github.yuriy-budiyev:code-scanner:2.1.2'
     //implementation 'org.altbeacon:android-beacon-library:2.19.5'
     api "com.github.JakeWharton:ViewPagerIndicator:2.4.1"
-
-    implementation "com.mapbox.maps:android:11.0.0"
 }
 
 // Because the components are created only during the afterEvaluate phase, you must

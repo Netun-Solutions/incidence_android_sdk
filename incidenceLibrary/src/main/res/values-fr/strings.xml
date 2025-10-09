@@ -1,5 +1,4 @@
 <resources>
-    <string name="mapbox_access_token">pk.eyJ1IjoiaW5jaWRlbmNlIiwiYSI6ImNrcGVkZ2N0cTFxN3QycGxseDByeHB4MTIifQ.r6JVDWZcx5zmzqqShAhbIA</string>
     <string name="incidence_key_required_location_permission_text">Veuillez fournir l\'accès à l\'autorisation de localisation pour que cette fonctionnalité fonctionne.</string>
     <string name="incidence_key_required_location_ok_text">D\'accord</string>
     <string name="incidence_key_required_location_cancel_text">Annuler</string>
