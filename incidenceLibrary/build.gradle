@@ -8,11 +8,11 @@ version = '1.0'
 
 android {
     namespace 'com.e510.incidencelibrary'
-    compileSdk 33
+    compileSdk 34
 
     defaultConfig {
         minSdkVersion 24
-        targetSdkVersion 33
+        targetSdkVersion 34
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles "consumer-rules.pro"
@@ -25,8 +25,15 @@ android {
         }
     }
     compileOptions {
-        sourceCompatibility JavaVersion.VERSION_11
-        targetCompatibility JavaVersion.VERSION_11
+        sourceCompatibility JavaVersion.VERSION_21
+        targetCompatibility JavaVersion.VERSION_21
+    }
+
+    publishing {
+        singleVariant('release') {
+            withSourcesJar()
+            withJavadocJar()
+        }
     }
 }
 
@@ -50,7 +57,7 @@ dependencies {
     implementation ('com.github.amitshekhariitbhu.Fast-Android-Networking:android-networking:1.0.4') {
         exclude group: "com.android.support"
     }
-    api "com.fasterxml.jackson.core:jackson-databind:2.18.3"
+    api "com.fasterxml.jackson.core:jackson-databind:2.19.0"
     api 'org.greenrobot:eventbus:3.3.1'
     implementation 'net.yslibrary.keyboardvisibilityevent:keyboardvisibilityevent:3.0.0-RC2'
     implementation 'com.github.bumptech.glide:glide:4.11.0'
@@ -62,11 +69,11 @@ dependencies {
     //implementation 'org.altbeacon:android-beacon-library:2.19.5'
     //api "com.github.JakeWharton:ViewPagerIndicator:2.4.1"
 
-    api files('libs/mapbox-android-telemetry-8.1.0.aar')
+    // api files('libs/mapbox-android-telemetry-8.1.0.aar')
     //MapBox
     //implementation 'com.mapbox.mapboxsdk:mapbox-android-sdk:9.6.0'
     implementation ('com.mapbox.mapboxsdk:mapbox-android-sdk:9.6.0') {
-        exclude group: 'com.mapbox.mapboxsdk', module: 'mapbox-android-telemetry'
+        //exclude group: 'com.mapbox.mapboxsdk', module: 'mapbox-android-telemetry'
     }
     // https://mvnrepository.com/artifact/com.mapbox.mapboxsdk/mapbox-android-core
     implementation 'com.mapbox.mapboxsdk:mapbox-android-core:5.0.0'
